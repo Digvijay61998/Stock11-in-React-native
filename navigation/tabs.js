@@ -11,6 +11,7 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 import { Home, Transaction } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
 
+
 const Tab = createBottomTabNavigator()
 const Tabs = () => {
     return (

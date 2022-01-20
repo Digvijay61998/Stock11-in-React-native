@@ -3,8 +3,8 @@ import React from 'react';
 import { createStackNavigator } from "@react-navigation/stack";
 import MyBasket from '../components/MyBasket';
 import Contest from '../components/Contest';
-import MyContest from '../components/MyContest';
-import { COLORS, FONTS, icons } from "../constants"
+import MyContest from '../components/MyContest/MyContest.js';
+import { COLORS, FONTS, icons } from "../constants/index"
 
 const TransactionStack = createStackNavigator();
 

@@ -2,10 +2,36 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
-    primary: "#252837",     // Title Color
+    primary: "#2F313E",     // background Color
     secondary: "#5D2DFD",   // Dark purple
     ActiveButton:"#0BFEBC",  //button color
+    Whitetitle:"#fffff", //white color
+    black:"#black",  // blackColor:"#"
+    HeaderBackground:"#252837"  //headerBackground
+    
 };
+
+export const  Header ={
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: 'hidden',
+    elevation: 5,
+    width: 380,
+    height: 630,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    backgroundColor: "#2F313E"
+};
+export const CardBox={
+    height: 180,
+    width: 360,
+    backgroundColor: "#1F1D2B",
+    margin: "4%",
+    borderRadius: 10,
+    padding: 5,
+};
+
 export const SIZES = {
     // global sizes
     base: 8,
@@ -29,6 +55,7 @@ export const SIZES = {
     height
 };
 export const FONTS = {
+    textstyle: {fontFamily: 'Poppins',color: "white",fontSize:16,fontWeight: 'bold',},
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Roboto-Bold", fontSize: SIZES.h2, lineHeight: 30 },
     h3: { fontFamily: "Roboto-Bold", fontSize: SIZES.h3, lineHeight: 22 },

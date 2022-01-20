@@ -16,19 +16,21 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
     return (
         <Tab.Navigator 
-            tabBarOptions={{
-                showLabel: false,
-                style: {
-                    position: "absolute",
-                    botton: 100,
-                    left: 20,
-                    right: 20,
-                    elevetion: 0,
-                    backgroundColor: "#fffff",
-                    borderRadius:50,
-                    height: 90,
-                }
-            }}
+        tabBarOptions={{
+            style: {
+                position: "relative",
+                // botton: 100,
+                elevetion: 0,
+                backgroundColor: "#252837",
+                borderTopRightRadius: 15,
+                borderTopLeftRadius: 15,
+                height: 50,
+            },
+            showIcon: true, showLabel: false, indicatorStyle: {
+                opacity: 0
+            }
+            
+        }}
         >
             <Tab.Screen
                 name="home"
@@ -50,9 +52,8 @@ const Tabs = () => {
                                     style={{
                                         width: 30,
                                         height: 30,
-                                        zIndex: 1,
-                                        tintColor: focused ? COLORS.
-                                            ActiveButton : COLORS.black
+                                        // tintColor: focused ? COLORS.
+                                        //     ActiveButton : COLORS.black
                                     }}
                                 />
                                 <Text styles={{

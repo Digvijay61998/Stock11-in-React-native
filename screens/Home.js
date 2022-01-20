@@ -4,130 +4,130 @@ import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react
 
 import Contest from "../components/Contest.js"
 import MyBasket from "../components/MyBasket.js"
-import MyContest from "../components/MyContest.js"
+import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/ViewContest.js"
 import { createStackNavigator } from "@react-navigation/stack";
-import { COLORS, FONTS, icons } from "../constants"
+import { COLORS, FONTS, icons ,Header} from "../constants"
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const TransactionStack = createStackNavigator();
-
+const Tab = createMaterialTopTabNavigator();
 const Home = ({ navigation }) => {
 
     return (
-        
         <View style={styles.container}>
-            <View style={styles.Header}>
-                <View style={styles.Mycontestmenu}>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate("Contest")}
-                >
-                <View style={styles.ActiveMycontest}> 
-                   <Text style={styles.MycontestText}>Contest</Text>
-                   </View>
-                   </TouchableOpacity>
-                   <TouchableOpacity
-                    onPress={() => navigation.navigate("MyBasket")}
-                >
-                   <View style={styles.ActiveMycontest}> 
-                   <Text style={styles.MycontestText}>Contest</Text>
-                   </View>
-                   </TouchableOpacity>
-                   <View style={styles.ActiveMycontest}> 
-                   <Text style={styles.MycontestText}>Contest</Text>
-                   </View>
-                </View>
+            <View style={Header}>
                 <View style={{
                       position: "relative",
                       justifyContent:"space-around",
                       flexDirection: "row",
-                      backgroundColor: "#2F313E",
                      flex: 1,
                      
                 }}>
-                <TransactionStack.Navigator
-        screenOptions={{
-          headerShown: false,
-    
+                 <Tab.Navigator
+         tabBarOptions={{
+            style: {
+                position: "relative",
+                // botton: 100,
+                elevetion: 0,
+                backgroundColor: COLORS.HeaderBackground,
+                borderTopRightRadius: 15,
+                borderTopLeftRadius: 15,
+                height: 50,
+            },
+            showIcon: true, showLabel: false, indicatorStyle: {
+                opacity: 0
+            }
+            
         }}
+
         initialRouteName={'Contest'}
       
       >  
-        <TransactionStack.Screen
+        <Tab.Screen
+        
           name="Contest"
+          navigation={navigation}
           component={Contest}
+          color="#2F313E"
           options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
                 <View styles={{ alignment: 'center', justifyContent: 'center' }}>
-                    <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            backgroundColor: focused ? COLORS.
-                                ActiveButton : COLORS.black
-                        }}
-                    >
-                        <Image
-                            source={icons.home}
-                            resizeMode="contain"
-                            style={{
-                                width: 30,
-                                height: 30,
-                                zIndex: 1,
-                                tintColor: focused ? COLORS.
-                                    ActiveButton : COLORS.black
-                            }}
-                        />
-                        <Text styles={{
-                            color: focused ? COLORS.
-                                primary : COLORS.ActiveButton, ...FONTS.body5
-                        }}>
-                        </Text>
-                    </View>
+                <View
+                    style={{
+                        // flex: 1,
+                        borderTopRightRadius: 15,
+                        borderTopLeftRadius: 15,
+                        height: 70,
+                        width:125,
+                        right:50,
+                        bottom:10,
+                        backgroundColor: focused ? COLORS.
+                            ActiveButton : COLORS.black
+                    }}
+                >
+                    <Text style={styles.MycontestText}>Contest</Text>
+                </View>
                 </View>
             )
         }}
       
         />
-         <TransactionStack.Screen
+         <Tab.Screen
           name="MyContest"
           component={MyContest}
           options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
                 <View styles={{ alignment: 'center', justifyContent: 'center' }}>
-                    <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            backgroundColor: focused ? COLORS.
-                                ActiveButton : COLORS.black
-                        }}
-                    >
-                        <Image
-                            source={icons.settings}
-                            resizeMode="contain"
-                            style={{
-                                width: 30,
-                                height: 30,
-                                zindex: 1,
-                                tintColor: focused ? COLORS.
-                                    ActiveButton : COLORS.black
-                            }}
-                        />
-                        <Text styles={{
-                            color: focused ? COLORS.
-                                primary : COLORS.ActiveButton, ...FONTS.body5
-                        }}>
-                        </Text>
-                    </View>
+                <View
+                    style={{
+                        // flex: 1,
+                        borderTopRightRadius: 15,
+                        borderTopLeftRadius: 15,
+                        height: 70,
+                        width:125,
+                        right:50,
+                        bottom:10,
+                        color:"black",
+                        backgroundColor: focused ? COLORS.
+                            ActiveButton : COLORS.black
+                    }}
+                >
+                    <Text style={styles.MycontestText}>MyContest</Text>
+                </View>
                 </View>
             )
         }}
         />
-        <TransactionStack.Screen
-          name="Transaction"
+        <Tab.Screen
+          name="MyBasket"
           component={MyBasket}
+          options={{
+            headerShown: false,
+            tabBarIcon: ({ focused }) => (
+                <View styles={{ alignment: 'center', justifyContent: 'center' }}>
+                <View
+                    style={{
+                        // flex: 1,
+                        borderTopRightRadius: 15,
+                        borderTopLeftRadius: 15,
+                        height: 70,
+                        width:125,
+                        right:50,
+                        bottom:10,
+                        backgroundColor: focused ? COLORS.
+                            ActiveButton : COLORS.black
+                    }}
+                >
+                    <Text style={styles.MycontestText}>MyBasket</Text>
+                </View>
+                </View>
+            )
+        }}
         />  
-      </TransactionStack.Navigator>
+      </Tab.Navigator> 
                  </View>
                    
                
@@ -145,10 +145,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: "#1F1D2B",
+        elevation: 10
 
     },
     shadow: {
-        shadowColor: "#252837",
+        shadowColor: COLORS.HeaderBackground,
         shadowOffset: {
             width: 0,
             height: 4,
@@ -158,16 +159,7 @@ const styles = StyleSheet.create({
 
         elevation: 8,
     },
-    Header: {
-        position: "relative",
-        justifyContent: "center",
-        alignItems: "center",
-        overflow: 'hidden',
-        width: 380,
-        height: 630,
-        borderRadius: 15,
-        backgroundColor: "#2F313E"
-    },
+ 
     scroller: {
         flex: 1,
       
@@ -175,7 +167,7 @@ const styles = StyleSheet.create({
     IdolConte: {
         height: 180,
         width: 360,
-        backgroundColor: "#1F1D2B",
+        backgroundColor: COLORS.HeaderBackground,
         margin: "4%",
         borderRadius: 10,
         padding: 5,
@@ -183,7 +175,7 @@ const styles = StyleSheet.create({
     TimeDate: {
         width: 350,
         height: 30,
-        backgroundColor: "#252837",
+        backgroundColor: COLORS.HeaderBackground,
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 5
@@ -207,14 +199,14 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         width: 380,
         height: 60,
-        backgroundColor: "#252837",
+        backgroundColor: COLORS.HeaderBackground,
     },
     ActiveMycontest:{
         flex: 1,
        width: 120,
        borderTopRightRadius: 15,
        borderTopLeftRadius: 15,
-        backgroundColor: "#0BFEBC", 
+        backgroundColor: COLORS.HeaderBackground, 
         margin:2,
     },
     InactiveMycontest:{
@@ -222,13 +214,13 @@ const styles = StyleSheet.create({
        width: 120,
        borderTopRightRadius: 15,
        borderTopLeftRadius: 15,
-        backgroundColor: "#252837", 
+        backgroundColor: COLORS.HeaderBackground, 
         margin:2,
     },
     MycontestText:{ 
     top:18 ,
     left:24,
-    color:"black",
+    color:"white",
     fontFamily: 'Poppins',
     fontSize:15,
     fontWeight: 'bold',

@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const ViewContest = () => {
+const UpcomingEvents = () => {
   return (
     <View>
-       
+      <Text>MyContestMyContestMyContest</Text>
     </View>
   );
 };
 
-export default ViewContest;
+export default UpcomingEvents;
 
 const styles = StyleSheet.create({});

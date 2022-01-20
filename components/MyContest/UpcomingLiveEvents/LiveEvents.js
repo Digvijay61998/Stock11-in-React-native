@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 
-const ViewContest = () => {
+const LiveEvents = () => {
   return (
     <View>
-       
+      <Text>sdasdas</Text>
     </View>
   );
 };
 
-export default ViewContest;
+export default LiveEvents;
 
 const styles = StyleSheet.create({});

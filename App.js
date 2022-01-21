@@ -13,6 +13,7 @@ import CompleteProfile from './screens/CompleteProfile';
 import UpcomingContestDetails from './components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
 import { LiveEvents, UpcomingEvents } from './components/MyContest/UpcomingLiveEvents';
 import LiveContestDetails from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
+import EarnedPoints from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/EarnedPoints';
 
 const Stack = createStackNavigator();
 
@@ -56,7 +57,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails} screenOptions={{ headerShown: true }} />
-           
+            <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints} screenOptions={{ headerShown: true }} />
       </Stack.Navigator> 
   </NavigationContainer>
   // {/* </Provider> */}

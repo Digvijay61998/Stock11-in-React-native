@@ -1,9 +1,21 @@
-import { StyleSheet, Text, View ,SafeAreaView,ScrollView} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity} from 'react-native';
+import React, { useState } from 'react';
 import { COLORS, FONTS, icons, Header, CardBox, IdolContest } from "../../../../constants"
 
 
-const LiveContestDetails = () => {
+
+const LiveContestDetails = ({navigation}) => {
+
+    const [leadboardstack, setLeadboardstack]=useState(false);
+
+    const WinningStick =()=>{
+        setLeadboardstack(false)
+    }
+
+    const LeaderboardStick =()=>{
+        setLeadboardstack(true)
+    }
+
   return (
 <SafeAreaView style={styles.container}>
       <View style={[CardBox, { backgroundColor: COLORS.primary }]}>
@@ -32,15 +44,27 @@ const LiveContestDetails = () => {
           </View>
       </View>
       <View style={styles.WinningsContainer}>
-        <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: COLORS.HeaderBackground, height: 50 }}>
-          <Text style={[FONTS.textstyle,{fontSize:22}]}>Winnings</Text>
+        <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center", backgroundColor: COLORS.HeaderBackground, height: 50 }}>
+       <TouchableOpacity
+       style={{backgroundColor: leadboardstack === true ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
+       onPress={() => WinningStick()}
+       >
+             <Text style={[FONTS.textstyle,{fontSize:18}]}>Winnings</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+        style={{backgroundColor: leadboardstack === false ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
+       onPress={() => LeaderboardStick()}
+      >
+        <Text style={[FONTS.textstyle,{fontSize:18}]}>Leaderboard</Text>
+        </TouchableOpacity>
         </View>
-        <View style={styles.WinningTitleList}>
+        { leadboardstack == false ?<>
+         <View style={styles.WinningTitleList}>
           <Text style={FONTS.textstyle}>Ranks</Text>
           <Text style={FONTS.textstyle}>Winnings</Text>
         </View>
-        <ScrollView>
-        <View style={styles.WinningList}>
+       <ScrollView>
+      <View style={styles.WinningList}>
           <Text style={FONTS.textstyle}>#1</Text>
           <Text style={FONTS.textstyle}>.............................</Text>
           <Text style={FONTS.textstyle}>Rs 5,000</Text>
@@ -109,10 +133,148 @@ const LiveContestDetails = () => {
           <Text style={FONTS.textstyle}>#6</Text>
           <Text style={FONTS.textstyle}>.............................</Text>
           <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
+        </View> 
 
         </ScrollView>
+        </>
+       :<>
+       <View style={styles.WinningTitleList}>
+        <Text style={FONTS.textstyle}>All Teams (5)</Text>
+        <Text style={FONTS.textstyle}>Points</Text>
+        <Text style={FONTS.textstyle}>Rank</Text>
       </View>
+      <ScrollView>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+      <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamABC</Text>
+          <Text style={FONTS.textstyle}>150</Text>
+          <Text style={FONTS.textstyle}>1</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>Team123</Text>
+          <Text style={FONTS.textstyle}>145</Text>
+          <Text style={FONTS.textstyle}>2</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamJKL</Text>
+          <Text style={FONTS.textstyle}>149</Text>
+          <Text style={FONTS.textstyle}>3</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamALC</Text>
+          <Text style={FONTS.textstyle}>90</Text>
+          <Text style={FONTS.textstyle}>4</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamWFC</Text>
+          <Text style={FONTS.textstyle}>80</Text>
+          <Text style={FONTS.textstyle}>5</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamKAL</Text>
+          <Text style={FONTS.textstyle}>70</Text>
+          <Text style={FONTS.textstyle}>6</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamLAL</Text>
+          <Text style={FONTS.textstyle}>75</Text>
+          <Text style={FONTS.textstyle}>7</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamABC</Text>
+          <Text style={FONTS.textstyle}>150</Text>
+          <Text style={FONTS.textstyle}>1</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>Team123</Text>
+          <Text style={FONTS.textstyle}>145</Text>
+          <Text style={FONTS.textstyle}>2</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamJKL</Text>
+          <Text style={FONTS.textstyle}>149</Text>
+          <Text style={FONTS.textstyle}>3</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamALC</Text>
+          <Text style={FONTS.textstyle}>90</Text>
+          <Text style={FONTS.textstyle}>4</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamWFC</Text>
+          <Text style={FONTS.textstyle}>80</Text>
+          <Text style={FONTS.textstyle}>5</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamKAL</Text>
+          <Text style={FONTS.textstyle}>70</Text>
+          <Text style={FONTS.textstyle}>6</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("EarnedPoints")}
+        >
+        <View style={styles.LeaderboardList}>
+          <Text style={FONTS.textstyle}>TeamLAL</Text>
+          <Text style={FONTS.textstyle}>75</Text>
+          <Text style={FONTS.textstyle}>7</Text>
+        </View>
+        </TouchableOpacity>
+        </ScrollView>
+      </>
+      
+      }
+        </View>
     </SafeAreaView>
 
   );
@@ -171,6 +333,15 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         padding: 10,
         marginLeft: 10,
-        marginRight: 10
-      }
-});
+        marginRight: 10,
+      },
+      LeaderboardList: {
+        justifyContent: "space-between",
+        flexDirection: "row",
+        padding: 10,
+        marginLeft: 10,
+        marginRight: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#525460",}
+
+    });

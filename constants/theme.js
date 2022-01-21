@@ -3,7 +3,7 @@ const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
     primary: "#2F313E",     // background Color
-    secondary: "#5D2DFD",   // Dark purple
+    secondary: "#1F1D2B",   // Dark purple
     ActiveButton:"#0BFEBC",  //button color
     Whitetitle:"#fffff", //white color
     black:"#black",  // blackColor:"#"
@@ -56,6 +56,7 @@ export const SIZES = {
 };
 export const FONTS = {
     textstyle: {fontFamily: 'Poppins',color: "white",fontSize:16,fontWeight: 'bold',},
+    ItsLiveFont: {fontFamily: 'Poppins',color: "#25BC20",fontSize:16,fontWeight: 'bold',},
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Roboto-Bold", fontSize: SIZES.h2, lineHeight: 30 },
     h3: { fontFamily: "Roboto-Bold", fontSize: SIZES.h3, lineHeight: 22 },

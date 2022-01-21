@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View ,ScrollView} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox} from "../constants/index"
-const MyBasket = () => {
+const MyBasket = ({ navigation }) => {
     return (
         <View style={Header}>
             <ScrollView>

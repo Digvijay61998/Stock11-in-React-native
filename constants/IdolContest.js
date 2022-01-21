@@ -17,8 +17,14 @@ const IdolContest = () => {
             <Text style={styles.textstyle}>5 Winners</Text>
             <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. 1,000</Text>
         </View>
-        <View style={{ width:150 ,height:5 , backgroundColor: COLORS.ActiveButton ,left:100 , top:30 , borderRadius: 10}}>
-        </View>
+          <View style={{alignItems:"center",top:15}}>
+          <View style={{ width: 180, height: 5, backgroundColor: COLORS.ActiveButton, borderRadius: 10 }}>
+          </View>
+          <View style={{ justifyContent: "space-between", flexDirection: "row", width:170}}>
+            <Text style={[FONTS.textstyle ,{fontSize:8 }]}>3 Spots Left</Text>
+            <Text  style={[FONTS.textstyle ,{fontSize:8}]}>3 Spots</Text>
+          </View>
+          </View>
     </View>
     <View style={styles.TimeDate}>
         <Text style={{ color: "white" ,borderRadius: 10  , fontFamily: 'Poppins',}}>st Oct 2021 to 3rd oct 2021</Text>

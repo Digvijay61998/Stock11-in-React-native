@@ -1,11 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,ScrollView, TouchableOpacity} from 'react-native'
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest} from "../../../constants"
+
 import React from 'react';
 
-const UpcomingEvents = () => {
+const UpcomingEvents = ({navigation}) => {
   return (
-    <View>
-      <Text>MyContestMyContestMyContest</Text>
-    </View>
+    <View  style={Header}>
+    <ScrollView style={styles.scroller}>
+      <TouchableOpacity
+         onPress={() => navigation.navigate("UpcomingContestDetails")}
+      >
+               <IdolContest/>
+       </TouchableOpacity>
+               <IdolContest/>
+               <IdolContest/>
+               <IdolContest/>
+               <IdolContest/>
+               <IdolContest/>
+               <IdolContest/>
+               </ScrollView>  
+ </View>
   );
 };
 

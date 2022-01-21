@@ -6,11 +6,10 @@ import Contest from "../components/Contest.js"
 import MyBasket from "../components/MyBasket.js"
 import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/ViewContest.js"
-import { createStackNavigator } from "@react-navigation/stack";
 import { COLORS, FONTS, icons ,Header} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-const TransactionStack = createStackNavigator();
+
 const Tab = createMaterialTopTabNavigator();
 const Home = ({ navigation }) => {
 

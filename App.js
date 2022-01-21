@@ -10,10 +10,13 @@ import MyContest from './components/MyContest/MyContest';
 import { Provider } from 'react-redux';
 import OtpVerification from './screens/OtpVerification';
 import CompleteProfile from './screens/CompleteProfile';
+import UpcomingContestDetails from './components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
+import { LiveEvents, UpcomingEvents } from './components/MyContest/UpcomingLiveEvents';
+import LiveContestDetails from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
 
 const Stack = createStackNavigator();
 
-const App = (props) => {
+const App = () => {
 
  useEffect(() =>{
   setTimeout(() => {
@@ -47,8 +50,13 @@ const App = (props) => {
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
-            <Stack.Screen name="OtpVerification" component={OtpVerification} screenOptions={{ headerShown: true }} />
-            <Stack.Screen name="CompleteProfile" component={CompleteProfile} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="UpcomingEvents" component={UpcomingEvents} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails} screenOptions={{ headerShown: true }} />
+           
       </Stack.Navigator> 
   </NavigationContainer>
   // {/* </Provider> */}

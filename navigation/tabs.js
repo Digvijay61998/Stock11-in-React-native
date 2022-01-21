@@ -10,6 +10,9 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 
 import { Home, Transaction } from "../screens"
 import { COLORS, FONTS, icons } from "../constants"
+import LoginScreen from "../screens/LoginScreen";
+import OtpVerification from "../screens/OtpVerification";
+import CompleteProfile from "../screens/CompleteProfile";
 
 
 const Tab = createBottomTabNavigator()
@@ -32,8 +35,24 @@ const Tabs = () => {
             
         }}
         >
+
+         <Tab.Screen
+         name="Login"
+          component={LoginScreen}  
+          options={{title: 'Login Screen'}}/> 
+
+        {/* <Tab.Screen
+                name="OtpVerification"
+                component={OtpVerification} 
+                options={{title: 'Phone Verfication'}}/>
+
+        <Tab.Screen
+                name="CompleteProfile"
+                component={CompleteProfile} 
+                // options={{title: 'Complete Profile'}}/> */} 
+        
             <Tab.Screen
-                name="home"
+                name="Home"
                 component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
@@ -86,7 +105,6 @@ const Tabs = () => {
                                     style={{
                                         width: 30,
                                         height: 30,
-                                        zindex: 1,
                                         tintColor: focused ? COLORS.
                                             ActiveButton : COLORS.black
                                     }}

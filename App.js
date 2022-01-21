@@ -8,16 +8,18 @@ import Contest from './components/Contest';
 import MyBasket from './components/MyBasket';
 import MyContest from './components/MyContest/MyContest';
 import { Provider } from 'react-redux';
+import OtpVerification from './screens/OtpVerification';
+import CompleteProfile from './screens/CompleteProfile';
 
 const Stack = createStackNavigator();
 
 const App = (props) => {
 
-//  useEffect(() =>{
-//   setTimeout(() => {
-//     SplashScreen.hide();
-// }, 1000);
-//  },[]);
+ useEffect(() =>{
+  setTimeout(() => {
+    SplashScreen.hide();
+}, 1000);
+ },[]);
 
 // if (!loggedIn) {
 //   return (
@@ -39,16 +41,17 @@ const App = (props) => {
         }}
         initialRouteName={'Home'}
       >  
-            <Stack.Screen key={Date.now()} name="Home" component={Tabs}/>
+            <Stack.Screen key={Date.now()} name="Tabs" component={Tabs}/>
             <Stack.Screen key={Date.now()} name="CryptoDetail" component={CryptoDetail}/>
             <Stack.Screen key={Date.now()} name="Transaction" component={Transaction}/>  
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
+            <Stack.Screen name="OtpVerification" component={OtpVerification} screenOptions={{ headerShown: true }} />
+            <Stack.Screen name="CompleteProfile" component={CompleteProfile} screenOptions={{ headerShown: true }} />
       </Stack.Navigator> 
   </NavigationContainer>
   // {/* </Provider> */}
-
   )
 }
 

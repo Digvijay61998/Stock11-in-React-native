@@ -43,7 +43,6 @@ const Transaction = () => {
                             style={{
                                 width: 30,
                                 height: 30,
-                                zIndex: 1,
                                 tintColor: focused ? COLORS.
                                     ActiveButton : COLORS.black
                             }}
@@ -78,7 +77,6 @@ const Transaction = () => {
                             style={{
                                 width: 30,
                                 height: 30,
-                                zindex: 1,
                                 tintColor: focused ? COLORS.
                                     ActiveButton : COLORS.black
                             }}

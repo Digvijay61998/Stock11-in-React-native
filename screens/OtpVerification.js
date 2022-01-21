@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Text, Button, Alert } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity } from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import {
     CodeField,
@@ -20,9 +20,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
     });
 return (
 
-<SafeAreaView style={styles.root}>
-      <Text style={{fontSize:SIZES.h1, color:COLORS.ActiveButton}}>OTP Verfication</Text>
-      <Text style={{fontSize:SIZES.h3, color:"white"}}>We have send a verification code to your mobile number +91</Text>
+<SafeAreaView style={styles.container}>
+  <View style={styles.LoginBox}>
+      <Text style={[FONTS.textstyle, {color:COLORS.ActiveButton ,fontSize:25}]}>OTP Verfication</Text>
+      <Text style={[FONTS.textstyle,{color:COLORS.FaintWhite}]}>We have send a verification code to your mobile number +91</Text>
       <CodeField
         ref={ref}
         {...props}
@@ -43,14 +44,29 @@ return (
         )}
       />
       <Text style={{fontSize:SIZES.h3, color:"white"}}>I didn't receive code.<Text style={{color:COLORS.ActiveButton}}>Resend Code</Text></Text>
-      <Button style={{ borderRadius:20}}
+      
+      <TouchableOpacity
+          style={{
+            width:300,
+            margin:15,
+            borderRadius:50,
+            height:50,
+            backgroundColor:COLORS.ActiveButton,
+         }}
+         onPress={() =>
+          navigation.navigate('CompleteProfile')
+        }
+      >
+      {/* <Button style={{ borderRadius:20}}
                     title="Submit"
                     color="#0BFEBC"
                     onPress={() =>
                         navigation.navigate('CompleteProfile')
                       }
 
-/>
+/> */}
+</TouchableOpacity>
+</View>
     </SafeAreaView>
         
         
@@ -58,7 +74,22 @@ return (
 }
 
 const styles = StyleSheet.create({
-    root: {flex: 1, padding: 20, backgroundColor:"#1F1D2B"},
+  container: {  flex:1,
+      backgroundColor: "#1F1D2B",
+      alignItems:"center",
+      justifyContent:"center"},
+
+      LoginBox:{
+        height:290,
+        width:360,
+        backgroundColor:COLORS.HeaderBackground,
+        borderRadius:10,
+        alignItems:"center",
+        justifyContent:"center",
+        elevation:10
+
+          },
+
     title: {textAlign: 'center', fontSize: 30},
     codeFieldRoot: {marginTop: 20},
     cell: {

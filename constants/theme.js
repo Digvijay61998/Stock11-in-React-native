@@ -5,7 +5,7 @@ export const COLORS = {
     primary: "#2F313E",     // background Color
     secondary: "#1F1D2B",   // Dark purple
     ActiveButton:"#0BFEBC",  //button color
-    Whitetitle:"#fffff", //white color
+    FaintWhite:"#9599AF", //white color
     black:"#black",  // blackColor:"#"
     HeaderBackground:"#252837"  //headerBackground
     

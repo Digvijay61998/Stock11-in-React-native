@@ -8,100 +8,61 @@ const EarnedPoints = ({navigation}) => {
 <SafeAreaView style={styles.container}>
   <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton, fontSize:20, padding:10}]}>TeamABC</Text>
 <View style={styles.Teamcontainer}>
-<View style={{justifyContent:"space-around", alignItems:"center" ,flexDirection:"row", width:360, height:50 , backgroundColor:COLORS.HeaderBackground, borderTopRightRadius:10,borderTopLeftRadius:10
-  }}>
+<View style={styles.EarnListTitle}>
 <Text style={FONTS.textstyle}>Stocks</Text>
 <Text style={FONTS.textstyle}>Points</Text>
 </View>
-
 <ScrollView>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+
+<View style={styles.EarnList}>
+<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
+<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
+</View><View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth: 1,
-        borderColor: "#575966", padding:10}}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={{justifyContent:"space-around" , alignItems:"center" ,flexDirection:"row" , borderWidth:1,
-        borderColor: "#575966", padding:10 }}>
+<View style={styles.EarnList}>
 <Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
 <Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
 </View>
@@ -126,5 +87,22 @@ const styles = StyleSheet.create({
   Teamcontainer:{
     flex:1,
     backgroundColor:COLORS.secondary
-  }
+  },
+  EarnListTitle:{justifyContent:"space-around", 
+  alignItems:"center" ,
+  flexDirection:"row",
+   width:360, 
+   height:50 , 
+   backgroundColor:COLORS.HeaderBackground,
+    borderTopRightRadius:10,
+   borderTopLeftRadius:10
+
+  },
+ EarnList:{
+         justifyContent:"space-around" ,
+        alignItems:"center" ,
+        flexDirection:"row" ,
+         borderWidth: 1,
+        borderColor: "#575966",
+         padding:10}
 });

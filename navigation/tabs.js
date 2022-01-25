@@ -21,13 +21,12 @@ const Tabs = () => {
         <Tab.Navigator 
         tabBarOptions={{
             style: {
-                position: "relative",
                 // botton: 100,
                 elevetion: 0,
-                backgroundColor: "#252837",
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15,
-                height: 50,
+                height:40,
+                backgroundColor:"red",
+                width:100
+       
             },
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0
@@ -50,7 +49,7 @@ const Tabs = () => {
                 name="CompleteProfile"
                 component={CompleteProfile} 
                 // options={{title: 'Complete Profile'}}/> */} 
-        
+   
             <Tab.Screen
                 name="Home"
                 component={Home}
@@ -92,12 +91,19 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => (
                         <View styles={{ alignment: 'center', justifyContent: 'center' }}>
                             <View
-                                style={{
-                                    width: 50,
-                                    height: 50,
-                                    backgroundColor: focused ? COLORS.
-                                        ActiveButton : COLORS.black
-                                }}
+                               style={{
+                                // flex: 1,
+                              borderRadius:50,
+                                height: 50,
+                                width:125,
+                                right:50,
+                                top:2,
+                                bottom:10,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                backgroundColor: focused ? COLORS.
+                                    ActiveButton : COLORS.secondary
+                            }}
                             >
                                 <Image
                                     source={icons.settings}

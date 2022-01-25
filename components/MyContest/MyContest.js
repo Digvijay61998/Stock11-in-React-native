@@ -9,22 +9,21 @@ const MyContest = ({ navigation }) => {
     return (
       <View style={Header}>
                 <View style={{
-                      position: "relative",
-                      justifyContent:"space-around",
+                      justifyContent:"space-evenly",
+                      alignItems: "center",
                       flexDirection: "row",
                      flex: 1,
                      
                 }}>
                  <MyContestStack.Navigator
-         MyContestStackOptions={{
+    tabBarOptions={{
             style: {
                 position: "relative",
                 // botton: 100,
-                elevetion: 0,
-                backgroundColor: COLORS.HeaderBackground,
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15,
-                height: 20,
+                backgroundColor: COLORS.primary,
+                padding:10,
+                height: 70,
+                elevation:0
             },
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0
@@ -48,17 +47,19 @@ const MyContest = ({ navigation }) => {
                 <View
                     style={{
                       borderRadius:50,
-                      
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        color:"black",
+                        height: 60,
+                        width:110,
+                        right:45,
+                        bottom:14,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                        primary : COLORS.black
+                            white : COLORS.HeaderBackground
                     }}
                 >
-                    <Text style={styles.MycontestText}>Upcoming</Text>
+                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>Upcoming</Text>
                 </View>
                 </View>
             )
@@ -76,16 +77,19 @@ const MyContest = ({ navigation }) => {
                     style={{
                         // flex: 1,
                         borderRadius:50,
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        color:"black",
+                        height: 60,
+                        width:110,
+                        right:45,
+                        bottom:14,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                        primary : COLORS.black
+                        white : COLORS.HeaderBackground
                     }}
                 >
-                    <Text style={styles.MycontestText}>MyContest</Text>
+                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>Live</Text>
                 </View>
                 </View>
             )
@@ -100,19 +104,20 @@ const MyContest = ({ navigation }) => {
                 <View styles={{ alignment: 'center', justifyContent: 'center' }}>
                 <View
                     style={{
-                        // flex: 1,
                         borderRadius:50,
-                      
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        color:"black",
+                        height: 60,
+                        width:110,
+                        right:45,
+                        bottom:14,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                        primary : COLORS.black
+                        white : COLORS.HeaderBackground
                     }}
                 >
-                    <Text style={styles.MycontestText}>UpcomingEvents</Text>
+                    <Text  style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>Completed</Text>
                 </View>
                 </View>
             )
@@ -135,34 +140,6 @@ const styles = StyleSheet.create({
         flex: 1,
       overflow:"hidden",
     },
-    IdolConte: {
-      height: 180,
-      width: 360,
-      backgroundColor: COLORS.HeaderBackground,
-      margin: "4%",
-      borderRadius: 10,
-      padding: 5,
-  },
-  TimeDate: {
-      width: 350,
-      height: 30,
-      backgroundColor: COLORS.HeaderBackground,
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 5
-  },
-  IdolContainer: {
-      position: "relative",
-      width: 350,
-      height: 140,
-  },
-  textstyle: {
-      fontFamily: 'Poppins',
-      color: "white",
-      fontSize:16,
-      fontWeight: 'bold',
-  },
-
   // My Home menue
   Mycontestmenu:{
       position: "relative",
@@ -189,10 +166,7 @@ const styles = StyleSheet.create({
       margin:2,
   },
   MycontestText:{ 
-  top:18 ,
-  left:24,
-  color:"white",
-  fontFamily: 'Poppins',
+  fontFamily:'Poppins',
   fontSize:15,
   fontWeight: 'bold',
 }

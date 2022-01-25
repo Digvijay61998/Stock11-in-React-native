@@ -5,7 +5,7 @@ import { NavigationContainer,getFocusedRouteNameFromRoute } from '@react-navigat
 import SplashScreen from "react-native-splash-screen"
 import Tabs from "./navigation/tabs";
 import Contest from './components/Contest';
-import MyBasket from './components/MyBasket';
+import MyBasket from './components/MyBasket/MyBasket';
 import MyContest from './components/MyContest/MyContest';
 import { Provider } from 'react-redux';
 import OtpVerification from './screens/OtpVerification';
@@ -14,6 +14,10 @@ import UpcomingContestDetails from './components/MyContest/UpcomingLiveEvents/Up
 import { LiveEvents, UpcomingEvents } from './components/MyContest/UpcomingLiveEvents';
 import LiveContestDetails from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
 import EarnedPoints from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/EarnedPoints';
+import CreateBasket from './components/MyBasket/BasketEdits/CreateBasket';
+import TeamsView from './components/MyBasket/BasketEdits/TeamsView';
+import EditTeam from './components/MyBasket/BasketEdits/EditTeam';
+import CompletedContestDetails from './components/MyContest/UpcomingLiveEvents/Completed/CompletedContestDetails';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +62,10 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails} screenOptions={{ headerShown: true }} />
       </Stack.Navigator> 
   </NavigationContainer>
   // {/* </Provider> */}

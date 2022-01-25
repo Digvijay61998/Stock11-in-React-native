@@ -6,7 +6,7 @@ import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest} from "../../../cons
 const LiveEvents = ({navigation}) => {
   return (
     <View style={Header}>
-      <ScrollView>
+      <ScrollView style={styles.scroller}>
       <TouchableOpacity
          onPress={() => navigation.navigate("LiveContestDetails")}
       >
@@ -28,4 +28,9 @@ const LiveEvents = ({navigation}) => {
 
 export default LiveEvents;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scroller: {
+    flex: 1,
+  overflow:"hidden",
+},
+});

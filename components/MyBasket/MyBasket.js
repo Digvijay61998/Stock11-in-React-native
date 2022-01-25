@@ -1,10 +1,10 @@
 import React from 'react'
-import { StyleSheet, Text, View ,ScrollView} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox} from "../constants/index"
+import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity} from 'react-native'
+import { COLORS, FONTS, icons ,Header ,CardBox} from "../../constants/index"
 const MyBasket = ({ navigation }) => {
     return (
-        <View style={Header}>
-            <ScrollView>
+        <SafeAreaView style={Header}>
+            <ScrollView styles={styles.scroller}>
         <View style={[CardBox,styles.CardBoxStyle]}>
         <View style={styles.IdolContainer}>
             <View style={styles.headTitle}>
@@ -91,14 +91,27 @@ const MyBasket = ({ navigation }) => {
         </View>
     </View>
     </ScrollView>
+    <View style={{width: '100%', height:250 , alignItems: "center", justifyContent:"center"}}>
+       <TouchableOpacity style={FONTS.button}
+           onPress={() =>
+            navigation.navigate('CreateBasket')
+          }
+       >
+        <Text style={[FONTS.textstyle ,{color:"black"}]}>Create Basket</Text>
+       </TouchableOpacity>
+
     </View>
+    </SafeAreaView>
     )
 }
 
 export default MyBasket
 
 const styles = StyleSheet.create({
-
+    Container: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:COLORS.secondary,
     
     scroller: {
         flex: 1,
@@ -121,18 +134,11 @@ const styles = StyleSheet.create({
     CardBoxStyle:{ 
     backgroundColor:COLORS.primary,
      elevation: 5 ,
-     justifyContent:"flex-start",
       borderRadius: 10,
        overflow: "hidden",
     
        
 },
-    RowDiv:{
-        justifyContent: "space-between", 
-        flexDirection: "row",
-         padding: "2%",
-         backgroundColor:"red"
-    },
 
     headTitle:{
          justifyContent: "space-between", 
@@ -148,5 +154,6 @@ const styles = StyleSheet.create({
             justifyContent: "space-around", 
              alignItems: "center",
              flexDirection: "row"
-        }
+        },
+
 })

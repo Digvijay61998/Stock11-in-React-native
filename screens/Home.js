@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react-native';
 
 import Contest from "../components/Contest.js"
-import MyBasket from "../components/MyBasket.js"
+import MyBasket from "../components/MyBasket/MyBasket.js"
 import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/ViewContest.js"
 import { COLORS, FONTS, icons ,Header} from "../constants"
@@ -62,11 +62,15 @@ const Home = ({ navigation }) => {
                         width:125,
                         right:50,
                         bottom:10,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.black
+                            ActiveButton : COLORS.secondary
                     }}
                 >
-                    <Text style={styles.MycontestText}>Contest</Text>
+                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>Contest</Text>
                 </View>
                 </View>
             )
@@ -90,11 +94,15 @@ const Home = ({ navigation }) => {
                         right:50,
                         bottom:10,
                         color:"black",
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.black
+                            ActiveButton : COLORS.secondary
                     }}
                 >
-                    <Text style={styles.MycontestText}>MyContest</Text>
+                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>MyContest</Text>
                 </View>
                 </View>
             )
@@ -116,11 +124,15 @@ const Home = ({ navigation }) => {
                         width:125,
                         right:50,
                         bottom:10,
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.black
+                            ActiveButton : COLORS.secondary
                     }}
                 >
-                    <Text style={styles.MycontestText}>MyBasket</Text>
+                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
+                                        primary : COLORS.FaintWhite,}]
+                    }>MyBasket</Text>
                 </View>
                 </View>
             )
@@ -217,9 +229,7 @@ const styles = StyleSheet.create({
         margin:2,
     },
     MycontestText:{ 
-    top:18 ,
-    left:24,
-    color:"white",
+        bottom:10,
     fontFamily: 'Poppins',
     fontSize:15,
     fontWeight: 'bold',

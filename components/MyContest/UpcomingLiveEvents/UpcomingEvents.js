@@ -25,4 +25,9 @@ const UpcomingEvents = ({navigation}) => {
 
 export default UpcomingEvents;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scroller: {
+    flex: 1,
+  overflow:"hidden",
+},
+});

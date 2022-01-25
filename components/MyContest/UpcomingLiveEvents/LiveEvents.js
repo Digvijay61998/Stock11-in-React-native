@@ -1,26 +1,27 @@
-import { StyleSheet, Text, View ,ScrollView ,TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest} from "../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData } from "../../../constants"
 
 
-const LiveEvents = ({navigation}) => {
+const LiveEvents = ({ navigation }) => {
+
+  const LivePriceEvents = dummyData.PricePool
+
   return (
     <View style={Header}>
       <ScrollView style={styles.scroller}>
-      <TouchableOpacity
-         onPress={() => navigation.navigate("LiveContestDetails")}
-      >
-      <IdolContest/>
-      </TouchableOpacity>
-      
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
-      <IdolContest/>
+        <FlatList
+          data={LivePriceEvents}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("LiveContestDetails")}
+            >
+              <IdolContest data={item} />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, index) => index}
+        />
       </ScrollView>
     </View>
   );
@@ -31,6 +32,6 @@ export default LiveEvents;
 const styles = StyleSheet.create({
   scroller: {
     flex: 1,
-  overflow:"hidden",
-},
+    overflow: "hidden",
+  },
 });

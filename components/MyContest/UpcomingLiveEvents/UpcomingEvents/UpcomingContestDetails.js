@@ -1,9 +1,22 @@
-import { StyleSheet, Text, View, SafeAreaView ,ScrollView } from 'react-native';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest } from "../../../../constants"
+import { StyleSheet, Text, View, SafeAreaView ,ScrollView ,FlatList} from 'react-native';
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData} from "../../../../constants"
 
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 
 const UpcomingContestDetails = ({ navigation }) => {
+
+  const [ ranking, setRanking]= useState([])
+
+  const data = dummyData.WinningList
+
+  useEffect(() => {
+    if(data === undefined){
+      setRanking("")
+    }else{
+      setRanking(data)
+    }
+  });
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={[CardBox, { backgroundColor: COLORS.primary }]}>
@@ -42,77 +55,20 @@ const UpcomingContestDetails = ({ navigation }) => {
           <Text style={FONTS.textstyle}>Winnings</Text>
         </View>
         <ScrollView>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#1</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 5,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#2</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 3,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#3</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 3,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#4</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 2,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#5</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 1,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-
+        <FlatList 
+                data = {ranking}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
+                  <View style={styles.WinningList}>
+                  <Text style={FONTS.textstyle}>#{item.rank}</Text>
+                  <Text style={FONTS.textstyle}>.............................</Text>
+                  <Text style={FONTS.textstyle}>Rs {item.priceWin} </Text>
+                </View>
+                )}
+                keyExtractor={(item, index) => index}
+               />
+     
+      
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -124,7 +80,9 @@ export default UpcomingContestDetails;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1F1D2B",
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor:COLORS.secondary,
   },
   scroller: {
     flex: 1,
@@ -152,11 +110,12 @@ const styles = StyleSheet.create({
   },
   WinningsContainer: {
     backgroundColor: COLORS.primary,
-    flex: 1,
-    borderRadius: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    overflow: "hidden",
+        flex: 1,
+        borderRadius: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        width: "90%",
+        overflow: "hidden",
   },
   WinningTitleList: {
     justifyContent: "space-between",

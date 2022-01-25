@@ -1,23 +1,28 @@
-import { StyleSheet, Text, View ,ScrollView, TouchableOpacity} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest} from "../../../constants"
+import { StyleSheet, Text, View ,ScrollView, TouchableOpacity ,FlatList} from 'react-native'
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../../../constants"
 
 import React from 'react';
 
 const UpcomingEvents = ({navigation}) => {
+
+  const UpcomingPriceEvents = dummyData.PricePool
+
+
   return (
     <View  style={Header}>
     <ScrollView style={styles.scroller}>
-      <TouchableOpacity
-         onPress={() => navigation.navigate("UpcomingContestDetails")}
-      >
-               <IdolContest/>
-       </TouchableOpacity>
-               <IdolContest/>
-               <IdolContest/>
-               <IdolContest/>
-               <IdolContest/>
-               <IdolContest/>
-               <IdolContest/>
+    <FlatList 
+                data = {UpcomingPriceEvents}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
+                  <TouchableOpacity
+                  onPress={() => navigation.navigate("UpcomingContestDetails")}
+               >
+                   <IdolContest data={item}/>
+                   </TouchableOpacity>
+                )}
+                keyExtractor={(item, index) => index}
+               />
                </ScrollView>  
  </View>
   );

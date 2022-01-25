@@ -3,151 +3,214 @@ export const portfolio = {
     changes: "+2.36%",
 };
 
-export const PrizePool = [
+export const PricePool = [
     {
         id: 1,
         winners:2,
         entryFees:5000,
+        pricePool:2000,
         date:"oct 2021 to 3rd oct 2021"
     },
     {
         id: 2,
         winners:2,
+        pricePool:2470,
         entryFees:100,
         date:"oct 2021 to 4rd oct 2021"
     },
     {
         id: 3,
         winners:10,
+        pricePool:5000,
         entryFees:100000,
         date:"oct 2021 to 5rd oct 2021"
     },
     {
         id: 4,
         winners:1,
+        pricePool:1000,
         entryFees:1000,
         date:"oct 2021 to 6rd oct 2021"
     },
     {
         id: 5,
         winners:5,
+        pricePool:200,
         entryFees:1000,
         date:"oct 2021 to 1rd oct 2021"
     },
     {
         id: 6,
         winners:5,
+        pricePool:20000,
         entryFees:5000,
         date:"oct 2021 to 2rd oct 2021"
     },
     {
         id: 7,
         winners:1,
+        pricePool:4000,
         entryFees:50,
         date:"oct 2021 to 3rd oct 2021"
     }
        
 ]
 
-export const transactionHistory = [
+export const WinningList = [
     {
         id: 1,
-        description: "Sold Ethereum",
-        amount: -2.0034,
-        currency: "ETH",
-        type: "S",      // S - Sold, B - Bought
-        date: "14:20 12 Apr"
+        rank:1,
+        priceWin:5000
     },
     {
         id: 2,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:2,
+        priceWin:10000
     },
     {
         id: 3,
-        description: "Sold Ethereum",
-        amount: -2.0034,
-        currency: "ETH",
-        type: "S",
-        date: "14:20 12 Apr"
+        rank:3,
+        priceWin:4000
     },
     {
         id: 4,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:4,
+        priceWin:3000
     },
     {
         id: 5,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:5,
+        priceWin:2500
     },
 
     {
         id: 6,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:6,
+        priceWin:2000
     },
     {
         id: 7,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:7,
+        priceWin:1500
     },
     {
         id: 8,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
+        rank:8,
+        priceWin:1000
     },
-    {
-        id: 9,
-        description: "Bought Ethereum",
-        amount: 2.0034,
-        currency: "ETH",
-        type: "B",
-        date: "14:20 12 Apr"
-    },
+ 
 ];
 
-const chartOptions = [
+const LeadBoard = [
     {
         id: 1,
-        label: "1 hr"
+        team:"ABC",
+        points:150,
+        rank:1
     },
     {
         id: 2,
-        label: "3 Days"
+        team:"AVD",
+        points:140,
+        rank:2
     },
     {
         id: 3,
-        label: "1 Week"
+        team:"EBC",
+        points:130,
+        rank:3
     },
     {
         id: 4,
-        label: "1 Month"
+        team:"GBC",
+        points:130,
+        rank:4
     },
     {
         id: 5,
-        label: "3 Months"
+        team:"HJC",
+        points:120,
+        rank:5
+    
+    },
+    {
+        id: 6,
+        team:"JKC",
+        points:110,
+        rank:6
+    },
+    {
+        id: 7,
+        team:"LKD",
+        points:100,
+        rank:7
+    },
+    {
+        id: 8,
+        team:"LKC",
+        points:90,
+        rank:8
+    },
+    {
+        id: 9,
+        team:"LOP",
+        points:80,
+        rank:4
+    },
+    {
+        id: 10,
+        team:"HUC",
+        points:50,
+        rank:5
+    
     }
-]
+];
 
-const dummyData = { portfolio, PrizePool, transactionHistory, chartOptions };
+export const PointsEarn = [
+    {
+        id: 1,
+        stocks:"Cadila Healthcare LTD",
+        points:40
+    },
+    {
+        id: 2,
+        stocks:"Cipla",
+        points:30
+    },
+    {
+        id: 3,
+        stocks:"Hero MotoCorp",
+        points:20
+    },
+    {
+        id: 4,
+        stocks:"Ashok Leyland",
+        points:10
+    },
+    {
+        id: 5,
+        stocks:"Lupin Limited",
+        points:10
+    },
+
+    {
+        id: 6,
+        stocks:"Lupin Limited",
+        points:10
+    },
+    {
+        id: 7,
+        stocks:"Lupin Limited",
+        points:15
+    },
+    {
+        id: 8,
+        stocks:"Abbott india ltd",
+        points:1
+    },
+ 
+];
+
+const dummyData = { portfolio, PricePool, WinningList, LeadBoard ,PointsEarn};
 
 export default dummyData;

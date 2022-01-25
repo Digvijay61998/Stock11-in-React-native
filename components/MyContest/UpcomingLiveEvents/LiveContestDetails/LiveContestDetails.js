@@ -1,7 +1,6 @@
-import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity} from 'react-native';
-import React, { useState } from 'react';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest } from "../../../../constants"
-
+import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity ,FlatList} from 'react-native';
+import React, { useState,useEffect } from 'react';
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData} from "../../../../constants"
 
 
 const LiveContestDetails = ({navigation}) => {
@@ -15,6 +14,32 @@ const LiveContestDetails = ({navigation}) => {
     const LeaderboardStick =()=>{
         setLeadboardstack(true)
     }
+
+
+    // fetch data from dummyCompo
+    const [ liveContestranking, setLiveContestRanking]= useState([])
+    const [ leaderBoardranking, setLeaderBoardRanking]= useState([])
+
+
+    const Winningdata = dummyData.WinningList
+    const LeaderBoarddata = dummyData.LeadBoard
+  
+    useEffect(() => {
+      if(Winningdata === undefined){
+        setLiveContestRanking("")
+      }else{
+        setLiveContestRanking(Winningdata)
+      }
+    });
+
+    useEffect(() => {
+      if(LeaderBoarddata === undefined){
+        setLeaderBoardRanking("")
+      }else{
+        setLeaderBoardRanking(LeaderBoarddata)
+      }
+    });
+
 
   return (
 <SafeAreaView style={styles.container}>
@@ -64,76 +89,19 @@ const LiveContestDetails = ({navigation}) => {
           <Text style={FONTS.textstyle}>Winnings</Text>
         </View>
        <ScrollView>
+       <FlatList 
+                data = {liveContestranking}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
       <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#1</Text>
+          <Text style={FONTS.textstyle}>#{item.rank}</Text>
           <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 5,000</Text>
+          <Text style={FONTS.textstyle}>Rs {item.priceWin}</Text>
         </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#2</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 3,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#3</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 3,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#4</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 2,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#5</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 1,000</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View>
-        <View style={styles.WinningList}>
-          <Text style={FONTS.textstyle}>#6</Text>
-          <Text style={FONTS.textstyle}>.............................</Text>
-          <Text style={FONTS.textstyle}>Rs 500</Text>
-        </View> 
+            )}
+            keyExtractor={(item, index) => index}
+           />
+      
 
         </ScrollView>
         </>
@@ -144,132 +112,23 @@ const LiveContestDetails = ({navigation}) => {
         <Text style={FONTS.textstyle}>Rank</Text>
       </View>
       <ScrollView>
+      <FlatList 
+                data = {leaderBoardranking}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
         <TouchableOpacity
         onPress={() => navigation.navigate("EarnedPoints")}
         >
       <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamABC</Text>
-          <Text style={FONTS.textstyle}>150</Text>
-          <Text style={FONTS.textstyle}>1</Text>
+          <Text style={FONTS.textstyle}>Team{item.team}</Text>
+          <Text style={FONTS.textstyle}>{item.points}</Text>
+          <Text style={FONTS.textstyle}>{item.rank}</Text>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>Team123</Text>
-          <Text style={FONTS.textstyle}>145</Text>
-          <Text style={FONTS.textstyle}>2</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamJKL</Text>
-          <Text style={FONTS.textstyle}>149</Text>
-          <Text style={FONTS.textstyle}>3</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamALC</Text>
-          <Text style={FONTS.textstyle}>90</Text>
-          <Text style={FONTS.textstyle}>4</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamWFC</Text>
-          <Text style={FONTS.textstyle}>80</Text>
-          <Text style={FONTS.textstyle}>5</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamKAL</Text>
-          <Text style={FONTS.textstyle}>70</Text>
-          <Text style={FONTS.textstyle}>6</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamLAL</Text>
-          <Text style={FONTS.textstyle}>75</Text>
-          <Text style={FONTS.textstyle}>7</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamABC</Text>
-          <Text style={FONTS.textstyle}>150</Text>
-          <Text style={FONTS.textstyle}>1</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>Team123</Text>
-          <Text style={FONTS.textstyle}>145</Text>
-          <Text style={FONTS.textstyle}>2</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamJKL</Text>
-          <Text style={FONTS.textstyle}>149</Text>
-          <Text style={FONTS.textstyle}>3</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamALC</Text>
-          <Text style={FONTS.textstyle}>90</Text>
-          <Text style={FONTS.textstyle}>4</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamWFC</Text>
-          <Text style={FONTS.textstyle}>80</Text>
-          <Text style={FONTS.textstyle}>5</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamKAL</Text>
-          <Text style={FONTS.textstyle}>70</Text>
-          <Text style={FONTS.textstyle}>6</Text>
-        </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-        onPress={() => navigation.navigate("EarnedPoints")}
-        >
-        <View style={styles.LeaderboardList}>
-          <Text style={FONTS.textstyle}>TeamLAL</Text>
-          <Text style={FONTS.textstyle}>75</Text>
-          <Text style={FONTS.textstyle}>7</Text>
-        </View>
-        </TouchableOpacity>
+          )}
+          keyExtractor={(item, index) => index}
+         />
+       
         </ScrollView>
       </>
       

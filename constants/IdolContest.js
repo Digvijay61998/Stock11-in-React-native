@@ -1,7 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox} from "./index"
-const IdolContest = () => {
+const IdolContest = ({data}) => {
+
+const [contestDetails, setContestDetails] = useState([]);
+
+useEffect(() => {
+    if(data === undefined){
+        setContestDetails("")
+    }else{
+        setContestDetails(data)
+    }
+  });
+
   return (
     <View style={CardBox}>
     <View style={styles.IdolContainer}>
@@ -12,10 +23,10 @@ const IdolContest = () => {
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
                 <Text style={{ color: "white" , fontSize:10 , }}>prize pool</Text>
-                <Text style={styles.textstyle}>Rs. 10,000</Text>
+                <Text style={styles.textstyle}>Rs. {contestDetails.pricePool}</Text>
             </View>
-            <Text style={styles.textstyle}>5 Winners</Text>
-            <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. 1,000</Text>
+            <Text style={styles.textstyle}>{contestDetails.winners} Winners</Text>
+            <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. {contestDetails.entryFees}</Text>
         </View>
           <View style={{alignItems:"center",top:15}}>
           <View style={{ width: 180, height: 5, backgroundColor: COLORS.ActiveButton, borderRadius: 10 }}>
@@ -27,7 +38,7 @@ const IdolContest = () => {
           </View>
     </View>
     <View style={styles.TimeDate}>
-        <Text style={{ color: "white" ,borderRadius: 10  , fontFamily: 'Poppins',}}>st Oct 2021 to 3rd oct 2021</Text>
+    {contestDetails !== undefined ? <Text style={{ color: "white" ,borderRadius: 10  , fontFamily: 'Poppins',}}>st{contestDetails.date}</Text>:<></>}
     </View>
 </View>
   );

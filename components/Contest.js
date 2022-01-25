@@ -1,33 +1,25 @@
 import React , { useState ,useEffect} from 'react'
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity} from 'react-native'
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 
 
 const Contest = () => {
 
-    const [prize, setPrize] = useState(dummyData.PrizePool)
-    console.log("prize~~~~~~~~~~~>",prize[0])
-
-
-const data = {
-    id:dummyData.PrizePool[0].id,
-    winners:dummyData.PrizePool.winners,
-    entryFees:dummyData.PrizePool.entryFees,
-    date:dummyData.PrizePool.date
-}
-
-console.log("data~~~~~~~~",data)
+    const price =dummyData.PricePool
 
     return (
         <View style={Header}>
+
            <ScrollView style={styles.scroller}>
-              <IdolContest prize={prize}/>
-              <IdolContest/>
-              <IdolContest/>
-              <IdolContest/>
-              <IdolContest/>
-              <IdolContest/>
-              <IdolContest/>
+               <FlatList 
+                data = {price}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
+                   <IdolContest data={item}/>
+                )}
+                keyExtractor={(item, index) => index}
+               />
+
               </ScrollView> 
          </View>
     )

@@ -8,11 +8,9 @@ import {
 } from "react-native";
 import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
 
-import { Home, Transaction } from "../screens"
-import { COLORS, FONTS, icons } from "../constants"
+import { Home, Setting } from "../screens"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import LoginScreen from "../screens/LoginScreen";
-import OtpVerification from "../screens/OtpVerification";
-import CompleteProfile from "../screens/CompleteProfile";
 
 
 const Tab = createBottomTabNavigator()
@@ -20,13 +18,14 @@ const Tabs = () => {
     return (
         <Tab.Navigator 
         tabBarOptions={{
+            inactiveTintColor: COLORS.primary,
+            activeBackgroundColor:  COLORS.primary,
+            inactiveBackgroundColor:  COLORS.primary,
             style: {
                 // botton: 100,
-                elevetion: 0,
-                height:40,
-                backgroundColor:"red",
-                width:100
-       
+                elevetion: 10,
+                height:10,
+                width:100,
             },
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0
@@ -34,22 +33,12 @@ const Tabs = () => {
             
         }}
         >
-
+{/* 
          <Tab.Screen
          name="Login"
           component={LoginScreen}  
-          options={{title: 'Login Screen'}}/> 
+          options={{title: 'Login Screen'}}/>  */}
 
-        {/* <Tab.Screen
-                name="OtpVerification"
-                component={OtpVerification} 
-                options={{title: 'Phone Verfication'}}/>
-
-        <Tab.Screen
-                name="CompleteProfile"
-                component={CompleteProfile} 
-                // options={{title: 'Complete Profile'}}/> */} 
-   
             <Tab.Screen
                 name="Home"
                 component={Home}
@@ -85,8 +74,8 @@ const Tabs = () => {
                 }}
             />
             <Tab.Screen
-                name="Transation"
-                component={Transaction}
+                name="Setting"
+                component={Setting}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View styles={{ alignment: 'center', justifyContent: 'center' }}>

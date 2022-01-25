@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { CryptoDetail, Transaction } from "./screens";
+import {Setting } from "./screens";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer,getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import SplashScreen from "react-native-splash-screen"
@@ -50,8 +50,7 @@ const App = () => {
         initialRouteName={'Home'}
       >  
             <Stack.Screen key={Date.now()} name="Tabs" component={Tabs}/>
-            <Stack.Screen key={Date.now()} name="CryptoDetail" component={CryptoDetail}/>
-            <Stack.Screen key={Date.now()} name="Transaction" component={Transaction}/>  
+            <Stack.Screen key={Date.now()} name="Setting" component={Setting}/>  
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  

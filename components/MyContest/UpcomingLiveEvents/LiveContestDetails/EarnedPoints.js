@@ -1,9 +1,21 @@
-import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity} from 'react-native';
-import React, { useState } from 'react';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest } from "../../../../constants"
+import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,FlatList} from 'react-native';
+import React, {useEffect,useState} from 'react';
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData} from "../../../../constants"
 
 
 const EarnedPoints = ({navigation}) => {
+
+  const [ stockspoints, setStockspoints]= useState([])
+
+  const data = dummyData.PointsEarn
+
+  useEffect(() => {
+    if(data === undefined){
+      setStockspoints("")
+    }else{
+      setStockspoints(data)
+    }
+  });
   return (
     <SafeAreaView style={styles.container}>
 <View style={styles.Teamcontainer}>
@@ -12,59 +24,17 @@ const EarnedPoints = ({navigation}) => {
 <Text style={FONTS.textstyle}>Points</Text>
 </View>
 <ScrollView style={styles.scroller}>
+<FlatList 
+                data = {stockspoints}
+                keyExtractor={(item) => item.id}
+                renderItem={({item ,index})=>(
 <View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15 ,marginRight:30}]}>10.0</Text>
+<Text  style={[FONTS.textstyle, {fontSize:14}]}>{item.stocks}</Text>
+<Text  style={[FONTS.textstyle, {fontSize:15 ,marginRight:30}]}>{item.points}</Text>
 </View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>10.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>9.1</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>8.3</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>5.9</Text>
-</View>
-
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>5.0</Text>
-</View><View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>5.0</Text>
-</View>
-
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>4.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>4.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>2.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>40</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>40</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15,marginRight:30}]}>40</Text>
-</View>
+    )}
+    keyExtractor={(item, index) => index}
+   />
 </ScrollView>
 </View>
 

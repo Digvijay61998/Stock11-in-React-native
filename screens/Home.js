@@ -6,7 +6,7 @@ import Contest from "../components/Contest.js"
 import MyBasket from "../components/MyBasket/MyBasket.js"
 import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/ViewContest.js"
-import { COLORS, FONTS, icons ,Header} from "../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 

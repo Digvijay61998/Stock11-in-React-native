@@ -25,6 +25,14 @@ export const  Header ={
     borderBottomLeftRadius: 15,
     backgroundColor: "#2F313E"
 };
+
+export const container ={
+    flex: 1,
+    alignItems: 'center',
+    justifyContent:"center",
+    backgroundColor:COLORS.secondary,
+};
+
 export const CardBox={
     height: 180,
     width: 360,

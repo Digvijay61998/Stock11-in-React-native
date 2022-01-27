@@ -2,30 +2,72 @@ import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react
 import React from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 
-const Setting = () => {
+const Setting = ({ navigation}) => {
   return (
     <View style={styles.container}>
-        <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('HelpDesk')
+          }
+      >
+        <View style={{width:370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>Help Desk</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('AboutUs')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>About us</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('HowToPlay')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>How to Play</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('PromoCode')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>Promocode</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('ChangePassword')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>Change Password</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('ReferFriend')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>Refer a Friend</Text>
       </View>
-      <View style={{width: '95%', height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('Logout')
+          }
+      >
+      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
       <Text style={FONTS.textstyle}>Logout</Text>
       </View>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -33,11 +33,11 @@ const Tabs = () => {
             
         }}
         >
-{/* 
+
          <Tab.Screen
          name="Login"
           component={LoginScreen}  
-          options={{title: 'Login Screen'}}/>  */}
+          options={{title: 'Login Screen'}}/> 
 
             <Tab.Screen
                 name="Home"

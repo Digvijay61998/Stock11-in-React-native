@@ -1,9 +1,9 @@
 import React , { useState ,useEffect} from 'react'
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../../constants"
 
 
-const Contest = () => {
+const Contest = ({navigation}) => {
 
     const price =dummyData.PricePool
 
@@ -15,7 +15,13 @@ const Contest = () => {
                 data = {price}
                 keyExtractor={(item) => item.id}
                 renderItem={({item ,index})=>(
-                   <IdolContest data={item}/>
+                    <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate('ViewContest')
+                    }
+                  >
+                    <IdolContest data={item} />
+                  </TouchableOpacity>
                 )}
                 keyExtractor={(item, index) => index}
                />

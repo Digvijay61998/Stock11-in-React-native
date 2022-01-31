@@ -52,6 +52,13 @@ export const PricePool = [
         pricePool:4000,
         entryFees:50,
         date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 8,
+        winners:1,
+        pricePool:4000,
+        entryFees:50,
+        date:"oct 2021 to 3rd oct 2021"
     }
        
 ]

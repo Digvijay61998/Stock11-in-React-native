@@ -6,26 +6,32 @@ import {
     Text,
     StyleSheet
 } from "react-native";
-import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom-tabs"
+import { createBottomTabNavigator, getHeaderTitle } from "@react-navigation/bottom-tabs"
 
 import { Home, Setting } from "../screens"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import LoginScreen from "../screens/LoginScreen";
-
+// import { getHeaderTitle } from '@react-navigation/elements';
 
 const Tab = createBottomTabNavigator()
 const Tabs = () => {
+    // header: ({ navigation, route, options }) => {
+    //     const title = getHeaderTitle(options, route.name);
+      
     return (
         <Tab.Navigator 
         tabBarOptions={{
             inactiveTintColor: COLORS.primary,
             activeBackgroundColor:  COLORS.primary,
             inactiveBackgroundColor:  COLORS.primary,
+            tabBarStyle : {
+                height: 250,
+           },
             style: {
                 // botton: 100,
                 elevetion: 10,
-                height:10,
                 width:100,
+                height:"30%",
             },
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0
@@ -33,12 +39,10 @@ const Tabs = () => {
             
         }}
         >
-
-         <Tab.Screen
+         {/* <Tab.Screen
          name="Login"
           component={LoginScreen}  
-          options={{title: 'Login Screen'}}/> 
-
+          options={{title: 'Login Screen'}}/>  */}
             <Tab.Screen
                 name="Home"
                 component={Home}
@@ -46,12 +50,22 @@ const Tabs = () => {
                     tabBarIcon: ({ focused }) => (
                         <View styles={{ alignment: 'center', justifyContent: 'center' }}>
                             <View
-                                style={{
-                                    width: 50,
-                                    height: 50,
-                                    backgroundColor: focused ? COLORS.
-                                        ActiveButton : COLORS.black
-                                }}
+                               style={{
+                                // flex: 1,
+                                borderTopLeftRadius:20,
+                                borderBottomLeftRadius:20,
+                                borderBottomRightRadius:focused ? 20 : 0,
+                                borderTopRightRadius:focused ? 20 : 0,
+                                height: 50,
+                                width:125,
+                                left:35,
+                                top:2,
+                                bottom:10,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                backgroundColor: focused ? COLORS.
+                                    ActiveButton : COLORS.secondary
+                            }}
                             >
                                 <Image
                                     source={icons.home}
@@ -59,6 +73,7 @@ const Tabs = () => {
                                     style={{
                                         width: 30,
                                         height: 30,
+                                        top:8
                                         // tintColor: focused ? COLORS.
                                         //     ActiveButton : COLORS.black
                                     }}
@@ -82,10 +97,13 @@ const Tabs = () => {
                             <View
                                style={{
                                 // flex: 1,
-                              borderRadius:50,
+                                borderTopRightRadius:20,
+                                borderBottomRightRadius:20,
+                                borderBottomLeftRadius:focused ? 20 : 0,
+                                borderTopLeftRadius:focused ? 20 : 0,
                                 height: 50,
                                 width:125,
-                                right:50,
+                                right:35,
                                 top:2,
                                 bottom:10,
                                 alignItems: 'center',
@@ -100,8 +118,9 @@ const Tabs = () => {
                                     style={{
                                         width: 30,
                                         height: 30,
-                                        tintColor: focused ? COLORS.
-                                            ActiveButton : COLORS.black
+                                        top:8,
+                                        // tintColor: focused ? COLORS.
+                                        // primary : COLORS.
                                     }}
                                 />
                                 <Text styles={{
@@ -114,7 +133,6 @@ const Tabs = () => {
                     )
                 }}
             />
-
         </Tab.Navigator>
     )
 }
@@ -125,7 +143,7 @@ const styles = StyleSheet.create({
         shadowColor: COLORS.primary,
         shadowOffset: {
             width: 0,
-            height: 10,
+            height: 0,
         },
 
         shadowOpacity: 0.25,

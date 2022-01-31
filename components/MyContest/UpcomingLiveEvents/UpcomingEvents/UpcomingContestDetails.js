@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView ,ScrollView ,FlatList} from 'react-native';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData} from "../../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox,dummyData} from "../../../../constants"
 
 import React,{useEffect,useState} from 'react';
 

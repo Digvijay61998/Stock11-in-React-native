@@ -166,51 +166,31 @@ const LeadBoard = [
     }
 ];
 
-export const PointsEarn = [
+export const basketDetails = [
     {
         id: 1,
-        stocks:"Cadila Healthcare LTD",
-        points:40
+        category1:"LS",
+        category2:"FS",
+        company:"cipla",
+        stockName:"hero MotoCorp"
     },
     {
         id: 2,
-        stocks:"Cipla",
-        points:30
+        category1:"LS",
+        category2:"FS",
+        company:"cipla",
+        stockName:"hero MotoCorp"
     },
     {
         id: 3,
-        stocks:"Hero MotoCorp",
-        points:20
-    },
-    {
-        id: 4,
-        stocks:"Ashok Leyland",
-        points:10
-    },
-    {
-        id: 5,
-        stocks:"Lupin Limited",
-        points:10
-    },
-
-    {
-        id: 6,
-        stocks:"Lupin Limited",
-        points:10
-    },
-    {
-        id: 7,
-        stocks:"Lupin Limited",
-        points:15
-    },
-    {
-        id: 8,
-        stocks:"Abbott india ltd",
-        points:1
+        category1:"LS",
+        category2:"FS",
+        company:"cipla",
+        stockName:"hero MotoCorp"
     },
  
 ];
 
-const dummyData = { portfolio, PricePool, WinningList, LeadBoard ,PointsEarn};
+const dummyData = { portfolio, PricePool, WinningList, LeadBoard ,basketDetails};
 
 export default dummyData;

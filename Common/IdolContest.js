@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React ,{useState,useEffect} from 'react';
-import { COLORS, FONTS, icons ,Header ,CardBox} from "./index"
+import { COLORS, FONTS, icons ,Header ,CardBox} from "../constants/index"
 const IdolContest = ({data}) => {
 
 const [contestDetails, setContestDetails] = useState([]);

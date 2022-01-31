@@ -56,11 +56,11 @@ const App = () => {
   
         <Stack.Navigator
         screenOptions={{
-          headerShown: false
+          headerShown: true
         }}
         initialRouteName={'Home'}
       >  
-            <Stack.Screen key={Date.now()} name="Tabs" component={Tabs}/>
+            <Stack.Screen key={Date.now()} name="Tabs" component={Tabs}  />      
             <Stack.Screen key={Date.now()} name="Setting" component={Setting}/>  
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  

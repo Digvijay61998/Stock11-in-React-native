@@ -24,6 +24,7 @@ const Home = ({ navigation }) => {
                      
                 }}>
                  <Tab.Navigator
+                 
          tabBarOptions={{
             style: {
                 position: "relative",
@@ -33,6 +34,7 @@ const Home = ({ navigation }) => {
                 borderTopRightRadius: 15,
                 borderTopLeftRadius: 15,
                 height: 50,
+
             },
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0
@@ -80,6 +82,7 @@ const Home = ({ navigation }) => {
          <Tab.Screen
           name="MyContest"
           component={MyContest}
+          screenOptions={{ headerShown: true }}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (

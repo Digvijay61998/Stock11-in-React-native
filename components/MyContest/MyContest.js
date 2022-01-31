@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View ,ScrollView} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox} from "../../constants"
+import {IdolContest} from "../../Common/index"
 import {LiveEvents, UpcomingEvents, CompletedEvents} from "./UpcomingLiveEvents"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const MyContestStack = createMaterialTopTabNavigator();

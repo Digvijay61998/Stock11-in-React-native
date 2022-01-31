@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData } from "../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, dummyData } from "../../../constants"
+import {IdolContest} from "../../../Common/index"
 
 const CompletedEvents = ({ navigation }) => {
 

@@ -20,7 +20,7 @@ return (
               <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10}]}> Enter Your Mobile Number</Text>
               <TextInput
                 style={[FONTS.textstyle,styles.input]}
-                // value={number}
+                value={number}
                 placeholder="Enter Number"
                 placeholderTextColor={COLORS.ActiveButton}
                 paddingLeft={110}

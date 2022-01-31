@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer,getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import SplashScreen from "react-native-splash-screen"
 import Tabs from "./navigation/tabs";
-import Contest from './components/Contest';
+import Contest from './components/Contest/Contest';
 import MyBasket from './components/MyBasket/MyBasket';
 import MyContest from './components/MyContest/MyContest';
 import { Provider } from 'react-redux';
@@ -25,10 +25,15 @@ import HelpDesk from './components/settingFile/HelpDesk';
 import HowToPlay from './components/settingFile/HowToPlay';
 import Notification from './components/settingFile/Notification';
 import Profile from './components/settingFile/Profile';
-import Promovode from './components/settingFile/PromoCode';
 import PromoCode from './components/settingFile/PromoCode';
 import ReferFriend from './components/settingFile/ReferFriend';
 import Wallet from './components/settingFile/Wallet';
+import ViewContest from './components/Contest/ViewContest';
+import CreateContestBasket from './components/Contest/CreateContestBasket';
+import LeadStockandFollowStock from './components/Contest/LSandFs';
+import TeamPreview from './components/Contest/TeamPreview';
+import PayUsing from './components/Contest/PayUsing';
+import SelectBasket from './components/Contest/SelectBasket';
 
 const Stack = createStackNavigator();
 
@@ -76,6 +81,8 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  />
            
 
             <Stack.Screen key={Date.now()} name="AboutUs" component={AboutUs} screenOptions={{ headerShown: true }} />
@@ -88,6 +95,10 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="PromoCode" component={PromoCode} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="ReferFriend" component={ReferFriend} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="Wallet" component={Wallet} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="ViewContest" component={ViewContest} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="Select Basket" component={SelectBasket} screenOptions={{ headerShown: true }} />
            
 
 

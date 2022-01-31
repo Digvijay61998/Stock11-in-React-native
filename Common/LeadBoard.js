@@ -2,7 +2,7 @@ import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,Flat
 import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox} from "../constants/index"
 
-const LeadBoard = ({winning,leaderBoard}) => {
+const LeadBoard = ({winning,leaderBoard,navigation}) => {
 
   const [leadboardstack, setLeadboardstack]=useState(false);
 

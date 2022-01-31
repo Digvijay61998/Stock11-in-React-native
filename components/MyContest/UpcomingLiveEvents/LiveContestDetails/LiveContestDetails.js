@@ -7,10 +7,10 @@ const LiveContestDetails = ({navigation}) => {
 
     const winningdata = dummyData.WinningList
     const leaderBoarddata = dummyData.LeadBoard
-
+const navigations = navigation
   return (
   <SafeAreaView style={styles.container}>
-          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata}/>
+          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations}/>
   </SafeAreaView>
 
   );

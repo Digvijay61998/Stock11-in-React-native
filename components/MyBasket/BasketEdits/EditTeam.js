@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity } fr
 import { COLORS, FONTS, icons, Header, CardBox } from "../../../constants"
 import React from 'react';
 
-const EditTeam = () => {
+const EditTeam = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ width: '100%', height: 100, alignItems: "center", justifyContent: "center" }}>

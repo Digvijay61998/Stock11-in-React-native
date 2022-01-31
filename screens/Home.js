@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react-native';
 
-import Contest from "../components/Contest.js"
+import Contest from "../components/Contest/Contest.js"
 import MyBasket from "../components/MyBasket/MyBasket.js"
 import MyContest from "../components/MyContest/MyContest.js"
-import ViewContest from "../components/ViewContest.js"
+import ViewContest from "../components/Contest/ViewContest.js"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 

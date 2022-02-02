@@ -8,21 +8,17 @@ const EditTeam = ({navigation}) => {
     const leadStocks = dummyData.LeadStock
 
     const [leadStock ,setLeadStock]=useState([])
-    const [pointsFS ,setPointsFS]=useState(false)
-    const [pointsLS ,setPointsLS]=useState(false)
+    const [pointsFS ,setPointsFS]=useState([])
+    const [pointsLS ,setPointsLS]=useState([])
    
-   const selectpointLS =(index) =>{
-       if(pointsLS === false){
-            setPointsLS(true + index)
-       }else{
-        setPointsLS(false) 
+   const selectpointLS =(item) =>{
+       if(item !== undefined){
+            setPointsLS([item.id])
        }
     }
-    const selectpointFS =(index) =>{
-        if(pointsFS === false){
-            setPointsFS(true + index)
-       }else{
-        setPointsFS(false)
+    const selectpointFS =(item) =>{
+       if(item !== undefined){
+            setPointsFS([item.id])
        }
         }
 
@@ -52,15 +48,15 @@ const EditTeam = ({navigation}) => {
             <View style={styles.EarnList}>
             <Text style={[FONTS.textstyle, { fontSize: 14 }]}>{item.stocks}</Text>
             <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-            <TouchableOpacity style={pointsLS === true +index ? styles.ActiveFSLS : styles.FSLS}
-                onPress={() => selectpointLS(index)}
+            <TouchableOpacity style={pointsLS.includes(item.id) ? styles.ActiveFSLS : styles.FSLS}
+                onPress={() => selectpointLS(item)}
             >
-               { pointsLS === true +index ? <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>2x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>}
+               { pointsLS.includes(item.id)  ? <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>2x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>}
                 </TouchableOpacity>
-                <TouchableOpacity style={pointsFS === true + index ? styles.ActiveFSLS : styles.FSLS}
-                  onPress={() => selectpointFS(index)}
+                <TouchableOpacity style={pointsFS.includes(item.id) ? styles.ActiveFSLS : styles.FSLS}
+                  onPress={() => selectpointFS(item)}
                 >
-                {pointsFS === true + index ?<Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>1.5x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>FS</Text>}
+                {pointsFS.includes(item.id) ? <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>1.5x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>FS</Text>}
                 </TouchableOpacity>
             </View>
         </View>

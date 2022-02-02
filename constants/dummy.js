@@ -318,6 +318,22 @@ const BasketData =[
         points:"7.0",
         stocks:"Abbott india Ltd",
     
+    },
+    {
+        id: 11,
+        points:"8.7",         
+       stocks:"cadila Healthcare LTD",
+    },
+    {
+        id: 12,
+        points:"6.0",      
+        stocks:"Mahindra & Mahindra",
+    },
+    {
+        id: 13,
+        points:"7.0",
+        stocks:"Abbott india Ltd",
+    
     }
 ]
 

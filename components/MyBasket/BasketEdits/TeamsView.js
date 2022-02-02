@@ -1,89 +1,37 @@
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox } from "../../../constants"
-import React from 'react';
+import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity,FlatList } from 'react-native'
+import { COLORS, FONTS, icons, Header, CardBox ,dummyData} from "../../../constants"
+import React,{useEffect,useState} from 'react';
 
 const TeamsView = ({ navigation }) => {
+    const teamViews = dummyData.TeamView
+
+    const [teamView, setTeamView] = useState([])
+
+    useEffect(() => {
+        setTeamView(teamViews)
+    })
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.Teamcontainer}>
                 <View style={styles.EarnListTitle}>
                     <Text style={FONTS.textstyle}>Stocks</Text>
-                    <Text style={FONTS.textstyle}>LS & FS</Text>
+                    <Text style={[FONTS.textstyle,{left:25}]}>LS & FS</Text>
                 </View>
                 <ScrollView style={styles.scroller}>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
+                    <FlatList
+                        data={teamView}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item, index }) => (
+                            <View style={styles.EarnList}>
+                                <Text style={[FONTS.textstyle, { fontSize: 14 ,margin:4}]}>{item.stocks}</Text>
+                                {item.LsFs !== "" ? <View style={styles.ActiveFSLS}>
+                                    <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>{item.LsFs}</Text>
+                                </View>:<></>}
+                            </View>
+                        )}
+                        keyExtractor={(item, index) => index}
+                    />
                 </ScrollView>
             </View>
 
@@ -118,7 +66,7 @@ const styles = StyleSheet.create({
     Teamcontainer: {
         flex: 1,
         backgroundColor: COLORS.secondary,
-
+        marginTop: 15,
     },
     EarnListTitle: {
         justifyContent: "space-around",

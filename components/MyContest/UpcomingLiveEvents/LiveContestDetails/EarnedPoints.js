@@ -18,6 +18,9 @@ const EarnedPoints = ({navigation}) => {
   });
   return (
     <SafeAreaView style={styles.container}>
+     <View style={{width: '100%', height: 50,alignItems:"center" , justifyContent:"center"}}>
+      <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton}]}>TeamABC</Text>
+      </View>
 <View style={styles.Teamcontainer}>
 <View style={styles.EarnListTitle}>
 <Text style={FONTS.textstyle}>Stocks</Text>

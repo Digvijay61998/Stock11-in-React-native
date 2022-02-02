@@ -33,7 +33,7 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
   });
   return (
       <>  
-  <View style={[CardBox, { backgroundColor: COLORS.primary }]}>
+  <View style={[CardBox, { backgroundColor: COLORS.primary ,marginTop:15}]}>
     <View style={styles.IdolContainer}>
       <View style={{alignItems:"flex-end"}}>
        <Text style={[FONTS.ItsLiveFont ,{fontSize:10, right:10 ,color:"red"}]}>Its live...!!!</Text>
@@ -64,13 +64,13 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
    style={{backgroundColor: leadboardstack === true ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
    onPress={() => WinningStick()}
    >
-         <Text style={[FONTS.textstyle,{fontSize:18}]}>Winnings</Text>
+         <Text style={[FONTS.textstyle,{fontSize:18, color: leadboardstack === false ? COLORS.primary:COLORS.white,}]}>Winnings</Text>
     </TouchableOpacity>
     <TouchableOpacity
     style={{backgroundColor: leadboardstack === false ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
    onPress={() => LeaderboardStick()}
   >
-    <Text style={[FONTS.textstyle,{fontSize:18}]}>Leaderboard</Text>
+    <Text style={[FONTS.textstyle,{fontSize:18, color: leadboardstack === false ? COLORS.white:COLORS.primary,}]}>Leaderboard</Text>
     </TouchableOpacity>
     </View>
     { leadboardstack == false ?<>
@@ -84,9 +84,9 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
   <View style={styles.WinningList}>
-      <Text style={FONTS.textstyle}>#1</Text>
+      <Text style={FONTS.textstyle}>#{item.rank}</Text>
       <Text style={FONTS.textstyle}>.............................</Text>
-      <Text style={FONTS.textstyle}>Rs 5,000</Text>
+      <Text style={FONTS.textstyle}>Rs {item.priceWin}</Text>
     </View>
       )}
       keyExtractor={(item, index) => index}
@@ -95,8 +95,8 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
     </>
    :<>
    <View style={styles.WinningTitleList}>
-    <Text style={FONTS.textstyle}>All Teams (5)</Text>
-    <Text style={FONTS.textstyle}>Points</Text>
+    <Text style={[FONTS.textstyle,{marginLeft:10}]}>All Teams (5)</Text>
+    <Text style={[FONTS.textstyle,{marginLeft:15}]}>Points</Text>
     <Text style={FONTS.textstyle}>Rank</Text>
   </View>
   <ScrollView>
@@ -108,9 +108,9 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
     onPress={() => navigation.navigate("EarnedPoints")}
     >
   <View style={styles.LeaderboardList}>
-      <Text style={FONTS.textstyle}>TeamABC</Text>
-      <Text style={FONTS.textstyle}>150</Text>
-      <Text style={FONTS.textstyle}>1</Text>
+      <View style={{justifyContent:"center",alignItems: "center",flexDirection: "row"}}><View style={{height:28, width:28,backgroundColor:COLORS.FaintWhite,marginRight:10,borderRadius:50}}></View><Text style={FONTS.textstyle}>Team{item.team}</Text></View>
+      <Text style={FONTS.textstyle}>{item.points}</Text>
+      <Text style={[FONTS.textstyle,{marginRight:10}]}>{item.rank}</Text>
     </View>
     </TouchableOpacity>
        )}

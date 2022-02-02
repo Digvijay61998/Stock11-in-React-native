@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react-native';
 
@@ -8,12 +8,21 @@ import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/Contest/ViewContest.js"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Confirmation from '../components/Contest/Confirmation.js';
 
 
 const Tab = createMaterialTopTabNavigator();
-const Home = ({ navigation }) => {
-
+const Home = ({ route,navigation }) => {
+const navigations = navigation
     return (
+        <>
+        <View >
+        {
+            (route.params &&
+            route.params.component === 'Select Basket') &&
+                <Confirmation navigation={navigations}/>
+        }
+        </View>
         <View style={styles.container}>
             <View style={Header}>
                 <View style={{
@@ -150,6 +159,7 @@ const Home = ({ navigation }) => {
             </View>
 
         </View>
+        </>
     )
 }
 

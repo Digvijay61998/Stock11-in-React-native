@@ -195,8 +195,6 @@ export const basketDetails = [
         company:"cipla",
         stockName:"hero MotoCorp"
     },
-    
-
  
 ];
 

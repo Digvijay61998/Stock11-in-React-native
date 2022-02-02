@@ -48,7 +48,9 @@ return (
                     onPress={() =>
                         navigation.navigate('Home')
                       }/> */}
-        
+        <View style={{paddingLeft:130,paddingTop:13}}>
+  <Text style={[FONTS.textstyle ,{color:"black"}]}>Save</Text>
+</View>
         </TouchableOpacity>
              </View>
         

@@ -34,6 +34,7 @@ import LeadStockandFollowStock from './components/Contest/LSandFs';
 import TeamPreview from './components/Contest/TeamPreview';
 import PayUsing from './components/Contest/PayUsing';
 import SelectBasket from './components/Contest/SelectBasket';
+import CurrentBalance from './components/Contest/CurrentBalance';
 
 const Stack = createStackNavigator();
 
@@ -61,7 +62,7 @@ const App = () => {
   
         <Stack.Navigator
         screenOptions={{
-          headerShown: true
+          headerShown: true,
         }}
         initialRouteName={'Home'}
       >  
@@ -99,6 +100,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing} screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="Select Basket" component={SelectBasket} screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="Current Balance" component={CurrentBalance} screenOptions={{ headerShown: true }} />
            
 
 

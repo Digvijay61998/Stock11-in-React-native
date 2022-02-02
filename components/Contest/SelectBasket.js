@@ -47,7 +47,9 @@ const SelectBasket = ({navigation}) => {
            <View style={{paddingTop:100,alignItems:'center'}}>
            <TouchableOpacity style={[FONTS.button , {width:200,marginTop:60 ,bottom:-15}]}
            onPress={() =>
-            navigation.navigate('Home')
+            navigation.navigate('Home', {
+                component: 'Select Basket',
+              })
           }
        >
         <Text style={[FONTS.textstyle ,{color:"black"}]}>Join</Text>

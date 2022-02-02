@@ -7,89 +7,109 @@ import { FONTS, COLORS } from "../../constants";
 const LeadStockandFollowStock = ({navigation}) =>{
     return(
         <SafeAreaView style={styles.container}>
-        <View>
-        <Text style={[FONTS.textstyle,{fontSize:16,justifyContent:"center",textAlign:"center",paddingTop:50}]}>Choose Your Lead Stock and Follow Stock</Text>
-        <Text style={[FONTS.textstyle,{fontSize:12,justifyContent:"center",textAlign:"center",paddingTop:10}]}>LS gets 2x points, FS gets 1.5x ponts</Text>
+        <View style={{ width: '100%', height: 100, alignItems: "center", justifyContent: "center" }}>
+            <Text style={FONTS.textstyle}>Choose your lead stock and Follow stock</Text>
+            <Text style={[FONTS.textstyle, { fontSize: 13 }]}>LS gets 2x points, FS gets 1.5x points</Text>
+        </View>
         <View style={styles.Teamcontainer}>
-            <ScrollView>
-                <View style={styles.EarnListTitle}>
-                    <Text style={FONTS.textstyle}>Stocks</Text>
-                    <Text style={[FONTS.textstyle, {paddingLeft:30}]}>LS </Text>
-                    <Text style={[FONTS.textstyle,{paddingRight:30}]}>FS </Text>
+            <View style={styles.EarnListTitle}>
+                <Text style={FONTS.textstyle}>Stocks</Text>
+                <View style={{ flexDirection: "row", justifyContent: "space-around", width: 60 }}>
+                    <Text style={FONTS.textstyle}>LS</Text>
+                    <Text style={FONTS.textstyle}>FS </Text>
                 </View>
-                <View style={styles.scroller}>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>FS</Text>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
 
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>LS</Text>
-                        </View>
-                    </View>
-                   
-                </View>
-                </ScrollView>
             </View>
+            <ScrollView style={styles.scroller}>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.ActiveFSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.LSFS}]}>2x</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.ActiveFSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.LSFS}]}>1.5x</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.EarnList}>
+                    <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                        <View style={styles.FSLS}>
+                        <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
         </View>
         <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity style={[FONTS.button, { width: 160, marginTop: 60, bottom: 25, marginRight: 20 }]}
@@ -115,14 +135,13 @@ const LeadStockandFollowStock = ({navigation}) =>{
 
 
 const styles = StyleSheet.create({
-    container: {  flex:1,
-        backgroundColor: "#1F1D2B",
+    container: {
         flex: 1,
         backgroundColor: "#1F1D2B",
         alignItems: "center",
         justifyContent: "center"
-       },
-       scroller: {
+    },
+    scroller: {
         flex: 1,
         overflow: "hidden",
         borderWidth: 1,
@@ -133,8 +152,7 @@ const styles = StyleSheet.create({
     Teamcontainer: {
         flex: 1,
         backgroundColor: COLORS.secondary,
-paddingTop:20,
-maxHeight:500
+
     },
     EarnListTitle: {
         justifyContent: "space-around",
@@ -155,15 +173,21 @@ maxHeight:500
         borderColor: "#575966",
         padding: 10
     },
-    ActiveFSLS: {
-        width: 30,
-        height: 30,
-        marginRight: 40,
-        justifyContent: "center",
-        alignItems: "center",
+    FSLS: {
+        width:30,
+        height:30,
+        justifyContent: "center" ,
+        alignItems:"center",
         borderRadius: 50,
-        backgroundColor: COLORS.ActiveButton
+        backgroundColor:COLORS.LSFS
+    },
+    ActiveFSLS: {
+        width:30,
+        height:30,
+        justifyContent: "center" ,
+        alignItems:"center",
+        borderRadius: 50,
+        backgroundColor:COLORS.ActiveButton
     }
-    
-    })
+});
 export default LeadStockandFollowStock;

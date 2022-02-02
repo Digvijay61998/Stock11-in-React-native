@@ -6,7 +6,7 @@ const ReferFriend = () => {
   return (
     <View style={container}>
 <View style={{width:370 ,height:350 ,backgroundColor:COLORS.primary,borderRadius:10 ,marginBottom:20 ,elevation:10, alignItems: "center" , justifyContent: "center"}}>
-<View style={{width:270 ,height:250 ,backgroundColor:"red"}}>
+<View style={{width:270 ,height:250}}>
 <Image
                                     source={images.bitcoin}
                                     resizeMode="contain"

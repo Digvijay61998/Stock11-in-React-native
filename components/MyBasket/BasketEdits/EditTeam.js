@@ -1,8 +1,34 @@
-import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox } from "../../../constants"
-import React from 'react';
+import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity,FlatList } from 'react-native'
+import { COLORS, FONTS, icons, Header, CardBox ,dummyData} from "../../../constants"
+import React,{useEffect,useState} from 'react';
 
 const EditTeam = ({navigation}) => {
+    
+
+    const leadStocks = dummyData.LeadStock
+
+    const [leadStock ,setLeadStock]=useState([])
+    const [pointsFS ,setPointsFS]=useState(false)
+    const [pointsLS ,setPointsLS]=useState(false)
+   
+   const selectpointLS =(index) =>{
+       if(pointsLS === false){
+            setPointsLS(true + index)
+       }else{
+        setPointsLS(false) 
+       }
+    }
+    const selectpointFS =(index) =>{
+        if(pointsFS === false){
+            setPointsFS(true + index)
+       }else{
+        setPointsFS(false)
+       }
+        }
+
+    useEffect(() => {
+      setLeadStock(leadStocks)
+    })
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ width: '100%', height: 100, alignItems: "center", justifyContent: "center" }}>
@@ -12,101 +38,35 @@ const EditTeam = ({navigation}) => {
             <View style={styles.Teamcontainer}>
                 <View style={styles.EarnListTitle}>
                     <Text style={FONTS.textstyle}>Stocks</Text>
-                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 60 }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-around", width: 60 ,left:30}}>
                         <Text style={FONTS.textstyle}>LS</Text>
-                        <Text style={FONTS.textstyle}>FS </Text>
+                        <Text style={[FONTS.textstyle,{marginLeft:30}]}>FS </Text>
                     </View>
 
                 </View>
                 <ScrollView style={styles.scroller}>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.LSFS}]}>2x</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.ActiveFSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.LSFS}]}>1.5x</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.EarnList}>
-                        <Text style={[FONTS.textstyle, { fontSize: 14 }]}>Cadila Healthcare Ltd.</Text>
-                        <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                            <View style={styles.FSLS}>
-                            <Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>
-                            </View>
-                        </View>
-                    </View>
+                <FlatList
+          data={leadStock}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => (
+            <View style={styles.EarnList}>
+            <Text style={[FONTS.textstyle, { fontSize: 14 }]}>{item.stocks}</Text>
+            <View style={{ flexDirection: "row", justifyContent: "space-around", width: 100 }}>
+            <TouchableOpacity style={pointsLS === true +index ? styles.ActiveFSLS : styles.FSLS}
+                onPress={() => selectpointLS(index)}
+            >
+               { pointsLS === true +index ? <Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>2x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>LS</Text>}
+                </TouchableOpacity>
+                <TouchableOpacity style={pointsFS === true + index ? styles.ActiveFSLS : styles.FSLS}
+                  onPress={() => selectpointFS(index)}
+                >
+                {pointsFS === true + index ?<Text style={[FONTS.textstyle,{ fontSize: 13,color:COLORS.primary}]}>1.5x</Text>:<Text style={[FONTS.textstyle,{ fontSize: 13,}]}>FS</Text>}
+                </TouchableOpacity>
+            </View>
+        </View>
+          )}
+          keyExtractor={(item, index) => index}
+        />
                 </ScrollView>
             </View>
             <View style={{ flexDirection: "row" }}>

@@ -1,12 +1,47 @@
-import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox} from "../../../constants"
-import React from 'react';
+import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,Image,FlatList} from 'react-native'
+import { COLORS, FONTS, icons ,Header ,images,CardBox,dummyData} from "../../../constants"
+import React,{ useState,useEffect} from 'react';
 
 const CreateBasket = ({ navigation}) => {
+
+  const editTeams = dummyData.BasketData
+
+  const [editTeam ,setEditTeam]=useState([])
+  const [points ,setPoints]=useState([])
+  console.log("points",points);
+
+  useEffect(() => {
+    setEditTeam(editTeams)
+  })
+
+  const selectpoint =(item,index) =>{
+    console.log("item",item);
+    if( points.includes(item.id)){
+      const newPoint = points.filter((itemId)=>
+      itemId !== item.id);
+      return setPoints(newPoint)
+    }
+    else if(points.length < 10){
+         setPoints([...points,item.id] ,index);
+    }
+    else {
+     console.log("only 10 points can be selected");
+    }
+ }
+
   return (
     <SafeAreaView style={styles.container}>
-    <View style={[CardBox, {backgroundColor:COLORS.HeaderBackground ,elevation:10 , alignItems:"center" ,justifyContent: "center" , padding:15}]}>
-      <Text style={[FONTS.textstyle,{fontSize:30}]}>Nifty50</Text>
+    <View style={[CardBox,styles.CardBasket]}>
+      <View style={{ flexDirection: "row",alignItems: "center", justifyContent:"center"}}><Image
+         source={images.bitcoin}
+         resizeMode="contain"
+         style={{
+             width: 45,
+             height: 45,
+             marginRight:10
+         }}
+      />
+      <Text style={[FONTS.textstyle,{fontSize:30}]}>Nifty50</Text></View>
       <View style={{ width:"100%",justifyContent:"space-between", flexDirection:"row"}}>
           <View style={{ fflexDirection:"column"}}>
           <Text style={[FONTS.textstyle,{fontSize:10}]}>Prize Pool  </Text>
@@ -17,69 +52,46 @@ const CreateBasket = ({ navigation}) => {
           <Text style={[FONTS.textstyle,{fontSize:13}]}>60.0</Text>
           </View>
       </View>
-      <View style={{width:"100%",height:35, borderRadius:10 ,top:15,backgroundColor:COLORS.secondary}}>
+      <View style={{width:"100%",height:35, borderRadius:10 ,top:15,backgroundColor:COLORS.secondary,alignItems:"center", justifyContent: "flex-start" ,flexDirection: "row"}}>
+      <Image
+         source={icons.Group}
+         resizeMode="contain"
+         style={{
+             width:15,
+             height:15,
+             marginLeft:10
+         }}
+      />
+      <Image
+         source={icons.Ellipse}
+         resizeMode="contain"
+         style={{
+             width:15,
+             height:15,
+             marginLeft:10
+         }}
+      />
       </View>
     </View>
-  
 <View style={styles.Teamcontainer}>
 <View style={styles.EarnListTitle}>
 <Text style={FONTS.textstyle}>Stocks</Text>
 <Text style={FONTS.textstyle}>Credits</Text>
 </View>
 <ScrollView style={styles.scroller}>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>10.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>10.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>9.1</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>8.3</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>5.9</Text>
-</View>
-
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>5.0</Text>
-</View><View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>5.0</Text>
-</View>
-
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>4.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>4.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>2.0</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
-<View style={styles.EarnList}>
-<Text  style={[FONTS.textstyle, {fontSize:14}]}>Cadila Healthcare Ltd.</Text>
-<Text  style={[FONTS.textstyle, {fontSize:15}]}>40</Text>
-</View>
+<FlatList
+          data={editTeam}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) => (
+                   <TouchableOpacity style={points.includes(item.id) ?  [styles.EarnList,{backgroundColor:"red"}] : styles.EarnList}
+                onPress={() => selectpoint(item,index)}
+            >
+            <Text  style={[FONTS.textstyle, {fontSize:14}]}>{item.stocks}</Text>
+            <Text  style={[FONTS.textstyle, {fontSize:15}]}>{item.points}</Text>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, index) => index}
+        />
 </ScrollView>
 </View>
 
@@ -111,9 +123,18 @@ const styles = StyleSheet.create({
       borderBottomLeftRadius:10,
     borderBottomRightRadius:10,
   },
+  CardBasket:{
+    backgroundColor:COLORS.HeaderBackground ,
+    elevation:10 ,
+    alignItems:"center" ,
+    justifyContent: "center" ,
+    padding:15,
+    marginTop:15
+  },
     Teamcontainer:{
         flex:1,
         backgroundColor:COLORS.secondary,
+        marginTop: 10            
       },
       EarnListTitle:{justifyContent:"space-around", 
       alignItems:"center" ,
@@ -126,11 +147,11 @@ const styles = StyleSheet.create({
     
       },
      EarnList:{
-             justifyContent:"space-around" ,
-            alignItems:"center" ,
-            flexDirection:"row" ,
-             borderWidth: 1,
-            borderColor: "#575966",
-             padding:10}
-    
+      justifyContent:"space-between",
+      alignItems:"center" ,
+      flexDirection:"row" ,
+      borderWidth: 1,
+      borderColor: "#575966",
+      padding:10,
+            }
 });

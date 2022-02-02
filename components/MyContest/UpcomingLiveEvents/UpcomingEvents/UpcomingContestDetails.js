@@ -19,7 +19,7 @@ const UpcomingContestDetails = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={[CardBox, { backgroundColor: COLORS.primary }]}>
+      <View style={[CardBox, { backgroundColor: COLORS.primary ,marginTop:15}]}>
         <View style={styles.IdolContainer}>
           <View style={{alignItems:"flex-end"}}>
            <Text style={[FONTS.textstyle ,{fontSize:10}]}>Start On 1st Oct 2021</Text>
@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
   WinningsContainer: {
     backgroundColor: COLORS.primary,
         flex: 1,
+        marginTop:10,
         borderRadius: 10,
         marginLeft: 15,
         marginRight: 15,

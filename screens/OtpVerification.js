@@ -23,7 +23,7 @@ return (
 <SafeAreaView style={styles.container}>
   <View style={styles.LoginBox}>
       <Text style={[FONTS.textstyle, {color:COLORS.ActiveButton ,fontSize:25}]}>OTP Verfication</Text>
-      <Text style={[FONTS.textstyle,{color:COLORS.FaintWhite}]}>We have send a verification code to your mobile number +91</Text>
+      <Text style={[FONTS.textstyle,{color:COLORS.FaintWhite}]}>We have send a verification code to your mobile number +91 XXX XXX XXXX</Text>
       <CodeField
         ref={ref}
         {...props}
@@ -43,7 +43,7 @@ return (
           </Text>
         )}
       />
-      <Text style={{fontSize:SIZES.h3, color:"white"}}>I didn't receive code.<Text style={{color:COLORS.ActiveButton}}>Resend Code</Text></Text>
+      <Text style={{fontSize:SIZES.h3, color:"white",paddingTop:25}}>I didn't receive code.<Text style={{color:COLORS.ActiveButton}}>Resend Code</Text></Text>
       
       <TouchableOpacity
           style={{
@@ -64,7 +64,9 @@ return (
                         navigation.navigate('CompleteProfile')
                       }
 
-/> */}
+/> */}<View style={{paddingLeft:120,paddingTop:13}}>
+  <Text style={[FONTS.textstyle ,{color:"black"}]}>Submit</Text>
+</View>
 </TouchableOpacity>
 </View>
     </SafeAreaView>

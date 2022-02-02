@@ -54,7 +54,10 @@ return (
                         navigation.navigate('OtpVerification')
                       }
 
-/> */}
+/> */}<View style={{paddingLeft:100,paddingTop:13}}>
+  <Text style={[FONTS.textstyle ,{color:"black"}]}>Request OTP</Text>
+</View>
+
 </TouchableOpacity>
 </View>
         </View>

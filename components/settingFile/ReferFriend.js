@@ -2,13 +2,13 @@ import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,Image} from 'react-
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container,images} from "../../constants"
 import React from 'react';
 
-const ReferFriend = () => {
+const ReferFriend = ({navigation}) => {
   return (
     <View style={container}>
 <View style={{width:370 ,height:350 ,backgroundColor:COLORS.primary,borderRadius:10 ,marginBottom:20 ,elevation:10, alignItems: "center" , justifyContent: "center"}}>
 <View style={{width:270 ,height:250}}>
 <Image
-                                    source={images.bitcoin}
+                                    source={images.referFreind}
                                     resizeMode="contain"
                                     style={{
                                       width:"100%",

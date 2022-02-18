@@ -6,8 +6,8 @@ import {IdolContest} from "../../Common"
 
 const Contest = ({navigation}) => {
 
-    const price =dummyData.PricePool
-
+    const price =dummyData.ContestPricePool
+  console.log("price", price);
     return (
         <View style={Header}>
 

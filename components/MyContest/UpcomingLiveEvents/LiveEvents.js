@@ -1,17 +1,26 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native';
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+
 import { COLORS, FONTS, icons, Header, CardBox,dummyData } from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 
 const LiveEvents = ({ navigation }) => {
 
-  const LivePriceEvents = dummyData.PricePool
-
+  const LivePriceEvents = dummyData.LivePricePool
+  
+  const [LiveEvents,setLiveEvents]=useState()
+  useEffect(() => {
+    if(LivePriceEvents === undefined){
+      setLiveEvents("")
+    }else{
+      setLiveEvents(LivePriceEvents)
+    }
+  });
   return (
     <View style={Header}>
       <ScrollView style={styles.scroller}>
         <FlatList
-          data={LivePriceEvents}
+          data={LiveEvents}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <TouchableOpacity

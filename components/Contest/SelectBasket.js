@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from 'react';
-import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,FlatList} from "react-native";
+import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,FlatList, Image} from "react-native";
 import {  COLORS, FONTS, icons ,Header ,CardBox ,dummyData } from "../../constants";
 
 const SelectBasket = ({navigation}) => {
@@ -28,10 +28,12 @@ const data = dummyData.basketDetails
                 <Text style={FONTS.textstyle}>Icon</Text>
             </View>
             <View style={[styles.AlignText,{padding:10 ,borderBottomWidth :2,borderBottomColor: "#383945"}]}>
+            
                 <Text style={[FONTS.textstyle, {right:20}]}>{item.category1}</Text>
                 <Text style={[FONTS.textstyle,{right:20}]}>{item.category2}</Text>
             </View>
             <View style={[styles.AlignText,{flex:1}]}>
+               
                 <Text style={FONTS.textstyle}>{item.company}</Text>
                 <Text style={FONTS.textstyle}>{item.stockName}</Text>
             </View>
@@ -43,18 +45,18 @@ const data = dummyData.basketDetails
          />
      </ScrollView>
 
-           <View style={{paddingTop:100,alignItems:'center'}}>
-           <TouchableOpacity style={[FONTS.button , {width:200,marginTop:60 ,bottom:-15}]}
+           <View style={{paddingTop:70,alignItems:'center'}}>
+           <TouchableOpacity style={[FONTS.button , {width:200,marginTop:50 ,bottom:30}]}
            onPress={() =>
             navigation.navigate('Home', {
                 component: 'Select Basket',
-              })
-          }
+              })          }
        >
            
         <Text style={[FONTS.textstyle ,{color:"black"}]}>Join</Text>
        </TouchableOpacity>
        </View>
+
         </SafeAreaView>
         
     )
@@ -89,6 +91,7 @@ TimeDate: {
          elevation: 5 ,
           borderRadius: 10,
            overflow: "hidden",
+           width:"82%"
     },
     IdolContainer: {
         position: "relative",

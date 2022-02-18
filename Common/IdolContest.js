@@ -12,7 +12,7 @@ useEffect(() => {
         setContestDetails(data)
     }
   });
-
+  
   return (
     <View style={CardBox}>
     <View style={styles.IdolContainer}>
@@ -25,7 +25,13 @@ useEffect(() => {
                 <Text style={{ color: "white" , fontSize:10 , }}>prize pool</Text>
                 <Text style={styles.textstyle}>Rs. {contestDetails.pricePool}</Text>
             </View>
+            <View style={{justifyContent:"center",alignItems:"center"}}>
+            <Text style={{color:"orange",fontWeight:"bold"}}>{contestDetails.duration}</Text>
             <Text style={styles.textstyle}>{contestDetails.winners} Winners</Text>
+            </View>
+           
+
+
             <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. {contestDetails.entryFees}</Text>
         </View>
           <View style={{alignItems:"center",top:15}}>

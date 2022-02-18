@@ -36,7 +36,6 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
   <View style={[CardBox, { backgroundColor: COLORS.primary ,marginTop:15}]}>
     <View style={styles.IdolContainer}>
       <View style={{alignItems:"flex-end"}}>
-       <Text style={[FONTS.ItsLiveFont ,{fontSize:10, right:10 ,color:"red"}]}>Its live...!!!</Text>
        </View>
       <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
         <Text style={FONTS.textstyle}>Idol Contest</Text>
@@ -88,6 +87,7 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
       <Text style={FONTS.textstyle}>.............................</Text>
       <Text style={FONTS.textstyle}>Rs {item.priceWin}</Text>
     </View>
+    
       )}
       keyExtractor={(item, index) => index}
      />

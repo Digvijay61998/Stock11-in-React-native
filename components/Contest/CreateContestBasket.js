@@ -8,6 +8,24 @@ const CreateContestBasket = ({ navigation}) => {
 
   const [editTeam, setEditTeam] = useState([])
   const [points, setPoints] = useState([])
+  const [counter, setCounter] = useState(1)
+  // console.log("counter",counter);
+  // const increment = (item, index) =>{
+  //   console.log("item==",item.id)
+  //   if(counter.includes(item)==1){
+  //     setCounter(counter + 1)
+  
+  // }
+  // }
+
+  const increment = () =>{
+    setCounter(counter + 1)
+  }
+
+  const decrement = () =>{
+    setCounter(counter - 1)
+  }
+
 
   useEffect(() => {
     setEditTeam(editTeams)
@@ -92,8 +110,8 @@ const CreateContestBasket = ({ navigation}) => {
     </View>
     <View style={styles.Teamcontainer}>
       <View style={styles.EarnListTitle}>
-        <Text style={FONTS.textstyle}>Stocks</Text>
-        <Text style={FONTS.textstyle}>Credits</Text>
+        <Text style={[FONTS.textstyle,{paddingLeft:25}]}>Stocks</Text>
+        <Text style={[FONTS.textstyle,{paddingRight:25}]}>Weightage</Text>
       </View>
       <ScrollView style={styles.scroller}>
         <FlatList
@@ -109,7 +127,7 @@ const CreateContestBasket = ({ navigation}) => {
                   resizeMode="contain"
                   style={{
                     width: 18,
-                    height: 18,
+                    height: 15,
                     marginRight:10
                   }}
                 />:
@@ -124,7 +142,27 @@ const CreateContestBasket = ({ navigation}) => {
                 />}
                 <Text style={[FONTS.textstyle, { fontSize: 14 }]}>{item.stocks}</Text>
               </View>
-              <Text style={[FONTS.textstyle, { fontSize: 15 }]}>{item.points}</Text>
+              <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row'}}>
+                <View style={{paddingRight:3}}>
+                <TouchableOpacity style={{ width:15,height:15,borderRadius:100,
+                  backgroundColor:"#d43737" ,elevation:1,justifyContent:"center",alignItems:"center"}}
+                  onPress={() =>increment (item, index)} >
+                <Text style={{fontSize:12,color:"white",bottom:2}}>+</Text>
+                </TouchableOpacity>
+                </View>
+                <View>
+            <Text style={[FONTS.textstyle, { fontSize: 15 }]}>{ counter }</Text>
+                </View>
+                <View style={{paddingLeft:3}}>
+                <TouchableOpacity style={{ width:14,height:15,borderRadius:100,paddingBottom:2,
+                  backgroundColor:"#d43737",justifyContent:"center",alignItems:"center"}}
+                  onPress={decrement}
+                  >
+                <Text style={{fontSize:16,color:"white",bottom:5}}>-</Text>
+                </TouchableOpacity>
+                </View>
+              
+              </View>
             </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index}
@@ -134,7 +172,9 @@ const CreateContestBasket = ({ navigation}) => {
 
     <TouchableOpacity style={[FONTS.button , {width:300 ,marginTop:60 ,bottom:25}]}
            onPress={() =>
-            navigation.navigate('LeadStockandFollowStock')
+            navigation.navigate('Team Preview', {
+              paramKey: counter,
+            })
           }
        >
         <Text style={[FONTS.textstyle ,{color:"black"}]}>Contiue</Text>
@@ -173,7 +213,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   EarnListTitle: {
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
     width: 360,

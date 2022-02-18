@@ -67,7 +67,7 @@ const App = () => {
         }}
         initialRouteName={'Home'}
       >  
-            <Stack.Screen key={Date.now()} name="Tabs" component={Tabs} options={{headerShown:false}} />      
+            <Stack.Screen key={Date.now()} name="Tabs" component={Tabs}  />      
             
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
@@ -81,14 +81,14 @@ const App = () => {
               }
               }} />
 
-{/* <Stack.Screen key={Date.now()} name="Home" component={Home} options={{ title:"Home",headerStyle:{
+<Stack.Screen key={Date.now()} name="Home" component={Home} options={{ title:"Home",headerStyle:{
               backgroundColor:'#252837'},             
               headerTintColor: '#fff',
               headerTitleStyle: {
                 fontWeight: "normal",
                 
               }
-              }} /> */}
+              }} />
 
                <Stack.Screen key={Date.now()} name="Setting" component={Setting} options={{ title:"Settings",headerStyle:{
               backgroundColor:'#252837'},             

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList} from 'react-native'
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList, Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container} from "../../constants"
 import React from 'react';
 
@@ -8,6 +8,17 @@ const HowToPlay = () => {
      <View style={styles.input}>
        <Text style={FONTS.textstyle}>Introduction</Text>
        <View style={styles.openMenu}></View>
+       {/* <View >
+               <Image
+                source={icons.bottomArrow}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View> */}
      </View>
      <View style={styles.input}>
        <Text style={FONTS.textstyle}>Select a contest</Text>

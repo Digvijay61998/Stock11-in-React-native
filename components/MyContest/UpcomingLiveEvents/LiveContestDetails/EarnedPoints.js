@@ -19,12 +19,12 @@ const EarnedPoints = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
      <View style={{width: '100%', height: 50,alignItems:"center" , justifyContent:"center"}}>
-      <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton}]}>TeamABC</Text>
+      <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton}]}>Basket Name</Text>
       </View>
 <View style={styles.Teamcontainer}>
 <View style={styles.EarnListTitle}>
 <Text style={FONTS.textstyle}>Stocks</Text>
-<Text style={FONTS.textstyle}>Points</Text>
+<Text style={[FONTS.textstyle]}>Points</Text>
 </View>
 <ScrollView style={styles.scroller}>
 <FlatList 
@@ -41,7 +41,7 @@ const EarnedPoints = ({navigation}) => {
 </ScrollView>
 </View>
 
-<View style={{ flexDirection: "row" }}>
+{/* <View style={{ flexDirection: "row" }}>
                 <TouchableOpacity style={[FONTS.button, { width: 160, marginTop: 60, bottom: 25, marginRight: 20 }]}
                     // onPress={() =>
                     //     navigation.navigate('')
@@ -56,7 +56,7 @@ const EarnedPoints = ({navigation}) => {
                 >
                     <Text style={[FONTS.textstyle, { color:COLORS.primary }]}>Continue</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
     </SafeAreaView>
   );
 };
@@ -70,14 +70,14 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center"
 },
-scroller: {
-  flex: 1,
-  overflow:"hidden",
-  borderWidth: 1,
-  borderColor:COLORS.FaintWhite,
-  borderBottomLeftRadius:10,
-borderBottomRightRadius:10,
-},
+// scroller: {
+//   flex: 1,
+//   overflow:"hidden",
+//   borderWidth: 1,
+//   borderColor:COLORS.FaintWhite,
+//   borderBottomLeftRadius:10,
+// borderBottomRightRadius:10,
+// },
 Teamcontainer:{
     flex:1,
     backgroundColor:COLORS.secondary,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView ,ScrollView ,FlatList} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView ,ScrollView ,FlatList, TouchableOpacityBase, TouchableOpacityComponent} from 'react-native';
 // import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData} from ""
 
 import React,{useEffect,useState} from 'react';
@@ -22,9 +22,7 @@ const ViewContest = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={[CardBox, { backgroundColor: COLORS.primary }]}>
-      <TouchableOpacity  onPress={() =>
-                      navigation.navigate('CreateContestBasket')
-                    }>
+      
         <View style={styles.IdolContainer}>
           <View style={{alignItems:"flex-end"}}>
            <Text style={[FONTS.textstyle ,{fontSize:10}]}>Start On 1st Oct 2021</Text>
@@ -51,7 +49,6 @@ const ViewContest = ({ navigation }) => {
           
           </View>
         </View>
-          </TouchableOpacity>
       </View>
       <View style={styles.WinningsContainer}>
         <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: COLORS.HeaderBackground, height: 50 }}>
@@ -77,6 +74,15 @@ const ViewContest = ({ navigation }) => {
      
       
         </ScrollView>
+        <View style={{alignItems:"center", paddingBottom:25}}>
+        <TouchableOpacity style={[FONTS.button, { width: 150,marginRight: 20 }]}
+                    onPress={() =>
+                        navigation.navigate('CreateContestBasket')
+                    }
+                >
+                    <Text style={[FONTS.textstyle, { color:COLORS.primary  }]}>Join</Text>
+                </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );

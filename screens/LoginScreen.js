@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity } from 'react-native';
+import PhoneInput from "react-native-phone-number-input";
 
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import { number } from 'yup/lib/locale';
@@ -10,6 +11,12 @@ import { number } from 'yup/lib/locale';
 
 
 function LoginScreen({navigation}) { 
+  const [value, setValue] = useState("");
+  const [formattedValue, setFormattedValue] = useState("");
+  const phoneInput = useRef();
+  console.log("phoneInput",phoneInput);
+  // const phoneInput = useRef<PhoneInput>(null);
+
     
 return (
 
@@ -18,7 +25,7 @@ return (
             <View style={styles.LoginBox}>
               <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton ,fontSize:20}]}>Login</Text>
               <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10}]}> Enter Your Mobile Number</Text>
-              <TextInput
+              {/* <TextInput
                 style={[FONTS.textstyle,styles.input]}
                 value={number}
                 placeholder="Enter Number"
@@ -28,7 +35,23 @@ return (
                 autoComplete="cc-number"
                 maxLength={10}
                 margin={10}
-                />
+                /> */}
+              <PhoneInput
+                        ref={phoneInput}
+                        defaultValue={value}             
+                        defaultCode="IN"
+                        layout="first"
+                        containerStyle={[FONTS.textstyle,styles.input]}
+                        onChangeText={(text) => {
+                          setValue(text);
+                        }}
+                        onChangeFormattedText={(text) => {
+                          setFormattedValue(text);
+                        }}
+                        // countryPickerProps={{ withAlphaFilter: true }}
+                        withShadow
+                        autoFocus
+                      />
                 <TouchableOpacity
                 style={{
                     width:300,

@@ -3,7 +3,7 @@ import {StyleSheet, Text, TextInput, TouchableOpacity, View} from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CardBox, COLORS, FONTS } from "../../constants";
 
-const CurrentBalance =() =>{
+const CurrentBalance =({navigation}) =>{
 return(
     <SafeAreaView style={styles.container}>
         <View style={styles.balanceContainer}>
@@ -69,9 +69,9 @@ return(
                     height:50,
                     backgroundColor:COLORS.ActiveButton,
                  }}
-                //  onPress={() =>
-                //      navigation.navigate('OtpVerification')
-                //    }
+                 onPress={() =>
+                     navigation.navigate('Pay Using')
+                   }
                 >
                 {/* <Button 
                     title="Request OTP"

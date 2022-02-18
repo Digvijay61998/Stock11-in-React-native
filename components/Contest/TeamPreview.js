@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity,Flat
 import { COLORS, FONTS, icons, Header, CardBox ,dummyData } from "../../constants"
 import React,{useEffect,useState} from 'react';
 
-const TeamPreview = ({ navigation }) => {
+const TeamPreview = ({ navigation, route }) => {
     const teamViews = dummyData.TeamView
 
     const [teamView, setTeamView] = useState([])
@@ -16,7 +16,7 @@ const TeamPreview = ({ navigation }) => {
         <View style={styles.Teamcontainer}>
             <View style={styles.EarnListTitle}>
                 <Text style={FONTS.textstyle}>Stocks</Text>
-                <Text style={[FONTS.textstyle,{left:25}]}>LS & FS</Text>
+                <Text style={[FONTS.textstyle,{left:35}]}>Weightage</Text>
             </View>
             <ScrollView style={styles.scroller}>
                 <FlatList
@@ -25,9 +25,11 @@ const TeamPreview = ({ navigation }) => {
                     renderItem={({ item, index }) => (
                         <View style={styles.EarnList}>
                             <Text style={[FONTS.textstyle, { fontSize: 14 ,margin:4}]}>{item.stocks}</Text>
-                            {item.LsFs !== "" ? <View style={styles.ActiveFSLS}>
-                                <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>{item.LsFs}</Text>
-                            </View>:<></>}
+                            {/* {item.LsFs !== "" ? <View style={styles.ActiveFSLS}> */}
+                                {/* <Text style={[FONTS.textstyle, { fontSize: 13, color: COLORS.LSFS }]}>{item.LsFs}</Text> */}
+                            {/* </View>:<></>} */}
+                            <Text style={[FONTS.textstyle, { fontSize: 14 ,marginRight:24}]}> {route.params.paramKey}</Text>
+
                         </View>
                     )}
                     keyExtractor={(item, index) => index}
@@ -44,10 +46,10 @@ const TeamPreview = ({ navigation }) => {
                 </TouchableOpacity>
                 <TouchableOpacity style={[FONTS.button, { width: 160, marginTop: 60, bottom: 25 }]}
                     onPress={() =>
-                        navigation.navigate('Pay Using')
+                        navigation.navigate('Select Basket')
                     }
                 >
-                    <Text style={[FONTS.textstyle, { color:COLORS.primary }]}>Save Team</Text>
+                    <Text style={[FONTS.textstyle, { color:COLORS.primary }]}>Continue</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

@@ -3,11 +3,214 @@ export const portfolio = {
     changes: "+2.36%",
 };
 
-export const PricePool = [
+export const CompletedPricePool=[
+    {
+        id: 1,
+        winners:5,
+        entryFees:1000,
+        pricePool:2000,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 2,
+        winners:2,
+        pricePool:2470,
+        entryFees:100,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 4rd oct 2021"
+    },
+    {
+        id: 3,
+        winners:10,
+        pricePool:5000,
+        entryFees:100000,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 5rd oct 2021"
+    },
+    {
+        id: 4,
+        winners:1,
+        pricePool:1000,
+        entryFees:1000,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 6rd oct 2021"
+    },
+    {
+        id: 5,
+        winners:5,
+        pricePool:200,
+        entryFees:1000,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 1rd oct 2021"
+    },
+    {
+        id: 6,
+        winners:5,
+        pricePool:20000,
+        entryFees:5000,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 2rd oct 2021"
+    },
+    {
+        id: 7,
+        winners:1,
+        pricePool:4000,
+        entryFees:50,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 8,
+        winners:1,
+        pricePool:4000,
+        entryFees:50,
+        duration:"COMPLETED CONTEST !!!",
+        date:"oct 2021 to 3rd oct 2021"
+    }
+]
+
+export const UpcomingPricePool = [
     {
         id: 1,
         winners:2,
         entryFees:5000,
+        pricePool:2000,
+        duration:"UPCOMING EVENT !!!",
+        date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 2,
+        winners:2,
+        pricePool:2470,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:100,
+        date:"oct 2021 to 4rd oct 2021"
+    },
+    {
+        id: 3,
+        winners:10,
+        pricePool:5000,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:100000,
+        date:"oct 2021 to 5rd oct 2021"
+    },
+    {
+        id: 4,
+        winners:1,
+        pricePool:1000,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:1000,
+        date:"oct 2021 to 6rd oct 2021"
+    },
+    {
+        id: 5,
+        winners:5,
+        pricePool:200,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:1000,
+        date:"oct 2021 to 1rd oct 2021"
+    },
+    {
+        id: 6,
+        winners:5,
+        pricePool:20000,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:5000,
+        date:"oct 2021 to 2rd oct 2021"
+    },
+    {
+        id: 7,
+        winners:1,
+        pricePool:4000,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:50,
+        date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 8,
+        winners:1,
+        pricePool:4000,
+        duration:"UPCOMING EVENT !!!",
+
+        entryFees:50,
+        date:"oct 2021 to 3rd oct 2021"
+    }
+       
+]
+
+export const PricePool2 = [
+    {
+        id: 1,
+        winners:5,
+        entryFees:1000,
+        pricePool:2000,
+        duration:"Its live...!!!",
+        date:"oct 2021 to 3rd oct 2021"
+    },
+    {
+        id: 2,
+        winners:2,
+        pricePool:2470,
+        duration:"Its live...!!!",
+        entryFees:100,
+        date:"oct 2021 to 4rd oct 2021"
+    },
+    {
+        id: 3,
+        winners:10,
+        pricePool:5000,
+        duration:"Its live...!!!",
+        entryFees:100000,
+        date:"oct 2021 to 5rd oct 2021"
+    },
+    {
+        id: 4,
+        winners:1,
+        pricePool:1000,
+        duration:"Its live...!!!",
+        entryFees:1000,
+        date:"oct 2021 to 6rd oct 2021"
+    },
+    {
+        id: 5,
+        winners:5,
+        pricePool:200,
+        duration:"Its live...!!!",
+        entryFees:1000,
+        date:"oct 2021 to 1rd oct 2021"
+    },
+    {
+        id: 6,
+        winners:5,
+        pricePool:20000,
+        duration:"Its live...!!!",
+        entryFees:5000,
+        date:"oct 2021 to 2rd oct 2021"
+    },
+    {
+        id: 7,
+        winners:1,
+        pricePool:4000,
+        duration:"Its live...!!!",
+        entryFees:50,
+        date:"oct 2021 to 3rd oct 2021"
+    }
+    
+       
+]
+
+export const ContestPricePool = [
+    {
+        id: 1,
+        winners:5,
+        entryFees:1000,
         pricePool:2000,
         date:"oct 2021 to 3rd oct 2021"
     },
@@ -52,16 +255,73 @@ export const PricePool = [
         pricePool:4000,
         entryFees:50,
         date:"oct 2021 to 3rd oct 2021"
+    }
+    
+       
+]
+
+export const LivePricePool = [
+    {
+        id: 1,
+        winners:5,
+        entryFees:1000,
+        pricePool:2000,
+        duration:"Its live...!!!",
+        date:"oct 2021 to 3rd oct 2021"
     },
     {
-        id: 8,
+        id: 2,
+        winners:2,
+        pricePool:2470,
+        duration:"Its live...!!!",
+        entryFees:100,
+        date:"oct 2021 to 4rd oct 2021"
+    },
+    {
+        id: 3,
+        winners:10,
+        pricePool:5000,
+        duration:"Its live...!!!",
+        entryFees:100000,
+        date:"oct 2021 to 5rd oct 2021"
+    },
+    {
+        id: 4,
+        winners:1,
+        pricePool:1000,
+        duration:"Its live...!!!",
+        entryFees:1000,
+        date:"oct 2021 to 6rd oct 2021"
+    },
+    {
+        id: 5,
+        winners:5,
+        pricePool:200,
+        duration:"Its live...!!!",
+        entryFees:1000,
+        date:"oct 2021 to 1rd oct 2021"
+    },
+    {
+        id: 6,
+        winners:5,
+        pricePool:20000,
+        duration:"Its live...!!!",
+        entryFees:5000,
+        date:"oct 2021 to 2rd oct 2021"
+    },
+    {
+        id: 7,
         winners:1,
         pricePool:4000,
+        duration:"Its live...!!!",
         entryFees:50,
         date:"oct 2021 to 3rd oct 2021"
     }
+    
        
 ]
+
+
 
 export const WinningList = [
     {
@@ -188,13 +448,22 @@ export const basketDetails = [
         company:"cipla",
         stockName:"hero MotoCorp"
     },
+    
+ 
+];
+
+export const MybasketDetails = [
     {
-        id: 3,
-        category1:"LS",
-        category2:"FS",
+        id: 1,
         company:"cipla",
         stockName:"hero MotoCorp"
     },
+    {
+        id: 2,
+        company:"cipla",
+        stockName:"hero MotoCorp"
+    },
+    
  
 ];
 
@@ -519,6 +788,6 @@ const LeadStock =[
     }
 ]
 
-    const dummyData = { portfolio,TeamView, PricePool, WinningList, LeadBoard ,basketDetails ,PointsEarn ,LeadStock,BasketData};
+    const dummyData = { portfolio,TeamView, UpcomingPricePool,CompletedPricePool,LivePricePool,MybasketDetails, ContestPricePool, PricePool2, WinningList, LeadBoard ,basketDetails ,PointsEarn ,LeadStock,BasketData};
 
 export default dummyData;

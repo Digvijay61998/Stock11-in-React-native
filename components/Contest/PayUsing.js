@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
-import { CardBox, COLORS, FONTS } from "../../constants";
+import { CardBox, COLORS, FONTS, images } from "../../constants";
 import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox';
 
 const PayUsing =({navigation})=>{
@@ -9,34 +9,121 @@ const PayUsing =({navigation})=>{
     return(
         <SafeAreaView style={styles.container}>
            <View style={[CardBox, styles.payContainer]}>
+               <View>
+                   <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Wallets</Text>
+               </View>
+               <View style={{flexDirection:"row",marginTop:20,marginLeft:30}}>
+               <View >
+               <Image
+                source={images.wallet}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View>
             <View style={{display:"flex",justifyContent:"flex-end"}}>
-            <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Pay by Deposit Wallet</Text>
-            <Text style={{color:'#0BFEBC', paddingLeft:12, paddingTop:5}}>0.0 INR</Text>
-           {/* <View style={{paddingLeft:300,paddingTop:5,position:"relative"}}>
-            <CircleCheckBox
-    outerSize="25"
-    onToggle={(checked) => console.log('My state is: ', checked)}
-/></View> */}
+            <Text style={[FONTS.textstyle,{fontSize:16,paddingBottom:5,paddingLeft:10}]}>Pay by Deposit Wallet</Text>
+           </View>
+           </View>
+           </View>
+
+        
+           <View style={[CardBox, styles.payContainer]}>
+               <View>
+                   <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Cards</Text>
+               </View>
+               <View style={{flexDirection:"row",marginTop:20,marginLeft:30}}>
+               <View >
+               <Image
+                source={images.wallet}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View>
+            <View style={{display:"flex",justifyContent:"flex-end"}}>
+            <Text style={[FONTS.textstyle,{fontSize:16,paddingBottom:5,paddingLeft:10}]}>Add Credit Card & Debit Cards</Text>
+           </View>
+           </View>
+           </View>
+
+           <View style={[CardBox,styles.upiContainer]}>
+               <View>
+                   <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>UPI</Text>
+               </View>
+               <View style={{flexDirection:"row",marginTop:20,marginLeft:30}}>
+               <View >
+               <Image
+                source={images.wallet}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View>
+            <View style={{display:"flex",justifyContent:"flex-end"}}>
+            <Text style={[FONTS.textstyle,{fontSize:16,paddingBottom:5,paddingLeft:10}]}>Google Pay</Text>
+           </View>
+           
+           </View>
+           <View style={{flexDirection:"row",marginTop:20,marginLeft:30}}>
+               <View >
+               <Image
+                source={images.wallet}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View>
+            <View style={{display:"flex",justifyContent:"flex-end"}}>
+            <Text style={[FONTS.textstyle,{fontSize:16,paddingBottom:5,paddingLeft:10}]}>Pay Via UPI</Text>
+            <Text style={[FONTS.textstyle,{fontSize:10,paddingBottom:5,paddingLeft:10}]}>You need to have a registered UPI</Text>
+
+           </View>
+           
            </View>
            </View>
 
            <View style={[CardBox, styles.payContainer]}>
-        <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Pay by Deposit Wallet</Text>
-            <Text style={{color:'#0BFEBC', paddingLeft:12, paddingTop:5}}>0.0 INR</Text>
-
-
+               <View>
+                   <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Net Banking</Text>
+               </View>
+               <View style={{flexDirection:"row",marginTop:20,marginLeft:30}}>
+               <View >
+               <Image
+                source={images.wallet}
+                resizeMode="contain"
+                style={{
+                width: 30,
+                height: 30,
+                marginRight: 10
+        }}
+      />
+               </View>
+            <View style={{display:"flex",justifyContent:"flex-end"}}>
+            <Text style={[FONTS.textstyle,{fontSize:16,paddingBottom:5,paddingLeft:10}]}>Net Banking</Text>
            </View>
-
-           <View style={[CardBox, styles.payContainer]}>
-        <Text style={[FONTS.textstyle,{fontSize:16,paddingTop:10,paddingLeft:10}]}>Pay by Deposit Wallet</Text>
-            <Text style={{color:'#0BFEBC', paddingLeft:12, paddingTop:5}}>0.0 INR</Text>
-
-
            </View>
-        <View style={{paddingTop:250}}>
-           <TouchableOpacity style={[FONTS.button , {width:300 ,marginTop:60 ,bottom:-15}]}
+           </View>
+           
+
+        <View style={{bottom:-30}}>
+        <TouchableOpacity style={[FONTS.button , {width:200}]}
            onPress={() =>
-            navigation.navigate('Select Basket')
+            navigation.navigate('Home', {
+                component: 'Pay Using',
+              })
           }
        >
         <Text style={[FONTS.textstyle ,{color:"black"}]}>Pay</Text>
@@ -51,11 +138,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#1F1D2B",
         alignItems: "center",
-        paddingTop:25
+        paddingTop:50
     },
     payContainer:{
         backgroundColor:'#252837',
-        height:75
+        height:110
+    },
+    upiContainer:{
+        backgroundColor:'#252837',
+        height:160 
     }
 })
 

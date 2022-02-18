@@ -26,16 +26,12 @@ const LeadStockandFollowStock = ({navigation}) =>{
     })
     return(
         <SafeAreaView style={styles.container}>
-        <View style={{ width: '100%', height: 100, alignItems: "center", justifyContent: "center" }}>
-            <Text style={FONTS.textstyle}>Choose your lead stock and Follow stock</Text>
-            <Text style={[FONTS.textstyle, { fontSize: 13 }]}>LS gets 2x points, FS gets 1.5x points</Text>
-        </View>
+       
         <View style={styles.Teamcontainer}>
             <View style={styles.EarnListTitle}>
                 <Text style={FONTS.textstyle}>Stocks</Text>
                 <View style={{ flexDirection: "row", justifyContent: "space-around", width: 60 ,left:30}}>
-                    <Text style={FONTS.textstyle}>LS</Text>
-                    <Text style={[FONTS.textstyle,{marginLeft:30}]}>FS </Text>
+                    <Text style={[FONTS.textstyle]}>Weightage </Text>
                 </View>
 
             </View>
@@ -105,6 +101,7 @@ const styles = StyleSheet.create({
     Teamcontainer: {
         flex: 1,
         backgroundColor: COLORS.secondary,
+        paddingTop:25
 
     },
     EarnListTitle: {

@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native'
 import { COLORS, FONTS, icons, Header, CardBox, dummyData } from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 
 const CompletedEvents = ({ navigation }) => {
+  const [CompletedEvents,setCompletedEvents]=useState()
 
-  const CompletedEvents = dummyData.PricePool
+  const CompletedPriceEvents = dummyData.CompletedPricePool
+
+  useEffect(() => {
+    if(CompletedPriceEvents === undefined){
+      setCompletedEvents("")
+    }else{
+      setCompletedEvents(CompletedPriceEvents)
+    }
+  });
 
   return (
     <View style={Header}>

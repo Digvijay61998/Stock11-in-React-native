@@ -23,7 +23,8 @@ export const  Header ={
     height: 630,
     borderBottomRightRadius: 15,
     borderBottomLeftRadius: 15,
-    backgroundColor: "#2F313E"
+    backgroundColor: "#2F313E",
+    paddingTop:2
 };
 
 export const container ={

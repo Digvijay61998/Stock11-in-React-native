@@ -5,7 +5,7 @@ import {Basket} from "../../Common"
 
 const MyBasket = ({ navigation }) => {
 
-   const data = dummyData.basketDetails
+   const data = dummyData.MybasketDetails
     return (
         <SafeAreaView style={Header}>
             <ScrollView styles={styles.scroller}>
@@ -24,10 +24,10 @@ const MyBasket = ({ navigation }) => {
           keyExtractor={(item, index) => index}
         />
     </ScrollView>
-    <View style={{width: '100%', height:150,bottom:20 , alignItems: "center", justifyContent:"center"}}>
+    <View style={{width: '100%', height:150,bottom:50 , alignItems: "center", justifyContent:"center"}}>
        <TouchableOpacity style={FONTS.button}
            onPress={() =>
-            navigation.navigate('CreateBasket')
+            navigation.navigate('CreateContestBasket')
           }
        >
         <Text style={[FONTS.textstyle ,{color:"black"}]}>Create Basket</Text>

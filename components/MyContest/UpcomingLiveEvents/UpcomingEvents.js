@@ -2,24 +2,34 @@ import { StyleSheet, Text, View ,ScrollView, TouchableOpacity ,FlatList} from 'r
 import { COLORS, FONTS, icons ,Header ,CardBox,dummyData} from "../../../constants"
 import {IdolContest}from "../../../Common/index"
 
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+
 
 const UpcomingEvents = ({navigation}) => {
-
-  const UpcomingPriceEvents = dummyData.PricePool
-
+  const [UpcomingEvents,setUpcomingEvents]=useState()
+  const UpcomingPriceEvents = dummyData.UpcomingPricePool
+  useEffect(() => {
+    if(UpcomingPriceEvents === undefined){
+      setUpcomingEvents("")
+    }else{
+      setUpcomingEvents(UpcomingPriceEvents)
+    }
+  });
 
   return (
     <View  style={Header}>
     <ScrollView style={styles.scroller}>
     <FlatList 
-                data = {UpcomingPriceEvents}
+                data = {UpcomingEvents}
                 keyExtractor={(item) => item.id}
-                renderItem={({item ,index})=>(
+                
+                renderItem={({ item ,index})=>(
+
                   <TouchableOpacity
                   onPress={() => navigation.navigate("UpcomingContestDetails")}
                >
-                   <IdolContest data={item}/>
+                   <IdolContest data={item} />
+
                    </TouchableOpacity>
                 )}
                 keyExtractor={(item, index) => index}

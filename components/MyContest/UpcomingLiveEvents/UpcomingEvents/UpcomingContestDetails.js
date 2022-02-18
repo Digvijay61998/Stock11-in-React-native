@@ -28,11 +28,18 @@ const UpcomingContestDetails = ({ navigation }) => {
             <Text style={FONTS.textstyle}>Idol Contest</Text>
             <Text style={FONTS.textstyle}>Entry</Text>
           </View>
+          
           <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
+
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
+              
               <Text style={{ color: "white", fontSize: 10, }}>prize pool</Text>
+
               <Text style={FONTS.textstyle}>Rs. 10,000</Text>
+
             </View>
+          <Text style={{color:"orange",fontWeight:'bold'}}>UPCOMMING CONTEST !!!</Text>
+
             <Text style={{ color: "black", backgroundColor: COLORS.ActiveButton, padding: 6, borderRadius: 10, fontWeight: 'bold', }}>Rs. 1,000</Text>
           </View>
           <View style={{alignItems:"center",top:15}}>

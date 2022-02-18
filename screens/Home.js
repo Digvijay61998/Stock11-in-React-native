@@ -16,7 +16,7 @@ const Home = ({ route,navigation }) => {
 const navigations = navigation
     return (
         <>
-        <View >
+        <View>
         {
             (route.params &&
             route.params.component === 'Select Basket') &&
@@ -169,7 +169,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: "#1F1D2B",
-        elevation: 10
+        elevation: 10,
+        
 
     },
     shadow: {
@@ -195,6 +196,7 @@ const styles = StyleSheet.create({
         margin: "4%",
         borderRadius: 10,
         padding: 5,
+        
     },
     TimeDate: {
         width: 350,

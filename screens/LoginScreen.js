@@ -33,6 +33,11 @@ const onSubmit = async (values) => {
       console.error(error);
   }
 }
+//  VALIDATION SCHEMA
+const validationSchema = Yup.object({
+   phoneNumber: Yup.number().required("This field is Required")
+
+});
 
 // const loginForm = useFormik({
 //   initialValues: { phoneNumber: "" },
@@ -57,63 +62,68 @@ return (
             initialValues ={{ phoneNumber: "" }}          
             
             validationSchema = {validationSchema}
-            onSubmit={handleSubmit}
+            onSubmit={onSubmit}
           >
-            <View style={styles.LoginBox}>
-              <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton ,fontSize:20}]}>Login</Text>
-              <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10}]}> Enter Your Mobile Number</Text>
-              <TextInput
-                style={[FONTS.textstyle,styles.input]}
-                id="phoneNumber"
-                name="phoneNumber"
-                value={loginForm.values.phoneNumber}
-                onChange={loginForm.handleSubmit}
-
-                placeholder="Enter Number"
-                placeholderTextColor={COLORS.ActiveButton}
-                paddingLeft={110}
-                keyboardType="numeric"
-                autoComplete="cc-number"
-                maxLength={10}
-                margin={10}
-                />
-                <TouchableOpacity
-                style={{
-                    width:300,
-                    margin:15,
-                    borderRadius:50,
-                    height:50,
-                    backgroundColor:COLORS.ActiveButton,
-                 }}
-                 title="Request OTP"
-                 color="#f5871f00"
-                 elevation="2"
-                 onChangeText={(val)=>setNumber(val)}
-
-                //  onClick={loginWithMobile}
-                //  disabled={!(loginForm.isValid && loginForm.dirty)}
-                 onPress={() =>{
-                  navigation.navigate('OtpVerification');
-                  onSubmit()
-                 }
-                     
+            {(values, handleChange, errors, setFieldTouched, touched, isValid, handleSubmit)=>{
+              return(
+                <View style={styles.LoginBox}>
+                <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton ,fontSize:20}]}>Login</Text>
+                <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10}]}> Enter Your Mobile Number</Text>
+                <TextInput
+                  style={[FONTS.textstyle,styles.input]}
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={values.phoneNumber}
+                  onChange={handleSubmit}
+  
+                  placeholder="Enter Number"
+                  placeholderTextColor={COLORS.ActiveButton}
+                  paddingLeft={110}
+                  keyboardType="numeric"
+                  autoComplete="cc-number"
+                  maxLength={10}
+                  margin={10}
+                  />
+                  <TouchableOpacity
+                  style={{
+                      width:300,
+                      margin:15,
+                      borderRadius:50,
+                      height:50,
+                      backgroundColor:COLORS.ActiveButton,
+                   }}
+                   title="Request OTP"
+                   color="#f5871f00"
+                   elevation="2"
+                   onChangeText={(val)=>setNumber(val)}
+  
+                  //  onClick={loginWithMobile}
+                  //  disabled={!(isValid && dirty)}
+                   onPress={() =>{
+                    navigation.navigate('OtpVerification');
+                    onSubmit()
                    }
-                >
-                {/* <Button 
-                    title="Request OTP"
-                    color="#f5871f00"
-                    elevation="2"
-                    onChangeText={(val)=>setNumber(val)}
-                    onPress={() =>
-                        navigation.navigate('OtpVerification')
-                      }
-
-/> */}<View style={{paddingLeft:100,paddingTop:13}}>
-  <Text style={[FONTS.textstyle ,{color:"black"}]}>Request OTP</Text>
-</View>
-
-</TouchableOpacity>
-</View>
+                       
+                     }
+                  >
+                  {/* <Button 
+                      title="Request OTP"
+                      color="#f5871f00"
+                      elevation="2"
+                      onChangeText={(val)=>setNumber(val)}
+                      onPress={() =>
+                          navigation.navigate('OtpVerification')
+                        }
+  
+  /> */}<View style={{paddingLeft:100,paddingTop:13}}>
+    <Text style={[FONTS.textstyle ,{color:"black"}]}>Request OTP</Text>
+  </View>
+  
+  </TouchableOpacity>
+  </View>
+              )
+            }}
+           
 </Formik>
         </View>
     );

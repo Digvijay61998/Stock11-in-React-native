@@ -32,8 +32,6 @@ export default function Login(props) {
                     title="Sign In"
                 />
             </View>
-
-
             <View style={form.bottomButton} >
                 <Text
                     title="Register"

@@ -22,6 +22,7 @@ export const apiGet = (url,serviceName) => {
 };
 
 export const apiPost = async (url, values,serviceName) => {
+  console.log("values",values);
   let apiUrl = verifyService(serviceName);
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
@@ -51,6 +52,7 @@ export const apiPut = (url, values ,serviceName) => {
     fetch(`${apiUrl}${url}`, {
       method: 'PUT',
       headers: {
+        'Authorization': 'Bearer ' + values.token,
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },

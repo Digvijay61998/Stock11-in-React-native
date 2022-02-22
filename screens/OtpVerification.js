@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
     function OtpVerification({navigation}) {
         const [value, setValue] = useState('');
+        console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,

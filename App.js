@@ -66,6 +66,8 @@ const App = () => {
           headerShown: true,
         }}
         initialRouteName={'Home'}
+        
+
       >  
             <Stack.Screen key={Date.now()} name="Tabs" component={Tabs} options={{headerShown:false}} />      
             

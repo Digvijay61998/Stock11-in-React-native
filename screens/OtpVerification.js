@@ -14,7 +14,8 @@ import routes from '../utils/routes';
 const CELL_COUNT = 6;
 
 function OtpVerification(prop) {
-      console.log("prop",prop.route.params.Data);
+     const UserData = prop.route.params.Data;
+     console.log("UserData",UserData);
     const [value, setValue] = useState('');
         console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
@@ -23,36 +24,14 @@ function OtpVerification(prop) {
         setValue,
     });
 
-    const getuserID = async (userData) => {
-      console.log("userDataOTPSCREEN~~~~~>",userData);
-
-      const userToken = await AsyncStorage.getItem('userToken');
-      const checkSum = await AsyncStorage.getItem('checkSum');
-      console.log("userToken",userToken);
-      console.log("checkSum",checkSum);
-    };
-    
-    useEffect (() => {
-      getuserID()
-    })
-
-    const handleSubmit = async (val) => {
-      console.log("val",val);
-      // if(userData){
+    const handleSubmit =() => {
         const data ={ 
-          // userId : userData.twoFAuthForm.userId,
-          // userKey: userData.userDTO.userKey,
-          // checkSum: userData.twoFAuthForm.checkSum,
-          // invalidAttempts: userData.twoFAuthForm.invalidAttempts,
-          // mobile: userData.userDTO.mobile,
-          // status: userData.userDTO.status,
-          // otp: value
-          userId :  userData.userId,
-          checkSum: userData.checkSum,
-          invalidAttempts:"0",
-          otp: "123456"
+          userId :  UserData.twoFAuthForm.userId,
+          checkSum: UserData.twoFAuthForm.checkSum,
+          invalidAttempts:UserData.twoFAuthForm.invalidAttempts,
+          otp: value
         }
-        console.log("data",data);
+        console.log("Data",data);
         verifyUserOtp(data)
       // }
     }
@@ -62,8 +41,6 @@ function OtpVerification(prop) {
       try {
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
           console.log("parsedResponse=====",parsedResponse)
-          setUserData(parsedResponse)
-    
       } catch (error) {
           console.error(error);
       }
@@ -107,7 +84,7 @@ return (
          onPress={() =>{
           //  console.log("value====================================",e.target.value);
           // navigation.navigate('CompleteProfile'),
-          handleSubmit(value)
+          handleSubmit()
          }
         }
       >

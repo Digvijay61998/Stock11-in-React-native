@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity } from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import {
@@ -8,19 +8,69 @@ import {
     useClearByFocusCell,
   } from 'react-native-confirmation-code-field';
 import { SafeAreaView } from "react-native-safe-area-context";
+import routes from '../utils/routes';
 
-  const CELL_COUNT = 4;
 
-    function OtpVerification({navigation}) {
-        const [value, setValue] = useState('');
+const CELL_COUNT = 6;
+
+function OtpVerification(prop) {
+      console.log("prop",prop.route.params.Data);
+    const [value, setValue] = useState('');
         console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
         value,
         setValue,
     });
-return (
 
+    const getuserID = async (userData) => {
+      console.log("userDataOTPSCREEN~~~~~>",userData);
+
+      const userToken = await AsyncStorage.getItem('userToken');
+      const checkSum = await AsyncStorage.getItem('checkSum');
+      console.log("userToken",userToken);
+      console.log("checkSum",checkSum);
+    };
+    
+    useEffect (() => {
+      getuserID()
+    })
+
+    const handleSubmit = async (val) => {
+      console.log("val",val);
+      // if(userData){
+        const data ={ 
+          // userId : userData.twoFAuthForm.userId,
+          // userKey: userData.userDTO.userKey,
+          // checkSum: userData.twoFAuthForm.checkSum,
+          // invalidAttempts: userData.twoFAuthForm.invalidAttempts,
+          // mobile: userData.userDTO.mobile,
+          // status: userData.userDTO.status,
+          // otp: value
+          userId :  userData.userId,
+          checkSum: userData.checkSum,
+          invalidAttempts:"0",
+          otp: "123456"
+        }
+        console.log("data",data);
+        verifyUserOtp(data)
+      // }
+    }
+ 
+    async function verifyUserOtp(data) {
+      console.log("valdsf",data);
+      try {
+          const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
+          console.log("parsedResponse=====",parsedResponse)
+          setUserData(parsedResponse)
+    
+      } catch (error) {
+          console.error(error);
+      }
+    }
+
+
+return (
 <SafeAreaView style={styles.container}>
   <View style={styles.LoginBox}>
       <Text style={[FONTS.textstyle, {color:COLORS.ActiveButton ,fontSize:25}]}>OTP Verfication</Text>
@@ -54,8 +104,11 @@ return (
             height:50,
             backgroundColor:COLORS.ActiveButton,
          }}
-         onPress={() =>
-          navigation.navigate('CompleteProfile')
+         onPress={() =>{
+          //  console.log("value====================================",e.target.value);
+          // navigation.navigate('CompleteProfile'),
+          handleSubmit(value)
+         }
         }
       >
       {/* <Button style={{ borderRadius:20}}

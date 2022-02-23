@@ -17,11 +17,16 @@ function LoginScreen({navigation}) {
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [userData , setUserData] = useState();
+console.log("userData",userData);
 
-
-
-console.log("useriD",AsyncStorage.getItem)
-
+// const Getdata ={
+//   userId : userData.twoFAuthForm.userId,
+//   userKey: userData.userDTO.userKey,
+//   checkSum: userData.twoFAuthForm.checkSum,
+//   invalidAttempts: userData.twoFAuthForm.invalidAttempts,
+//   mobile: userData.userDTO.mobile,
+//   status: userData.userDTO.status,
+// }
   
   function loginWithMobile() {
     setIsVerified(!isVerified);
@@ -37,12 +42,11 @@ const handleSubmit = async (val) => {
 async function createUserProfile(data) {
   console.log("valdsf",data);
   try {
-      const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_PROFILE(data);
+      const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
       console.log("parsedResponse=====",parsedResponse)
       setUserData(parsedResponse)
      await AsyncStorage.setItem('userToken', parsedResponse.twoFAuthForm.userId);
      await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
-
   } catch (error) {
       console.error(error);
   }
@@ -53,7 +57,7 @@ const getuserID = async () => {
   const checkSum = await AsyncStorage.getItem('checkSum');
 
 console.log("userToken",userToken);
-console.log("userToken",checkSum);
+console.log("checkSum",checkSum);
 
 };
 
@@ -130,7 +134,7 @@ return (
                   //  onClick={loginWithMobile}
                   //  disabled={!(isValid && dirty)}
                    onPress={() =>{
-                    navigation.navigate('OtpVerification');
+                    navigation.navigate('OtpVerification',{Data:userData}),
                     handleSubmit()
                    }
                        

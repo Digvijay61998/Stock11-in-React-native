@@ -33,9 +33,11 @@ export const apiPost = async (url, values,serviceName) => {
       },
       body: JSON.stringify(values),
     })
-      .then(response => {
+      .then(async (response) => {
         try {
-          resolve(response.json());
+          const parsedResponse = await response.json();
+          // console.log("parsedResponse",parsedResponse)
+           resolve(parsedResponse);
         } catch (err) {
           reject(err);
         }

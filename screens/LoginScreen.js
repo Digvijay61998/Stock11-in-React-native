@@ -18,7 +18,6 @@ function LoginScreen({navigation}) {
   const [isVerified, setIsVerified] = useState(false);
   const [userData , setUserData] = useState();
 console.log("userData",userData);
-
 // const Getdata ={
 //   userId : userData.twoFAuthForm.userId,
 //   userKey: userData.userDTO.userKey,

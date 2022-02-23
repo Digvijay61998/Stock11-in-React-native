@@ -14,6 +14,8 @@ import routes from '../utils/routes';
 const CELL_COUNT = 6;
 
 function OtpVerification(prop) {
+  console.log("prop",prop);
+  const navigation = prop.navigation;
      const UserData = prop.route.params.Data;
      console.log("UserData",UserData);
     const [value, setValue] = useState('');
@@ -41,6 +43,7 @@ function OtpVerification(prop) {
       try {
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
           console.log("parsedResponse=====",parsedResponse)
+          navigation.navigate('CompleteProfile')
       } catch (error) {
           console.error(error);
       }
@@ -83,7 +86,6 @@ return (
          }}
          onPress={() =>{
           //  console.log("value====================================",e.target.value);
-          // navigation.navigate('CompleteProfile'),
           handleSubmit()
          }
         }

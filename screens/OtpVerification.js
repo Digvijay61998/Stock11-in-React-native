@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from "react";
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage} from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import {
     CodeField,
@@ -43,13 +43,29 @@ function OtpVerification(prop) {
       try {
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
           console.log("parsedResponse=====",parsedResponse)
-          navigation.navigate('CompleteProfile')
-      } catch (error) {
+          console.log("token=====",parsedResponse.token)
+          if(parsedResponse){
+          await AsyncStorage.setItem('userToken', parsedResponse.token);
+            navigation.navigate('CompleteProfile')
+          }else{
+            console.log("Otp not match");
+          }
+          } catch (error) {
           console.error(error);
       }
     }
-
-
+//     const getuserID = async () => {
+  
+//       const checkSum = await AsyncStorage.getItem('checkSum');
+//       const userToken = await AsyncStorage.getItem('userToken');
+    
+//     console.log("userToken",userToken);
+//     console.log("checkSum",checkSum);
+    
+//     };
+// useEffect (() => {
+//   getuserID()
+// })
 return (
 <SafeAreaView style={styles.container}>
   <View style={styles.LoginBox}>

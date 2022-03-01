@@ -17,7 +17,6 @@ function LoginScreen({navigation}) {
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [userData , setUserData] = useState();
-console.log("userData",userData);
 // const Getdata ={
 //   userId : userData.twoFAuthForm.userId,
 //   userKey: userData.userDTO.userKey,
@@ -39,32 +38,19 @@ const handleSubmit = async (val) => {
   createUserProfile(data)
 }
 async function createUserProfile(data) {
-  console.log("valdsf",data);
   try {
       const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
       console.log("parsedResponse=====",parsedResponse)
       setUserData(parsedResponse)
-     await AsyncStorage.setItem('userToken', parsedResponse.twoFAuthForm.userId);
-     await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
+      await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
+      if(parsedResponse){
+        console.log("userData",parsedResponse);
+        navigation.navigate('OtpVerification',{Data:parsedResponse});
+      }
   } catch (error) {
       console.error(error);
   }
 }
-
-const getuserID = async () => {
-  const userToken = await AsyncStorage.getItem('userToken');
-  const checkSum = await AsyncStorage.getItem('checkSum');
-
-console.log("userToken",userToken);
-console.log("checkSum",checkSum);
-
-};
-
-useEffect (() => {
-  getuserID()
-})
-
-
 
 //  VALIDATION SCHEMA
 const validationSchema = Yup.object({
@@ -133,8 +119,10 @@ return (
                   //  onClick={loginWithMobile}
                   //  disabled={!(isValid && dirty)}
                    onPress={() =>{
-                    navigation.navigate('OtpVerification',{Data:userData}),
+     
                     handleSubmit()
+4
+                    
                    }
                        
                      }

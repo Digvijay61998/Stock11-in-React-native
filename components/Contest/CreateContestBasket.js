@@ -5,11 +5,12 @@ import React, { useState, useEffect }  from 'react';
 const CreateContestBasket = ({ navigation}) => {
 
   const editTeams = dummyData.BasketData
-
   const [editTeam, setEditTeam] = useState([])
   const [points, setPoints] = useState([])
-  const [counter, setCounter] = useState(1)
-  // console.log("counter",counter);
+  const [counter, setCounter] = useState([])
+  const [ListCount, setListCount] = useState({})
+
+  console.log("counter",counter);
   // const increment = (item, index) =>{
   //   console.log("item==",item.id)
   //   if(counter.includes(item)==1){
@@ -18,9 +19,17 @@ const CreateContestBasket = ({ navigation}) => {
   // }
   // }
 
-  const increment = () =>{
-    setCounter(counter + 1)
+  const increment = (item) =>{
+    const name =item.id
+    if (item.id) {
+       setCounter([...counter,item.id])
+       if(counter.includes(item.id)){
+        console.log("length",counter.length)
+     }
+       }
+ 
   }
+
 
   const decrement = () =>{
     setCounter(counter - 1)
@@ -144,22 +153,25 @@ const CreateContestBasket = ({ navigation}) => {
               </View>
               <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row'}}>
                 <View style={{paddingRight:3}}>
-                <TouchableOpacity style={{ width:15,height:15,borderRadius:100,
-                  backgroundColor:"#d43737" ,elevation:1,justifyContent:"center",alignItems:"center"}}
-                  onPress={() =>increment (item, index)} >
-                <Text style={{fontSize:12,color:"white",bottom:2}}>+</Text>
-                </TouchableOpacity>
-                </View>
-                <View>
-            <Text style={[FONTS.textstyle, { fontSize: 15 }]}>{ counter }</Text>
-                </View>
-                <View style={{paddingLeft:3}}>
                 <TouchableOpacity style={{ width:14,height:15,borderRadius:100,paddingBottom:2,
                   backgroundColor:"#d43737",justifyContent:"center",alignItems:"center"}}
                   onPress={decrement}
                   >
                 <Text style={{fontSize:16,color:"white",bottom:5}}>-</Text>
                 </TouchableOpacity>
+                </View>
+                <View>
+            <Text style={[FONTS.textstyle, { fontSize: 15 }]}>
+            {counter.includes(item.id) ? counter.length : 0}
+              </Text>
+                </View>
+                <View style={{paddingLeft:3}}>
+                <TouchableOpacity style={{ width:15,height:15,borderRadius:100,
+                  backgroundColor:"#d43737" ,elevation:1,justifyContent:"center",alignItems:"center"}}
+                  onPress={() =>increment (item)} >
+                <Text style={{fontSize:12,color:"white",bottom:2}}>+</Text>
+                </TouchableOpacity>
+              
                 </View>
               
               </View>

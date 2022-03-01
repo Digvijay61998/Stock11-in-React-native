@@ -1,9 +1,11 @@
 import {apiDelete, apiGet, apiPost, apiPostImage, apiPut} from './API';
+import config from '../config';
 
 export default {
     
     "STOCK_11":{
-        BASE_PATH:"http://stock11-backend-staging-286433744.ap-south-1.elb.amazonaws.com/api/stock11",
+        // BASE_PATH:"http://stock11-backend-staging-286433744.ap-south-1.elb.amazonaws.com/api/stock11",
+        BASE_PATH:config.API_KEY,
         APIS:{
             // GET API
           

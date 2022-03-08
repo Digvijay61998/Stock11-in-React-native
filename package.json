@@ -10,7 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.15.15",
+    "@react-native-async-storage/async-storage": "^1.16.1",
     "@react-native-community/clipboard": "^1.5.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-community/viewpager": "^5.0.11",

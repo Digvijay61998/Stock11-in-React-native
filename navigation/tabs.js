@@ -8,9 +8,9 @@ import {
 } from "react-native";
 import { createBottomTabNavigator, getHeaderTitle } from "@react-navigation/bottom-tabs"
 
-import { Home, Setting } from "../screens"
+import { Home, Setting } from "../src/screens"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
-import LoginScreen from "../screens/LoginScreen";
+import LoginScreen from "../src/screens/LoginScreen";
 // import { getHeaderTitle } from '@react-navigation/elements';
 
 const Tab = createBottomTabNavigator()
@@ -39,10 +39,10 @@ const Tabs = () => {
             
         }}
         >
-         <Tab.Screen
+         {/* <Tab.Screen
          name="Login"
           component={LoginScreen}  
-          options={{title: 'Login Screen'}}/> 
+          options={{title: 'Login Screen'}}/>  */}
             <Tab.Screen
                 name="Home"
                 component={Home}

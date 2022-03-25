@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from "react";
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage,Image} from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from "../constants"
 import {
     CodeField,
@@ -9,6 +9,7 @@ import {
   } from 'react-native-confirmation-code-field';
 import { SafeAreaView } from "react-native-safe-area-context";
 import routes from '../utils/routes';
+import LinearGradient from 'react-native-linear-gradient'
 
 
 const CELL_COUNT = 6;
@@ -67,10 +68,27 @@ function OtpVerification(prop) {
 //   getuserID()
 // })
 return (
-<SafeAreaView style={styles.container}>
+<LinearGradient 
+    colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.container}
+  >
+      <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 194,
+           height: 194,
+          marginBottom:60
+          
+ }}
+  />
+    <View style={styles.loginBoxHeader}> 
+  <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:17}]}>ENTER OTP</Text>
+  </View>
   <View style={styles.LoginBox}>
-      <Text style={[FONTS.textstyle, {color:COLORS.ActiveButton ,fontSize:25}]}>OTP Verfication</Text>
-      <Text style={[FONTS.textstyle,{color:COLORS.FaintWhite}]}>We have send a verification code to your mobile number +91 XXX XXX XXXX</Text>
+      <Text style={{color:"black",width:"80%"}}>Please enter a 6 digit verification Code sent to your registered mobile.</Text>
       <CodeField
         ref={ref}
         {...props}
@@ -90,15 +108,16 @@ return (
           </Text>
         )}
       />
-      <Text style={{fontSize:SIZES.h3, color:"white",paddingTop:25}}>I didn't receive code.<Text style={{color:COLORS.ActiveButton}}>Resend Code</Text></Text>
-      
+      <View style={{justifyContent:"space-evenly",alignItems:"center",flexDirection:"row" ,marginTop:20}}>
       <TouchableOpacity
           style={{
-            width:300,
+            width:99,
             margin:15,
             borderRadius:50,
-            height:50,
+            height:37,
             backgroundColor:COLORS.ActiveButton,
+            alignItems:"center",
+            justifyContent:"center",
          }}
          onPress={() =>{
           //  console.log("value====================================",e.target.value);
@@ -113,12 +132,38 @@ return (
                         navigation.navigate('CompleteProfile')
                       }
 
-/> */}<View style={{paddingLeft:120,paddingTop:13}}>
-  <Text style={[FONTS.textstyle ,{color:"black"}]}>Submit</Text>
-</View>
+/> */}
+  <Text style={[FONTS.textstyle ,{color:"white"}]}>SUBMIT</Text>
+</TouchableOpacity>
+<TouchableOpacity
+          style={{
+            width:99,
+            margin:15,
+            borderRadius:50,
+            height:37,
+            backgroundColor:"#a5bcbb",
+            alignItems:"center",
+            justifyContent:"center",
+         }}
+         onPress={() =>{
+          //  console.log("value====================================",e.target.value);
+          handleSubmit()
+         }
+        }
+      >
+      {/* <Button style={{ borderRadius:20}}
+                    title="Submit"
+                    color="#0BFEBC"
+                    onPress={() =>
+                        navigation.navigate('CompleteProfile')
+                      }
+
+/> */}
+  <Text style={[FONTS.textstyle ,{color:"white"}]}>39 sec</Text>
 </TouchableOpacity>
 </View>
-    </SafeAreaView>
+</View>
+    </LinearGradient>
         
         
     );
@@ -130,31 +175,50 @@ const styles = StyleSheet.create({
       alignItems:"center",
       justifyContent:"center"},
 
+      loginBoxHeader:{
+        height:50,
+        width:200,
+        backgroundColor:"white",
+        borderTopLeftRadius:25,
+        borderTopRightRadius:25,
+        justifyContent:"center",
+        alignItems:"center",
+        elevation:10,
+        },
       LoginBox:{
-        height:290,
-        width:360,
-        backgroundColor:COLORS.HeaderBackground,
+        height:300,
+        width:291,
+        backgroundColor:"white",
         borderRadius:10,
         alignItems:"center",
         justifyContent:"center",
-        elevation:10
+        elevation:10,
+        border:'1px solid #E8E4E4',
+        boxShadow:"0px 20px 10px #00000014"
 
           },
 
     title: {textAlign: 'center', fontSize: 30},
-    codeFieldRoot: {marginTop: 20},
+    codeFieldRoot: {
+      marginTop: 20,
+      paddingHorizontal: 20,
+      justifyContent: 'center'
+    },
     cell: {
-      width: 55,
-      height: 60,
-      lineHeight: 38,
-      fontSize: 24,
+      marginHorizontal: 5,
+      width: 35,
+      height: 35,
+      lineHeight: 30,
+      fontSize: 20,
       borderWidth: 2,
-      borderColor: '#00000030',
+      borderColor: '#ededed',
       textAlign: 'center',
-      color:COLORS.ActiveButton
+      color:COLORS.lightBlack,
+      backgroundColor: "#ededed",
+      borderRadius:8
     },
     focusCell: {
-      borderColor: '#000',
+      borderColor: COLORS.lightBlack,
     },
   });
 export default OtpVerification;

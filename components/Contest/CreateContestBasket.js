@@ -5,40 +5,39 @@ import React, { useState, useEffect }  from 'react';
 const CreateContestBasket = ({ navigation}) => {
 
   const editTeams = dummyData.BasketData
-  const [editTeam, setEditTeam] = useState([])
+  const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
   const [points, setPoints] = useState([])
   const [counter, setCounter] = useState([])
-  const [ListCount, setListCount] = useState({})
 
-  console.log("counter",counter);
-  // const increment = (item, index) =>{
-  //   console.log("item==",item.id)
-  //   if(counter.includes(item)==1){
-  //     setCounter(counter + 1)
+  const increment = (item,index) =>{
+    console.log("item{",item);
+    console.log("ind",index)
+    
+   
+    const stock = editTeam[index]
+    console.log("stock",stock);
+    if(stock.count){h
+    stock.count = stock.count? stock.count + 1 : 1;
+    editTeam[index]=stock;
+  setEditTeam([...editTeam]);
+    }
+    }
   
-  // }
-  // }
 
-  const increment = (item) =>{
-    const name =item.id
-    if (item.id) {
-       setCounter([...counter,item.id])
-       if(counter.includes(item.id)){
-        console.log("length",counter.length)
-     }
-       }
- 
+  const decrement = (item,index) =>{
+    const stock = editTeam[index]
+    stock.count = stock.count? stock.count - 1 : 1;
+    editTeam[index]=stock;
+  setEditTeam([...editTeam]);
   }
 
 
-  const decrement = () =>{
-    setCounter(counter - 1)
-  }
-
-
-  useEffect(() => {
-    setEditTeam(editTeams)
-  })
+  // useEffect(() => {
+  //   setEditTeam(editTeams.map(i=>{
+  //     i["count"] = 0;
+  //     return i;
+  //   }))
+  // },[]);
 
   const selectpoint = (item, index) => {
     if (points.includes(item.id)) {
@@ -128,7 +127,7 @@ const CreateContestBasket = ({ navigation}) => {
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <TouchableOpacity style={points.includes(item.id) ? [styles.EarnList, { backgroundColor: COLORS.secondary }] : styles.EarnList}
-              onPress={() => selectpoint(item, index)}
+              onPress={() => selectpoint(item, index)} key={item.id}
             >
               <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
                { points.includes(item.id) ? <Image
@@ -155,20 +154,20 @@ const CreateContestBasket = ({ navigation}) => {
                 <View style={{paddingRight:3}}>
                 <TouchableOpacity style={{ width:14,height:15,borderRadius:100,paddingBottom:2,
                   backgroundColor:"#d43737",justifyContent:"center",alignItems:"center"}}
-                  onPress={decrement}
+                  onPress={() =>decrement (item,index)}
                   >
                 <Text style={{fontSize:16,color:"white",bottom:5}}>-</Text>
                 </TouchableOpacity>
                 </View>
                 <View>
             <Text style={[FONTS.textstyle, { fontSize: 15 }]}>
-            {counter.includes(item.id) ? counter.length : 0}
+            {item.count ? item.count : 0}
               </Text>
                 </View>
                 <View style={{paddingLeft:3}}>
                 <TouchableOpacity style={{ width:15,height:15,borderRadius:100,
                   backgroundColor:"#d43737" ,elevation:1,justifyContent:"center",alignItems:"center"}}
-                  onPress={() =>increment (item)} >
+                  onPress={() =>increment (item,index)} >
                 <Text style={{fontSize:12,color:"white",bottom:2}}>+</Text>
                 </TouchableOpacity>
               

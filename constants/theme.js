@@ -2,14 +2,20 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
-    primary: "#2F313E",     // background Color
-    secondary: "#1F1D2B",   // Dark purple
-    ActiveButton:"#0BFEBC",  //button color
-    FaintWhite:"#9599AF", //white color
+    primary: "#FFFF",     // background Color
+    secondary: "#0C2F81",   // Dark purple
+    white:"#FFFF", //white
+    FaintWhite:"#3b5eac", //white color
+    ActiveWhite:"#93c4ef",//light blue
+    lightBlack:"#9d9d9d",  //light black
+
+
+    ActiveButton:"#295597",  //button color
     black:"black",  // blackColor:"#"
     white:"white",  //white
     HeaderBackground:"#252837",  //headerBackground
-    LSFS:"#4D4D59"
+    LSFS:"#4D4D59",
+    backgroundColor:"linear-gradient(red, yellow)"
     
 };
 

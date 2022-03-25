@@ -11,6 +11,7 @@ import { createBottomTabNavigator, getHeaderTitle } from "@react-navigation/bott
 import { Home, Setting } from "../screens"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import LoginScreen from "../screens/LoginScreen";
+import FrontPage from "../screens/FrontPage";
 // import { getHeaderTitle } from '@react-navigation/elements';
 
 const Tab = createBottomTabNavigator()
@@ -40,9 +41,12 @@ const Tabs = () => {
         }}
         >
          <Tab.Screen
-         name="Login"
-          component={LoginScreen}  
-          options={{title: 'Login Screen'}}/> 
+         name="Home Screen"
+         options={{
+            headerShown: false}}
+          component={FrontPage}  
+        //   options={{title: 'Login Screen'}}
+          /> 
             <Tab.Screen
                 name="Home"
                 component={Home}

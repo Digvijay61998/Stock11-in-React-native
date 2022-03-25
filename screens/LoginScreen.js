@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
 import PhoneInput from "react-native-phone-number-input";
 
 import { COLORS, FONTS, icons, SIZES } from "../constants"
@@ -7,11 +7,7 @@ import { number } from 'yup/lib/locale';
 import routes from '../utils/routes';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
-
-
-
-
-
+import LinearGradient from 'react-native-linear-gradient'
 
 function LoginScreen({navigation}) { 
   const [value, setValue] = useState("");
@@ -76,7 +72,25 @@ return (
   
 
   
-        <View testID = 'TID8' style={styles.container}>
+  <LinearGradient
+  colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 1 }}
+  style={styles.container}
+>
+  <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 150,
+           height: 150,
+marginBottom:60
+          
+ }}
+  />
+  <View style={styles.loginBoxHeader}> 
+  <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>REGISTER</Text>
+  </View>
           <Formik
             initialValues ={{ mobile: ""}}          
             
@@ -86,29 +100,33 @@ return (
             {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
               return(
                 <View style={styles.LoginBox}>
-                <Text style={[FONTS.textstyle,{color:COLORS.ActiveButton ,fontSize:20}]}>Login</Text>
-                <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10}]}> Enter Your Mobile Number</Text>
+                <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10,}]}>CREATE ACCOUNT</Text>
+               <View 
+                  style={styles.input}center
+               >
                 <TextInput
-                  style={[FONTS.textstyle,styles.input]}
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
                   name="mobile"
-                  keyboardType = 'numeric'
+                  keyboardType='numeric'
                   value={values.mobile}
                   onChangeText={handleChange('mobile')}
-  
-                  placeholder="Enter Number"
-                  placeholderTextColor={COLORS.ActiveButton}
-                  paddingLeft={110}
+                  placeholder="ENTER MOBILE Number/Email"
+                  placeholderTextColor="white"
+                  // paddingLeft={10}
                   keyboardType="numeric"
                   autoComplete="cc-number"
                   maxLength={10}
-                  margin={10}
+                  // margin={10}
                   />
+                  </View>
                   <TouchableOpacity
                   style={{
-                      width:300,
+                      width:199,
                       margin:15,
                       borderRadius:50,
-                      height:50,
+                      height:37,
+                      alignItems:"center",
+                      opacity: 1,
                       backgroundColor:COLORS.ActiveButton,
                    }}
                    title="Request OTP"
@@ -119,10 +137,7 @@ return (
                   //  onClick={loginWithMobile}
                   //  disabled={!(isValid && dirty)}
                    onPress={() =>{
-     
                     handleSubmit()
-4
-                    
                    }
                        
                      }
@@ -136,8 +151,8 @@ return (
                           navigation.navigate('OtpVerification')
                         }
   
-  /> */}<View style={{paddingLeft:100,paddingTop:13}}>
-    <Text style={[FONTS.textstyle ,{color:"black"}]}>Request OTP</Text>
+  /> */}<View style={{paddingTop:5}}>
+    <Text style={[FONTS.textstyle ,{color:"white"}]}>REQUEST FOR OTP</Text>
   </View>
   
   </TouchableOpacity>
@@ -146,34 +161,47 @@ return (
             }}
            
 </Formik>
-        </View>
+</LinearGradient >
     );
 }
 
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor: "#1F1D2B",
         alignItems:"center",
-        justifyContent:"center"
+        justifyContent:"center",
+    },
+    loginBoxHeader:{
+    height:50,
+    width:200,
+    backgroundColor:"white",
+    borderTopLeftRadius:25,
+    borderTopRightRadius:25,
+    justifyContent:"center",
+    alignItems:"center",
+    elevation:10,
     },
     LoginBox:{
-        height:250,
-        width:360,
-        backgroundColor:COLORS.HeaderBackground,
+        height:300,
+        width:291,
+        backgroundColor:"white",
         borderRadius:10,
         alignItems:"center",
         justifyContent:"center",
-        elevation:10
-
+        elevation:10,
+        border:'1px solid #E8E4E4',
+        boxShadow:"0px 20px 10px #00000014"
           },
     input: {
         height: 50,
-        width:330,
+        width:250,
         borderRadius:50,
+        marginTop:25,
         color:COLORS.ActiveButton ,
-        backgroundColor:COLORS.secondary,
-        elevation:1
+        backgroundColor:"#bfdedc",
+        elevation:1,
+      alignItems:'center',
+      justifyContent:"center",
       },
     
 })

@@ -15,7 +15,18 @@ const settings = require("../assets/icons/settings.png");
 // const star = require("../assets/icons/star.png");
 // const transaction = require("../assets/icons/transaction.png");
 
+
+
+const backgroundImage =require("../assets/icons/backgroundImage.png")
+const Stock11Logo = require("../assets/icons/Stock11Logo.png")
+const FrontPageAroow =require("../assets/icons/FrontPageAroow.png")
+const FrontPageAroow1 =require("../assets/icons/FrontPageAroow1.png")
 export default {
+    backgroundImage,
+    Stock11Logo,
+    FrontPageAroow,
+    FrontPageAroow1,
+
     Ellipse,
     home,
     editIcon,

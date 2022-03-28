@@ -65,7 +65,7 @@ export const SIZES = {
     height
 };
 export const FONTS = {
-    textstyle: {fontFamily: 'lato',color: "white",fontSize:16,fontWeight: 'bold',},
+    textstyle: {fontFamily: 'lato',color: "black",fontSize:16,fontWeight: 'bold',},
     ItsLiveFont: {fontFamily: 'lato',color: "#25BC20",fontSize:16,fontWeight: 'bold',},
     button:{  width:179,height:37,borderRadius:40,backgroundColor:COLORS.ActiveButton ,elevation:1,alignItems: "center",justifyContent:"center"},
     

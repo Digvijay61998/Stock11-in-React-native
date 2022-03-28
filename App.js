@@ -99,10 +99,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView}  options={{ title:"TeamsView"}} />
             <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} options={{ title:"EditTeam"}}creenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  options={{ title:"CompletedContestDetails"}} />
-            <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket}  options={{ title:"CreateContestBasket",headerStyle:{
-              backgroundColor:'#252837' } ,headerTintColor: '#fff',headerTitleStyle: {fontWeight: 'bold',
-              }
-              }} />
+            <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  />
            
 

@@ -1,13 +1,32 @@
 import React from 'react'
-import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,FlatList} from 'react-native'
+import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,FlatList,ImageBackground,Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData} from "../../constants/index"
-import {Basket} from "../../Common"
+import {IdolContest} from "../../Common"
+import LinearGradient from 'react-native-linear-gradient'
 
 const MyBasket = ({ navigation }) => {
+  let url = [icons.card, icons.card1, icons.card3];
 
    const data = dummyData.MybasketDetails
     return (
+      <LinearGradient
+      colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 1 }}
+       style={styles.container}
+      >
+          <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 70,
+           height:70,
+          
+ }}
+  />
+          <View style={styles.basketContainer}>
         <SafeAreaView style={Header}>
+            <View style={styles.textHeader}><Text style={{fontSize:18,fontWeight:"bold",color:"black"}}>MY BASKET</Text><Text style={styles.addSign}>+</Text></View>
             <ScrollView styles={styles.scroller}>
             <FlatList
           data={data}
@@ -18,13 +37,49 @@ const MyBasket = ({ navigation }) => {
             //     navigation.navigate('CompletedContestDetails')
             //   }
             // >
-      <Basket data={item} />
-            // {/* </TouchableOpacity> */}
-          )}
-          keyExtractor={(item, index) => index}
-        />
-    </ScrollView>
-    <View style={{width: '100%', height:150,bottom:50 , alignItems: "center", justifyContent:"center"}}>
+            <>
+            <ImageBackground
+            resizeMode="cover"
+            source={url[index % url.length]}
+            style={styles.contestContainer}
+            >
+    <View style={[styles.IdolContainer,{width:280}]}>
+        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+            <View></View>
+        </View>
+        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
+            <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+                <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
+                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+           
+            </View>
+        <View style={{justifyContent:"center",alignItems:"center"}}>
+        <Image 
+            source={icons.IconUsers}
+            resizeMode="contain"
+            style={{
+                width:30,
+                height: 30,
+      }}
+            />
+            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
+        </View>
+           
+        </View>
+          <View style={{alignItems:"center",right:44,top:4}}>
+          <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
+          </View>
+          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
+            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
+            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>
+          </View>
+          </View>
+    </View>
+      </ImageBackground>
+      <View style={{width:'100%', alignItems: "center", justifyContent:"center",marginBottom:25}}>
        <TouchableOpacity style={FONTS.button}
            onPress={() =>
             navigation.navigate('CreateContestBasket')
@@ -34,7 +89,17 @@ const MyBasket = ({ navigation }) => {
        </TouchableOpacity>
 
     </View>
+   </>
+          //  </TouchableOpacity>
+           
+          )}
+          keyExtractor={(item, index) => index}
+        />
+    </ScrollView>
+  
     </SafeAreaView>
+    </View>
+    </LinearGradient>
     )
 }
 
@@ -50,7 +115,14 @@ const styles = StyleSheet.create({
         flex: 1,
       overflow:"hidden",
     },
-    
+    container:{
+      flex:1,
+      backgroundColor: "#1F1D2B",
+      alignItems:"center",
+      justifyContent:"space-evenly",
+      flexDirection:"column",
+
+  },
     TimeDate: {
         width: 350,
         height: 30,
@@ -59,4 +131,31 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         borderRadius: 5
     },
+    basketContainer:{
+      width:"95%" ,
+      justifyContent:"center",
+      alignItems:"center",
+      flexDirection:"column",
+      backgroundColor:"white",
+      top:100,
+      borderRadius:20
+    },
+    contestContainer:{
+      height: 151,
+      width: 289,
+      // backgroundColor: "#1F1D2B",
+      marginBottom:15,
+      borderRadius: 10,
+      padding: 5,
+      elevation:3,
+    },
+    textHeader:{
+      width:200 ,
+      height:70 ,
+      justifyContent:"space-between",
+      alignItems:"center",
+      flexDirection:"row",
+      marginLeft:70,
+    },
+
 })

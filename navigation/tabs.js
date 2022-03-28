@@ -109,6 +109,7 @@ const Tabs = () => {
                 name="Home"
                 component={Home}
                 options={{
+                    headerShown: false,
                     tabBarIcon: ({ focused }) => (
                         <View styles={{ alignment: 'center', justifyContent: 'center' }}>
                             <View

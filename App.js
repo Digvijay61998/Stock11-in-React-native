@@ -77,7 +77,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
             <Stack.Screen key={Date.now()} name="LoginScreen" component={LoginScreen} options={{headerShown: false}}/>  
 
-            <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification}   options={{headerShown: false}}/>
+            <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} options={{headerShown: false}}/>
 
 {/* <Stack.Screen key={Date.now()} name="Home" component={Home} options={{ title:"Home",headerStyle:{
               backgroundColor:'#252837'},             
@@ -88,19 +88,12 @@ const App = () => {
               }
               }} /> */}
 
-               <Stack.Screen key={Date.now()} name="Setting" component={Setting} options={{ title:"Settings",headerStyle:{
-              backgroundColor:'#252837'},             
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 20,
-                
-              }
-              }}/> 
-            <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile}  options={{ title:"CompleteProfile"}}screenOptions={{ headerShown: true }} />
+               <Stack.Screen key={Date.now()} name="Setting" component={Setting} options={{ title:"Settings"}}/> 
+            <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile}  options={{ title:"CompleteProfile"}} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="UpcomingEvents" component={UpcomingEvents}  options={{ title:"UpcomingEvents"}}screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{ title:"UpcomingContestDetails"}}screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents"}}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{ title:"LiveContestDetails"}}screenOptions={{ headerShown: true }} />
+            <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{ title:"EarnedPoints"}}screenOptions={{ headerShown: true }} />
             <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{ title:"CreateBasket"}} />
             <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView}  options={{ title:"TeamsView"}} />

@@ -4,14 +4,16 @@ import { COLORS, FONTS, icons, Header, CardBox} from "../constants/index"
 
 const LeadBoard = ({winning,leaderBoard,navigation}) => {
 
-  const [leadboardstack, setLeadboardstack]=useState(false);
+  const [leadboardstack, setLeadboardstack]=useState("WINNINGS");
 
   const WinningStick =()=>{
-      setLeadboardstack(false)
+      setLeadboardstack("WINNINGS")
   }
-
+  const Stockstick =()=>{
+    setLeadboardstack("STOCKS")
+}
   const LeaderboardStick =()=>{
-      setLeadboardstack(true)
+      setLeadboardstack("LEADERBOARD")
   }
   const [liveContestranking, setLiveContestRanking]= useState([])
   const [leaderBoardranking, setLeaderBoardRanking]= useState([])
@@ -33,49 +35,32 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
   });
   return (
       <>  
-  <View style={[CardBox, { backgroundColor: COLORS.primary ,marginTop:15}]}>
-    <View style={styles.IdolContainer}>
-      <View style={{alignItems:"flex-end"}}>
-       </View>
-      <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
-        <Text style={FONTS.textstyle}>Idol Contest</Text>
-        <Text style={FONTS.textstyle}>Entry</Text>
-      </View>
-      <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
-        <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-          <Text style={{ color: "white", fontSize: 10, }}>prize pool</Text>
-          <Text style={FONTS.textstyle}>Rs. 10,000</Text>
-        </View>
-        <Text style={FONTS.ItsLiveFont}>Its live...!!!</Text>
-        <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. 1,000</Text>
-      </View>
-      <View style={{alignItems:"center",top:15}}>
-      <Text style={[FONTS.textstyle,{fontSize:11}]}> Join with<Text style={{ color: COLORS.ActiveButton }}> T1 Team</Text> </Text>
-      </View>
-    </View>
-    <View>
-         <Text style={[FONTS.textstyle,{fontSize:9 , left:10 , top:10}]}>Total Joined:<Text style={[FONTS.textstyle,{fontSize:11 , left:10}]}> 5 Teams</Text></Text> 
-      </View>
-  </View>
-  <View style={styles.WinningsContainer}>
-    <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center", backgroundColor: COLORS.HeaderBackground, height: 50 }}>
-   <TouchableOpacity
-   style={{backgroundColor: leadboardstack === true ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
+ 
+    <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center" ,width:355 ,position:"relative" ,top:10}}>
+   <TouchableOpacity 
+   style={ leadboardstack === "WINNINGS" ? styles.headerBackgroundActive : styles.headerBackgroundInactive}
    onPress={() => WinningStick()}
    >
-         <Text style={[FONTS.textstyle,{fontSize:18, color: leadboardstack === false ? COLORS.primary:COLORS.white,}]}>Winnings</Text>
+         <Text style={leadboardstack === "WINNINGS" ? styles.headerTextstyleACtive : styles.headerTextstyle} id="WINNINGS">WINNINGS PRIZE</Text>
     </TouchableOpacity>
     <TouchableOpacity
-    style={{backgroundColor: leadboardstack === false ? COLORS.primary:COLORS.ActiveButton, flex:1 ,height:50,alignItems:"center" , justifyContent:"center"}}
+   style={ leadboardstack === "STOCKS" ? styles.StockheaderActive : styles.StockheaderInactive}
+   onPress={() => Stockstick()}
+   >
+         <Text style={leadboardstack === "STOCKS" ? styles.headerTextStockACtive : styles.headerTextStockInactive} id="STOCKS">STOCKS</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+   style={ leadboardstack === "LEADERBOARD" ? styles.headerBackgroundActive : styles.headerBackgroundInactive}
    onPress={() => LeaderboardStick()}
   >
-    <Text style={[FONTS.textstyle,{fontSize:18, color: leadboardstack === false ? COLORS.white:COLORS.primary,}]}>Leaderboard</Text>
+    <Text style={leadboardstack === "LEADERBOARD" ? styles.headerTextstyleACtive : styles.headerTextstyle} >LEADERBOARD</Text>
     </TouchableOpacity>
     </View>
-    { leadboardstack == false ?<>
+  <View style={styles.WinningsContainer}>
+    { leadboardstack === "WINNINGS" ? <>
      <View style={styles.WinningTitleList}>
-      <Text style={FONTS.textstyle}>Ranks</Text>
-      <Text style={FONTS.textstyle}>Winnings</Text>
+      <Text style={[styles.headerTextstyle,{right:5}]}>RANK</Text>
+      <Text style={[styles.headerTextstyle,{right:-10}]}>WINNINGS PRIZE</Text>
     </View>
    <ScrollView>
    <FlatList 
@@ -83,22 +68,32 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
   <View style={styles.WinningList}>
-      <Text style={FONTS.textstyle}>#{item.rank}</Text>
-      <Text style={FONTS.textstyle}>.............................</Text>
-      <Text style={FONTS.textstyle}>Rs {item.priceWin}</Text>
+      <Text style={styles.textstyle}>{item.rank}</Text>
+      <Text style={styles.textstyle}>Rs {item.priceWin}/-</Text>
     </View>
     
       )}
       keyExtractor={(item, index) => index}
      />
     </ScrollView>
-    </>
-   :<>
-   <View style={styles.WinningTitleList}>
-    <Text style={[FONTS.textstyle,{marginLeft:10}]}>All Teams (5)</Text>
-    <Text style={[FONTS.textstyle,{marginLeft:15}]}>Points</Text>
-    <Text style={FONTS.textstyle}>Rank</Text>
-  </View>
+    </>:<></>}
+    { leadboardstack === "STOCKS" ? <>
+   <ScrollView>
+   <FlatList 
+            data = {liveContestranking}
+            keyExtractor={(item) => item.id}
+            renderItem={({item ,index})=>(
+  <View style={{ width:300 ,alignItems:"center",justifyContent:"center",marginTop:15}}>
+      <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:300,height:35,borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>HUL</Text>
+    </View>
+    
+      )}
+      keyExtractor={(item, index) => index}
+     />
+    </ScrollView>
+    </>:<></>}
+   
+    { leadboardstack === "LEADERBOARD" ? <>
   <ScrollView>
   <FlatList 
             data = {leaderBoardranking}
@@ -108,18 +103,18 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
     onPress={() => navigation.navigate("EarnedPoints")}
     >
   <View style={styles.LeaderboardList}>
-      <View style={{justifyContent:"center",alignItems: "center",flexDirection: "row"}}><View style={{height:28, width:28,backgroundColor:COLORS.FaintWhite,marginRight:10,borderRadius:50}}></View><Text style={FONTS.textstyle}>Team{item.team}</Text></View>
-      <Text style={FONTS.textstyle}>{item.points}</Text>
-      <Text style={[FONTS.textstyle,{marginRight:10}]}>{item.rank}</Text>
+      <View style={{justifyContent:"center",alignItems: "center",flexDirection: "row"}}>
+        <Text style={{height:28, width:28}}>{item.rank}</Text>
+        </View>
+        <Text style={styles.textstyle}>Team{item.team}</Text>
+      <Text style={[styles.textstyle,{marginRight:10}]}>{item.rank}</Text>
     </View>
     </TouchableOpacity>
        )}
        keyExtractor={(item, index) => index}
       />
     </ScrollView>
-  </>
-  
-  }
+  </>:<></>}
     </View>
     </>
 
@@ -143,41 +138,149 @@ const styles = StyleSheet.create({
         height: 140,
       },
       textstyle: {
-        fontFamily: 'Poppins',
-        color: "white",
+        color: "black",
         fontSize: 16,
-        fontWeight: 'bold',
       },
-      WinningsContainer: {
-        backgroundColor: COLORS.primary,
+      BoxContainer: {
+        backgroundColor:"#fcf3ff",
         flex: 1,
         borderRadius: 10,
         margin:15,
         width: "90%",
         overflow: "hidden",
+        justifyContent:"center",
+        alignItems:"center",
+      },
+      WinningsContainer: {
+        backgroundColor:"#fcf3ff",
+        flex: 1,
+        top:-10,
+        borderRadius: 20,
+        marginBottom:15,
+        width: "90%",
+        overflow: "hidden",
+        justifyContent:"center",
+        alignItems:"center",
       },
       WinningTitleList: {
-        justifyContent: "space-between",
+        justifyContent:"space-between",
         flexDirection: "row",
-        padding: 10,
-        borderBottomWidth: 2,
-        borderBottomColor: "#575966",
-        marginLeft: 5,
-        marginRight: 5
+        backgroundColor:"#bfdedc",
+        width:300,
+        marginTop:25,
+        marginBottom:20,
+        borderRadius:50,
+        paddingTop:10,
+        paddingBottom:10,
+        paddingLeft:20,
+        paddingRight:20,
+        color:"white",
+        // borderBottomWidth: 2,
       },
       WinningList: {
         justifyContent: "space-between",
+        paddingBottom:10,
         flexDirection: "row",
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
+        width:270,
+        padding: 15,
+        borderColor: "#e2e2e2",
+        borderBottomWidth: 1,
+
       },
       LeaderboardList: {
         justifyContent: "space-between",
+        alignItems:"center",
         flexDirection: "row",
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: "#525460",}
+        top:20,
+        marginTop:15,
+        width:300,
+        paddingLeft:20,
+        paddingRight:20,
+        height:35,
+        borderRadius:20,
+        backgroundColor:"#e7f0f2"
+        // padding: 10,
+        // marginLeft: 10,
+        // marginRight: 10,
+        // borderBottomWidth: 1,
+        // borderBottomColor: "#525460",
+      },
+      headerTextstyle:{
+        color:"#FFFF",
+        fontWeight:"bold",
+        fontSize:14,
+        width:140,
+        right:10,
+      },
+      headerTextStockInactive:{
+        color:"#FFFF",
+        fontWeight:"bold",
+        fontSize:14,
+      },
+      headerTextstyleACtive:{
+        fontSize:14, 
+        fontWeight:"bold",
+        color:COLORS.secondary,
+        width:140,
+        right:10,
+        top:-10,
+      },
+      headerTextStockACtive:{
+        fontSize:14, 
+        fontWeight:"bold",
+        color:COLORS.secondary,
+        width:140,
+        right:-44,
+        top:-10,
+      },
+      headerTextstyleInactive:{
+        color:"#FFFF",
+        fontWeight:"bold",
+        fontSize:16
+      },
+      headerBackgroundActive:{
+        backgroundColor:"#f8edfb",
+        borderRadius:15,
+         flex:1 ,
+         paddingLeft:50,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
+         width:120,
+         height:70,
+         alignItems:"center" , 
+         justifyContent:"center"
+      },
+      headerBackgroundInactive:{
+        backgroundColor: "#2e7588",
+        flex:1 ,
+        width:50,
+        paddingLeft:50,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
+        height:50,
+        alignItems:"center" , 
+        justifyContent:"center"
+      },
+      StockheaderActive:{
+        backgroundColor:"#f8edfb",
+        flex:1 ,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
+        height:70,
+        width:20,
+        alignItems:"center" , 
+        justifyContent:"center"
+      },
+      StockheaderInactive:{
+        backgroundColor: "#2e7588",
+        flex:1 ,
+        width:50,
+        height:50,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
+        alignItems:"center" , 
+        justifyContent:"center"
+      }
+
+
 });

@@ -82,8 +82,8 @@ return (
        source={icons.Stock11Logo}
        resizeMode="contain"
        style={{
-           width: 150,
-           height: 150,
+           width: 194,
+           height: 194,
 marginBottom:60
           
  }}

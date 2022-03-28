@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react-native';
+import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Image} from 'react-native';
 
 import Contest from "../components/Contest/Contest.js"
 import MyBasket from "../components/MyBasket/MyBasket.js"
@@ -9,10 +9,20 @@ import ViewContest from "../components/Contest/ViewContest.js"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Confirmation from '../components/Contest/Confirmation.js';
+import LinearGradient from 'react-native-linear-gradient'
 
 
 const Tab = createMaterialTopTabNavigator();
 const Home = ({ route,navigation }) => {
+    const [homeMenu ,setHomeMenu]=useState("JOINCONTEST")
+
+function handleJoinContest (){
+    setHomeMenu("JOINCONTEST")
+}
+function handleMyContest (){
+    setHomeMenu("MYCONTEST")
+}
+
 const navigations = navigation
     return (
         <>
@@ -23,142 +33,51 @@ const navigations = navigation
                 <Confirmation navigation={navigations}/>
         }
         </View>
-        <View style={styles.container}>
-            <View style={Header}>
+          <LinearGradient
+        colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={styles.container}
+        > 
+        <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 70,
+           height: 70,
+           top:13
+ }}
+  />
+            <View style={[Header,{top:50}]}>
                 <View style={{
-                      position: "relative",
-                      justifyContent:"space-around",
-                      flexDirection: "row",
+                      justifyContent:"center",
+                      alignItems:"center",
+                      flexDirection:"column",
                      flex: 1,
-                     
                 }}>
-                 <Tab.Navigator
-                 
-         tabBarOptions={{
-            style: {
-                position: "relative",
-                // botton: 100,
-                elevetion: 0,
-                backgroundColor: COLORS.HeaderBackground,
-                borderTopRightRadius: 15,
-                borderTopLeftRadius: 15,
-                height: 50,
+        <View style={styles.header}>
+       <TouchableOpacity
+       style={homeMenu === "JOINCONTEST" ? [styles.headerMenu]:[styles.headerMenuInActive]} id="JOINCONTEST"
+       onPress={() => handleJoinContest()}
+      >
+          <Text style={{fontWeight:"bold",fontSize:16 ,color:homeMenu === "JOINCONTEST" ?  COLORS.secondary :"white"}}>JOIN CONTEST</Text>
+       </TouchableOpacity>
+       <TouchableOpacity
+       style={homeMenu === "MYCONTEST" ? [styles.headerMenu]:[styles.headerMenuInActive]} id="MYCONTEST"
+       onPress={() => handleMyContest()}
+       >
+          <Text style={{fontWeight:"bold",fontSize:16 ,color:homeMenu === "MYCONTEST" ? COLORS.secondary :"white" }}>MY CONTEST</Text>
 
-            },
-            showIcon: true, showLabel: false, indicatorStyle: {
-                opacity: 0
-            }
-            
-        }}
-
-        initialRouteName={'Contest'}
-      
-      >  
-        <Tab.Screen
-        
-          name="Contest"
-          navigation={navigation}
-          component={Contest}
-          color="#2F313E"
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-                <View styles={{ alignment: 'center', justifyContent: 'center' }}>
-                <View
-                    style={{
-                        // flex: 1,
-                        borderTopRightRadius: 15,
-                        borderTopLeftRadius: 15,
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.secondary
-                    }}
-                >
-                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>Contest</Text>
-                </View>
-                </View>
-            )
-        }}
-      
-        />
-         <Tab.Screen
-          name="MyContest"
-          component={MyContest}
-          screenOptions={{ headerShown: true }}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-                <View styles={{ alignment: 'center', justifyContent: 'center' }}>
-                <View
-                    style={{
-                        // flex: 1,
-                        borderTopRightRadius: 15,
-                        borderTopLeftRadius: 15,
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        color:"black",
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.secondary
-                    }}
-                >
-                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>MyContest</Text>
-                </View>
-                </View>
-            )
-        }}
-        />
-        <Tab.Screen
-          name="MyBasket"
-          component={MyBasket}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({ focused }) => (
-                <View styles={{ alignment: 'center', justifyContent: 'center' }}>
-                <View
-                    style={{
-                        // flex: 1,
-                        borderTopRightRadius: 15,
-                        borderTopLeftRadius: 15,
-                        height: 70,
-                        width:125,
-                        right:50,
-                        bottom:10,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                            ActiveButton : COLORS.secondary
-                    }}
-                >
-                    <Text style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>MyBasket</Text>
-                </View>
-                </View>
-            )
-        }}
-        />  
-      </Tab.Navigator> 
+       </TouchableOpacity>
+       </View>
+       <View style={{width:360,height:550,backgroundColor:"white" ,marginBottom:40,borderRadius:20}}>
+       {homeMenu === "JOINCONTEST" ? <Contest/> :<MyContest/>}
+      </View>
                  </View>
-                   
-               
-                
-       
+
             </View>
 
-        </View>
+        </LinearGradient>
         </>
     )
 }
@@ -168,7 +87,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "#1F1D2B",
+      
         elevation: 10,
         
 
@@ -217,39 +136,39 @@ const styles = StyleSheet.create({
         fontSize:16,
         fontWeight: 'bold',
     },
-
-    // My Home menue
-    Mycontestmenu:{
-        position: "relative",
-        justifyContent:"space-around",
-        flexDirection: "row",
-        width: 380,
-        height: 60,
-        backgroundColor: COLORS.HeaderBackground,
-    },
-    ActiveMycontest:{
-        flex: 1,
-       width: 120,
-       borderTopRightRadius: 15,
-       borderTopLeftRadius: 15,
-        backgroundColor: COLORS.HeaderBackground, 
-        margin:2,
-    },
-    InactiveMycontest:{
-        flex: 1,
-       width: 120,
-       borderTopRightRadius: 15,
-       borderTopLeftRadius: 15,
-        backgroundColor: COLORS.HeaderBackground, 
-        margin:2,
-    },
     MycontestText:{ 
         bottom:10,
     fontFamily: 'Poppins',
     fontSize:15,
     fontWeight: 'bold',
+},
+header:{
+    width:330,
+    height:70,
+    justifyContent:"space-between",
+    alignItems:"center",
+    flexDirection:"row",
+},
+headerMenu:{
+    width:165,
+    backgroundColor:"#ffff",
+    borderTopLeftRadius:20,
+    borderTopRightRadius:20,
+    height:50,
+    marginTop:30,
+    alignItems:"center",
+    justifyContent:"center",
+},
+headerMenuInActive:{
+    width:165,
+    backgroundColor:"#317e93",
+    borderTopLeftRadius:20,
+    borderTopRightRadius:20,
+    height:40,
+    marginTop:40,
+    alignItems:"center",
+    justifyContent:"center",
 }
-
 })
 
 export default Home;

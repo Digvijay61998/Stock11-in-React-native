@@ -37,9 +37,9 @@ const MyContest = ({ navigation }) => {
       >  
         <MyContestStack.Screen
         
-          name="UpcomingEvents"
+          name="LiveEvents"
           navigation={navigation}
-          component={UpcomingEvents}
+          component={LiveEvents}
           color="#2F313E"
           options={{
             headerShown: false,
@@ -48,19 +48,18 @@ const MyContest = ({ navigation }) => {
                 <View
                     style={{
                       borderRadius:50,
-                        height: 60,
-                        width:110,
-                        right:45,
-                        bottom:14,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                            white : COLORS.HeaderBackground
+                      height: 40,
+                      width:110,
+                      right:45,
+                      bottom:10,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: focused ? "#4caea7" : "#c4c4c4"
                     }}
                 >
                     <Text style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>Upcoming</Text>
+                                        white :"#f4f4f4",}]
+                    }>LIVE</Text>
                 </View>
                 </View>
             )
@@ -68,8 +67,8 @@ const MyContest = ({ navigation }) => {
       
         />
          <MyContestStack.Screen
-          name="LiveEvents"
-          component={LiveEvents}
+          name="UpcomingEvents"
+          component={UpcomingEvents}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (
@@ -78,19 +77,18 @@ const MyContest = ({ navigation }) => {
                     style={{
                         // flex: 1,
                         borderRadius:50,
-                        height: 60,
+                        height: 40,
                         width:110,
                         right:45,
-                        bottom:14,
+                        bottom:10,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                        white : COLORS.HeaderBackground
+                        backgroundColor: focused ? "#4caea7" : "#c4c4c4"
                     }}
                 >
                     <Text style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>Live</Text>
+                                        white :"#f4f4f4",}]
+                    }>UPCOMING</Text>
                 </View>
                 </View>
             )
@@ -106,19 +104,18 @@ const MyContest = ({ navigation }) => {
                 <View
                     style={{
                         borderRadius:50,
-                        height: 60,
+                        height: 40,
                         width:110,
                         right:45,
-                        bottom:14,
+                        bottom:10,
                         alignItems: 'center',
                         justifyContent: 'center',
-                        backgroundColor: focused ? COLORS.
-                        white : COLORS.HeaderBackground
+                        backgroundColor: focused ? "#4caea7" : "#c4c4c4"
                     }}
                 >
                     <Text  style={[styles.MycontestText,{ color: focused ? COLORS.
-                                        primary : COLORS.FaintWhite,}]
-                    }>Completed</Text>
+                                        white :"#f4f4f4",}]
+                    }>COMPLETED</Text>
                 </View>
                 </View>
             )

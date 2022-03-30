@@ -24,7 +24,7 @@ export const  Header ={
     justifyContent: "center",
     alignItems: "center",
     overflow: 'hidden',
-    width: 370,
+    width:width-20,
     height: 630,
     borderTopRightRadius:20,
     borderTopLeftRadius: 20,
@@ -62,12 +62,12 @@ export const SIZES = {
 
     // app dimensions
     width,
-    height
+    height,
 };
 export const FONTS = {
     textstyle: {fontFamily: 'lato',color: "black",fontSize:16,fontWeight: 'bold',},
     ItsLiveFont: {fontFamily: 'lato',color: "#25BC20",fontSize:16,fontWeight: 'bold',},
-    button:{  width:179,height:37,borderRadius:40,backgroundColor:COLORS.ActiveButton ,elevation:1,alignItems: "center",justifyContent:"center"},
+    button:{  width:150,height:35,borderRadius:40,backgroundColor:"#295597" ,elevation:1,alignItems: "center",justifyContent:"center"},
     
     
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },

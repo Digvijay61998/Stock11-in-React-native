@@ -70,7 +70,7 @@ const navigations = navigation
 
        </TouchableOpacity>
        </View>
-       <View style={{width:360,height:550,backgroundColor:"white" ,marginBottom:40,borderRadius:20}}>
+       <View style={{height:550,backgroundColor:"white" ,marginBottom:40,borderRadius:20}}>
        {homeMenu === "JOINCONTEST" ? <Contest/> :<MyContest/>}
       </View>
                  </View>

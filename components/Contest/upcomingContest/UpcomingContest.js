@@ -3,7 +3,7 @@ import { COLORS, FONTS, icons ,Header ,CardBox,dummyData} from "../../../constan
 import React,{useState,useEffect} from 'react'
 import {IdolContest}from "../../../Common/index"
 
-const upcomingContest = ({navigation}) => {
+const UpcomingContest = ({navigation}) => {
 
     let url = [icons.card, icons.card1, icons.card3];
   const [UpcomingEvents,setUpcomingEvents]=useState()
@@ -45,7 +45,7 @@ const upcomingContest = ({navigation}) => {
   )
 }
 
-export default upcomingContest
+export default UpcomingContest
 
 const styles = StyleSheet.create({
     scroller: {

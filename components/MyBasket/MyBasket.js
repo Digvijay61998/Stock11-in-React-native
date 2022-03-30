@@ -26,7 +26,7 @@ const MyBasket = ({ navigation }) => {
   />
           <View style={styles.basketContainer}>
         <SafeAreaView style={Header}>
-            <View style={styles.textHeader}><Text style={{fontSize:18,fontWeight:"bold",color:"black"}}>MY BASKET</Text><Text style={styles.addSign}>+</Text></View>
+            <View style={styles.textHeader}><Text style={{fontSize:18,fontWeight:"bold",color:"black"}}>MY BASKET</Text><Image source={icons.addButton}/></View>
             <ScrollView styles={styles.scroller}>
             <FlatList
           data={data}
@@ -79,15 +79,21 @@ const MyBasket = ({ navigation }) => {
           </View>
     </View>
       </ImageBackground>
-      <View style={{width:'100%', alignItems: "center", justifyContent:"center",marginBottom:25}}>
+      <View style={{width:280, alignItems: "center", justifyContent:"space-between",marginBottom:25 ,flexDirection:"row"}}>
+<Text>icon</Text>
        <TouchableOpacity style={FONTS.button}
            onPress={() =>
             navigation.navigate('CreateContestBasket')
           }
        >
-        <Text style={[FONTS.textstyle ,{color:"black"}]}>Create Basket</Text>
+        <Text style={[FONTS.textstyle ,{color:"white"}]}>EDIT</Text>
        </TouchableOpacity>
-
+       <TouchableOpacity 
+          //  onPress={() =>
+          // }
+       >
+        <Text>EDIT</Text>
+       </TouchableOpacity>
     </View>
    </>
           //  </TouchableOpacity>

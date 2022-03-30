@@ -17,21 +17,21 @@ const FrontPage = ({navigation}) => {
        source={icons.Stock11Logo}
        resizeMode="contain"
        style={{
-           width: 194,
-           height: 194,
-           marginTop:-50
+           width: 150,
+           height: 150,
+           marginTop:-40
  }}
   />
-  <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center",marginBottom:70}}>
-  <Text style={styles.headingTitle}>Made </Text><Text style={styles.headingTitle}>FOR BULLS,</Text><Text style={styles.headingTitle}>BIG OR SMALL!</Text>
+  <View style={{flexDirection:"column",justifyContent:"center",alignItems:"center",marginBottom:20}}>
+  <Text style={styles.headingTitle}>MADE </Text><Text style={styles.headingTitle}>FOR BULLS,</Text><Text style={[styles.headingTitle,{fontSize:18}]}>BIG OR SMALL!</Text>
   </View>
   <View style={styles.video}>
   </View>
   <View style={{width:"50%",marginTop:20,justifyContent:"space-evenly",alignItems:"center",flexDirection:"row"}}>
-  <TouchableOpacity style={{width:20,height:20,borderRadius:50,backgroundColor:COLORS.ActiveWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:20,height:20,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:20,height:20,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:20,height:20,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
+  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.ActiveWhite}}></TouchableOpacity>
+  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
+  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
+  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
 
   </View>
   <View style={{justifyContent:"space-around",alignItems:"center",flexDirection:"row",marginTop:40}}>
@@ -118,12 +118,13 @@ const styles = StyleSheet.create({
     headingTitle:{
         color:"white" ,
         letterSpacing:1,
+        fontSize:28,
+        fontWeight:"bold"
     },
     video:{
-        width:"85%",
+        width:SIZES.width-50,
         height:239,
         borderRadius:10,
-        marginLeft:15,
         zIndex:2,
         alignContent:"center",
         justifyContent:"center",

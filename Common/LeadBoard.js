@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,FlatList} from 'react-native';
 import React, { useState ,useEffect} from 'react';
-import { COLORS, FONTS, icons, Header, CardBox} from "../constants/index"
+import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
 const LeadBoard = ({winning,leaderBoard,navigation}) => {
 
@@ -35,8 +35,7 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
   });
   return (
       <>  
- 
-    <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center" ,width:355 ,position:"relative" ,top:10}}>
+    <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center" ,width:SIZES.width-40 ,position:"relative" ,top:10}}>
    <TouchableOpacity 
    style={ leadboardstack === "WINNINGS" ? styles.headerBackgroundActive : styles.headerBackgroundInactive}
    onPress={() => WinningStick()}
@@ -83,7 +82,7 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
             data = {liveContestranking}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
-  <View style={{ width:300 ,alignItems:"center",justifyContent:"center",marginTop:15}}>
+  <View style={{ width:SIZES.width-80 ,alignItems:"center",justifyContent:"center",marginTop:15}}>
       <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:300,height:35,borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>HUL</Text>
     </View>
     
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
         top:-10,
         borderRadius: 20,
         marginBottom:15,
-        width: "90%",
+        width:SIZES.width-40,
         overflow: "hidden",
         justifyContent:"center",
         alignItems:"center",

@@ -27,7 +27,8 @@ const card3 =require("../assets/icons/card3.png")
 const  IconUsers =require("../assets/icons/IconUsers.png")
 const  bottomBar =require("../assets/icons/bottomBar.png")
 const  Wallet =require("../assets/icons/Wallet.png")
-
+const addButton = require("../assets/icons/addButton.png")
+const basket = require("../assets/icons/basket.png")
 export default {
     backgroundImage,
     Stock11Logo,
@@ -39,6 +40,10 @@ export default {
     IconUsers,
     bottomBar,
     Wallet,
+    addButton,
+    basket,
+
+
 
     Ellipse,
     home,

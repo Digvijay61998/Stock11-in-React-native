@@ -1,5 +1,5 @@
 import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList,ImageBackground} from 'react-native'
-import { COLORS, FONTS, icons, Header, images, CardBox, dummyData} from "../../constants"
+import { COLORS, FONTS, icons, Header, images, CardBox, dummyData,SIZES} from "../../constants"
 import React, { useState, useEffect }  from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -157,15 +157,15 @@ const CreateContestBasket = ({ navigation}) => {
               </View>
               <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row'}}>
                 <View style={{paddingRight:3}}>
-                <TouchableOpacity style={{ width:14,height:15,top:2,
+                <TouchableOpacity style={{ width:20,height:20,
                      justifyContent:"center",alignItems:"center"}}
                   onPress={() =>decrement (item,index)}
                   >
-                <Text style={{fontSize:14,fontWeight:"bold" ,color:"black",bottom:5}}>-</Text>
+                <Text style={{fontSize:14,fontWeight:"bold",color:"black"}}>-</Text>
                 </TouchableOpacity>
                 </View>
                 <View>
-            <Text style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1}]}>
+            <Text style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1,paddingLeft:10,paddingRight:10}]}>
             {item.count ? item.count : 0}
               </Text>
                 </View>
@@ -184,14 +184,14 @@ const CreateContestBasket = ({ navigation}) => {
           keyExtractor={(item, index) => index}
         />
       </ScrollView>
-      <TouchableOpacity style={[FONTS.button , {width:300 ,marginTop:60 ,bottom:25}]}
+      <TouchableOpacity style={[FONTS.button , {width:SIZES.width-200 ,marginTop:60 ,bottom:25}]}
            onPress={() =>
             navigation.navigate('Team Preview', {
               paramKey: counter,
             })
           }
        >
-        <Text style={[FONTS.textstyle ,{color:"black"}]}>Contiue</Text>
+        <Text style={[FONTS.textstyle ,{color:"white"}]}>Contiue</Text>
        </TouchableOpacity>
     </View>
 

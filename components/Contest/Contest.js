@@ -4,7 +4,7 @@ import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData} from "../../constants
 import {IdolContest} from "../../Common"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import LiveContest from './LiveContest/LiveContest'
-import upcomingContest from './upcomingContest/upcomingContest'
+import UpcomingContest from './upcomingContest/UpcomingContest'
 import FollowingContest from './FollowingContest/FollowingContest'
 const ContestStack = createMaterialTopTabNavigator();
 
@@ -73,8 +73,8 @@ const Contest = ({navigation}) => {
       
         />
          <ContestStack.Screen
-          name="upcomingContest"
-          component={upcomingContest}
+          name="UpcomingContest"
+          component={UpcomingContest}
           options={{
             headerShown: false,
             tabBarIcon: ({ focused }) => (

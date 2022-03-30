@@ -69,9 +69,6 @@ const validationSchema = Yup.object({
 
     
 return (
-  
-
-  
   <LinearGradient
   colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
   start={{ x: 0, y: 0 }}
@@ -82,9 +79,9 @@ return (
        source={icons.Stock11Logo}
        resizeMode="contain"
        style={{
-           width: 194,
-           height: 194,
-marginBottom:60
+           width: 150,
+           height: 150,
+           marginTop:SIZES.width-500
           
  }}
   />
@@ -111,7 +108,7 @@ marginBottom:60
                   value={values.mobile}
                   onChangeText={handleChange('mobile')}
                   placeholder="ENTER MOBILE Number/Email"
-                  placeholderTextColor="white"
+                  placeholderTextColor="#7e9291"
                   // paddingLeft={10}
                   keyboardType="numeric"
                   autoComplete="cc-number"
@@ -180,6 +177,7 @@ const styles = StyleSheet.create({
     justifyContent:"center",
     alignItems:"center",
     elevation:10,
+    marginTop:100
     },
     LoginBox:{
         height:300,

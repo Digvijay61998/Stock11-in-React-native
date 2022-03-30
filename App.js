@@ -24,6 +24,7 @@ import ChangePassword from './components/settingFile/ChangePassword';
 import HelpDesk from './components/settingFile/HelpDesk';
 import HowToPlay from './components/settingFile/HowToPlay';
 import Notification from './components/settingFile/Notification';
+
 import Profile from './components/settingFile/Profile';
 import PromoCode from './components/settingFile/PromoCode';
 import ReferFriend from './components/settingFile/ReferFriend';
@@ -37,6 +38,8 @@ import SelectBasket from './components/Contest/SelectBasket';
 import CurrentBalance from './components/Contest/CurrentBalance';
 import { Home } from './screens';
 import LoginScreen from './screens/LoginScreen';
+import MyProfile from './components/settingFile/MyProfile';
+import EditProfile from './components/settingFile/EditProfile';
 
 const Stack = createStackNavigator();
 
@@ -63,9 +66,9 @@ const App = () => {
     <NavigationContainer>
   
         <Stack.Navigator
-        // screenOptions={{
-        //   headerShown: true,
-        // }}
+        screenOptions={{
+          headerShown: false,
+        }}
         initialRouteName={'Home'}
         
 

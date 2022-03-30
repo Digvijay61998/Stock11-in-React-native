@@ -110,7 +110,6 @@ return (
                   placeholder="ENTER MOBILE Number/Email"
                   placeholderTextColor="#7e9291"
                   // paddingLeft={10}
-                  keyboardType="numeric"
                   autoComplete="cc-number"
                   maxLength={10}
                   // margin={10}

@@ -1,63 +1,147 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container} from "../../constants"
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput,Image} from 'react-native'
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest,images ,dummyData,container} from "../../constants"
 import React from 'react';
+import LinearGradient from 'react-native-linear-gradient'
+
 
 const HelpDesk = () => {
   return (
-    <View style={container}>
-           <TextInput
-                style={[FONTS.textstyle,styles.input]}
-                // value={number}
-                placeholder="Enter Email ID"
-                placeholderTextColor={COLORS.FaintWhite}
-                autoComplete="cc-number"
-                paddingLeft={20}
-                />
-<View style={styles.textAreaContainer} >
-  <TextInput
-    style={styles.textArea}
-    underlineColorAndroid="transparent"
-    placeholder="Description"
-    placeholderTextColor={COLORS.FaintWhite}
-    color="white"
-    numberOfLines={10}
-    multiline={true}
-  />
-</View>
-<View style={{width: '100%', height:250 ,top:200, alignItems: "center", justifyContent:"center"}}>
-       <TouchableOpacity style={FONTS.button}
-          //  onPress={() =>
-          //   navigation.navigate('CreateBasket')
-          // }
-       >
-        <Text style={[FONTS.textstyle ,{color:"black"}]}>Send</Text>
-       </TouchableOpacity>
+    <LinearGradient 
+    colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.container}
+  >
+      {/* <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 100,
+           height: 100,
+           top:-10
+ }}/> */}
 
-    </View>
-    </View>
+<View style={{flexDirection:"row",justifyContent:"space-between",top:4,alignItems:"center"}}>
+      <View >
+      <Image
+                  source={images.profile}
+                    resizeMode="contain"
+                      style={{
+                            width:50,
+                             height:50,
+
+                                    }}/>
+      </View>
+      <View>
+       <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 80,
+           height: 80,
+          
+ }}
+  />
+  </View>
+  </View>
+
+<Text style={{top:50,color:"white",fontWeight:"bold",fontSize:15}}>Help Desk</Text>
+    <View style={styles.container}>
+      <View style={styles.helpDeskBox}>
+      <View 
+                  style={styles.input}
+               >
+                <TextInput
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  name="Email"
+                  title="Email"
+                  placeholder="Email"
+                  placeholderTextColor="black"
+                  paddingRight={180}
+
+
+                  
+                  />
+                  </View>
+
+                  <View 
+                  style={{ height: 130,
+                    width:280,
+                    borderRadius:15,
+                    top:80,
+                    color:COLORS.ActiveButton ,
+                    backgroundColor:"white",
+                    elevation:1,
+                  alignItems:'center',
+                  justifyContent:"center",}}
+               >
+                <TextInput
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  title="Your Concern"
+                  placeholder="Your Concern"
+                  placeholderTextColor="black"
+                  paddingRight={170}
+                  marginBottom={60}
+
+
+                  
+                  />
+                  </View>
+                  <View style={{width: '100%', height:250 ,top:-15, alignItems: "center", justifyContent:"center"}}>
+       <TouchableOpacity style={FONTS.button}   
+       title='Submit'
+       onPress={() =>
+        navigation.navigate('ChangePassword')
+      } 
+       >
+        <Text style={{color:"white"}}>SUBMIT</Text>
+       </TouchableOpacity>
+             </View>
+        <View style={{borderTopWidth:0.3,bottom:110,justifyContent:"center",alignItems:"center"}}>
+          <Text style={{marginTop:20}}> 32445989898 </Text>
+          <Text> Message us on WhatsApp </Text>
+          </View>        
+        </View>
+
+
+
+      </View>
+  </LinearGradient>
   );
 };
 
 export default HelpDesk;
 
 const styles = StyleSheet.create({
-  input:{
-    width: '90%',
-    backgroundColor: COLORS.primary,
-    borderRadius:10,
+  container:{
+      flex:1,
+      alignItems:"center",
+      justifyContent:"space-evenly",
+      flexDirection:"column",
+
   },
-  textAreaContainer: {
-    borderColor: COLORS.grey20,
-    borderWidth: 1,
-    padding: 5,
-    width: '90%',
-    backgroundColor: COLORS.primary,
-    borderRadius:10,
-    marginTop:15,
-    overflow: 'hidden',
-  },
-  textArea: {
-    height: 150,
-    // bottom:50
-  }
-});
+ helpDeskBox :{
+  height:400,
+        width:350,
+        backgroundColor:"#ededed",
+        borderRadius:10,
+        alignItems:"center",
+        justifyContent:"center",
+        elevation:10,
+        border:'1px solid #E8E4E4',
+        boxShadow:"0px 20px 10px #00000014"
+        },
+        input: {
+          height: 50,
+          width:280,
+          borderRadius:15,
+          top:60,
+          color:COLORS.ActiveButton ,
+          backgroundColor:"white",
+          elevation:1,
+        alignItems:'center',
+        justifyContent:"center",
+        }
+ 
+    
+})

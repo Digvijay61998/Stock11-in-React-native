@@ -113,7 +113,6 @@ marginBottom:60
                   placeholder="ENTER MOBILE Number/Email"
                   placeholderTextColor="white"
                   // paddingLeft={10}
-                  keyboardType="numeric"
                   autoComplete="cc-number"
                   maxLength={10}
                   // margin={10}

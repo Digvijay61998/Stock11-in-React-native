@@ -1,12 +1,51 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container } from "../../constants"
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList,Image } from 'react-native'
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container,images } from "../../constants"
 import React from 'react';
+import LinearGradient from 'react-native-linear-gradient'
+
 
 const AboutUs = ({ navigation }) => {
   return (
-    <View style={container}>
-      <Text style={[FONTS.textstyle,{padding:20 ,color:COLORS.FaintWhite}]}>
-        assLorem Ipsum is
+    <LinearGradient 
+    colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.container}
+  >
+
+<View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
+      <View >
+      <Image
+                  source={images.profile}
+                    resizeMode="contain"
+                      style={{
+                            width:50,
+                             height:50,
+
+                                    }}/>
+      </View>
+      <View>
+       <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 80,
+           height: 80,
+          
+ }}
+  />
+  </View>
+  </View>
+  <View style={{top:-80}}>
+  <Text style={{top:50,color:"white",fontWeight:"bold",fontSize:15}}>ABOUT US</Text>
+
+  </View>
+
+    <View style={styles.aboutUsBox}>
+      <View style={{width:"70%",height:100,marginTop:20}}>
+        <View style={{alignItems:"center",justifyContent:"center"}}>
+          <Text>
+          assLorem Ipsum is
         simply dummy text of the prin
         ting and typesetting industry. Lorem
         Ipsum has been the industry's standard dummy text ever 
@@ -33,14 +72,45 @@ const AboutUs = ({ navigation }) => {
           y Cicero
           are also reproduced in their exact original form, accompanied by English versi
           ons from the 1914 translation by H. Rackham.
+         
+          </Text>
+        </View>
+       
+      </View>
+      <View style={{borderBottomWidth:1,borderTopWidth:1,height:120,width:200,borderColor:"grey",marginTop:90,justifyContent:'center',alignItems:"center"}}>
+          <Text style={{color:"black",fontWeight:"bold"}}>stock11.com</Text>
+      </View>
+      </View>
+      
+  
+  </LinearGradient>
+    
+    
 
-
-
-         </Text>
-    </View>
+    
   );
 };
 
 export default AboutUs;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    alignItems:"center",
+    justifyContent:"space-evenly",
+    flexDirection:"column",
+
+},
+  aboutUsBox :{
+  height:400,
+        width:350,
+        backgroundColor:"#ededed",
+        borderRadius:10,
+        alignItems:"center",
+        marginBottom:80,
+        justifyContent:"center",
+        elevation:10,
+        border:'1px solid #E8E4E4',
+        boxShadow:"0px 20px 10px #00000014"
+        },
+});

@@ -1,53 +1,57 @@
-import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button} from 'react-native';
+import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image} from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, images} from "../constants"
+import LinearGradient from 'react-native-linear-gradient'
+
 
 const Setting = ({ navigation}) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity 
+    <LinearGradient 
+    colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.container}
+  >
+     <Image 
+       source={icons.Stock11Logo}
+       resizeMode="contain"
+       style={{
+           width: 80,
+           height: 80,
+           marginTop:2
+          
+ }}
+  />
+
+<Image
+                  source={images.profile}
+                    resizeMode="contain"
+                      style={{
+                            width:"20%",
+                             height:"20%",
+                             marginTop:-25
+
+                              // tintColor: focused ? COLORS.
+                              //     ActiveButton : COLORS.black
+                                    }}/>
+    <View >
+      <View style={styles.settingContainer}>
+<TouchableOpacity 
           onPress={() =>
-            navigation.navigate('HelpDesk')
+            navigation.navigate('MyProfile')
           }
       >
-        <View style={{width:370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>Help Desk</Text>
+        <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>My Profile</Text>
       </View>
       </TouchableOpacity>
       <TouchableOpacity 
           onPress={() =>
-            navigation.navigate('AboutUs')
+            navigation.navigate('Notification')
           }
       >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>About us</Text>
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity 
-          onPress={() =>
-            navigation.navigate('HowToPlay')
-          }
-      >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>How to Play</Text>
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity 
-          onPress={() =>
-            navigation.navigate('PromoCode')
-          }
-      >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>Promocode</Text>
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity 
-          onPress={() =>
-            navigation.navigate('ChangePassword')
-          }
-      >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>Change Password</Text>
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Notifications</Text>
       </View>
       </TouchableOpacity>
       <TouchableOpacity 
@@ -55,8 +59,46 @@ const Setting = ({ navigation}) => {
             navigation.navigate('ReferFriend')
           }
       >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>Refer a Friend</Text>
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Refer a Freind</Text>
+      </View>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('HowToPlay')
+          }
+      >
+
+<View style={{width:290, height:42 ,backgroundColor:COLORS.primary , justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>How to Play</Text>
+      </View>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('PromoCode')
+          }
+      >
+
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Promocode</Text>
+      </View>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('AboutUs')
+          }
+      >
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",fontSize:15,paddingLeft:10}}>About Us</Text>
+      </View>
+      </TouchableOpacity>
+      <TouchableOpacity 
+          onPress={() =>
+            navigation.navigate('HelpDesk')
+          }
+      >
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Help Desk</Text>
       </View>
       </TouchableOpacity>
       <TouchableOpacity 
@@ -64,11 +106,14 @@ const Setting = ({ navigation}) => {
             navigation.navigate('Logout')
           }
       >
-      <View style={{width: 370, height:60 ,backgroundColor:COLORS.primary ,alignItems: 'center' ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15}}>
-      <Text style={FONTS.textstyle}>Logout</Text>
+      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Logout</Text>
       </View>
       </TouchableOpacity>
+      
+      </View>
     </View>
+    </LinearGradient>
   );
 };
 
@@ -78,8 +123,18 @@ const styles = StyleSheet.create({
 
     container:{
         flex:1,
-        backgroundColor: "#1F1D2B",
+        
+        backgroundColor: "#ededed",
         alignItems:"center",
         justifyContent:"center"
     },
+    settingContainer:{
+      height:500,width:350,backgroundColor:"white",borderRadius:25,
+        alignItems:"center",
+        justifyContent:"center",
+        elevation:15,
+        border:'1px solid #E8E4E4',
+        boxShadow:"0px 20px 10px #00000014",
+        marginBottom:25
+    }
 });

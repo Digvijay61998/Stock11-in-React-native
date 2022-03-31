@@ -138,7 +138,7 @@ const Login = ({navigation}) => {
                     <View style={{alignItems:"center",justifyContent:"space-between",flexDirection:"row",width:"100%"}}>
                       <TouchableOpacity
                       onPress={()=>{
-                           navigation.navigate('LoginScreen',"forgotPassword")
+                           navigation.navigate('Register',"forgotPassword")
                     }}
                       > 
                           <Text style={{fontSize:12,left:5,top:5}}>Forgot Password?</Text>

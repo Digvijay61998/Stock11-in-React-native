@@ -50,7 +50,7 @@ const FrontPage = ({navigation}) => {
                    color="#f5871f00"
                    elevation="2"
                    onPress={() =>{
-                    navigation.navigate('LoginScreen');
+                    navigation.navigate('Register');
                    }}>                  
   <View style={{paddingTop:5}}>
     <Text style={[FONTS.textstyle ,{color:"black"}]}>REGISTER</Text>

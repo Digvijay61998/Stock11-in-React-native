@@ -52,7 +52,7 @@ const App = () => {
 //     <NavigationContainer>
 //       <Stack.Navigator initialRouteName="Login">
 //         <Stack.Screen name="Register" component={RegisterScreen} navigation={this.props.navigation} options={{ headerShown: false }} />
-//         <Stack.Screen name="Login" navigation={this.props.navigation} component={LoginScreen} options={{ headerShown: false }} />
+//         <Stack.Screen name="Login" navigation={this.props.navigation} component={Register} options={{ headerShown: false }} />
 //       </Stack.Navigator>
 //     </NavigationContainer>
 //   );

@@ -9,7 +9,7 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import LinearGradient from 'react-native-linear-gradient'
 
-function LoginScreen(props) { 
+function Register(props) { 
   const navigation = props.navigation
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
@@ -199,4 +199,4 @@ const styles = StyleSheet.create({
       },
     
 })
-export default LoginScreen;
+export default Register;

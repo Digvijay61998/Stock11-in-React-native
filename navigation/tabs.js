@@ -11,7 +11,7 @@ import { createBottomTabNavigator, getHeaderTitle } from "@react-navigation/bott
 
 import { Home, Setting } from "../screens"
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
-import LoginScreen from "../screens/LoginScreen";
+import Register from "../screens/Register";
 import FrontPage from "../screens/FrontPage";
 import LinearGradient from 'react-native-linear-gradient'
 import MyBasket from "../components/MyBasket/MyBasket";

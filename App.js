@@ -37,7 +37,7 @@ import PayUsing from './components/Contest/PayUsing';
 import SelectBasket from './components/Contest/SelectBasket';
 import CurrentBalance from './components/Contest/CurrentBalance';
 import { Home } from './screens';
-import LoginScreen from './screens/LoginScreen';
+import Register from './screens/Register';
 import MyProfile from './components/settingFile/MyProfile';
 import EditProfile from './components/settingFile/EditProfile';
 import Login from './screens/Login';
@@ -58,7 +58,7 @@ const App = () => {
 //     <NavigationContainer>
 //       <Stack.Navigator initialRouteName="Login">
 //         <Stack.Screen name="Register" component={RegisterScreen} navigation={this.props.navigation} options={{ headerShown: false }} />
-//         <Stack.Screen name="Login" navigation={this.props.navigation} component={LoginScreen} options={{ headerShown: false }} />
+//         <Stack.Screen name="Login" navigation={this.props.navigation} component={Register} options={{ headerShown: false }} />
 //       </Stack.Navigator>
 //     </NavigationContainer>
 //   );
@@ -79,7 +79,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
-            <Stack.Screen key={Date.now()} name="LoginScreen" component={LoginScreen} options={{headerShown: false}}/>  
+            <Stack.Screen key={Date.now()} name="Register" component={Register} options={{headerShown: false}}/>  
             <Stack.Screen key={Date.now()} name="Login" component={Login} options={{headerShown: false}}/>  
             <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} options={{headerShown: false}}/>
             <Stack.Screen key={Date.now()} name="FrontPage" component={FrontPage} options={{headerShown: false}}/>

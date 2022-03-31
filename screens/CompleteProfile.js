@@ -1,12 +1,13 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input'
 import { COLORS, FONTS, icons, SIZES ,container,images} from "../constants"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import LinearGradient from 'react-native-linear-gradient'
 
-function CompleteProfile({navigation}) {
-
+function CompleteProfile(props) {
+const navigation = props.navigation
+const [navigationData] = useState(props.route.params.data)
   const handleSubmit = async (val,onSubmitProps) => {
     console.log("====",val)
         // API CALL COME HERE
@@ -56,7 +57,7 @@ return (
            marginTop:-30
  }}
   />
-  <Text style={[FONTS.textstyle,{ marginBottom:30 ,width:100 ,height:20 ,textAlign:"center"}]}>MY PROFILE</Text>
+  <Text style={[FONTS.textstyle,{ marginBottom:30 ,width:100 ,height:20 ,textAlign:"center",color:"white"}]}>MY PROFILE</Text>
             <View style={styles.ProfileBox}>
             <Formik
         initialValues={{ 
@@ -105,7 +106,8 @@ return (
                       </View>
            <View style={styles.formContainer}>
            <View style={{width:"100%",height:100,marginTop:100,borderRadius:10 ,justifyContent:"center",alignItems: "center"}}>
-                <TextInput
+             
+           {navigationData === "forgotPassword" ? <></>:<TextInput
                 style={[FONTS.textstyle,styles.input]}
                 name="Name"
                 value={values.Name}
@@ -115,8 +117,8 @@ return (
                 autoComplete="cc-number"
                 paddingLeft={20}
                 onChangeText={handleChange('Name')}
-                />
-                <TextInput
+                />}
+                {navigationData === "forgotPassword" ? <></>:<TextInput
                 style={[FONTS.textstyle,styles.input]}
                 name="email"
                 value={values.email}
@@ -126,7 +128,7 @@ return (
                 placeholderTextColor="#484848"
                 autoComplete="cc-number"
                 paddingLeft={20}
-                />
+                /> }
                 <TextInput
                 style={[FONTS.textstyle,styles.input]}
                 name="create_password"
@@ -151,7 +153,7 @@ return (
                 onChangeText={handleChange('confirm_password')}
 
                 />
-                <TextInput
+               {navigationData === "forgotPassword" ? <></> : <TextInput
                 style={[FONTS.textstyle,styles.input]}
                 name="phone_no"
                 value={values.phone_no}
@@ -160,11 +162,10 @@ return (
                 autoComplete="cc-number"
                 onChangeText={handleChange('phone_no')}
                 paddingLeft={20}
-                />
+                />}
 </View>
-
-<View style={{width: '100%', height:250 ,top:10, alignItems: "center", justifyContent:"center"}}>
-       <TouchableOpacity style={FONTS.button}   
+{navigationData === "forgotPassword" ? <View style={{width: '100%', height:250 ,top:-50, alignItems: "center", justifyContent:"center"}}>
+       <TouchableOpacity style={[FONTS.button,{width:180,backgroundColor:"#46a19a"}]}   
        title='Submit'
        disabled={!isValid}
        onPress={() =>
@@ -172,10 +173,23 @@ return (
         navigation.navigate('Home')
       } 
        >
-        <Text style={{color:"white"}}>SAVE PROFILE</Text>
+        <Text style={{color:"white"}}>CHANGE PASSWORD</Text>
        </TouchableOpacity>
 
     </View>
+    :<View style={{width: '100%', height:250 ,top:10, alignItems: "center", justifyContent:"center"}}>
+       <TouchableOpacity style={FONTS.button}   
+       title='Submit'
+       disabled={!isValid}
+       onPress={() =>
+        // handleSubmit
+        navigation.navigate('Tabs')
+      } 
+       >
+        <Text style={{color:"white"}}>SAVE PROFILE</Text>
+       </TouchableOpacity>
+
+    </View>}
           </View>
           </View>
           </View>

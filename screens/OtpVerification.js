@@ -19,6 +19,7 @@ function OtpVerification(prop) {
   const navigation = prop.navigation;
      const UserData = prop.route.params.Data;
      console.log("UserData",UserData);
+
     const [value, setValue] = useState('');
         console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
@@ -35,7 +36,11 @@ function OtpVerification(prop) {
           otp: value
         }
         console.log("Data",data);
+        if(prop.route.params === "LoginWithOTP"){
+          UpdateverifyUserOtp(data)
+        }else{
         verifyUserOtp(data)
+        }
       // }
     }
  
@@ -47,13 +52,31 @@ function OtpVerification(prop) {
           console.log("token=====",parsedResponse.token)
           if(parsedResponse){
           await AsyncStorage.setItem('userToken', parsedResponse.token);
-            navigation.navigate('CompleteProfile')
+            navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword})
           }else{
             console.log("Otp not match");
           }
           } catch (error) {
           console.error(error);
       }
+    }
+
+    async function UpdateverifyUserOtp(data) {
+      console.log("valdsf",data);
+      // try {
+      //     const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
+      //     console.log("parsedResponse=====",parsedResponse)
+      //     console.log("token=====",parsedResponse.token)
+      //     if(parsedResponse){
+      //     await AsyncStorage.setItem('userToken', parsedResponse.token);
+      //       navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword})
+      //     }else{
+      //       console.log("Otp not match");
+      //     }
+      //     } catch (error) {
+      //     console.error(error);
+      // }
+            navigation.navigate('Home')
     }
 //     const getuserID = async () => {
   

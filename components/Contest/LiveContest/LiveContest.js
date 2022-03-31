@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList ,ImageBackground} from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { COLORS, FONTS, icons, Header, CardBox,dummyData } from "../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 
 const LiveContest = ({navigation}) => {
@@ -29,7 +29,7 @@ const LiveContest = ({navigation}) => {
                   <ImageBackground
                   resizeMode="cover"
                  source={url[index % url.length]}
-                 style={styles.contestContainer}
+                 style={contestContainer}
                   >
               <IdolContest data={item}/>
               </ImageBackground>
@@ -49,13 +49,5 @@ const styles = StyleSheet.create({
         flex: 1,
         overflow: "hidden",
       },
-      contestContainer:{
-        height: 180,
-        width: 340,
-        // backgroundColor: "#1F1D2B",
-        marginBottom:35,
-        borderRadius: 10,
-        padding: 5,
-        elevation:3,
-      },
+    
 })

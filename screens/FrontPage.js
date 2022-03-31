@@ -70,7 +70,7 @@ const FrontPage = ({navigation}) => {
                    color="#f5871f00"
                    elevation="2"
                    onPress={() =>{
-                    // handleSubmit()
+                    navigation.navigate('Login');
                    }}>                  
   <View style={{paddingTop:5}}>
     <Text style={[FONTS.textstyle ,{color:"black"}]}>LOGIN</Text>

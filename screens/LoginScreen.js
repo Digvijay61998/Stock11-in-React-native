@@ -2,14 +2,15 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
 import PhoneInput from "react-native-phone-number-input";
 
-import { COLORS, FONTS, icons, SIZES } from "../constants"
+import { COLORS, FONTS, icons, SIZES ,container} from "../constants"
 import { number } from 'yup/lib/locale';
 import routes from '../utils/routes';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import LinearGradient from 'react-native-linear-gradient'
 
-function LoginScreen({navigation}) { 
+function LoginScreen(props) { 
+  const navigation = props.navigation
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [userData , setUserData] = useState();
@@ -41,7 +42,7 @@ async function createUserProfile(data) {
       await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
       if(parsedResponse){
         console.log("userData",parsedResponse);
-        navigation.navigate('OtpVerification',{Data:parsedResponse});
+        navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
       }
   } catch (error) {
       console.error(error);
@@ -73,7 +74,7 @@ return (
   colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
   start={{ x: 0, y: 0 }}
   end={{ x: 1, y: 1 }}
-  style={styles.container}
+  style={container}
 >
   <Image 
        source={icons.Stock11Logo}
@@ -86,7 +87,7 @@ return (
  }}
   />
   <View style={styles.loginBoxHeader}> 
-  <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>REGISTER</Text>
+  {props.route.params === "forgotPassword" ? <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>FORGOT PASSWORD</Text>:<Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>REGISTER</Text>}
   </View>
           <Formik
             initialValues ={{ mobile: ""}}          
@@ -97,7 +98,7 @@ return (
             {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
               return(
                 <View style={styles.LoginBox}>
-                <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10,}]}>CREATE ACCOUNT</Text>
+                {props.route.params === "forgotPassword" ? <></>:<Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10,}]}>CREATE ACCOUNT</Text>}
                <View 
                   style={styles.input}center
                >
@@ -162,11 +163,7 @@ return (
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center",
-    },
+ 
     loginBoxHeader:{
     height:50,
     width:200,

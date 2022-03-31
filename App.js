@@ -40,6 +40,8 @@ import { Home } from './screens';
 import LoginScreen from './screens/LoginScreen';
 import MyProfile from './components/settingFile/MyProfile';
 import EditProfile from './components/settingFile/EditProfile';
+import Login from './screens/Login';
+import FrontPage from './screens/FrontPage';
 
 const Stack = createStackNavigator();
 
@@ -69,19 +71,20 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Home'}
+        initialRouteName={'FrontPage'}
         
 
       >  
             <Stack.Screen key={Date.now()} name="Tabs" component={Tabs} options={{headerShown:false}} />      
-            
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
             <Stack.Screen key={Date.now()} name="LoginScreen" component={LoginScreen} options={{headerShown: false}}/>  
-
+            <Stack.Screen key={Date.now()} name="Login" component={Login} options={{headerShown: false}}/>  
             <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} options={{headerShown: false}}/>
-
+            <Stack.Screen key={Date.now()} name="FrontPage" component={FrontPage} options={{headerShown: false}}/>
+          
+         
 {/* <Stack.Screen key={Date.now()} name="Home" component={Home} options={{ title:"Home",headerStyle:{
               backgroundColor:'#252837'},             
               headerTintColor: '#fff',

@@ -1,6 +1,7 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
+
 export const COLORS = {
     primary: "#FFFF",     // background Color
     secondary: "#0C2F81",   // Dark purple
@@ -19,6 +20,15 @@ export const COLORS = {
     
 };
 
+export const contestContainer={
+    height: 180,
+    width: width-40,
+    // backgroundColor: "#1F1D2B",
+    marginBottom:35,
+    borderRadius: 10,
+    padding: 5,
+    elevation:10,
+  };
 export const  Header ={
     position: "relative",
     justifyContent: "center",
@@ -32,10 +42,9 @@ export const  Header ={
 };
 
 export const container ={
-    flex: 1,
-    alignItems: 'center',
+    flex:1,
+    alignItems:"center",
     justifyContent:"center",
-    backgroundColor:COLORS.secondary,
 };
 
 export const CardBox={

@@ -23,7 +23,9 @@ const Tab = createBottomTabNavigator()
 const Tabs = () => {
     // header: ({ navigation, route, options }) => {
     //     const title = getHeaderTitle(options, route.name);
-      
+    const screenOptions = {
+    
+      };
     return (
         // <LinearGradient
         // colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
@@ -31,26 +33,20 @@ const Tabs = () => {
         // end={{ x: 1, y: 1 }}
         // style={styles.container}
         // >
-        <>
         <Tab.Navigator 
         tabBarOptions={{
             inactiveTintColor:"#4F1D9A",
             activeBackgroundColor:  "#4F1D9A",
             inactiveBackgroundColor: "#4F1D9A",
             tabBarStyle : {
-                height: 250,
            },
-            style: {
-                // botton: 100,
-                elevetion: 10,
-                width:100,
-            },
             showIcon: true, showLabel: false, indicatorStyle: {
-                opacity: 0
+                opacity: 0 
             }
             
         }}
-        >
+        initialRouteName={'Home'}
+         >
                  <Tab.Screen
                 name="Home"
                 component={Home}
@@ -97,13 +93,6 @@ const Tabs = () => {
                     )
                 }}
             />
-         <Tab.Screen
-         name="Home Screen"
-         options={{
-            headerShown: false}}
-          component={FrontPage}  
-        //   options={{title: 'Login Screen'}}
-          /> 
             <Tab.Screen
                 name="MyBasket"
                 component={MyBasket}
@@ -244,7 +233,6 @@ const Tabs = () => {
                 }}
             />
         </Tab.Navigator>
-       </>
     )
 }
 

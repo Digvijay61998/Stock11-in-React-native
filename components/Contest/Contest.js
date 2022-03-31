@@ -1,6 +1,6 @@
 import React , { useState ,useEffect} from 'react'
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData,SIZES} from "../../constants"
 import {IdolContest} from "../../Common"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import LiveContest from './LiveContest/LiveContest'
@@ -55,7 +55,7 @@ const Contest = ({navigation}) => {
                     style={{
                       borderRadius:50,
                         height: 40,
-                        width:110,
+                        width:SIZES.width-280,
                         right:45,
                         bottom:10,
                         alignItems: 'center',
@@ -84,7 +84,7 @@ const Contest = ({navigation}) => {
                         // flex: 1,
                         borderRadius:50,
                         height: 40,
-                        width:110,
+                        width:SIZES.width-280,
                         right:45,
                         bottom:10,
                         alignItems: 'center',
@@ -112,7 +112,7 @@ const Contest = ({navigation}) => {
                     style={{
                         borderRadius:50,
                         height: 40,
-                        width:110,
+                        width:SIZES.width-280,
                         right:45,
                         bottom:10,
                         alignItems: 'center',

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View ,ScrollView, TouchableOpacity ,FlatList ,ImageBackground} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox,dummyData} from "../../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox,dummyData,SIZES} from "../../../constants"
 import React,{useState,useEffect} from 'react'
 import {IdolContest}from "../../../Common/index"
 
@@ -50,7 +50,8 @@ export default UpcomingContest
 const styles = StyleSheet.create({
     scroller: {
         flex: 1,
-      overflow:"hidden",
+        overflow: "hidden",
+        marginBottom:SIZES.height-610,
     },
     contestContainer:{
       height: 180,

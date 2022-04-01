@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { StyleSheet, Text, View ,ScrollView ,SafeAreaView ,TouchableOpacity,FlatList,ImageBackground,Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData} from "../../constants/index"
 import {IdolContest} from "../../Common"
@@ -6,6 +6,13 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const MyBasket = ({ navigation }) => {
   let url = [icons.card, icons.card1, icons.card3];
+
+const [blur ,setBlur]=useState()
+
+function handleblur (item){
+  console.log("item",item.id);
+  setBlur(item.id)
+}
 
    const data = dummyData.MybasketDetails
     return (
@@ -38,6 +45,7 @@ const MyBasket = ({ navigation }) => {
             //   }
             // >
             <>
+          <View style={blur === item.id ? [styles.Visible]:[styles.disable]}>
             <ImageBackground
             resizeMode="cover"
             source={url[index % url.length]}
@@ -45,39 +53,30 @@ const MyBasket = ({ navigation }) => {
             >
     <View style={[styles.IdolContainer,{width:280}]}>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>BASKET NAME</Text>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
-            <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
-                <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
-                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+            <View style={{ justifyContent: "space-between", flexDirection: "column" ,height:80,top:15}}>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>STOCK FESTIVAL</Text>
+                <Text style={{ color: "black" , fontSize:12}}>Correspondant Contest - Nifty Fifty</Text>
+                <Text style={{ color: "#45444" , fontSize:12,fontWeight:"bold"}}>1st OCT -3rd OCT 2022</Text>
            
             </View>
         <View style={{justifyContent:"center",alignItems:"center"}}>
         <Image 
-            source={icons.IconUsers}
+            source={icons.basket}
             resizeMode="contain"
             style={{
-                width:30,
-                height: 30,
+                width:40,
+                height: 40,
+                top:-40
       }}
             />
-            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
-            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
-           
         </View>
-          <View style={{alignItems:"center",right:44,top:4}}>
-          <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
-          </View>
-          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
-            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
-            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>
-          </View>
-          </View>
     </View>
       </ImageBackground>
+      </View>
       <View style={{width:280, alignItems: "center", justifyContent:"space-between",marginBottom:25 ,flexDirection:"row"}}>
 <Text>icon</Text>
        <TouchableOpacity style={FONTS.button}
@@ -88,8 +87,7 @@ const MyBasket = ({ navigation }) => {
         <Text style={[FONTS.textstyle ,{color:"white"}]}>EDIT</Text>
        </TouchableOpacity>
        <TouchableOpacity 
-          //  onPress={() =>
-          // }
+                onPress={() => handleblur(item, index)}
        >
         <Text>EDIT</Text>
        </TouchableOpacity>
@@ -146,9 +144,8 @@ const styles = StyleSheet.create({
       borderRadius:20
     },
     contestContainer:{
-      height: 151,
+      height: 140,
       width: 289,
-      // backgroundColor: "#1F1D2B",
       marginBottom:15,
       borderRadius: 10,
       padding: 5,
@@ -162,5 +159,10 @@ const styles = StyleSheet.create({
       flexDirection:"row",
       marginLeft:70,
     },
-
+    Visible:{
+      opacity:1
+    },
+    disable:{
+      opacity:0.3
+    }
 })

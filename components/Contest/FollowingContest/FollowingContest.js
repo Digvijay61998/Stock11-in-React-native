@@ -1,7 +1,7 @@
 import React, { useState, useEffect }  from 'react';
 
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList ,ImageBackground} from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox, dummyData } from "../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, dummyData ,SIZES} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 
 const FollowingContest = ({navigation}) => {
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     scroller: {
         flex: 1,
         overflow: "hidden",
+        marginBottom:SIZES.height-610,
       },
       contestContainer:{
         height: 180,

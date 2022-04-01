@@ -6,7 +6,7 @@ import Contest from "../components/Contest/Contest.js"
 import MyBasket from "../components/MyBasket/MyBasket.js"
 import MyContest from "../components/MyContest/MyContest.js"
 import ViewContest from "../components/Contest/ViewContest.js"
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, SIZES} from "../constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Confirmation from '../components/Contest/Confirmation.js';
 import LinearGradient from 'react-native-linear-gradient'
@@ -39,15 +39,24 @@ const navigations = navigation
         end={{ x: 1, y: 1 }}
         style={styles.container}
         > 
+        <View style={{width:SIZES.width ,flexDirection:"row",justifyContent:"space-around",alignItems:"center"}}>
+       <View></View>
         <Image 
        source={icons.Stock11Logo}
        resizeMode="contain"
        style={{
            width: 70,
            height: 70,
-           top:13
  }}
   />
+  <TouchableOpacity 
+  onPress={()=>{
+      navigation.navigate("Notification")
+  }}
+  >
+  <View style={{backgroundColor:"red",width:10,height:10,borderRadius:20}}></View>
+  </TouchableOpacity>
+  </View>
             <View style={[Header,{top:50}]}>
                 <View style={{
                       justifyContent:"center",

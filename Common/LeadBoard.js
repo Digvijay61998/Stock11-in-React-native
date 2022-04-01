@@ -2,8 +2,7 @@ import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,Flat
 import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
-const LeadBoard = ({winning,leaderBoard,navigation}) => {
-
+const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
   const [leadboardstack, setLeadboardstack]=useState("WINNINGS");
 
   const WinningStick =()=>{
@@ -58,8 +57,8 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
   <View style={styles.WinningsContainer}>
     { leadboardstack === "WINNINGS" ? <>
      <View style={styles.WinningTitleList}>
-      <Text style={[styles.headerTextstyle,{right:5}]}>RANK</Text>
-      <Text style={[styles.headerTextstyle,{right:-10}]}>WINNINGS PRIZE</Text>
+      <Text style={[styles.headerTextstyle,{right:5,color:"black",fontWeight:"600"}]}>RANK</Text>
+      <Text style={[styles.headerTextstyle,{right:-10,color:"black",fontWeight:"600"}]}>WINNINGS PRIZE</Text>
     </View>
    <ScrollView>
    <FlatList 
@@ -75,6 +74,13 @@ const LeadBoard = ({winning,leaderBoard,navigation}) => {
       keyExtractor={(item, index) => index}
      />
     </ScrollView>
+   {name === "CompletedContestDetails" ? <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
+   onPress={()=>{
+     navigation.navigate("Perfomance")
+   }}
+   >
+    <Text style={{color:"white",textAlign:"center",fontSize:13}}>MY BASKET PERFOMANCE</Text>
+    </TouchableOpacity>:<></>}
     </>:<></>}
     { leadboardstack === "STOCKS" ? <>
    <ScrollView>

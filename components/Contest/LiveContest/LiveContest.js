@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     scroller: {
         flex: 1,
         overflow: "hidden",
+        marginBottom:SIZES.height-610,
       },
     
 })

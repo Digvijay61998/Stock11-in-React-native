@@ -57,7 +57,9 @@ const CarouselCardItem = ({ item, index }) => {
 )
 }
 
-const CompletedContestDetails = ({navigation}) => {
+const CompletedContestDetails = (props) => {
+  const navigation = props.navigation
+  const name = props.route.name
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 
@@ -111,7 +113,7 @@ const navigations = navigation
       />
 </View>
 <Text style={styles.textLive}>FOLLOWING</Text>
-          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations}/>
+          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations} name={name}/>
           </LinearGradient>
   );
 };

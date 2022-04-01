@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, images} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, images, SIZES} from "../../constants"
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -11,44 +11,41 @@ const Notification = () => {
     start={{ x: 0, y: 0 }}
     end={{ x: 1, y: 1 }}
     style={styles.container}>
-      {/* <View style={{height:600}}> */}
-      <View style={{flexDirection:"row",justifyContent:"space-between",top:250,alignItems:"center"}}>
-      <View >
-      <Image
-                  source={images.profile}
-                    resizeMode="contain"
-                      style={{
-                            width:50,
-                             height:50,
-
-                                    }}/>
-      </View>
-      <View>
-       <Image 
+      <Image 
        source={icons.Stock11Logo}
        resizeMode="contain"
        style={{
-           width: 80,
-           height: 80,
-          
+           width: 70,
+           height: 70,
+           marginBottom:100,
  }}
   />
-      </View>
-      </View>
-   <View style={{bottom:550,alignItems:"center",position:"absolute"}}>
-     <Text style={[FONTS.textstyle,{color:"white" ,fontSize:20}]}>NOTIFICATIONS</Text>
-   </View>
-
-   <View style={styles.notificationContainer}>
-<View style={{width:"70%"}}>
-     <View style={{borderBottomWidth:0.3,bottom:200,flexDirection:"column",position:"absolute"}}>
-<Text style={{marginBottom:60,color:"black"}}>Theis goin to end soon contest you are  following  </Text>
-<Text style={{bottom:30,fontWeight:"bold",color:"black",textDecorationLine:"underline"}}> CHECK NOW</Text>
-     </View>
-     
-     </View>
-   </View>
-   {/* </View> */}
+  <Text style={{color:"white",fontWeight:"bold"}}>NOTIFICATIONS</Text>
+  <Text style={{color:"white",fontSize:12,marginLeft:200}}>20 unread messages</Text>
+<View style={{width:SIZES.width-50,height:SIZES.height-250,borderRadius:20,backgroundColor:"#fcf6ff",alignItems:"flex-start",justifyContent:"flex-start",padding:30}}>
+<ScrollView>
+<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
+<Text style={{color:"black"}}>THE contest you are Foloowing Is going to end soon</Text>
+<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+</View>
+<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
+<Text style={{color:"#a7a2a7",}}>THE contest you are Foloowing Is going to end soon</Text>
+<Text style={{color:"#a7a2a7",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+</View>
+<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
+<Text style={{color:"black",}}>THE contest you are Foloowing Is going to end soon</Text>
+<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+</View>
+<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
+<Text style={{color:"#a7a2a7",}}>THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon</Text>
+<Text style={{color:"#a7a2a7",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+</View>
+<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
+<Text style={{color:"black"}}>THE contest you are Foloowing Is going to end soon</Text>
+<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+</View>
+</ScrollView>
+</View>
   </LinearGradient>
 
   );
@@ -58,20 +55,12 @@ export default Notification;
 
 const styles = StyleSheet.create({
   container:{
-    flex:1,
-    
-    backgroundColor: "#ededed",
-    alignItems:"center",
-    justifyContent:"center"
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:COLORS.secondary,
 },
 notificationContainer:{
-  height:700,width:350,backgroundColor:"white",borderRadius:25,
-  marginTop:450,
-        alignItems:"center",
-        justifyContent:"center",
-        elevation:15,
-
-        border:'1px solid #E8E4E4',
-        boxShadow:"0px 20px 10px #00000014",
+ 
 }
 });

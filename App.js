@@ -40,13 +40,11 @@ import { Home } from './screens';
 import Register from './screens/Register';
 import MyProfile from './components/settingFile/MyProfile';
 import EditProfile from './components/settingFile/EditProfile';
-<<<<<<< HEAD
 import Login from './screens/Login';
 import FrontPage from './screens/FrontPage';
-=======
 import PayByWallet from './components/settingFile/PayByWallet';
 import SelectPayment from './components/settingFile/SelectPayment';
->>>>>>> b72f5f58daf0d110733a5d93912f0c1347734e7a
+import Perfomance from './components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
 
 const Stack = createStackNavigator();
 
@@ -77,8 +75,6 @@ const App = () => {
           headerShown: false,
         }}
         initialRouteName={'FrontPage'}
-        
-
       >  
             <Stack.Screen key={Date.now()} name="Tabs" component={Tabs} options={{headerShown:false}} />      
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
@@ -112,6 +108,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Perfomance" component={Perfomance}  options={{headerShown:false}}/>
            
 
             <Stack.Screen key={Date.now()} name="AboutUs" component={AboutUs}  />

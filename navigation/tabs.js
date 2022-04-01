@@ -43,7 +43,6 @@ const Tabs = () => {
             showIcon: true, showLabel: false, indicatorStyle: {
                 opacity: 0 
             }
-            
         }}
         initialRouteName={'Home'}
          >

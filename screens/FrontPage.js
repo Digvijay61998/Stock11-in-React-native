@@ -1,11 +1,52 @@
-import { StyleSheet, Text, View,Image ,TouchableOpacity} from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image ,TouchableOpacity,Video} from 'react-native'
+import React,{useState,useRef} from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, icons, SIZES } from "../constants"
+import Carousel,{Pagination} from 'react-native-snap-carousel';
+// import Video from 'react-native-video';
 
- 
-
+const data = [
+  {
+    title: "Aenean leo",
+    VideoUrl: icons.video1
+  },
+  {
+    title: "In turpis",
+    VideoUrl:icons.video2
+  },
+  {
+    title: "Lorem Ipsum",
+    VideoUrl: icons.video3
+  },
+  {
+    title: "Lorem Ipsum",
+    VideoUrl: icons.video1
+  }
+]
+const CarouselCardItem = ({ item, index }) => {
+  return (
+    <View style={styles.container} key={index}>
+        {/* <Video  
+            source={video}                  // the video file
+            paused={false}                  // make it start    
+            style={styles.backgroundVideo}  // any style you want
+            repeat={true}                   // make it a loop
+        /> */}
+              <Image 
+       source={item.VideoUrl}
+       resizeMode="cover"
+//        style={{
+//            width: 150,
+//            height: 150,
+//  }}
+  />
+      {/* <Text style={styles.header}>{item.title}</Text> */}
+    </View>)
+}
 const FrontPage = ({navigation}) => {
+  const [index, setIndex] = useState(0)
+  const isCarousel = useRef(null)
+
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -26,13 +67,36 @@ const FrontPage = ({navigation}) => {
   <Text style={styles.headingTitle}>MADE </Text><Text style={styles.headingTitle}>FOR BULLS,</Text><Text style={[styles.headingTitle,{fontSize:18}]}>BIG OR SMALL!</Text>
   </View>
   <View style={styles.video}>
+  <Carousel
+        layout="tinder"
+        layoutCardOffset={9}
+        ref={isCarousel}
+        data={data}
+        renderItem={CarouselCardItem}
+        sliderWidth={SIZES.width-50}
+        itemWidth={Math.round(SIZES.width * 0.7)}
+        onSnapToItem={(index) => setIndex(index)}
+        useScrollView={true}
+        style={styles.video}
+      />
+   
   </View>
-  <View style={{width:"50%",marginTop:20,justifyContent:"space-evenly",alignItems:"center",flexDirection:"row"}}>
-  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.ActiveWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
-  <TouchableOpacity style={{width:15,height:15,borderRadius:50,backgroundColor:COLORS.FaintWhite}}></TouchableOpacity>
-
+  <View style={{width:"50%",justifyContent:"space-evenly",alignItems:"center",flexDirection:"row"}}>
+   <Pagination
+        dotsLength={data.length}
+        activeDotIndex={index}
+        carouselRef={isCarousel}
+        dotStyle={{
+          width: 15,
+          height: 15,
+          borderRadius: 50,
+          marginHorizontal: 0,
+          backgroundColor: '#93c4ef'
+        }}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
+        tappableDots={true}
+      />
   </View>
   <View style={{justifyContent:"space-around",alignItems:"center",flexDirection:"row",marginTop:40}}>
   <TouchableOpacity
@@ -125,6 +189,7 @@ const styles = StyleSheet.create({
         width:SIZES.width-50,
         height:239,
         borderRadius:10,
+        overflow:"hidden",
         zIndex:2,
         alignContent:"center",
         justifyContent:"center",

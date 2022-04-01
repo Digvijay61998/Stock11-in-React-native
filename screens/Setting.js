@@ -103,7 +103,7 @@ const Setting = ({ navigation}) => {
       </TouchableOpacity>
       <TouchableOpacity 
           onPress={() =>
-            navigation.navigate('Logout')
+            navigation.navigate('FrontPage')
           }
       >
       <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>

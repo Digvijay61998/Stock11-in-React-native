@@ -170,7 +170,7 @@ return (
        disabled={!isValid}
        onPress={() =>
         // handleSubmit
-        navigation.navigate('Home')
+        navigation.navigate('Tabs')
       } 
        >
         <Text style={{color:"white"}}>CHANGE PASSWORD</Text>

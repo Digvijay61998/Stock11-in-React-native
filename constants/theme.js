@@ -2,14 +2,20 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
 export const COLORS = {
-    primary: "#2F313E",     // background Color
-    secondary: "#1F1D2B",   // Dark purple
-    ActiveButton:"#0BFEBC",  //button color
-    FaintWhite:"#9599AF", //white color
+    primary: "#FFFF",     // background Color
+    secondary: "#0C2F81",   // Dark purple
+    white:"#FFFF", //white
+    FaintWhite:"#3b5eac", //white color
+    ActiveWhite:"#93c4ef",//light blue
+    lightBlack:"#9d9d9d",  //light black
+
+
+    ActiveButton:"#295597",  //button color
     black:"black",  // blackColor:"#"
     white:"white",  //white
     HeaderBackground:"#252837",  //headerBackground
-    LSFS:"#4D4D59"
+    LSFS:"#4D4D59",
+    backgroundColor:"linear-gradient(red, yellow)"
     
 };
 
@@ -18,13 +24,11 @@ export const  Header ={
     justifyContent: "center",
     alignItems: "center",
     overflow: 'hidden',
-    elevation: 5,
-    width: 380,
+    width:width-20,
     height: 630,
-    borderBottomRightRadius: 15,
-    borderBottomLeftRadius: 15,
-    backgroundColor: "#2F313E",
-    paddingTop:2
+    borderTopRightRadius:20,
+    borderTopLeftRadius: 20,
+    paddingTop:0,
 };
 
 export const container ={
@@ -35,13 +39,7 @@ export const container ={
 };
 
 export const CardBox={
-    height: 180,
-    width: 360,
-    backgroundColor: "#1F1D2B",
-    margin: 4,
-    borderRadius: 10,
-    padding: 5,
-    elevation:3,
+  
 };
 
 export const SIZES = {
@@ -64,12 +62,14 @@ export const SIZES = {
 
     // app dimensions
     width,
-    height
+    height,
 };
 export const FONTS = {
-    textstyle: {fontFamily: 'Poppins',color: "white",fontSize:16,fontWeight: 'bold',},
-    ItsLiveFont: {fontFamily: 'Poppins',color: "#25BC20",fontSize:16,fontWeight: 'bold',},
-    button:{  width:150,height:50,borderRadius:40,backgroundColor:COLORS.ActiveButton ,elevation:1,alignItems: "center",justifyContent:"center"},
+    textstyle: {fontFamily: 'lato',color: "black",fontSize:16,fontWeight: 'bold',},
+    ItsLiveFont: {fontFamily: 'lato',color: "#25BC20",fontSize:16,fontWeight: 'bold',},
+    button:{  width:150,height:35,borderRadius:40,backgroundColor:"#295597" ,elevation:1,alignItems: "center",justifyContent:"center"},
+    
+    
     h1: { fontFamily: "Roboto-Black", fontSize: SIZES.h1, lineHeight: 36 },
     h2: { fontFamily: "Roboto-Bold", fontSize: SIZES.h2, lineHeight: 30 },
     h3: { fontFamily: "Roboto-Bold", fontSize: SIZES.h3, lineHeight: 22 },

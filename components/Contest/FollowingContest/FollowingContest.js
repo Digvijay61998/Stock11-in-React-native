@@ -4,19 +4,19 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList ,ImageBa
 import { COLORS, FONTS, icons, Header, CardBox, dummyData } from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 
-const CompletedEvents = ({ navigation }) => {
-  const [CompletedEvents,setCompletedEvents]=useState()
+const FollowingContest = ({navigation}) => {
+    const [CompletedEvents,setCompletedEvents]=useState()
 
-  const CompletedPriceEvents = dummyData.CompletedPricePool
-
-  useEffect(() => {
-    if(CompletedPriceEvents === undefined){
-      setCompletedEvents("")
-    }else{
-      setCompletedEvents(CompletedPriceEvents)
-    }
-  });
-  let url = [icons.card, icons.card1, icons.card3];
+    const CompletedPriceEvents = dummyData.CompletedPricePool
+  
+    useEffect(() => {
+      if(CompletedPriceEvents === undefined){
+        setCompletedEvents("")
+      }else{
+        setCompletedEvents(CompletedPriceEvents)
+      }
+    });
+    let url = [icons.card, icons.card1, icons.card3];
 
   return (
     <View style={Header}>
@@ -43,24 +43,23 @@ const CompletedEvents = ({ navigation }) => {
         />
       </ScrollView>
     </View>
-  );
-};
+  )
+}
 
-export default CompletedEvents;
+export default FollowingContest
 
 const styles = StyleSheet.create({
-
-  scroller: {
-    flex: 1,
-    overflow: "hidden",
-  },
-  contestContainer:{
-    height: 180,
-    width: 340,
-    // backgroundColor: "#1F1D2B",
-    marginBottom:35,
-    borderRadius: 10,
-    padding: 5,
-    elevation:3,
-  },
-});
+    scroller: {
+        flex: 1,
+        overflow: "hidden",
+      },
+      contestContainer:{
+        height: 180,
+        width: 340,
+        // backgroundColor: "#1F1D2B",
+        marginBottom:35,
+        borderRadius: 10,
+        padding: 5,
+        elevation:3,
+      },
+})

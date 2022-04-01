@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from 'react-native'
-import { COLORS, FONTS, icons, Header, images, CardBox, dummyData } from "../../../constants"
+import { COLORS, FONTS, icons, Header, images, CardBox, dummyData, SIZES } from "../../../constants"
 import React, { useState, useEffect } from 'react';
 
 const CreateBasket = ({ navigation }) => {
@@ -133,7 +133,7 @@ const CreateBasket = ({ navigation }) => {
         </ScrollView>
       </View>
 
-      <TouchableOpacity style={[FONTS.button, { width: 300, marginTop: 60, bottom: 25 }]}
+      <TouchableOpacity style={[FONTS.button, {marginTop: 60, bottom: 25 }]}
         onPress={() =>
           navigation.navigate('TeamsView')
         }

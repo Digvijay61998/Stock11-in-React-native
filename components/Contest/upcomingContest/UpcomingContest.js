@@ -1,14 +1,11 @@
 import { StyleSheet, Text, View ,ScrollView, TouchableOpacity ,FlatList ,ImageBackground} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox,dummyData} from "../../../constants"
+import React,{useState,useEffect} from 'react'
 import {IdolContest}from "../../../Common/index"
 
-import React,{useState,useEffect} from 'react';
+const UpcomingContest = ({navigation}) => {
 
-const UpcomingEvents = ({navigation}) => {
-
-let url = [icons.card, icons.card1, icons.card3];
-
-
+    let url = [icons.card, icons.card1, icons.card3];
   const [UpcomingEvents,setUpcomingEvents]=useState()
   const UpcomingPriceEvents = dummyData.UpcomingPricePool
   useEffect(() => {
@@ -18,7 +15,6 @@ let url = [icons.card, icons.card1, icons.card3];
       setUpcomingEvents(UpcomingPriceEvents)
     }
   });
-
   return (
     <View  style={Header}>
     <ScrollView style={styles.scroller}>
@@ -46,23 +42,23 @@ let url = [icons.card, icons.card1, icons.card3];
                />
                </ScrollView>  
  </View>
-  );
-};
+  )
+}
 
-export default UpcomingEvents;
+export default UpcomingContest
 
 const styles = StyleSheet.create({
-  scroller: {
-    flex: 1,
-  overflow:"hidden",
-},
-contestContainer:{
-  height: 180,
-  width: 340,
-  // backgroundColor: "#1F1D2B",
-  marginBottom:35,
-  borderRadius: 10,
-  padding: 5,
-  elevation:3,
-},
-});
+    scroller: {
+        flex: 1,
+      overflow:"hidden",
+    },
+    contestContainer:{
+      height: 180,
+      width: 340,
+      // backgroundColor: "#1F1D2B",
+      marginBottom:35,
+      borderRadius: 10,
+      padding: 5,
+      elevation:3,
+    }, 
+})

@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View ,Image} from 'react-native';
 import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox} from "../constants/index"
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const IdolContest = ({data}) => {
 
 const [contestDetails, setContestDetails] = useState([]);
@@ -14,37 +15,46 @@ useEffect(() => {
   });
   
   return (
-    <View style={CardBox}>
+    <View>
     <View style={styles.IdolContainer}>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
-            <Text style={styles.textstyle}>Idol Contest</Text>
-            <Text style={styles.textstyle}>Entry</Text>
+            <Text style={{fontSize:19 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+            <View></View>
         </View>
-        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
+        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "white" , fontSize:10 , }}>prize pool</Text>
-                <Text style={styles.textstyle}>Rs. {contestDetails.pricePool}</Text>
-            </View>
-            <View style={{justifyContent:"center",alignItems:"center"}}>
-            <Text style={{color:"orange",fontWeight:"bold"}}>{contestDetails.duration}</Text>
-            <Text style={styles.textstyle}>{contestDetails.winners} Winners</Text>
-            </View>
+                <Text style={{ color: "black" , fontSize:23,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.1000/-</Text>
+                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{contestDetails.winners} Winners</Text>
            
-
-
-            <Text style={{ color: "black", backgroundColor:COLORS.ActiveButton, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>Rs. {contestDetails.entryFees}</Text>
+            </View>
+        <View style={{justifyContent:"center",alignItems:"center"}}>
+        <Image 
+            source={icons.IconUsers}
+            resizeMode="contain"
+            style={{
+                width:30,
+                height: 30,
+               
+      }}
+            />
+            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
-          <View style={{alignItems:"center",top:15}}>
-          <View style={{ width: 180, height: 5, backgroundColor: COLORS.ActiveButton, borderRadius: 10 }}>
+           
+        </View>
+          <View style={{alignItems:"center",right:46,top:8}}>
+          <View style={{ width: 230, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
           </View>
-          <View style={{ justifyContent: "space-between", flexDirection: "row", width:170}}>
-            <Text style={[FONTS.textstyle ,{fontSize:8 }]}>3 Spots Left</Text>
-            <Text  style={[FONTS.textstyle ,{fontSize:8}]}>3 Spots</Text>
+          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
+            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
+            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"red"}]}>No more Spots!</Text>
           </View>
           </View>
     </View>
     <View style={styles.TimeDate}>
-    {contestDetails !== undefined ? <Text style={{ color: "white" ,borderRadius: 10  , fontFamily: 'Poppins',}}>st{contestDetails.date}</Text>:<></>}
+    {contestDetails !== undefined ? <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',}}>1st {contestDetails.date}</Text>:<></>}
+ <Text style={[FONTS.textstyle,styles.view]}>VIEW</Text>
     </View>
 </View>
   );
@@ -52,7 +62,8 @@ useEffect(() => {
 
 export default IdolContest;
 
-const styles = StyleSheet.create({ container: {
+const styles = StyleSheet.create({ 
+    container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -76,21 +87,23 @@ scroller: {
 },
 
 TimeDate: {
-    width: 350,
+    width: 325,
     height: 30,
-    backgroundColor: "#252837",
-    alignItems: "center",
-    justifyContent: "center",
+    marginTop:4,
+    paddingLeft:8,
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-between",
     borderRadius: 5
 },
 IdolContainer: {
     position: "relative",
-    width: 350,
+    width: 340,
     height: 140,
 },
 textstyle: {
-    fontFamily: 'Poppins',
-    color: "white",
+    fontFamily: 'lato',
+    color: "black",
     fontSize:16,
     fontWeight: 'bold',
 },
@@ -116,9 +129,22 @@ MycontestText:{
 top:18 ,
 left:24,
 color:"black",
-fontFamily: 'Poppins',
+fontFamily: 'lato',
 fontSize:15,
 fontWeight: 'bold',
+},
+view:{
+    backgroundColor:COLORS.secondary,
+    color:COLORS.white,
+    fontFamily:"bold",
+    fontSize:12,
+    width:70,
+    height:30,
+    marginBottom:35,
+    paddingTop:6,
+    textAlign:"center",
+    borderRadius:40
 }
+
 })
 

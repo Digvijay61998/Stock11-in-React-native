@@ -1,44 +1,44 @@
-import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList } from 'react-native'
-import { COLORS, FONTS, icons, Header, images, CardBox, dummyData} from "../../constants"
+import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList,ImageBackground} from 'react-native'
+import { COLORS, FONTS, icons, Header, images, CardBox, dummyData,SIZES} from "../../constants"
 import React, { useState, useEffect }  from 'react';
+import LinearGradient from 'react-native-linear-gradient'
 
 const CreateContestBasket = ({ navigation}) => {
 
   const editTeams = dummyData.BasketData
-  const [editTeam, setEditTeam] = useState([])
+  const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
   const [points, setPoints] = useState([])
   const [counter, setCounter] = useState([])
-  const [ListCount, setListCount] = useState({})
 
-  console.log("counter",counter);
-  // const increment = (item, index) =>{
-  //   console.log("item==",item.id)
-  //   if(counter.includes(item)==1){
-  //     setCounter(counter + 1)
+  const increment = (item,index) =>{
+    console.log("item{",item);
+    console.log("ind",index)
+    
+   
+    const stock = editTeam[index]
+    console.log("stock",stock);
+    if(stock.count){h
+    stock.count = stock.count? stock.count + 1 : 1;
+    editTeam[index]=stock;
+  setEditTeam([...editTeam]);
+    }
+    }
   
-  // }
-  // }
 
-  const increment = (item) =>{
-    const name =item.id
-    if (item.id) {
-       setCounter([...counter,item.id])
-       if(counter.includes(item.id)){
-        console.log("length",counter.length)
-     }
-       }
- 
+  const decrement = (item,index) =>{
+    const stock = editTeam[index]
+    stock.count = stock.count? stock.count - 1 : 1;
+    editTeam[index]=stock;
+  setEditTeam([...editTeam]);
   }
 
 
-  const decrement = () =>{
-    setCounter(counter - 1)
-  }
-
-
-  useEffect(() => {
-    setEditTeam(editTeams)
-  })
+  // useEffect(() => {
+  //   setEditTeam(editTeams.map(i=>{
+  //     i["count"] = 0;
+  //     return i;
+  //   }))
+  // },[]);
 
   const selectpoint = (item, index) => {
     if (points.includes(item.id)) {
@@ -53,85 +53,89 @@ const CreateContestBasket = ({ navigation}) => {
       console.log("only 10 points can be selected");
     }
   }
+
   return (
-    <SafeAreaView style={styles.container}>
-    <View style={[CardBox, styles.CardBasket]}>
-      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
-        <Image
-        source={images.bitcoin}
-        resizeMode="contain"
-        style={{
-          width: 45,
-          height: 45,
-          marginRight: 10
-        }}
-      />
-        <Text style={[FONTS.textstyle, { fontSize: 30 }]}>Nifty50</Text></View>
-      <View style={{ width: "100%", justifyContent: "space-between", flexDirection: "row" }}>
-        <View style={{ fflexDirection: "column" }}>
-          <Text style={[FONTS.textstyle, { fontSize: 10 }]}>Prize Pool  </Text>
-          <Text style={[FONTS.textstyle, { fontSize: 13 }]}>4/10</Text>
+    <LinearGradient
+    colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+     style={styles.container}
+    >
+        <Image 
+     source={icons.Stock11Logo}
+     resizeMode="contain"
+     style={{
+         width: 70,
+         height:70,
+         marginBottom:30
+        
+}}
+/>
+        <ImageBackground
+            resizeMode="cover"
+            source={icons.card}
+            style={styles.contestContainer}
+            >
+    <View style={[styles.IdolContainer,{width:280}]}>
+        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+            <View></View>
         </View>
-        <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
-          <Text style={[FONTS.textstyle, { fontSize: 10 }]}>Credits Left</Text>
-          <Text style={[FONTS.textstyle, { fontSize: 13 }]}>60.0</Text>
+        <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
+            <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+                <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
+                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+           
+            </View>
+        <View style={{justifyContent:"center",alignItems:"center"}}>
+        <Image 
+            source={icons.IconUsers}
+            resizeMode="contain"
+            style={{
+                width:30,
+                height: 30,
+               
+      }}
+            />
+            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
-      </View>
-     
-      <View style={{ width: "100%", height: 35, borderRadius: 10, top: 15, backgroundColor: COLORS.secondary, alignItems: "center", justifyContent: "flex-start", flexDirection: "row" }}>
-{ Array.apply(null, { length: 10}).map((e, i) => (
-   <View >
-        <Image key={i}
-          source={icons.Ellipse}
-          resizeMode="contain"
-          style={{
-            width: 15,
-            height: 15,
-            marginLeft: 10,
-          }}
-        />
-            </View>
-   ))}
-{ Array.apply(null, { length: points.length}).map((e, i) => (
-    <View style={{right:240,flexDirection: "row"}}>
-        <Image key={i}
-          source={icons.Group}
-          resizeMode="contain"
-          style={{
-            width: 15,
-            height: 15,
-            // marginLeft:10,
-          }}
-        />
-            <Image key={i}
-          source={icons.rectangleBox}
-          resizeMode="contain"
-          style={{
-            width: 10,
-            height: 15,
-            // marginLeft:10,
-          }}
-        />
-            </View>
-   ))}
-      </View>
-      <View style={{ width: "100%",alignItems: "center",bottom:15, right:10,justifyContent:"flex-end", flexDirection: "row" }}><Text style={[FONTS.textstyle,{color:COLORS.ActiveButton,fontSize: 13}]}>{points.length}/10</Text></View>
+           
+        </View>
+          <View style={{alignItems:"center",right:44,top:4}}>
+          <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
+          </View>
+          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
+            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
+            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>
+          </View>
+          </View>
     </View>
+      </ImageBackground>
     <View style={styles.Teamcontainer}>
       <View style={styles.EarnListTitle}>
-        <Text style={[FONTS.textstyle,{paddingLeft:25}]}>Stocks</Text>
-        <Text style={[FONTS.textstyle,{paddingRight:25}]}>Weightage</Text>
+        <Text style={{fontWeight:"bold",color:"black",fontSize:18}}>EDIT BASKET</Text>
+        <Text style={{fontWeight:"bold",top:10,fontSize:10}}>SELECTED 2 PLEASE ADD 8 MORE</Text>
+       <View style={[styles.headerTitle,{marginTop:20,borderBottomWidth:1,borderTopWidth:1,borderColor:"#e4e2e4"}]}>
+         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>POINTS:100</Text>
+         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>POINTS LEFT:10</Text>
+      </View>
+      <View style={styles.headerTitle}>
+         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>STOCKS</Text>
+         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12 }}>WEIGHTAGE</Text>
+      </View>
       </View>
       <ScrollView style={styles.scroller}>
         <FlatList
           data={editTeam}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            <TouchableOpacity style={points.includes(item.id) ? [styles.EarnList, { backgroundColor: COLORS.secondary }] : styles.EarnList}
-              onPress={() => selectpoint(item, index)}
+            <TouchableOpacity style={points.includes(item.id) ? [styles.EarnList, { backgroundColor:"#e7f0f2"}] : styles.EarnList}
+              onPress={() => selectpoint(item, index)} key={item.id}
             >
-              <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"center"}}>
-               { points.includes(item.id) ? <Image
+              <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"center" }}>
+               {/* { points.includes(item.id) ? <Image
                   source={icons.Group}
                   resizeMode="contain"
                   style={{
@@ -148,28 +152,28 @@ const CreateContestBasket = ({ navigation}) => {
                     height: 18,
                     marginRight: 10
                   }}
-                />}
-                <Text style={[FONTS.textstyle, { fontSize: 14 }]}>{item.stocks}</Text>
+                />} */}
+                <Text style={[FONTS.textstyle,{fontSize:14}]}>{item.stocks}</Text>
               </View>
               <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row'}}>
                 <View style={{paddingRight:3}}>
-                <TouchableOpacity style={{ width:14,height:15,borderRadius:100,paddingBottom:2,
-                  backgroundColor:"#d43737",justifyContent:"center",alignItems:"center"}}
-                  onPress={decrement}
+                <TouchableOpacity style={{ width:20,height:20,
+                     justifyContent:"center",alignItems:"center"}}
+                  onPress={() =>decrement (item,index)}
                   >
-                <Text style={{fontSize:16,color:"white",bottom:5}}>-</Text>
+                <Text style={{fontSize:14,fontWeight:"bold",color:"black"}}>-</Text>
                 </TouchableOpacity>
                 </View>
                 <View>
-            <Text style={[FONTS.textstyle, { fontSize: 15 }]}>
-            {counter.includes(item.id) ? counter.length : 0}
+            <Text style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1,paddingLeft:10,paddingRight:10}]}>
+            {item.count ? item.count : 0}
               </Text>
                 </View>
                 <View style={{paddingLeft:3}}>
-                <TouchableOpacity style={{ width:15,height:15,borderRadius:100,
-                  backgroundColor:"#d43737" ,elevation:1,justifyContent:"center",alignItems:"center"}}
-                  onPress={() =>increment (item)} >
-                <Text style={{fontSize:12,color:"white",bottom:2}}>+</Text>
+                <TouchableOpacity style={{ width:15,height:15,
+           justifyContent:"center",alignItems:"center"}}
+                  onPress={() =>increment (item,index)} >
+                <Text style={{fontSize:14,fontWeight:"bold" ,color:"black",bottom:2}}>+</Text>
                 </TouchableOpacity>
               
                 </View>
@@ -180,18 +184,19 @@ const CreateContestBasket = ({ navigation}) => {
           keyExtractor={(item, index) => index}
         />
       </ScrollView>
-    </View>
-
-    <TouchableOpacity style={[FONTS.button , {width:300 ,marginTop:60 ,bottom:25}]}
+      <TouchableOpacity style={[FONTS.button , {width:SIZES.width-200 ,marginTop:60 ,bottom:25}]}
            onPress={() =>
             navigation.navigate('Team Preview', {
               paramKey: counter,
             })
           }
        >
-        <Text style={[FONTS.textstyle ,{color:"black"}]}>Contiue</Text>
+        <Text style={[FONTS.textstyle ,{color:"white"}]}>Contiue</Text>
        </TouchableOpacity>
-  </SafeAreaView>
+    </View>
+
+   
+  </LinearGradient>
   );
 };
 
@@ -206,10 +211,9 @@ const styles = StyleSheet.create({
   scroller: {
     flex: 1,
     overflow: "hidden",
-    borderWidth: 1,
-    borderColor: COLORS.FaintWhite,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+    marginTop:50,
+    paddingLeft:15,
+    paddingRight:15
   },
   CardBasket: {
     backgroundColor: COLORS.HeaderBackground,
@@ -220,29 +224,50 @@ const styles = StyleSheet.create({
     marginTop: 15
   },
   Teamcontainer: {
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
-    backgroundColor: COLORS.secondary,
-    marginTop: 10
+    backgroundColor:"#fcf4ff",
+    marginTop: -80,
+    borderRadius:20
   },
   EarnListTitle: {
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
+    flexDirection:"column",
     width: 360,
     height: 50,
-    backgroundColor: COLORS.HeaderBackground,
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10
-
+    marginTop:100,
   },
   EarnList: {
     justifyContent: "space-between",
     alignItems: "center",
     flexDirection: "row",
-    borderWidth: 1,
-    borderColor: "#575966",
+    backgroundColor:"#fff",
+    width:300,
     padding: 10,
+    borderRadius:20,
+    marginBottom:10,
     backgroundColor: COLORS.primary
+  },
+  contestContainer:{
+    height: 149,
+    width: 285,
+    // backgroundColor: "#1F1D2B",
+    marginBottom:15,
+    borderRadius: 10,
+    padding: 5,
+    elevation:3,
+  },
+  headerTitle:{
+    width:300,
+    height:25,
+    justifyContent:"space-between",
+    alignItems:"center",
+    flexDirection:"row",
+    paddingLeft:15,
+    paddingRight:15
   }
+
 });
 

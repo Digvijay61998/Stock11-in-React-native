@@ -24,6 +24,7 @@ import ChangePassword from './components/settingFile/ChangePassword';
 import HelpDesk from './components/settingFile/HelpDesk';
 import HowToPlay from './components/settingFile/HowToPlay';
 import Notification from './components/settingFile/Notification';
+
 import Profile from './components/settingFile/Profile';
 import PromoCode from './components/settingFile/PromoCode';
 import ReferFriend from './components/settingFile/ReferFriend';
@@ -36,6 +37,11 @@ import PayUsing from './components/Contest/PayUsing';
 import SelectBasket from './components/Contest/SelectBasket';
 import CurrentBalance from './components/Contest/CurrentBalance';
 import { Home } from './screens';
+import LoginScreen from './screens/LoginScreen';
+import MyProfile from './components/settingFile/MyProfile';
+import EditProfile from './components/settingFile/EditProfile';
+import PayByWallet from './components/settingFile/PayByWallet';
+import SelectPayment from './components/settingFile/SelectPayment';
 
 const Stack = createStackNavigator();
 
@@ -63,7 +69,7 @@ const App = () => {
   
         <Stack.Navigator
         screenOptions={{
-          headerShown: true,
+          headerShown: false,
         }}
         initialRouteName={'Home'}
         
@@ -74,14 +80,9 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="Contest" component={Contest}/>  
             <Stack.Screen key={Date.now()} name="MyBasket" component={MyBasket}/>  
             <Stack.Screen key={Date.now()} name="MyContest" component={MyContest}/>  
-            <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} options={{ title:"Otp Verification",headerStyle:{
-              backgroundColor:'#252837'},             
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-                
-              }
-              }} />
+            <Stack.Screen key={Date.now()} name="LoginScreen" component={LoginScreen} options={{headerShown: false}}/>  
+
+            <Stack.Screen key={Date.now()} name="OtpVerification" component={OtpVerification} options={{headerShown: false}}/>
 
 {/* <Stack.Screen key={Date.now()} name="Home" component={Home} options={{ title:"Home",headerStyle:{
               backgroundColor:'#252837'},             
@@ -92,191 +93,39 @@ const App = () => {
               }
               }} /> */}
 
-               <Stack.Screen key={Date.now()} name="Setting" component={Setting} options={{ title:"Settings",headerStyle:{
-              backgroundColor:'#252837'},             
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 20,
-                
-              }
-              }}/> 
-            <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile}  options={{ title:"CompleteProfile",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="UpcomingEvents" component={UpcomingEvents}  options={{ title:"UpcomingEvents",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{ title:"UpcomingContestDetails",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{ title:"LiveContestDetails",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{ title:"EarnedPoints",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}screenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{ title:"CreateBasket",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView}  options={{ title:"TeamsView",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} options={{ title:"EditTeam",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }}creenOptions={{ headerShown: true }} />
-            <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  options={{ title:"CompletedContestDetails",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket}  options={{ title:"CreateContestBasket",headerStyle:{
-              backgroundColor:'#252837' } ,headerTintColor: '#fff',headerTitleStyle: {fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  />
+               <Stack.Screen key={Date.now()} name="Setting" component={Setting} options={{ title:"Settings"}}/> 
+            <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile}  options={{headerShown: false}} />
+            <Stack.Screen key={Date.now()} name="UpcomingEvents" component={UpcomingEvents}  options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents",headerShown:false}}  />
+            <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
+            <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>
            
 
             <Stack.Screen key={Date.now()} name="AboutUs" component={AboutUs}  />
-            <Stack.Screen key={Date.now()} name="BankDetails" component={BankDetails}options={{ title:"BankDetails",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="ChangePassword" component={ChangePassword}options={{ title:"ChangePassword",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="HelpDesk" component={HelpDesk}options={{ title:"HelpDesk",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="HowToPlay" component={HowToPlay}options={{ title:"HowToPlay",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Notification" component={Notification}options={{ title:"Notification",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Profile" component={Profile}options={{ title:"Profile",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="PromoCode" component={PromoCode}options={{ title:"PromoCode",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="ReferFriend" component={ReferFriend}options={{ title:"ReferFriend",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Wallet" component={Wallet}options={{ title:"Wallet",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="ViewContest" component={ViewContest}options={{ title:"ViewContest",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview}options={{ title:"Team Preview",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing}options={{ title:"Pay Using",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Select Basket" component={SelectBasket}options={{ title:"Select Basket",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-            <Stack.Screen key={Date.now()} name="Current Balance" component={CurrentBalance}options={{ title:"Current Balance",headerStyle:{
-              backgroundColor:'#252837' } ,
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              }
-              }} />
-           
+            <Stack.Screen key={Date.now()} name="BankDetails" component={BankDetails} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="ChangePassword" component={ChangePassword} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="HelpDesk" component={HelpDesk} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="HowToPlay" component={HowToPlay} options={{headerShown:false}}/>           
+            <Stack.Screen key={Date.now()} name="Notification" component={Notification} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Profile" component={Profile} options={{headerShown:false}}/>     
+            <Stack.Screen key={Date.now()} name="PromoCode" component={PromoCode} options={{headerShown:false}}/> 
+            <Stack.Screen key={Date.now()} name="ReferFriend" component={ReferFriend} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Wallet" component={Wallet} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="PayByWallet" component={PayByWallet} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="ViewContest" component={ViewContest} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing} options={{headerShown:false}}/>           
+            <Stack.Screen key={Date.now()} name="Select Basket" component={SelectBasket} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="Current Balance" component={CurrentBalance} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="MyProfile" component={MyProfile} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="SelectPayment" component={SelectPayment} options={{headerShown:false}}/>
 
 
             {/* <Stack.Screen key={Date.now()} name="Setting" component={Setting} navigation={this.props.navigation} options={({ route }) => {

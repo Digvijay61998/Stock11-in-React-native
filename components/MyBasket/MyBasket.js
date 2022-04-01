@@ -46,7 +46,6 @@ const MyBasket = ({ navigation }) => {
     <View style={[styles.IdolContainer,{width:280}]}>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
             <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
-            <View></View>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>

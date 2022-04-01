@@ -3,7 +3,7 @@ import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 
-const Wallet = () => {
+const Wallet = ({navigation}) => {
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
@@ -27,7 +27,7 @@ const Wallet = () => {
       <View style={{width: '100%', height:300 ,top:80, alignItems: "center", justifyContent:"center" ,borderTopWidth:1 ,borderColor:"#ebe7ec"}}>
        <TouchableOpacity style={[FONTS.button,{width:150 , bottom:60}]}
            onPress={() =>
-            navigation.navigate('Notification')
+            navigation.navigate('PayByWallet')
           }
        >
         <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>ADD BALANCE</Text>

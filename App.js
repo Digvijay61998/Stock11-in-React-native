@@ -40,8 +40,13 @@ import { Home } from './screens';
 import Register from './screens/Register';
 import MyProfile from './components/settingFile/MyProfile';
 import EditProfile from './components/settingFile/EditProfile';
+<<<<<<< HEAD
 import Login from './screens/Login';
 import FrontPage from './screens/FrontPage';
+=======
+import PayByWallet from './components/settingFile/PayByWallet';
+import SelectPayment from './components/settingFile/SelectPayment';
+>>>>>>> b72f5f58daf0d110733a5d93912f0c1347734e7a
 
 const Stack = createStackNavigator();
 
@@ -98,7 +103,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="CompleteProfile" component={CompleteProfile}  options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="UpcomingEvents" component={UpcomingEvents}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents"}}options={{headerShown:false}} />
+            <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents",headerShown:false}}  />
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{headerShown:false}} />
@@ -119,12 +124,14 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="PromoCode" component={PromoCode} options={{headerShown:false}}/> 
             <Stack.Screen key={Date.now()} name="ReferFriend" component={ReferFriend} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Wallet" component={Wallet} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="PayByWallet" component={PayByWallet} options={{headerShown:false}}/>        
             <Stack.Screen key={Date.now()} name="ViewContest" component={ViewContest} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing} options={{headerShown:false}}/>           
             <Stack.Screen key={Date.now()} name="Select Basket" component={SelectBasket} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Current Balance" component={CurrentBalance} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="MyProfile" component={MyProfile} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="SelectPayment" component={SelectPayment} options={{headerShown:false}}/>
 
 
             {/* <Stack.Screen key={Date.now()} name="Setting" component={Setting} navigation={this.props.navigation} options={({ route }) => {

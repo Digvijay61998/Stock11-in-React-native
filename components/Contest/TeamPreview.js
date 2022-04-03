@@ -17,7 +17,7 @@ const TeamPreview = ({ navigation, route }) => {
      
       const stock = editTeam[index]
       console.log("stock",stock);
-      if(stock.count){h
+      if(stock.count){
       stock.count = stock.count? stock.count + 1 : 1;
       editTeam[index]=stock;
     setEditTeam([...editTeam]);
@@ -69,51 +69,38 @@ const TeamPreview = ({ navigation, route }) => {
          width: 70,
          height:70,
          marginBottom:30
-        
 }}
 />
-        <ImageBackground
-            resizeMode="cover"
-            source={icons.card}
+<LinearGradient
+  colors={['#f8f8f8', '#dddddd','#bfbfbf','#b7b7b7' ]}
+  start={{ x: 0, y: 0 }}
+  end={{ x: 1, y: 1 }}
             style={styles.contestContainer}
             >
-    <View style={[styles.IdolContainer,{width:280}]}>
+    
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
-            <View></View>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>BASKET NAME</Text>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
-            <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
-                <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
-                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+            <View style={{ justifyContent: "space-between", flexDirection: "column" ,height:80,top:15}}>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>STOCK FESTIVAL</Text>
+                <Text style={{ color: "black" , fontSize:12}}>Correspondant Contest - Nifty Fifty</Text>
+                <Text style={{ color: "#45444" , fontSize:12,fontWeight:"bold"}}>1st OCT -3rd OCT 2022</Text>
            
             </View>
         <View style={{justifyContent:"center",alignItems:"center"}}>
         <Image 
-            source={icons.IconUsers}
+            source={icons.basket}
             resizeMode="contain"
             style={{
-                width:30,
-                height: 30,
-               
+                width:40,
+                height: 40,
+                top:-40
       }}
             />
-            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
-            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
-           
         </View>
-          <View style={{alignItems:"center",right:44,top:4}}>
-          <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
-          </View>
-          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
-            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
-            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>
-          </View>
-          </View>
-    </View>
-      </ImageBackground>
+      </LinearGradient>
     <View style={styles.Teamcontainer}>
       <View style={styles.EarnListTitle}>
         <Text style={{fontWeight:"bold",color:"black",fontSize:18}}>PREVIEW BASKET:2</Text>
@@ -218,11 +205,12 @@ const styles = StyleSheet.create({
         backgroundColor:"#e7f0f2"
       },
       contestContainer:{
-        height: 149,
-        width: 285,
+        height: 130,
+        width:SIZES.width-120,
         // backgroundColor: "#1F1D2B",
         marginBottom:15,
         borderRadius: 10,
+        overflow:"hidden",
         padding: 5,
         elevation:3,
       },

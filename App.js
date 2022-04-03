@@ -16,7 +16,6 @@ import LiveContestDetails from './components/MyContest/UpcomingLiveEvents/LiveCo
 import EarnedPoints from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/EarnedPoints';
 import CreateBasket from './components/MyBasket/BasketEdits/CreateBasket';
 import TeamsView from './components/MyBasket/BasketEdits/TeamsView';
-import EditTeam from './components/MyBasket/BasketEdits/EditTeam';
 import CompletedContestDetails from './components/MyContest/UpcomingLiveEvents/Completed/CompletedContestDetails';
 import AboutUs from './components/settingFile/AboutUs';
 import BankDetails from './components/settingFile/BankDetails';
@@ -104,7 +103,6 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="EditTeam" component={EditTeam} options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>

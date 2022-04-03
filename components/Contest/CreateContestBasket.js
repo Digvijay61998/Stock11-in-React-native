@@ -9,19 +9,20 @@ const CreateContestBasket = ({ navigation}) => {
   const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
   const [points, setPoints] = useState([])
   const [counter, setCounter] = useState([])
+  console.log("counter",counter);
 
   const increment = (item,index) =>{
-    console.log("item{",item);
-    console.log("ind",index)
-    
-   
+    // console.log("item{",item);
+    // console.log("ind",index)
     const stock = editTeam[index]
     console.log("stock",stock);
-    if(stock.count){h
+    // if(stock.count){
     stock.count = stock.count? stock.count + 1 : 1;
     editTeam[index]=stock;
   setEditTeam([...editTeam]);
-    }
+    // }
+  setCounter(editTeam)
+
     }
   
 
@@ -71,55 +72,42 @@ const CreateContestBasket = ({ navigation}) => {
         
 }}
 />
-        <ImageBackground
+<ImageBackground
             resizeMode="cover"
             source={icons.card}
             style={styles.contestContainer}
             >
-    <View style={[styles.IdolContainer,{width:280}]}>
+    
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
-            <View></View>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>BASKET NAME</Text>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
-            <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
-                <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
-                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+            <View style={{ justifyContent: "space-between", flexDirection: "column" ,height:80,top:15}}>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>STOCK FESTIVAL</Text>
+                <Text style={{ color: "black" , fontSize:12}}>Correspondant Contest - Nifty Fifty</Text>
+                <Text style={{ color: "#45444" , fontSize:12,fontWeight:"bold"}}>1st OCT -3rd OCT 2022</Text>
            
             </View>
         <View style={{justifyContent:"center",alignItems:"center"}}>
         <Image 
-            source={icons.IconUsers}
+            source={icons.basket}
             resizeMode="contain"
             style={{
-                width:30,
-                height: 30,
-               
+                width:40,
+                height: 40,
+                top:-40
       }}
             />
-            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
-            <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
-           
         </View>
-          <View style={{alignItems:"center",right:44,top:4}}>
-          <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
-          </View>
-          <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
-            <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
-            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>
-          </View>
-          </View>
-    </View>
       </ImageBackground>
     <View style={styles.Teamcontainer}>
       <View style={styles.EarnListTitle}>
         <Text style={{fontWeight:"bold",color:"black",fontSize:18}}>EDIT BASKET</Text>
-        <Text style={{fontWeight:"bold",top:10,fontSize:10}}>SELECTED 2 PLEASE ADD 8 MORE</Text>
-       <View style={[styles.headerTitle,{marginTop:20,borderBottomWidth:1,borderTopWidth:1,borderColor:"#e4e2e4"}]}>
+        <Text style={{fontWeight:"bold",top:10,fontSize:10}}>SELECTED {points.length} PLEASE ADD { 10 - points.length} MORE</Text>
+       <View style={[styles.headerTitle,{marginTop:20,borderBottomWidth:1,borderTopWidth:1,borderColor:"#e4e2e4",height:30}]}>
          <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>POINTS:100</Text>
-         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>POINTS LEFT:10</Text>
+         <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>POINTS LEFT: { 10 - points.length}</Text>
       </View>
       <View style={styles.headerTitle}>
          <Text style={{color:"black" ,fontWeight:"bold",fontSize:12}}>STOCKS</Text>
@@ -237,7 +225,7 @@ const styles = StyleSheet.create({
     flexDirection:"column",
     width: 360,
     height: 50,
-    marginTop:100,
+    marginTop:110,
   },
   EarnList: {
     justifyContent: "space-between",
@@ -251,11 +239,12 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primary
   },
   contestContainer:{
-    height: 149,
-    width: 285,
+    height: 130,
+    width:SIZES.width-120,
     // backgroundColor: "#1F1D2B",
     marginBottom:15,
     borderRadius: 10,
+    overflow:"hidden",
     padding: 5,
     elevation:3,
   },

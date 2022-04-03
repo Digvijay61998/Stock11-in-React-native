@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
-import PhoneInput from "react-native-phone-number-input";
-
 import { COLORS, FONTS, icons, SIZES ,container} from "../constants"
 import { number } from 'yup/lib/locale';
 import routes from '../utils/routes';

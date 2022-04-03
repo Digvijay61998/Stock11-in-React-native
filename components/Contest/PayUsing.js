@@ -2,10 +2,8 @@ import React from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { CardBox, COLORS, FONTS, images } from "../../constants";
-import CircleCheckBox, {LABEL_POSITION} from 'react-native-circle-checkbox';
 
 const PayUsing =({navigation})=>{
-    var reactNativeCircleCheckbox = require("react-native-circle-checkbox")
     return(
         <SafeAreaView style={styles.container}>
            <View style={[CardBox, styles.payContainer]}>

@@ -36,77 +36,70 @@ const Setting = ({ navigation}) => {
                                     }}/>
     <View >
       <View style={styles.settingContainer}>
-<TouchableOpacity 
+<TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
             navigation.navigate('MyProfile')
           }
       >
-        <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
+        <View style={{width:270, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:13 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>My Profile</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
-            navigation.navigate('Notification')
+            navigation.navigate('MyStock11')
           }
       >
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
-      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Notifications</Text>
+      <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>My Stock 11</Text>
+      
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
-          onPress={() =>
-            navigation.navigate('ReferFriend')
-          }
-      >
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
-      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Refer a Freind</Text>
-      </View>
-      </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
             navigation.navigate('HowToPlay')
           }
       >
 
-<View style={{width:290, height:42 ,backgroundColor:COLORS.primary , justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+<View style={{width:270, height:42 ,backgroundColor:COLORS.primary , justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>How to Play</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
+     
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
-            navigation.navigate('PromoCode')
+            navigation.navigate('ReferFriend')
           }
       >
-
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
-      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Promocode</Text>
+      <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Refer a Freind</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
+     
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
             navigation.navigate('AboutUs')
           }
       >
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
       <Text style={{color:"black",fontSize:15,paddingLeft:10}}>About Us</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
             navigation.navigate('HelpDesk')
           }
       >
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Help Desk</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
+      <TouchableOpacity style={{paddingBottom:9}}
           onPress={() =>
             navigation.navigate('FrontPage')
           }
       >
-      <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:10}}>
+      <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Logout</Text>
       </View>
       </TouchableOpacity>

@@ -38,12 +38,15 @@ import CurrentBalance from './components/Contest/CurrentBalance';
 import { Home } from './screens';
 import Register from './screens/Register';
 import MyProfile from './components/settingFile/MyProfile';
-import EditProfile from './components/settingFile/EditProfile';
 import Login from './screens/Login';
 import FrontPage from './screens/FrontPage';
 import PayByWallet from './components/settingFile/PayByWallet';
 import SelectPayment from './components/settingFile/SelectPayment';
 import Perfomance from './components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
+import EditProfile from './screens/EditProfile';
+import MyStock11 from './components/settingFile/Stock11/MyStock11';
+import WinningHistory from './components/settingFile/Stock11/WinningHistory';
+import Transactions from './components/settingFile/Stock11/Transaction';
 
 const Stack = createStackNavigator();
 
@@ -115,11 +118,15 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="HelpDesk" component={HelpDesk} options={{headerShown:false}}/>        
             <Stack.Screen key={Date.now()} name="HowToPlay" component={HowToPlay} options={{headerShown:false}}/>           
             <Stack.Screen key={Date.now()} name="Notification" component={Notification} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="EditProfile" component={EditProfile} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Profile" component={Profile} options={{headerShown:false}}/>     
             <Stack.Screen key={Date.now()} name="PromoCode" component={PromoCode} options={{headerShown:false}}/> 
             <Stack.Screen key={Date.now()} name="ReferFriend" component={ReferFriend} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Wallet" component={Wallet} options={{headerShown:false}}/>        
             <Stack.Screen key={Date.now()} name="PayByWallet" component={PayByWallet} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="MyStock11" component={MyStock11} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="WinningHistory" component={WinningHistory} options={{headerShown:false}}/>        
+            <Stack.Screen key={Date.now()} name="Transactions" component={Transactions} options={{headerShown:false}}/>        
             <Stack.Screen key={Date.now()} name="ViewContest" component={ViewContest} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Team Preview" component={TeamPreview} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Pay Using" component={PayUsing} options={{headerShown:false}}/>           

@@ -22,7 +22,7 @@ export const COLORS = {
 
 export const contestContainer={
     height: 180,
-    width: width-40,
+    width:"100%",
     // backgroundColor: "#1F1D2B",
     marginBottom:35,
     borderRadius: 10,

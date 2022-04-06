@@ -1,11 +1,15 @@
 import routes from "./routes"
+import { AsyncStorage} from 'react-native';
 
-export const apiGet = (url,serviceName) => {
+// console.log("dsfasd",TOKEN);
+
+  export const apiGet = async(url,serviceName,userToken) => {
   let apiUrl = verifyService(serviceName);
+  let TOKEN = await AsyncStorage.getItem('userToken')
   return new Promise((resolve, reject) => {
-    fetch(`${apiUrl}${url}`, {
+  fetch(`${apiUrl}${url}` , {
       method: 'GET',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`}
     })
       .then(response => {
         try {
@@ -24,6 +28,8 @@ export const apiGet = (url,serviceName) => {
 export const apiPost = async (url, values,serviceName) => {
   console.log("values",values);
   let apiUrl = verifyService(serviceName);
+  let TOKEN = await AsyncStorage.getItem('userToken')
+
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'POST',
@@ -48,8 +54,10 @@ export const apiPost = async (url, values,serviceName) => {
   });
 };
 
-export const apiPut = (url, values ,serviceName) => {
+export const apiPut = async(url, values ,serviceName) => {
   let apiUrl = verifyService(serviceName);
+  let TOKEN = await AsyncStorage.getItem('userToken')
+
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'PUT',
@@ -73,8 +81,10 @@ export const apiPut = (url, values ,serviceName) => {
   });
 };
 
-export const apiDelete = (url, serviceName) => {
+export const apiDelete = async(url, serviceName) => {
   let apiUrl = verifyService(serviceName);
+  let TOKEN = await AsyncStorage.getItem('userToken')
+
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'DELETE',
@@ -98,6 +108,8 @@ export const apiDelete = (url, serviceName) => {
 
 export const apiPostImage = async (url, values,serviceName) => {
   let apiUrl = verifyService(serviceName);
+  let TOKEN = await AsyncStorage.getItem('userToken')
+
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'POST',
@@ -126,3 +138,4 @@ function verifyService(serviceName) {
   }
   return urls[serviceName];
 }
+

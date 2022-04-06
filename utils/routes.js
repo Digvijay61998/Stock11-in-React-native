@@ -6,9 +6,9 @@ export default {
         BASE_PATH:"http://stock11-backend-staging-286433744.ap-south-1.elb.amazonaws.com/api/stock11",
         APIS:{
             // GET API
-          
-            // GET_USER_PROFILE_IMAGE: async (data)=> {return await apiGet(`/image/${data}`,"USER_MS")},
-            
+            GET_CONTEST_CARDS: async (data)=> {
+                console.log("data",data)
+                return await apiGet("/contests?status=LIV","STOCK_11")},
             // POST API
             // LOGIN: async (data)=> await apiPost("/userauth/send-otp",data,"STOCK_11"),
             // VERIFY: async (data)=> await apiPost("/userauth/verify",data,"STOCK_11"),

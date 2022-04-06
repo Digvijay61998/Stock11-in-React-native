@@ -78,18 +78,18 @@ function OtpVerification(prop) {
       // }
             navigation.navigate('Home')
     }
-//     const getuserID = async () => {
+    const getuserID = async () => {
   
-//       const checkSum = await AsyncStorage.getItem('checkSum');
-//       const userToken = await AsyncStorage.getItem('userToken');
+      const checkSum = await AsyncStorage.getItem('checkSum');
+      const userToken = await AsyncStorage.getItem('userToken');
     
-//     console.log("userToken",userToken);
-//     console.log("checkSum",checkSum);
+    console.log("userToken",userToken);
+    console.log("checkSum",checkSum);
     
-//     };
-// useEffect (() => {
-//   getuserID()
-// })
+    };
+useEffect (() => {
+  getuserID()
+})
 return (
 <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}

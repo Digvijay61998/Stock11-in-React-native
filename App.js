@@ -44,6 +44,7 @@ import FrontPage from './screens/FrontPage';
 import PayByWallet from './components/settingFile/PayByWallet';
 import SelectPayment from './components/settingFile/SelectPayment';
 import Perfomance from './components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
+import { store } from './store';
 
 const Stack = createStackNavigator();
 
@@ -66,7 +67,7 @@ const App = () => {
 //   );
 // }
   return (
-// {/* <Provider > */}
+    <Provider store={store}>  
     <NavigationContainer>
   
         <Stack.Navigator
@@ -175,7 +176,7 @@ const App = () => {
      */}
       </Stack.Navigator> 
   </NavigationContainer>
-  // {/* </Provider> */}
+  </Provider>
   )
 }
 

@@ -96,17 +96,17 @@ return (
             {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
               return(
                 <View style={styles.LoginBox}>
-                {props.route.params === "forgotPassword" ? <></>:<Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.FaintWhite ,padding:10,}]}>CREATE ACCOUNT</Text>}
+                {props.route.params === "forgotPassword" ? <></>:<Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.black ,padding:10,}]}>CREATE ACCOUNT</Text>}
                <View 
                   style={styles.input}center
                >
                 <TextInput
-                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center",}]}
                   name="mobile"
                   keyboardType='numeric'
                   value={values.mobile}
                   onChangeText={handleChange('mobile')}
-                  placeholder="ENTER MOBILE Number/Email"
+                  placeholder="Enter Mobile Number OR Email"
                   placeholderTextColor="#7e9291"
                   // paddingLeft={10}
                   autoComplete="cc-number"
@@ -116,12 +116,12 @@ return (
                   </View>
                   <TouchableOpacity
                   style={{
-                      width:199,
+                      width:SIZES.width-200,
                       margin:15,
                       borderRadius:50,
                       height:37,
+                      justifyContent:"center",
                       alignItems:"center",
-                      opacity: 1,
                       backgroundColor:COLORS.ActiveButton,
                    }}
                    title="Request OTP"
@@ -133,23 +133,9 @@ return (
                   //  disabled={!(isValid && dirty)}
                    onPress={() =>{
                     handleSubmit()
-                   }
-                       
-                     }
+                   }}
                   >
-                  {/* <Button 
-                      title="Request OTP"
-                      color="#f5871f00"
-                      elevation="2"
-                      onChangeText={(val)=>setNumber(val)}
-                      onPress={() =>
-                          navigation.navigate('OtpVerification')
-                        }
-  
-  /> */}<View style={{paddingTop:5}}>
-    <Text style={[FONTS.textstyle ,{color:"white"}]}>REQUEST FOR OTP</Text>
-  </View>
-  
+    <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>REQUEST OTP</Text>
   </TouchableOpacity>
   </View>
               )
@@ -165,7 +151,7 @@ const styles = StyleSheet.create({
     loginBoxHeader:{
     height:50,
     width:200,
-    backgroundColor:"white",
+    backgroundColor:"#fefaff",
     borderTopLeftRadius:25,
     borderTopRightRadius:25,
     justifyContent:"center",
@@ -181,7 +167,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         justifyContent:"center",
         elevation:10,
-        border:'1px solid #E8E4E4',
+        borderWidth:0.1,
         boxShadow:"0px 20px 10px #00000014"
           },
     input: {

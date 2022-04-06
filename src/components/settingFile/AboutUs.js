@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, FlatList,Image } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container,images } from "../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container} from "../../constants"
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -16,7 +16,7 @@ const AboutUs = ({ navigation }) => {
 <View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
       <View >
       <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:50,

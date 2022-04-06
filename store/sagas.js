@@ -1,4 +1,4 @@
-import { getTopHeadlineRequest } from "../components/Contest/LiveContest/LiveContest.js";
+import { getTopHeadlineRequest } from "../src/components/Contest/LiveContest/LiveContest.js";
 import { put, takeLatest, all } from "@redux-saga/core/effects";
 
 function* getTopHeadline({ payload }) {

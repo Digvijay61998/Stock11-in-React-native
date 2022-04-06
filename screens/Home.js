@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Image} from 'react-native';
 
-import Contest from "../components/Contest/Contest.js"
-import MyBasket from "../components/MyBasket/MyBasket.js"
-import MyContest from "../components/MyContest/MyContest.js"
-import ViewContest from "../components/Contest/ViewContest.js"
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, SIZES} from "../constants"
+import Contest from "../src/components/Contest/Contest.js"
+import MyContest from "../src/components/MyContest/MyContest"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, SIZES} from "../src/constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import Confirmation from '../components/Contest/Confirmation.js';
+import Confirmation from '../src/components/Contest/Confirmation.js';
 import LinearGradient from 'react-native-linear-gradient'
 
 

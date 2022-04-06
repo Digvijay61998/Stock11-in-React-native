@@ -1,5 +1,5 @@
 import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList,ImageBackground} from 'react-native'
-import { COLORS, FONTS, icons, Header, images, CardBox, dummyData,SIZES} from "../../constants"
+import { COLORS, FONTS, icons, Header,CardBox, dummyData,SIZES} from "../../constants"
 import React, { useState, useEffect }  from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 

@@ -6,7 +6,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import LiveContest from './LiveContest/LiveContest'
 import UpcomingContest from './upcomingContest/UpcomingContest'
 import FollowingContest from './FollowingContest/FollowingContest'
-import { store } from '../../store';
+import { store } from '../../../store';
 import { Provider } from 'react-redux';
 const ContestStack = createMaterialTopTabNavigator();
 

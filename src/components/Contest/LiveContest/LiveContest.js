@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux';
-import { topHeadlineRequest } from '../../../store/action'
+import { topHeadlineRequest } from '../../../../store/action'
 import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
 import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
-import routes from '../../../utils/routes';
+import routes from '../../../../utils/routes';
 
 
 const LiveContest = ({navigation,newsModel, dispatch}) => {

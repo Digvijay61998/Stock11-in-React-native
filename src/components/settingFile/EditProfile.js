@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS, FONTS, icons, images } from '../../constants';
+import { COLORS, FONTS, icons} from '../../constants';
 
 
-const MyProfile = ({navigation}) =>{
+const EditProfile = ({navigation}) =>{
 
     return(
         <LinearGradient 
@@ -26,10 +26,10 @@ const MyProfile = ({navigation}) =>{
             <View style={styles.ProfileBox}>
             <View>
             <View style={{justifyContent:"center",alignItems: "center"}}>
-            <View style={{width:50, height:50, backgroundColor:COLORS.ActiveButton ,borderRadius:50 ,top:80,zIndex:1,alignItems: "center", justifyContent:"center"}}>
+            <View style={{width:50, height:50, backgroundColor:COLORS.ActiveButton ,borderRadius:50 ,top:150,zIndex:1,alignItems: "center", justifyContent:"center"}}>
           <View style={{width:110, height:90, borderRadius:50 ,justifyContent:"center",alignItems: "center"}}>
           <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:"100%",
@@ -42,11 +42,50 @@ const MyProfile = ({navigation}) =>{
                       </View>
                       </View>
                       </View>
-                    <View style={{justifyContent:"center",alignItem:"center",flexDirection:"column",top:120,position:"relative"}}>
-                        <Text>Name : Dan O Pan</Text>
-                        <Text>Email : dano@dino.com</Text>
-                        <Text>Name : 2395988989</Text>
-                    </View>
+                      <View style={{flexDirection:"column",display:"flex",justifyContent:"space-evenly",height:200,top:40}}>
+                      <View style={styles.input}>
+                      <TextInput
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  name="Email"
+                  title="Email"
+                  placeholder="Name"
+                  placeholderTextColor="black"
+                  paddingRight={180}
+
+
+                  
+                  />
+                      </View>
+                      <View style={styles.input}>
+                      <TextInput
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  name="Email"
+                  title="Email"
+                  placeholder="Email"
+                  placeholderTextColor="black"
+                  paddingRight={180}
+
+
+                  
+                  />
+                  
+                      </View>
+                      <View style={styles.input}>
+                      <TextInput
+                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  name="phone"
+                  title="phone"
+                  placeholder="Phone"
+                  placeholderTextColor="black"
+                  paddingRight={180}
+
+
+                  
+                  />
+                      </View>
+                      
+                      </View> 
+                  
      <View style={{width: '100%', height:250 ,top:55, alignItems: "center", justifyContent:"center"}}>
        <TouchableOpacity style={FONTS.button}   
        title='Submit'
@@ -54,7 +93,7 @@ const MyProfile = ({navigation}) =>{
         navigation.navigate('EditProfile')
       } 
        >
-        <Text style={{color:"white"}}>EDIT PROFILE</Text>
+        <Text style={{color:"white"}}>SAVE PROFILE</Text>
        </TouchableOpacity>
              </View>
 
@@ -102,16 +141,15 @@ const MyProfile = ({navigation}) =>{
     
         input: {
             height: 50,
-            width:291,
-            borderRadius:50,
-            color:"#484848" ,
-            backgroundColor:COLORS.white,
+            width:280,
+            borderRadius:15,
+            top:120,
+            color:COLORS.ActiveButton ,
+            backgroundColor:"white",
             elevation:1,
-            margin:10,
-            paddingLeft:20,
-            bottom:20,
-          },
-          
+          alignItems:'center',
+          justifyContent:"center",
+          }
     })
 
-    export default MyProfile;
+    export default EditProfile;

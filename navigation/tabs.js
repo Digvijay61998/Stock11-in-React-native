@@ -7,15 +7,12 @@ import {
     StyleSheet,
     ImageBackground,
 } from "react-native";
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../src/constants"
 import { createBottomTabNavigator, getHeaderTitle } from "@react-navigation/bottom-tabs"
-
 import { Home, Setting } from "../screens"
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData} from "../constants"
-import Register from "../screens/Register";
-import FrontPage from "../screens/FrontPage";
 import LinearGradient from 'react-native-linear-gradient'
-import MyBasket from "../components/MyBasket/MyBasket";
-import Wallet from "../components/settingFile/Wallet";
+import MyBasket from "../src/components/MyBasket/MyBasket";
+import Wallet from "../src/components/settingFile/Wallet";
 
 // import { getHeaderTitle } from '@react-navigation/elements';
 

@@ -4,7 +4,7 @@ import React,{useState,useEffect} from 'react';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import { parsePhoneNumber } from 'react-phone-number-input'
-import routes from '../../utils/routes';
+import routes from '../../../utils/routes';
 
 const Profile = ({navigation}) => {
 
@@ -69,7 +69,7 @@ return (
             <View style={{width:100, height:100, backgroundColor:COLORS.ActiveButton ,borderRadius:50 ,top:10,zIndex:1,alignItems: "center", justifyContent:"center"}}>
           <View style={{width:150, height:90, borderRadius:50 ,justifyContent:"center",alignItems: "center"}}>
           <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:"100%",

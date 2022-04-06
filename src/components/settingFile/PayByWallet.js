@@ -1,6 +1,6 @@
 import React from "react";
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES, images} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES} from "../../constants"
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
 
 const PayByWallet = ({navigation}) => {

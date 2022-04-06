@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,Image ,TouchableOpacity,Video} from 'react-native'
 import React,{useState,useRef} from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS, FONTS, icons, SIZES } from "../constants"
+import { COLORS, FONTS, icons, SIZES } from "../src/constants"
 import Carousel,{Pagination} from 'react-native-snap-carousel';
 // import Video from 'react-native-video';
 

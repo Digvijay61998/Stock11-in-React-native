@@ -1,6 +1,6 @@
 import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image} from 'react-native';
 import React from 'react';
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, images} from "../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, images} from "../src/constants"
 import LinearGradient from 'react-native-linear-gradient'
 
 
@@ -24,7 +24,7 @@ const Setting = ({ navigation}) => {
   />
 
 <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:"20%",

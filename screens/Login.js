@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
-import { COLORS, FONTS, icons, SIZES,container } from "../constants"
+import { COLORS, FONTS, icons, SIZES,container } from "../src/constants"
 import { number } from 'yup/lib/locale';
 import routes from '../utils/routes';
 import { Formik, useFormik } from 'formik';

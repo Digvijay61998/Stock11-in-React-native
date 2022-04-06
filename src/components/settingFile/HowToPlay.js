@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList, Image} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, images} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container} from "../../constants"
 import React, { useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 import FollowingContest from '../Contest/FollowingContest/FollowingContest';
@@ -25,7 +25,7 @@ const HowToPlay = () => {
 <View style={{flexDirection:"row",justifyContent:"space-between",top:-80,alignItems:"center"}}>
       <View >
       <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:50,

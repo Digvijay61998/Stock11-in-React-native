@@ -15,7 +15,7 @@ const SelectPayment = ({ navigation}) => {
     <View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
       <View >
       <Image
-                  source={images.profile}
+                  source={icons.profile}
                     resizeMode="contain"
                       style={{
                             width:80,

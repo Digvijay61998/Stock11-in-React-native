@@ -14,16 +14,7 @@ const AboutUs = ({ navigation }) => {
   >
 
 <View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
-      <View >
-      <Image
-                  source={images.profile}
-                    resizeMode="contain"
-                      style={{
-                            width:50,
-                             height:50,
-
-                                    }}/>
-      </View>
+      
       <View>
        <Image 
        source={icons.Stock11Logo}
@@ -42,9 +33,9 @@ const AboutUs = ({ navigation }) => {
   </View>
 
     <View style={styles.aboutUsBox}>
-      <View style={{width:"70%",height:100,marginTop:20}}>
+      <View style={{width:"76%",height:160,marginTop:20}}>
         <View style={{alignItems:"center",justifyContent:"center"}}>
-          <Text>
+          <Text style={{color:"black",fontSize:10}}>
           assLorem Ipsum is
         simply dummy text of the prin
         ting and typesetting industry. Lorem
@@ -77,8 +68,8 @@ const AboutUs = ({ navigation }) => {
         </View>
        
       </View>
-      <View style={{borderBottomWidth:1,borderTopWidth:1,height:120,width:200,borderColor:"grey",marginTop:90,justifyContent:'center',alignItems:"center"}}>
-          <Text style={{color:"black",fontWeight:"bold"}}>stock11.com</Text>
+      <View style={{borderBottomWidth:1,borderTopWidth:1,height:120,width:"75%",borderColor:"grey",marginTop:30,justifyContent:'center',alignItems:"center"}}>
+          <Text style={{color:"black",fontWeight:"500"}}>stock11.com</Text>
       </View>
       </View>
       
@@ -103,9 +94,9 @@ const styles = StyleSheet.create({
 },
   aboutUsBox :{
   height:400,
-        width:350,
+        width:370,
         backgroundColor:"#ededed",
-        borderRadius:10,
+        borderRadius:25,
         alignItems:"center",
         marginBottom:80,
         justifyContent:"center",

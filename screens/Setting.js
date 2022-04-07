@@ -72,7 +72,7 @@ const Setting = ({ navigation}) => {
           }
       >
       <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
-      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Refer a Freind</Text>
+      <Text style={{color:"black",width:"80%",paddingLeft:10}}>Referals</Text>
       </View>
       </TouchableOpacity>
      
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
         justifyContent:"center"
     },
     settingContainer:{
-      height:500,width:350,backgroundColor:"white",borderRadius:25,
+      height:500,width:350,            backgroundColor:"#f7edf0",
+      borderRadius:25,
         alignItems:"center",
         justifyContent:"center",
         elevation:15,

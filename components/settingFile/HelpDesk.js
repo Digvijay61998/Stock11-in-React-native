@@ -22,16 +22,7 @@ const HelpDesk = () => {
  }}/> */}
 
 <View style={{flexDirection:"row",justifyContent:"space-between",top:4,alignItems:"center"}}>
-      <View >
-      <Image
-                  source={images.profile}
-                    resizeMode="contain"
-                      style={{
-                            width:50,
-                             height:50,
-
-                                    }}/>
-      </View>
+     
       <View>
        <Image 
        source={icons.Stock11Logo}
@@ -68,15 +59,17 @@ const HelpDesk = () => {
                   style={{ height: 130,
                     width:280,
                     borderRadius:15,
+                    borderWidth:1,
+                    borderColor:"#c2c4c4",
+
                     top:80,
                     color:COLORS.ActiveButton ,
                     backgroundColor:"white",
-                    elevation:1,
                   alignItems:'center',
                   justifyContent:"center",}}
                >
                 <TextInput
-                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
+                  style={[FONTS.textstyle,{textAlign:"center"}]}
                   title="Your Concern"
                   placeholder="Your Concern"
                   placeholderTextColor="black"
@@ -123,8 +116,8 @@ const styles = StyleSheet.create({
  helpDeskBox :{
   height:400,
         width:350,
-        backgroundColor:"#ededed",
-        borderRadius:10,
+        backgroundColor:"#f7edf0",
+        borderRadius:25,
         alignItems:"center",
         justifyContent:"center",
         elevation:10,
@@ -135,10 +128,11 @@ const styles = StyleSheet.create({
           height: 50,
           width:280,
           borderRadius:15,
+          borderColor:"#c2c4c4",
+          borderWidth:1,
           top:60,
           color:COLORS.ActiveButton ,
           backgroundColor:"white",
-          elevation:1,
         alignItems:'center',
         justifyContent:"center",
         }

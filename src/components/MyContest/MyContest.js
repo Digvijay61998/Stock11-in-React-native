@@ -6,7 +6,7 @@ import {LiveEvents, UpcomingEvents, CompletedEvents} from "./UpcomingLiveEvents"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const MyContestStack = createMaterialTopTabNavigator();
 
-const MyContest = ({ navigation }) => {
+const MyContest = ({ navigation}) => {
     return (
       <View style={Header}>
                 <View style={{
@@ -32,7 +32,7 @@ const MyContest = ({ navigation }) => {
             
         }}
 
-        initialRouteName={'UpcomingEvents'}
+        initialRouteName={'LiveEvents'}
       
       >  
         <MyContestStack.Screen

@@ -797,6 +797,5 @@ const LeadStock =[
     }
 ]
 
-    const dummyData = { portfolio,TeamView, UpcomingPricePool,CompletedPricePool,LivePricePool,MybasketDetails, ContestPricePool, PricePool2, WinningList, LeadBoard ,basketDetails ,PointsEarn ,LeadStock,BasketData};
 
 export default dummyData;

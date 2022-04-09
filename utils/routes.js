@@ -8,7 +8,7 @@ export default {
             // GET API
             GET_CONTEST_CARDS: async (data)=> {
                 console.log("data",data)
-                return await apiGet("/contests?status=LIV","STOCK_11")},
+                return await apiGet(`/contests${data}`,"STOCK_11")},
             // POST API
             // LOGIN: async (data)=> await apiPost("/userauth/send-otp",data,"STOCK_11"),
             // VERIFY: async (data)=> await apiPost("/userauth/verify",data,"STOCK_11"),

@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from "react";
 import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage,Image} from 'react-native';
-import { COLORS, FONTS, icons, SIZES } from "../src/constants"
+import { COLORS, FONTS, icons, SIZES } from "../../constants"
 import {
     CodeField,
     Cursor,
@@ -8,7 +8,7 @@ import {
     useClearByFocusCell,
   } from 'react-native-confirmation-code-field';
 import { SafeAreaView } from "react-native-safe-area-context";
-import routes from '../utils/routes';
+import routes from '../../../utils/routes';
 import LinearGradient from 'react-native-linear-gradient'
 
 

@@ -1,31 +1,20 @@
-import { StyleSheet, Text, View ,Image} from 'react-native';
+import { StyleSheet, Text, View ,Image,ProgressBarAndroid} from 'react-native';
 import React ,{useState,useEffect} from 'react';
-import { COLORS, FONTS, icons ,Header ,CardBox} from "../constants/index"
+import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 const IdolContest = ({data}) => {
-
-const [contestDetails, setContestDetails] = useState([]);
-
-useEffect(() => {
-    if(data === undefined){
-        setContestDetails("")
-    }else{
-        setContestDetails(data)
-    }
-  });
-  
   return (
     <View>
     <View style={styles.IdolContainer}>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" }}>
-            <Text style={{fontSize:19 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+            <Text style={{fontSize:19 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>{data.contestName}</Text>
             <View></View>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
                 <Text style={{ color: "black" , fontSize:23,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
-                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.1000/-</Text>
-                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{contestDetails.winners} Winners</Text>
+                <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.{data.entryFee}/-</Text>
+                <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
            
             </View>
         <View style={{justifyContent:"center",alignItems:"center"}}>
@@ -38,22 +27,29 @@ useEffect(() => {
                
       }}
             />
-            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{data.poolSize}</Text>
             <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
            
         </View>
-          <View style={{alignItems:"center",right:46,top:8}}>
-          <View style={{ width: 230, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
-          </View>
+          <View style={{alignItems:"flex-start",width:220,left:8,top:8,flexDirection:"row"}}>
+          <ProgressBarAndroid
+          styleAttr="Horizontal"
+          indeterminate={false}
+          style={{width:220}}
+          progress={(data.filledSpots / data.totalSpots) ? (data.filledSpots / data.totalSpots) :0}
+        //   progress={(data.filledSpots / data.totalSpots) * 10 ? (data.filledSpots / data.totalSpots) * 10 :0}
+        />
+          {/* <View style={{ width:spots, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}></View> */}
+          {/* <View style={{ width: "50%", height: 5, backgroundColor:COLORS.secondary, borderRadius: 10,right:1 }}></View> */}
           <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
             <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
-            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"red"}]}>No more Spots!</Text>
+            <Text  style={[FONTS.textstyle ,{fontSize:10,color:"red"}]}>{data.filledSpots}</Text>
           </View>
           </View>
     </View>
     <View style={styles.TimeDate}>
-    {contestDetails !== undefined ? <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',}}>1st {contestDetails.date}</Text>:<></>}
+    {data !== undefined ? <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>{data.startDate}-{data.endDate}</Text>:<></>}
  <Text style={[FONTS.textstyle,styles.view]}>VIEW</Text>
     </View>
 </View>
@@ -98,7 +94,7 @@ TimeDate: {
 },
 IdolContainer: {
     position: "relative",
-    width: 340,
+    width: SIZES.width-50,
     height: 140,
 },
 textstyle: {

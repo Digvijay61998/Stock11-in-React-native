@@ -10,7 +10,7 @@ import { store } from '../../../store';
 import { Provider } from 'react-redux';
 const ContestStack = createMaterialTopTabNavigator();
 
-const Contest = ({navigation}) => {
+const Contest = ({navigation ,data}) => {
 
     const price =dummyData.ContestPricePool
   console.log("price", price);

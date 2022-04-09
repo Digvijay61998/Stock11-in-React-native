@@ -7,8 +7,7 @@ import Tabs from "./navigation/tabs";
 import Contest from './src/components/Contest/Contest';
 import MyBasket from './src/components/MyBasket/MyBasket';
 import MyContest from './src/components/MyContest/MyContest';
-import { Provider } from 'react-redux';
-import OtpVerification from './screens/OtpVerification';
+import OtpVerification from './src/components/auth/OtpVerification';
 import CompleteProfile from './screens/CompleteProfile';
 import UpcomingContestDetails from './src/components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
 import { LiveEvents, UpcomingEvents } from './src/components/MyContest/UpcomingLiveEvents';
@@ -36,15 +35,14 @@ import PayUsing from './src/components/Contest/PayUsing';
 import SelectBasket from './src/components/Contest/SelectBasket';
 import CurrentBalance from './src/components/Contest/CurrentBalance';
 import { Home } from './screens';
-import Register from './screens/Register';
+import Register from './src/components/auth/Register';
 import MyProfile from './src/components/settingFile/MyProfile';
 import EditProfile from './src/components/settingFile/EditProfile';
-import Login from './screens/Login';
+import Login from './src/components/auth/Login';
 import FrontPage from './screens/FrontPage';
 import PayByWallet from './src/components/settingFile/PayByWallet';
 import SelectPayment from './src/components/settingFile/SelectPayment';
 import Perfomance from './src/components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
-import { store } from './store';
 
 const Stack = createStackNavigator();
 
@@ -67,7 +65,6 @@ const App = () => {
 //   );
 // }
   return (
-    <Provider store={store}>  
     <NavigationContainer>
   
         <Stack.Navigator
@@ -176,7 +173,6 @@ const App = () => {
      */}
       </Stack.Navigator> 
   </NavigationContainer>
-  </Provider>
   )
 }
 

@@ -22,12 +22,12 @@ export const COLORS = {
 
 export const contestContainer={
     height: 180,
-    width:"100%",
+    width: width-50,
     // backgroundColor: "#1F1D2B",
     marginBottom:35,
     borderRadius: 10,
     padding: 5,
-    elevation:10,
+    elevation:3,
   };
 export const  Header ={
     position: "relative",
@@ -35,7 +35,7 @@ export const  Header ={
     alignItems: "center",
     overflow: 'hidden',
     width:width-20,
-    height: 630,
+    height: height-150,
     borderTopRightRadius:20,
     borderTopLeftRadius: 20,
     paddingTop:0,

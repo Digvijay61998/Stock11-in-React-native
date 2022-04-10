@@ -21,7 +21,7 @@ const HelpDesk = () => {
            top:-10
  }}/> */}
 
-<View style={{flexDirection:"row",justifyContent:"space-between",top:4,alignItems:"center"}}>
+<View style={{flexDirection:"row",justifyContent:"space-between",alignItems:"center"}}>
      
       <View>
        <Image 
@@ -36,52 +36,42 @@ const HelpDesk = () => {
   </View>
   </View>
 
-<Text style={{top:50,color:"white",fontWeight:"bold",fontSize:15}}>Help Desk</Text>
+<Text style={{top:60,color:"white",fontWeight:"bold",fontSize:15}}>Help Desk</Text>
     <View style={styles.container}>
       <View style={styles.helpDeskBox}>
-      <View 
-                  style={styles.input}
+      <View style={{marginTop:30}}
+                  
                >
                 <TextInput
-                  style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center"}]}
-                  name="Email"
-                  title="Email"
+                  style={[FONTS.textinput,{height:45,width:280,borderRadius:15,borderColor:"#d5deeb",borderWidth:1,marginTop:10,paddingLeft:10}]}
+                  name="Name"
                   placeholder="Email"
-                  placeholderTextColor="black"
-                  paddingRight={180}
-
+                  placeholderTextColor="black" 
+                   backgroundColor="white"
+                  autoComplete="cc-number"
+                  paddingLeft={20}
 
                   
                   />
                   </View>
 
                   <View 
-                  style={{ height: 130,
-                    width:280,
-                    borderRadius:15,
-                    borderWidth:1,
-                    borderColor:"#c2c4c4",
-
-                    top:80,
-                    color:COLORS.ActiveButton ,
-                    backgroundColor:"white",
-                  alignItems:'center',
-                  justifyContent:"center",}}
+                  style={{top:25 }}
                >
                 <TextInput
-                  style={[FONTS.textstyle,{textAlign:"center"}]}
-                  title="Your Concern"
+                  style={[FONTS.textinput,{height:120,width:280,borderRadius:16,borderColor:"#d5deeb",borderWidth:1,marginTop:10,paddingLeft:10}]}
+                  name="Name"
                   placeholder="Your Concern"
-                  placeholderTextColor="black"
-                  paddingRight={170}
-                  marginBottom={60}
-
-
+                  placeholderTextColor="black" 
+                   backgroundColor="white"
+                  autoComplete="cc-number"
+                  paddingLeft={20}
+                  paddingBottom={80}
                   
                   />
                   </View>
-                  <View style={{width: '100%', height:250 ,top:-15, alignItems: "center", justifyContent:"center"}}>
-       <TouchableOpacity style={FONTS.button}   
+                  <View style={{width: '100%', height:250 ,top:-50, alignItems: "center", justifyContent:"center"}}>
+       <TouchableOpacity style={[FONTS.button,{borderRadius:14}]}   
        title='Submit'
        onPress={() =>
         navigation.navigate('ChangePassword')
@@ -90,7 +80,7 @@ const HelpDesk = () => {
         <Text style={{color:"white"}}>SUBMIT</Text>
        </TouchableOpacity>
              </View>
-        <View style={{borderTopWidth:0.3,bottom:110,justifyContent:"center",alignItems:"center"}}>
+        <View style={{borderTopWidth:0.5,borderColor:"#9ea4ad",width:300,bottom:130,justifyContent:"center",alignItems:"center"}}>
           <Text style={{marginTop:20}}> 32445989898 </Text>
           <Text> Message us on WhatsApp </Text>
           </View>        
@@ -114,12 +104,12 @@ const styles = StyleSheet.create({
 
   },
  helpDeskBox :{
-  height:400,
+  height:450,
         width:350,
         backgroundColor:"#f7edf0",
         borderRadius:25,
         alignItems:"center",
-        justifyContent:"center",
+        justifyContent:"flex-start",
         elevation:10,
         border:'1px solid #E8E4E4',
         boxShadow:"0px 20px 10px #00000014"

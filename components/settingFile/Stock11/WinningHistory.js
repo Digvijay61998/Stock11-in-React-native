@@ -67,7 +67,6 @@ const WinningHistory = () => {
       </View>
       </View>
           )}
-          keyExtractor={(item, index) => index}
         />
         </ScrollView>
   </View>

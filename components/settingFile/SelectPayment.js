@@ -13,16 +13,7 @@ const SelectPayment = ({ navigation}) => {
     style={styles.container}
   >
     <View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
-      <View >
-      <Image
-                  source={images.profile}
-                    resizeMode="contain"
-                      style={{
-                            width:80,
-                             height:60,
-
-                                    }}/>
-      </View>
+     
       <View>
        <Image 
        source={icons.Stock11Logo}
@@ -38,22 +29,34 @@ const SelectPayment = ({ navigation}) => {
 
   <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>SELECT PAYMENT</Text>
 
-    <View >
+    
       <View style={styles.SelectPaymentContainer}>
-<TouchableOpacity 
+      <View style={{paddingRight:180,paddingTop:30}}>
+      <Text style={{color:"black"}}>Recommended</Text>
+        </View> 
+        <View style={{paddingTop:25,width:"100%",justifyContent:"center",alignItems:"center"}}>
+          <View >
+<TouchableOpacity
           onPress={() =>
             navigation.navigate('Wallet')
           }
       >
-        <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:30,elevation:10 }}>
+        <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:13 ,marginBottom:30,elevation:13 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Pay Using Wallets</Text>
       </View>
       </TouchableOpacity>
-      <TouchableOpacity 
-        //   onPress={() =>
-        //     navigation.navigate('Notification')
-        //   }
+      <View style={{borderTopWidth:0.7,borderColor:"#b0acb0",width:300}}>
+
+      <View style={{paddingTop:20,paddingBottom:10}}>
+        <Text style={{color:"black"}}>Other payment Methods</Text>
+      </View>
+          
+      <TouchableOpacity style={{paddingTop:20}}
+          onPress={() =>
+            navigation.navigate('AddCard')
+          }
       >
+       
       <View style={{width:290, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:30,elevation:10}}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Debit/Credit Cards</Text>
       </View>
@@ -89,6 +92,9 @@ const SelectPayment = ({ navigation}) => {
       </TouchableOpacity>
       
     </View>
+    </View>
+    </View>
+
       
     </View>
     </LinearGradient>
@@ -107,7 +113,7 @@ const styles = StyleSheet.create({
         justifyContent:"center"
     },
     SelectPaymentContainer:{
-      minHeight:450,width:350,backgroundColor:"white",borderRadius:25,
+      minHeight:450,width:350,backgroundColor:"#fcf7fc",borderRadius:25,
         alignItems:"center",
         justifyContent:"center",
         elevation:15,

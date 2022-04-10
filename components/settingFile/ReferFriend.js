@@ -48,7 +48,7 @@ const ReferFriend = ({navigation}) => {
 </View> */}
 
     <View style={{width:"100%",display:'flex',flexDirection:"row",paddingTop:20,justifyContent:"space-around"}}>
-      <View >
+    <View >
         <View style={{display:"flex",flexDirection:"column",alignItems:"center",}}>
         <TextInput
          style={[FONTS.textinput,{height:40,width:120,borderRadius:11,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,paddingLeft:10}]}
@@ -73,22 +73,22 @@ const ReferFriend = ({navigation}) => {
        </View>
 
        </View>
-       <View style={{borderLeftColor:"#c2c4c4",height:138,borderLeftWidth:1}}>
-      </View>
-      <View>
+       <View style={{borderLeftColor:"#c2c4c4",height:140,borderLeftWidth:1,paddingRight:20}}>
+       <View style={{right:-25}}>
         <View style={{display:"flex",flexDirection:"column",alignItems:"center",}}>
         <TextInput
-         style={[FONTS.textinput,{height:40,width:120,borderRadius:11,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,paddingLeft:10}]}
+         style={[FONTS.textinput,{height:40,width:120,borderRadius:11,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,}]}
          name="phone"
          placeholder="9898989989"
          placeholderTextColor="black" 
           backgroundColor="#c2e6f2"
          autoComplete="cc-number"
          paddingLeft={20}
+         paddingTop={8}
         />
         </View>
-       <View style={{width:130, height:100 ,alignItems: "center", justifyContent:"center",paddingBottom:40}}>
-       <TouchableOpacity style={[FONTS.button,{width:120,height:20}]}
+       <View style={{width:130, height:100 ,alignItems: "center", justifyContent:"center",paddingBottom:40,borderRadius:20}}>
+       <TouchableOpacity style={[FONTS.button,{width:130,height:20,borderRadius:15}]}
            onPress={() =>
             navigation.navigate('Notification')
           }
@@ -97,10 +97,11 @@ const ReferFriend = ({navigation}) => {
        </TouchableOpacity>
 
        </View>
-
        </View>
-    </View>
-   </View>
+
+         </View>
+         </View>
+         </View>
       </LinearGradient>
    
   );

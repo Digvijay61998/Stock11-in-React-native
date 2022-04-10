@@ -2,6 +2,7 @@ import React from "react";
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES, images} from "../../constants"
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
+import { TextInput } from "react-native-gesture-handler";
 
 const PayByWallet = ({navigation}) => {
     return (
@@ -12,16 +13,7 @@ const PayByWallet = ({navigation}) => {
       style={styles.container}
     >
       <View style={{flexDirection:"row",justifyContent:"space-between",top:-50,alignItems:"center"}}>
-      <View >
-      <Image
-                  source={images.profile}
-                    resizeMode="contain"
-                      style={{
-                            width:80,
-                             height:60,
-
-                                    }}/>
-      </View>
+      
       <View>
        <Image 
        source={icons.Stock11Logo}
@@ -34,179 +26,85 @@ const PayByWallet = ({navigation}) => {
   />
   </View>
   </View>
-      <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>PAY BY WALLET</Text>
-         <View style={{elevation:10 ,width:SIZES.width-50,minHeight:100,backgroundColor: COLORS.primary,justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}}>
-             <View style={{justifyContent:"flex-start",alignItems:"center",flexDirection:"column",top:-80,paddingBottom:25}}>
-        <View style={styles.paymentCard}>
-        <View style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}>
-            <View style={{display:"flex",flexDirection:"column",marginLeft:20,paddingTop:10}}>
-             <Text style={{color:"black"}}>Deposit Wallet</Text>
-             <Text style={{color:"black"}}>Balance:123.00/-</Text>
-            </View>
-            <View style={{padding:10}}>
-            <View style={[{
-        height: 24,
-        width: 24,
-        borderRadius: 12,
-        borderWidth: 2,
-        borderColor: '#2432ad',
-      }, 
-      // props.style
-      ]}>
-        {
-          // props.selected ?
-            <View style={{
-              height: 12,
-              width: 12,
-              borderRadius: 6,  
-              backgroundColor: '#2432ad',
-            }}/>
-            // : null
-        }
-      </View>
-            </View>
-           
-            
-           
-            </View>
-            <View style={{width:100, height:300  ,borderColor:"#ebe7ec",display:"flex",flexDirection:"row",paddingTop:10,justifyContent:"space-between"}}>
-              <View style={{padding:12}}>
-              <TouchableOpacity style={[FONTS.button,{width:130 }]}
-           onPress={() =>
-            navigation.navigate('SelectPayment')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>Pay Rs.1000/-</Text>
-       </TouchableOpacity>
-              </View>
-       <View  style={{padding:12}}>
-       <TouchableOpacity style={[FONTS.button,{backgroundColor:"#4caea7",width:130}]}
-           onPress={() =>
-            navigation.navigate('Notification')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>ADD MONEY</Text>
-       </TouchableOpacity>
-       </View>
-       
-            </View>
-            
-        </View>
-      </View>
+      <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>ADD BALANCE</Text>
+         <View style={styles.addBalanceBox}>
 
-      <View style={{justifyContent:"flex-start",alignItems:"center",flexDirection:"column",top:-80,paddingBottom:25}}>
-        <View style={styles.paymentCard}>
-        <View style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}>
-            <View style={{display:"flex",flexDirection:"column",marginLeft:20,paddingTop:10}}>
-             <Text style={{color:"black"}} >Winning Wallet</Text>
-             <Text style={{color:"black"}}>Balance:123.00/-</Text>
-            </View>
-            <View style={{padding:10}}>
-            <View style={[{
-        height: 24,
-        width: 24,
-        borderRadius: 12,
-        borderWidth: 2,
-        borderColor: '#2432ad',
-      },
-      //  props.style
-      ]}>
-        {
-          // props.selected ?
-            <View style={{
-              height: 12,
-              width: 12,
-              borderRadius: 6,
-              backgroundColor: '#2432ad',
-            }}/>
-            // : null
-        }
-      </View>
-            </View>
-           
-            
-            </View>
-            <View style={{width:100, height:300  ,borderColor:"#ebe7ec",display:"flex",flexDirection:"row",paddingTop:10,justifyContent:"space-between"}}>
-              <View style={{padding:12}}>
-              <TouchableOpacity style={[FONTS.button,{width:130 }]}
-           onPress={() =>
-            navigation.navigate('SelectPayment')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>Pay Rs.1000/-</Text>
-       </TouchableOpacity>
-              </View>
-       <View  style={{padding:12}}>
-       <TouchableOpacity style={[FONTS.button,{backgroundColor:"#4caea7",width:130}]}
-           onPress={() =>
-            navigation.navigate('Notification')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>ADD MONEY</Text>
-       </TouchableOpacity>
-       </View>
-       
-            </View>
+      <View style={{display:"flex",justifyContent:"center",alignItems:"center",paddingTop:270,bottom:250,flexDirection:"column"}}>
+        <Text style={{color:"black",fontSize:16,paddingBottom:12}}>Available Balance</Text>
+      <Text style={[FONTS.textstyle,{fontSize:35 ,color:COLORS.ActiveButton,}]}>20.00/-</Text>
+
+      <View style={{display:"flex",flexDirection:"row",paddingTop:18,justifyContent:"space-evenly",width:350}}>
+        
+        <View >
+<View style={[FONTS.textinput,{height:45,width:60,borderRadius:15,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,paddingLeft:10,justifyContent:"center",alignItem:"center",elevation:25,backgroundColor:"white"}]}>
+<Text style={{color:"black"}}>500 </Text>
+
+</View>
+
+        </View>
+        <View >
+<View style={[FONTS.textinput,{height:45,width:60,borderRadius:15,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,paddingLeft:10,justifyContent:"center",alignItem:"center",elevation:25,backgroundColor:"white"}]}>
+<Text style={{color:"black"}}>1000 </Text>
+
+</View>
+
+        </View>
+        <View >
+<View style={[FONTS.textinput,{height:45,width:60,borderRadius:15,borderColor:"#d3d3d3",borderWidth:1,marginTop:10,paddingLeft:10,elevation:25,justifyContent:"center",alignItem:"center",backgroundColor:"white"}]}>
+<Text style={{color:"black"}}>1500 </Text>
+
+</View>
+
+        </View>
+        <View>
+          <TextInput
+          style={{outline:0,borderTopWidth:0,borderLeftWidth:0,borderRight:0,borderBottomWidth:1,width:45,borderColor:"black"}}
+          keyboardType='numeric'
+                    placeholderTextColor="#4771a5"
+                    // paddingLeft={10}
+                    autoComplete="cc-number"
+                    maxLength={10}
+                    paddingLeft={5}
+          />
+
         </View>
 
-        
-      </View>
-      <View style={{justifyContent:"flex-start",alignItems:"center",flexDirection:"column",top:-80,}}>
-        <View style={styles.paymentCard}>
-            <View style={{display:"flex",flexDirection:"row",justifyContent:"space-between" }}>
-            <View style={{display:"flex",flexDirection:"column",marginLeft:20,paddingTop:10}}>
-             <Text style={{color:"black"}}>Bonus Wallet</Text>
-             <Text style={{color:"black"}}>Balance:123.00/-</Text>
-            </View>
-            <View style={{padding:10}}>
-            <View style={[{
-        height: 24,
-        width: 24,
-        borderRadius: 12,
-        borderWidth: 2,
-        borderColor: '#2432ad',
-      },
-      //  props.style
-       ]}>
-        {
-          // props.selected ?
-            <View style={{
-              height: 12,
-              width: 12,
-              borderRadius: 6,
-              backgroundColor: '#2432ad',
-            }}/>
-            // : null
-        }
-      </View>
-            </View>
-           
-            </View>
-            <View style={{width:100, height:300  ,borderColor:"#ebe7ec",display:"flex",flexDirection:"row",paddingTop:10,justifyContent:"space-between"}}>
-              <View style={{padding:12}}>
-              <TouchableOpacity style={[FONTS.button,{width:130 }]}
+
+
+        </View>
+        <View style={{top:40}}> 
+        <View style={{width:250,borderTopWidth:0.6,borderTopColor:"#7e7d80"}}>
+      <View style={{display:"flex",alignItems:"center",flexDirection:"column",paddingTop:20}}>
+        <TextInput 
+        style={[FONTS.textinput,{height:50,width:120,borderRadius:18,borderColor:"#d3d3d3",borderWidth:1,marginTop:5,paddingLeft:10,fontWeight:"bold",backgroundColor:"white"}]}
+        name="phone"
+        keyboardType='numeric'
+
+        placeholder="ENTER CODE"
+        placeholderTextColor="#295597" 
+         backgroundColor="#c2e6f2"
+        autoComplete="cc-number"
+        paddingLeft={20}/>
+        <Text style={{paddingTop:13,fontSize:11,fontWeight:"200"}}>Great...Successfully credited Rs.100/-</Text>
+        <View>
+          <TouchableOpacity style={{width:120,height:40,borderRadius:23,borderColor:"#d3d3d3",borderWidth:1,marginTop:5,paddingLeft:10,backgroundColor:"#295597",alignItems:"center",justifuContent:"center",paddingTop:8,paddingRight:8}}
+           title='Add'
            onPress={() =>
             navigation.navigate('SelectPayment')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>Pay Rs.1000/-</Text>
-       </TouchableOpacity>
-              </View>
-       <View  style={{padding:12}}>
-       <TouchableOpacity style={[FONTS.button,{backgroundColor:"#4caea7",width:130}]}
-           onPress={() =>
-            navigation.navigate('Notification')
-          }
-       >
-        <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>ADD MONEY</Text>
-       </TouchableOpacity>
-       </View>
-       
-            </View>
+          } >
+            <Text style={{color:"white",fontSize:16,fontWeight:"bold"}}>ADD</Text>
+            </TouchableOpacity>
         </View>
       </View>
+</View>
+        </View>
         
       </View>
+      </View>
+         
+
+      
+        
       </LinearGradient>
     );
   };
@@ -232,6 +130,17 @@ radiobutton:{
   backgroundColor:" black",
   borderRadius: "50%",
   borderColor:"black",
+},
+addBalanceBox:{
+  elevation:10 ,
+  width:SIZES.width-50,
+  height:500,
+  backgroundColor: "#fcf7fc",
+  justifyContent:"center",
+  alignItems: "center",
+  padding:25,
+  paddingTop:100,
+  borderRadius:20
 }
 
     

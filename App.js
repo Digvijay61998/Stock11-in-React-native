@@ -47,6 +47,9 @@ import EditProfile from './screens/EditProfile';
 import MyStock11 from './components/settingFile/Stock11/MyStock11';
 import WinningHistory from './components/settingFile/Stock11/WinningHistory';
 import Transactions from './components/settingFile/Stock11/Transaction';
+import AddCard from './components/settingFile/AddCard';
+import WithDraw from './components/settingFile/WithDraw';
+import BankTransfer from './components/settingFile/BankTranfer';
 
 const Stack = createStackNavigator();
 
@@ -110,6 +113,7 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Perfomance" component={Perfomance}  options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="AddCard" component={AddCard}  options={{headerShown:false}}/>
            
 
             <Stack.Screen key={Date.now()} name="AboutUs" component={AboutUs}  />
@@ -134,6 +138,8 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="Current Balance" component={CurrentBalance} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="MyProfile" component={MyProfile} options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="SelectPayment" component={SelectPayment} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="WithDraw" component={WithDraw} options={{headerShown:false}}/>
+            <Stack.Screen key={Date.now()} name="BankTransfer" component={BankTransfer} options={{headerShown:false}}/>
 
 
             {/* <Stack.Screen key={Date.now()} name="Setting" component={Setting} navigation={this.props.navigation} options={({ route }) => {

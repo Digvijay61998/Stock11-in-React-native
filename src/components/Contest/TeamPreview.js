@@ -7,53 +7,6 @@ import LinearGradient from 'react-native-linear-gradient'
 const TeamPreview = ({ navigation, route }) => {
     const editTeams = dummyData.BasketData
     const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
-    const [points, setPoints] = useState([])
-    const [counter, setCounter] = useState([])
-  
-    const increment = (item,index) =>{
-      console.log("item{",item);
-      console.log("ind",index)
-      
-     
-      const stock = editTeam[index]
-      console.log("stock",stock);
-      if(stock.count){
-      stock.count = stock.count? stock.count + 1 : 1;
-      editTeam[index]=stock;
-    setEditTeam([...editTeam]);
-      }
-      }
-    
-  
-    const decrement = (item,index) =>{
-      const stock = editTeam[index]
-      stock.count = stock.count? stock.count - 1 : 1;
-      editTeam[index]=stock;
-    setEditTeam([...editTeam]);
-    }
-  
-  
-    // useEffect(() => {
-    //   setEditTeam(editTeams.map(i=>{
-    //     i["count"] = 0;
-    //     return i;
-    //   }))
-    // },[]);
-  
-    const selectpoint = (item, index) => {
-      if (points.includes(item.id)) {
-        const newPoint = points.filter((itemId) =>
-          itemId !== item.id);
-        return setPoints(newPoint)
-      }
-      else if (points.length < 10) {
-        setPoints([...points, item.id], index);
-      }
-      else {
-        console.log("only 10 points can be selected");
-      }
-    }
-  
 
     return (
         <LinearGradient
@@ -122,25 +75,13 @@ const TeamPreview = ({ navigation, route }) => {
               </View>
               <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row' ,marginRight:15}}>
                 <View style={{paddingRight:3}}>
-                <TouchableOpacity style={{ width:20,height:20,
-                     justifyContent:"center",alignItems:"center"}}
-                  onPress={() =>decrement (item,index)}
-                  >
-                <Text style={{fontSize:14,fontWeight:"bold",color:"black"}}>-</Text>
-                </TouchableOpacity>
                 </View>
                 <View>
             <Text style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1 ,paddingLeft:10,paddingRight:10 ,borderRadius:5}]}>
-            {item.count ? item.count : 0}
+                0
               </Text>
                 </View>
                 <View style={{paddingLeft:3}}>
-                <TouchableOpacity style={{ width:15,height:15,
-           justifyContent:"center",alignItems:"center"}}
-                  onPress={() =>increment (item,index)} >
-                <Text style={{fontSize:14,fontWeight:"bold" ,color:"black",bottom:2}}>+</Text>
-                </TouchableOpacity>
-              
                 </View>
               
               </View>
@@ -149,6 +90,22 @@ const TeamPreview = ({ navigation, route }) => {
           keyExtractor={(item, index) => index}
         />
       </ScrollView>
+      <View style={{width:SIZES.width-80,paddingBottom:80,justifyContent:"space-between",alignItems:"center",flexDirection:"row",top:50}}>
+        <TouchableOpacity
+              style={[FONTS.button,{backgroundColor:"#46a19a",width:120}]}
+             onPress={() =>
+              navigation.navigate('CreateContestBasket', {
+              })
+            }
+        ><Text style={{color:"white",textAlign:"center"}}>EDIT</Text></TouchableOpacity>
+          <TouchableOpacity
+              style={[FONTS.button,{width:120}]}
+             onPress={() =>
+              navigation.navigate('MyBasket', {
+              })
+            }
+        ><Text  style={{color:"white"}}>CONTINUE</Text></TouchableOpacity>
+      </View>
     </View>
   </LinearGradient>
     );
@@ -190,7 +147,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flexDirection:"column",
-        width: 360,
+        width: SIZES.width-80,
         height: 50,
         marginTop:100,
       },
@@ -222,6 +179,15 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         paddingLeft:15,
         paddingRight:15
-      }
+      },
+      // button:{
+      //   width:100 ,
+      //   height:30,
+      //   backgroundColor:COLORS.secondary,
+      //   borderRadius:20,
+      //   alignItems:"center",
+      //   justifyContent:"center"
+      // }
+
     
 });

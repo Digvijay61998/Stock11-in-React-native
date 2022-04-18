@@ -11,11 +11,9 @@ const LiveContest = ({navigation}) => {
   const [LiveContest, setLiveContest] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
-console.log("loading",loading);
 
 
 const getContestdetails = async () => {
-console.log("LiveContest=====",LiveContest)
 try {
     const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
     const data = parsedResponse.content
@@ -58,6 +56,11 @@ try {
       </View>
   )
 
+  // const handleData =(item)=>{
+  //   console.log("item",item);
+
+  // }
+
     // color image for background of image
     let url = [icons.card, icons.card1, icons.card3];
     
@@ -70,7 +73,9 @@ try {
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate("LiveContestDetails")}
+              onPress={() => navigation.navigate("LiveContestDetails")
+              // handleData(item)
+            }
             >
                   <ImageBackground
                   resizeMode="cover"

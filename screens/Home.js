@@ -52,7 +52,14 @@ const navigations = navigation
       navigation.navigate("Notification")
   }}
   >
-  <View style={{backgroundColor:"red",width:10,height:10,borderRadius:20}}></View>
+  <Image 
+  source={icons.Notification}
+  resizeMode="cover"
+  style={{
+      width:30,
+      height:30
+    }}
+  />
   </TouchableOpacity>
   </View>
             <View style={[Header,{top:50}]}>
@@ -158,7 +165,7 @@ header:{
 },
 headerMenu:{
     width:165,
-    backgroundColor:"#ffff",
+    backgroundColor:COLORS.lightPink,
     borderTopLeftRadius:20,
     borderTopRightRadius:20,
     height:50,

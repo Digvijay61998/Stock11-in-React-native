@@ -4,6 +4,7 @@ import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData,SIZES} fr
 import {LeadBoard} from "../../../../Common"
 import LinearGradient from 'react-native-linear-gradient'
 import Carousel,{Pagination} from 'react-native-snap-carousel';
+import routes from '../../../../../utils/routes';
 
 
 const CarouselCardItem = ({ item, index }) => {
@@ -61,7 +62,28 @@ const LiveContestDetails = ({navigation}) => {
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 
-    const winningdata = dummyData.WinningList
+
+
+  const getLiveContestdetails = async () => {
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+        const data = parsedResponse.content
+        console.log("parsedResponse=====",parsedResponse.totalPages)
+        if(parsedResponse.totalPages === page){
+        setLoading(true)
+        }
+        setLiveContest([...LiveContest,...data])
+        } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+    }
+    }
+    
+      useEffect(() => {
+        getLiveContestdetails();
+      }, [])
+    
+  const winningdata = dummyData.WinningList
     const leaderBoarddata = dummyData.LeadBoard
 const navigations = navigation
   return (

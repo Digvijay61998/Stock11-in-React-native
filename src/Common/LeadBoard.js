@@ -3,6 +3,7 @@ import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
 const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
+  console.log("props",name);
   const [leadboardstack, setLeadboardstack]=useState("WINNINGS");
 
   const WinningStick =()=>{
@@ -74,13 +75,20 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
       keyExtractor={(item, index) => index}
      />
     </ScrollView>
-   {name === "CompletedContestDetails" ? <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
+   {name === "follow Contest" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
+   onPress={()=>{
+     navigation.navigate("Perfomance")
+   }}
+   >
+    <Text style={{color:"white",textAlign:"center",fontSize:13}}>JOIN</Text>
+    </TouchableOpacity>}
+    {name === "Completed" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
    onPress={()=>{
      navigation.navigate("Perfomance")
    }}
    >
     <Text style={{color:"white",textAlign:"center",fontSize:13}}>MY BASKET PERFOMANCE</Text>
-    </TouchableOpacity>:<></>}
+    </TouchableOpacity>}
     </>:<></>}
     { leadboardstack === "STOCKS" ? <>
    <ScrollView>
@@ -104,9 +112,6 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
             data = {leaderBoardranking}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
-    <TouchableOpacity
-    onPress={() => navigation.navigate("EarnedPoints")}
-    >
   <View style={styles.LeaderboardList}>
       <View style={{justifyContent:"center",alignItems: "center",flexDirection: "row"}}>
         <Text style={{height:28, width:28}}>{item.rank}</Text>
@@ -114,7 +119,6 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
         <Text style={styles.textstyle}>Team{item.team}</Text>
       <Text style={[styles.textstyle,{marginRight:10}]}>{item.rank}</Text>
     </View>
-    </TouchableOpacity>
        )}
        keyExtractor={(item, index) => index}
       />
@@ -244,7 +248,7 @@ const styles = StyleSheet.create({
         fontSize:16
       },
       headerBackgroundActive:{
-        backgroundColor:"#f8edfb",
+        backgroundColor:COLORS.lightPink,
         borderRadius:15,
          flex:1 ,
          paddingLeft:50,
@@ -267,7 +271,7 @@ const styles = StyleSheet.create({
         justifyContent:"center"
       },
       StockheaderActive:{
-        backgroundColor:"#f8edfb",
+        backgroundColor:COLORS.lightPink,
         flex:1 ,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,

@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
         alignItems:"center",
         elevation:10,
+        backgroundColor:COLORS.lightPink,
         marginTop:100
         },
         LoginBox:{
@@ -220,8 +221,8 @@ const styles = StyleSheet.create({
             alignItems:"center",
             justifyContent:"center",
             elevation:10,
-            border:'1px solid #E8E4E4',
-            boxShadow:"0px 20px 10px #00000014"
+            borderWidth:0.1,
+            borderColor:COLORS.lightBlack,
               },
         input: {
             height: 40,

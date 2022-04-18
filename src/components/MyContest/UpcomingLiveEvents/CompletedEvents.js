@@ -63,7 +63,9 @@ try {
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate("CompletedContestDetails")}
+            onPress={() => navigation.navigate("CompletedContestDetails" ,{
+            Param:'Completed'
+            })}
           >
                 <ImageBackground
                 resizeMode="cover"

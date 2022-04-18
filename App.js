@@ -12,9 +12,6 @@ import CompleteProfile from './screens/CompleteProfile';
 import UpcomingContestDetails from './src/components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
 import { LiveEvents, UpcomingEvents } from './src/components/MyContest/UpcomingLiveEvents';
 import LiveContestDetails from './src/components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
-import EarnedPoints from './src/components/MyContest/UpcomingLiveEvents/LiveContestDetails/EarnedPoints';
-import CreateBasket from './src/components/MyBasket/BasketEdits/CreateBasket';
-import TeamsView from './src/components/MyBasket/BasketEdits/TeamsView';
 import CompletedContestDetails from './src/components/MyContest/UpcomingLiveEvents/Completed/CompletedContestDetails';
 import AboutUs from './src/components/settingFile/AboutUs';
 import BankDetails from './src/components/settingFile/BankDetails';
@@ -98,9 +95,6 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents",headerShown:false}}  />
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>

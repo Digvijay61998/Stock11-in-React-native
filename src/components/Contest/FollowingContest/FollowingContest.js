@@ -5,6 +5,7 @@ import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
 const FollowingContest = ({navigation}) => {
+  const name ="follow Contest"
     const [CompletedEvents, setCompletedEvents] = useState([]);
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -63,7 +64,10 @@ const FollowingContest = ({navigation}) => {
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate("CompletedContestDetails")}
+            onPress={() => navigation.navigate("CompletedContestDetails",{
+            Param: 'follow Contest'
+            })
+          }
           >
                 <ImageBackground
                 resizeMode="cover"

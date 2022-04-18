@@ -13,7 +13,7 @@ const CarouselCardItem = ({ item, index }) => {
     source={icons.card3}
     style={styles.contestContainer}
     >
-<View style={[styles.IdolContainer,{width:280}]}>
+<View style={[styles.IdolContainer,{width:SIZES.width-110}]}>
 <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
     <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
     <View></View>
@@ -59,7 +59,7 @@ const CarouselCardItem = ({ item, index }) => {
 
 const CompletedContestDetails = (props) => {
   const navigation = props.navigation
-  const name = props.route.name
+  const name = props.route.params.Param
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     },
     contestContainer:{
       height: 151,
-      width: 289,
+      width:SIZES.width-100,
       // backgroundColor: "#1F1D2B",
       marginBottom:35,
       borderRadius: 10,

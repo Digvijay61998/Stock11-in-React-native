@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     width:"100%",
     height:300,
     marginTop:-50,
-    backgroundColor:"#FEF2FF"
+    backgroundColor:COLORS.lightPink
     },
 
     input: {

@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
       loginBoxHeader:{
         height:50,
         width:200,
-        backgroundColor:"white",
+        backgroundColor:COLORS.lightPink,
         borderTopLeftRadius:25,
         borderTopRightRadius:25,
         justifyContent:"center",
@@ -215,6 +215,8 @@ const styles = StyleSheet.create({
         borderRadius:10,
         alignItems:"center",
         justifyContent:"center",
+        borderWidth:0.1,
+        borderColor:COLORS.lightBlack,
         elevation:10,
         border:'1px solid #E8E4E4',
         boxShadow:"0px 20px 10px #00000014"

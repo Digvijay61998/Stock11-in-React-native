@@ -3,9 +3,8 @@ import { COLORS, FONTS, icons, Header,CardBox, dummyData,SIZES} from "../../cons
 import React, { useState, useEffect }  from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 
-const CreateContestBasket = ({ navigation}) => {
+const CreateContestBasket = ({navigation}) => {
 
-  const editTeams = dummyData.BasketData
   const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
   const [points, setPoints] = useState([])
   const [counter, setCounter] = useState([])

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
 import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
@@ -11,7 +11,8 @@ const LiveContest = ({navigation}) => {
   const [LiveContest, setLiveContest] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
-
+ 
+  
 
 const getContestdetails = async () => {
 try {
@@ -72,21 +73,24 @@ try {
           data={LiveContest}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("LiveContestDetails")
-              // handleData(item)
-            }
-            >
+            // <TouchableOpacity
+            //   onPress={() => navigation.navigate("LiveContestDetails")
+            //   // handleData(item)
+            // }
+            // >
                   <ImageBackground
                   resizeMode="cover"
                  source={url[index % url.length]}
                  style={contestContainer}
                   >
-              <IdolContest data={item}/>
+              
+              <IdolContest 
+              data={item}
+              />
               {/* <NewsCard news={item} /> */}
 
               </ImageBackground>
-            </TouchableOpacity>
+            // </TouchableOpacity>
           )}
           ListFooterComponent={renderFooter}
           ListEmptyComponent={renderEmpty}

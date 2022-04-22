@@ -16,6 +16,8 @@ const video3 = require("../../assets/icons/video3.jpg")
 const Profile = require("../../assets/icons/Profile.png")
 const emptyFile = require("../../assets/icons/emptyFile.png")
 const Notification = require("../../assets/icons/Notification.png")
+const unpin = require("../../assets/icons/unpin.png")
+const pin = require("../../assets/icons/pin.png")
 
 export default {
     Stock11Logo,
@@ -35,5 +37,7 @@ export default {
     settings,
     Profile,
     emptyFile,
-    Notification
+    Notification,
+    unpin,
+    pin
 }

@@ -1,8 +1,78 @@
-import { StyleSheet, Text, View ,Image,ProgressBarAndroid} from 'react-native';
+import { StyleSheet, Text, View ,Image,ProgressBarAndroid,AsyncStorage} from 'react-native';
 import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import routes from '../../utils/routes';
 const IdolContest = ({data}) => {
+    const [pin, setPin] = useState([]);
+    const [getPined , setGetpined] = useState([]); 
+  console.log("pin!!!!!!!~~~~~>",pin);
+
+    const handlepined = async(data) => {
+        const userKey = await AsyncStorage.getItem('userKey');
+        const user_key=  parseInt(userKey)
+      console.log("item==========",typeof user_key);
+      if (pin.includes(data.contestKey)) {
+        const newPoint = pin.filter((itemId) =>
+          itemId !== data.contestKey);
+          let Body = {
+            contest_key: data.contestKey,
+            user_key:user_key
+        }
+        DaleteContestdetails(Body)
+        return setPin(newPoint)
+      }
+      else{
+        setPin([...pin,data.contestKey]);
+
+        let Body = {
+            contest_key: data.contestKey,
+            createdBy: "toghgom",
+            user_key:user_key
+        }
+        CreatePinContest(Body)
+      }
+    }
+
+    const GetPinContest = async () => {
+        const userId = await AsyncStorage.getItem('userId');
+        console.log("calling GetPinContest api=====>");
+        try {
+            const parsedResponse = await routes.STOCK_11.APIS.GET_PIN_CONTEST(`${userId}`);
+            for (let i = 0; i < parsedResponse.length; i++) {
+                setPin([parsedResponse[i].contestKey])
+              }
+            } catch (error) {
+            console.log("FAIL=====")
+            console.error(error);
+        }
+        }
+
+    async function CreatePinContest(data) {
+        console.log("calling CreatePinContest api=====>",data);
+        try {
+            const parsedResponse = await routes.STOCK_11.APIS.CREATE_PIN_CONTEST(data);
+            console.log("CreatePinContest=====",parsedResponse)
+
+        } catch (error) {
+            console.error(error);
+        }
+      }
+
+      async function DaleteContestdetails(data) {
+        console.log("calling DaleteContestdetails api=====>",data);
+        try {
+            const parsedResponse = await routes.STOCK_11.APIS.DELETE_PIN_CONTEST(data);
+            console.log("DaleteContestdetails=====",parsedResponse)
+        } catch (error) {
+            console.error(error);
+        }
+      }
+
+      useEffect(() => {
+                GetPinContest();
+              }, [])
+
   return (
     <View>
     <View style={styles.IdolContainer}>
@@ -17,7 +87,36 @@ const IdolContest = ({data}) => {
                 <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
            
             </View>
-        <View style={{justifyContent:"center",alignItems:"center"}}>
+        <View style={{justifyContent:"center",alignItems:"center",marginTop:-20}}>
+        <TouchableOpacity 
+                     onPress={() => handlepined(data)} key={data.contestKey}
+                    >
+                       {pin.includes(data.contestKey) ?
+                        <Image
+                                source={icons.pin}
+                                resizeMode="contain"
+                                style={{
+                                //   position:"absolute",
+                                    width: 30,
+                                    height: 30,
+                                    top: -10,
+                                    left: 10
+
+                                }}
+                                />:
+                              <Image
+                                source={icons.unpin}
+                                resizeMode="contain"
+                                style={{
+                                //   position:"absolute",
+                                    width: 30,
+                                    height: 30,
+                                    top: -10,
+                                    left: 10
+
+                                }}
+                                />}
+                                </TouchableOpacity>
         <Image 
             source={icons.IconUsers}
             resizeMode="contain"
@@ -32,7 +131,7 @@ const IdolContest = ({data}) => {
         </View>
            
         </View>
-          <View style={{alignItems:"flex-start",width:220,left:8,top:8,flexDirection:"row"}}>
+          <View style={{alignItems:"flex-start",width:220,left:8,top:0,flexDirection:"row"}}>
           <ProgressBarAndroid
           styleAttr="Horizontal"
           indeterminate={false}
@@ -49,7 +148,7 @@ const IdolContest = ({data}) => {
           </View>
     </View>
     <View style={styles.TimeDate}>
-    {data !== undefined ? <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>{data.startDate}-{data.endDate}</Text>:<></>}
+    <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>{data.startDate}-{data.endDate}</Text>
  <Text style={[FONTS.textstyle,styles.view]}>VIEW</Text>
     </View>
 </View>

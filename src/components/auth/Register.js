@@ -12,7 +12,9 @@ function Register(props) {
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [userData , setUserData] = useState();
-// const Getdata ={
+
+
+  // const Getdata ={
 //   userId : userData.twoFAuthForm.userId,
 //   userKey: userData.userDTO.userKey,
 //   checkSum: userData.twoFAuthForm.checkSum,
@@ -23,23 +25,44 @@ function Register(props) {
   
   function loginWithMobile() {
     setIsVerified(!isVerified);
-
 }
 
 const handleSubmit = async (val) => {
-  const data ={ 
+  const input = val.mobile
+  console.log(input);
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const regNumber = /^[0]?[789]\d{9}$/;
+  if (input.match(regexEmail)) {
+    console.log("true~~~~~~~~>");
+    const data ={ 
+      email : input
+       }
+    createUserProfile(data)
+    return true; 
+  } else if(input.match(regNumber) ) {
+    console.log("false~~~~~~~~>");
+    const data ={ 
     mobile : val.mobile
+     }
+    createUserProfile(data)
+    return true;
   }
-  createUserProfile(data)
+  else{
+    console.log("input value is not correct")
+  }
+
 }
 async function createUserProfile(data) {
+  console.log(data);
   try {
       const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
       console.log("parsedResponse=====",parsedResponse)
       setUserData(parsedResponse)
-      await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
       if(parsedResponse){
-        console.log("userData",parsedResponse);
+        await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
+       let userKey = String(parsedResponse.userDTO.userKey)
+       console.log("userKey~~~~~~~>",userKey);
+        await AsyncStorage.setItem('userKey' ,userKey);
         navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
       }
   } catch (error) {
@@ -90,7 +113,7 @@ return (
           <Formik
             initialValues ={{ mobile: ""}}          
             
-            validationSchema = {validationSchema}
+            // validationSchema = {validationSchema}
             onSubmit={handleSubmit}
           >
             {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
@@ -103,14 +126,14 @@ return (
                 <TextInput
                   style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center",}]}
                   name="mobile"
-                  keyboardType='numeric'
+                  keyboardType='email-address'
                   value={values.mobile}
                   onChangeText={handleChange('mobile')}
                   placeholder="Enter Mobile Number OR Email"
                   placeholderTextColor="#7e9291"
                   // paddingLeft={10}
-                  autoComplete="cc-number"
-                  maxLength={10}
+                  autoComplete='email'
+                  // maxLength={10}
                   // margin={10}
                   />
                   </View>

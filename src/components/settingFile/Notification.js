@@ -1,10 +1,37 @@
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container,SIZES} from "../../constants"
-import React from 'react';
+import React,{useEffect} from 'react';
 import LinearGradient from 'react-native-linear-gradient'
+import routes from '../../../utils/routes';
 
 
 const Notification = () => {
+
+
+  const GetNotification = async () => {
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_NOTIFICATION(`${2}`);
+        console.log("parsedResponse=====",parsedResponse)
+        } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+    }
+    }
+
+async function CreateNotification(data) {
+    console.log("CreateNotification",data);
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.CREATE_NOTIFICATION(data);
+        console.log("parsedResponse=====",parsedResponse)
+    } catch (error) {
+        console.error(error);
+    }
+  }
+
+  useEffect(() => {
+            GetNotification();
+          }, [])
+
   return ( 
     <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}

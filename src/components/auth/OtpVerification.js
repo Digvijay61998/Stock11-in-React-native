@@ -15,10 +15,10 @@ import LinearGradient from 'react-native-linear-gradient'
 const CELL_COUNT = 6;
 
 function OtpVerification(prop) {
-  console.log("prop",prop);
+  // console.log("prop",prop);
   const navigation = prop.navigation;
      const UserData = prop.route.params.Data;
-     console.log("UserData",UserData);
+    //  console.log("UserData",UserData);
 
     const [value, setValue] = useState('');
         console.log("value",value);
@@ -35,7 +35,7 @@ function OtpVerification(prop) {
           invalidAttempts:UserData.twoFAuthForm.invalidAttempts,
           otp: value
         }
-        console.log("Data",data);
+        // console.log("Data",data);
         if(prop.route.params === "LoginWithOTP"){
           UpdateverifyUserOtp(data)
         }else{
@@ -45,11 +45,11 @@ function OtpVerification(prop) {
     }
  
     async function verifyUserOtp(data) {
-      console.log("valdsf",data);
+      // console.log("valdsf",data);
       try {
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
-          console.log("parsedResponse=====",parsedResponse)
-          console.log("token=====",parsedResponse.token)
+          // console.log("parsedResponse=====",parsedResponse)
+          console.log("token=====",parsedResponse)
           if(parsedResponse){
           await AsyncStorage.setItem('userToken', parsedResponse.token);
             navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword})
@@ -62,7 +62,7 @@ function OtpVerification(prop) {
     }
 
     async function UpdateverifyUserOtp(data) {
-      console.log("valdsf",data);
+      // console.log("valdsf",data);
       // try {
       //     const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
       //     console.log("parsedResponse=====",parsedResponse)
@@ -79,13 +79,13 @@ function OtpVerification(prop) {
             navigation.navigate('Home')
     }
     const getuserID = async () => {
-  
-      const checkSum = await AsyncStorage.getItem('checkSum');
+      const userId = await AsyncStorage.getItem('userId');
       const userToken = await AsyncStorage.getItem('userToken');
-    
+      const userKey = await AsyncStorage.getItem('userKey');
+
     console.log("userToken",userToken);
-    console.log("checkSum",checkSum);
-    
+    console.log("userId",userId);
+    console.log("userKey",userKey);
     };
 useEffect (() => {
   getuserID()

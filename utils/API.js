@@ -81,9 +81,13 @@ export const apiPut = async(url, values ,serviceName) => {
   });
 };
 
-export const apiDelete = async(url, serviceName) => {
+export const apiDelete = async(url,values, serviceName) => {
+
   let apiUrl = verifyService(serviceName);
-  let TOKEN = await AsyncStorage.getItem('userToken')
+  console.log("url",`${apiUrl}${url}`);
+  console.log("url",values);
+  console.log("url",serviceName);
+
 
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
@@ -92,15 +96,19 @@ export const apiDelete = async(url, serviceName) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
+      body: values,
+
     })
       .then(response => {
         try {
           resolve(response.json());
         } catch (err) {
+          console.log("err",err);
           reject(err);
         }
       })
       .catch(err => {
+        console.log("err1",err);
         reject(err);
       });
   });
@@ -129,6 +137,7 @@ export const apiPostImage = async (url, values,serviceName) => {
 };
 
 function verifyService(serviceName) {
+  console.log("serv",serviceName);
   const urls = {
     // BLOG_MS: routes.BLOG_MS.BASE_PATH,
     // USER_MS: routes.USER_MS.USERS_PATH,

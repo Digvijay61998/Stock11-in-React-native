@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
 import OTPInputView from '@twotalltotems/react-native-otp-input'
-import { COLORS, FONTS, icons, SIZES ,container,images} from "../constants"
+import { COLORS, FONTS, icons, SIZES ,container,images} from "../src/constants"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -93,7 +93,7 @@ return (
             <View style={{width:100, height:100, backgroundColor:COLORS.ActiveButton ,borderRadius:50 ,top:-130,zIndex:1,alignItems: "center", justifyContent:"center"}}>
           <View style={{width:150, height:90, borderRadius:50 ,justifyContent:"center",alignItems: "center"}}>
           <Image
-                  source={images.profile}
+                  source={icons.Profile}
                     resizeMode="contain"
                       style={{
                             width:"100%",
@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     width:"100%",
     height:300,
     marginTop:-50,
-    backgroundColor:"#FEF2FF"
+    backgroundColor:COLORS.lightPink
     },
 
     input: {

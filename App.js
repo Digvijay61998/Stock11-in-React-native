@@ -4,52 +4,48 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer,getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import SplashScreen from "react-native-splash-screen"
 import Tabs from "./navigation/tabs";
-import Contest from './components/Contest/Contest';
-import MyBasket from './components/MyBasket/MyBasket';
-import MyContest from './components/MyContest/MyContest';
-import { Provider } from 'react-redux';
-import OtpVerification from './screens/OtpVerification';
+import Contest from './src/components/Contest/Contest';
+import MyBasket from './src/components/MyBasket/MyBasket';
+import MyContest from './src/components/MyContest/MyContest';
+import OtpVerification from './src/components/auth/OtpVerification';
 import CompleteProfile from './screens/CompleteProfile';
-import UpcomingContestDetails from './components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
-import { LiveEvents, UpcomingEvents } from './components/MyContest/UpcomingLiveEvents';
-import LiveContestDetails from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
-import EarnedPoints from './components/MyContest/UpcomingLiveEvents/LiveContestDetails/EarnedPoints';
-import CreateBasket from './components/MyBasket/BasketEdits/CreateBasket';
-import TeamsView from './components/MyBasket/BasketEdits/TeamsView';
-import CompletedContestDetails from './components/MyContest/UpcomingLiveEvents/Completed/CompletedContestDetails';
-import AboutUs from './components/settingFile/AboutUs';
-import BankDetails from './components/settingFile/BankDetails';
-import ChangePassword from './components/settingFile/ChangePassword';
-import HelpDesk from './components/settingFile/HelpDesk';
-import HowToPlay from './components/settingFile/HowToPlay';
-import Notification from './components/settingFile/Notification';
+import UpcomingContestDetails from './src/components/MyContest/UpcomingLiveEvents/UpcomingEvents/UpcomingContestDetails';
+import { LiveEvents, UpcomingEvents } from './src/components/MyContest/UpcomingLiveEvents';
+import LiveContestDetails from './src/components/MyContest/UpcomingLiveEvents/LiveContestDetails/LiveContestDetails';
+import CompletedContestDetails from './src/components/MyContest/UpcomingLiveEvents/Completed/CompletedContestDetails';
+import AboutUs from './src/components/settingFile/AboutUs';
+import BankDetails from './src/components/settingFile/BankDetails';
+import ChangePassword from './src/components/settingFile/ChangePassword';
+import HelpDesk from './src/components/settingFile/HelpDesk';
+import HowToPlay from './src/components/settingFile/HowToPlay';
+import Notification from './src/components/settingFile/Notification';
 
-import Profile from './components/settingFile/Profile';
-import PromoCode from './components/settingFile/PromoCode';
-import ReferFriend from './components/settingFile/ReferFriend';
-import Wallet from './components/settingFile/Wallet';
-import ViewContest from './components/Contest/ViewContest';
-import CreateContestBasket from './components/Contest/CreateContestBasket';
-import LeadStockandFollowStock from './components/Contest/LSandFs';
-import TeamPreview from './components/Contest/TeamPreview';
-import PayUsing from './components/Contest/PayUsing';
-import SelectBasket from './components/Contest/SelectBasket';
-import CurrentBalance from './components/Contest/CurrentBalance';
+import Profile from './src/components/settingFile/Profile';
+import PromoCode from './src/components/settingFile/PromoCode';
+import ReferFriend from './src/components/settingFile/ReferFriend';
+import Wallet from './src/components/settingFile/Wallet';
+import ViewContest from './src/components/Contest/ViewContest';
+import CreateContestBasket from './src/components/Contest/CreateContestBasket';
+import LeadStockandFollowStock from './src/components/Contest/LSandFs';
+import TeamPreview from './src/components/Contest/TeamPreview';
+import PayUsing from './src/components/Contest/PayUsing';
+import SelectBasket from './src/components/Contest/SelectBasket';
+import CurrentBalance from './src/components/Contest/CurrentBalance';
 import { Home } from './screens';
-import Register from './screens/Register';
-import MyProfile from './components/settingFile/MyProfile';
-import Login from './screens/Login';
+import MyStock11 from './src/components/settingFile/Stock11/MyStock11';
+import WinningHistory from './src/components/settingFile/Stock11/WinningHistory';
+import Transactions from './src/components/settingFile/Stock11/Transaction';
+import AddCard from './src/components/settingFile/AddCard';
+import WithDraw from './src/components/settingFile/WithDraw';
+import BankTransfer from './src/components/settingFile/BankTranfer';
+import Register from './src/components/auth/Register';
+import MyProfile from './src/components/settingFile/MyProfile';
+import EditProfile from './src/components/settingFile/EditProfile';
+import Login from './src/components/auth/Login';
 import FrontPage from './screens/FrontPage';
-import PayByWallet from './components/settingFile/PayByWallet';
-import SelectPayment from './components/settingFile/SelectPayment';
-import Perfomance from './components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
-import EditProfile from './screens/EditProfile';
-import MyStock11 from './components/settingFile/Stock11/MyStock11';
-import WinningHistory from './components/settingFile/Stock11/WinningHistory';
-import Transactions from './components/settingFile/Stock11/Transaction';
-import AddCard from './components/settingFile/AddCard';
-import WithDraw from './components/settingFile/WithDraw';
-import BankTransfer from './components/settingFile/BankTranfer';
+import PayByWallet from './src/components/settingFile/PayByWallet';
+import SelectPayment from './src/components/settingFile/SelectPayment';
+import Perfomance from './src/components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
 
 const Stack = createStackNavigator();
 
@@ -72,7 +68,6 @@ const App = () => {
 //   );
 // }
   return (
-// {/* <Provider > */}
     <NavigationContainer>
   
         <Stack.Navigator
@@ -106,9 +101,6 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="UpcomingContestDetails" component={UpcomingContestDetails}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="LiveEvents" component={LiveEvents}  options={{ title:"LiveEvents",headerShown:false}}  />
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="EarnedPoints" component={EarnedPoints}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="CreateBasket" component={CreateBasket}  options={{headerShown:false}} />
-            <Stack.Screen key={Date.now()} name="TeamsView" component={TeamsView} options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
             <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>
@@ -188,7 +180,6 @@ const App = () => {
      */}
       </Stack.Navigator> 
   </NavigationContainer>
-  // {/* </Provider> */}
   )
 }
 

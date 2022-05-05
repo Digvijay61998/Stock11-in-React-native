@@ -2,9 +2,33 @@ import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,TextInput,Image} fr
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest,dummyData,container} from "../../constants"
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient'
+import routes from '../../../utils/routes';
 
 
 const HelpDesk = () => {
+
+
+  function handleSubmit(){
+    const data ={ 
+      mobile : "digvijayKadam@gmail.com",
+      message: "Your concern",
+      userKey: 1
+    }
+    createHelpDesk(data)
+  }
+
+  // POST api Called
+
+  async function createHelpDesk(data) {
+    // console.log("valdsf",data);
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.CREATE_HELP_DESK(data);
+        // console.log("parsedResponse=====",parsedResponse)
+        console.log("parsedResponse=====",parsedResponse)
+        } catch (error) {
+        console.error(error);
+    }
+  }
   return (
     <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -44,11 +68,13 @@ const HelpDesk = () => {
                >
                 <TextInput
                   style={[FONTS.textinput,{height:45,width:280,borderRadius:15,borderColor:"#d5deeb",borderWidth:1,marginTop:10,paddingLeft:10}]}
-                  name="Name"
+                  name="Email"
                   placeholder="Email"
                   placeholderTextColor="black" 
                    backgroundColor="white"
                   autoComplete="cc-number"
+                  onChangeText={(val) => setText(val)}
+                  value={text}
                   paddingLeft={20}
 
                   
@@ -74,7 +100,8 @@ const HelpDesk = () => {
        <TouchableOpacity style={[FONTS.button,{borderRadius:14}]}   
        title='Submit'
        onPress={() =>
-        navigation.navigate('ChangePassword')
+        handleSubmit()
+        // navigation.navigate('ChangePassword')
       } 
        >
         <Text style={{color:"white"}}>SUBMIT</Text>
@@ -85,8 +112,6 @@ const HelpDesk = () => {
           <Text> Message us on WhatsApp </Text>
           </View>        
         </View>
-
-
 
       </View>
   </LinearGradient>
@@ -106,13 +131,11 @@ const styles = StyleSheet.create({
  helpDeskBox :{
   height:450,
         width:350,
-        backgroundColor:"#f7edf0",
+        backgroundColor:COLORS.lightPink,
         borderRadius:25,
         alignItems:"center",
         justifyContent:"flex-start",
         elevation:10,
-        border:'1px solid #E8E4E4',
-        boxShadow:"0px 20px 10px #00000014"
         },
         input: {
           height: 50,

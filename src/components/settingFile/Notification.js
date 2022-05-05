@@ -1,36 +1,45 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image,AsyncStorage} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container,SIZES} from "../../constants"
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 import routes from '../../../utils/routes';
 
 
 const Notification = () => {
 
+  const [notify , setNotify]=useState("dsk check")
+  console.log(notify);
 
   const GetNotification = async () => {
+    const userId = await AsyncStorage.getItem('userId');
+    console.log("userId",userId);
     try {
-        const parsedResponse = await routes.STOCK_11.APIS.GET_NOTIFICATION(`${2}`);
+        const parsedResponse = await routes.STOCK_11.APIS.GET_NOTIFICATION_KEY(`${userId}`);
         console.log("parsedResponse=====",parsedResponse)
+        setNotify(parsedResponse)
         } catch (error) {
         console.log("FAIL=====")
         console.error(error);
     }
     }
 
-async function CreateNotification(data) {
-    console.log("CreateNotification",data);
-    try {
-        const parsedResponse = await routes.STOCK_11.APIS.CREATE_NOTIFICATION(data);
-        console.log("parsedResponse=====",parsedResponse)
-    } catch (error) {
-        console.error(error);
-    }
-  }
+
+    const getHandleRead = async (item) => {
+      const data = item.notificationKey
+      try {
+          const parsedResponse = await routes.STOCK_11.APIS.GET_NOTIFICATION(`${data}`);
+          console.log("parsedResponse=====",parsedResponse)
+          setNotify(parsedResponse)
+          GetNotification();
+          } catch (error) {
+          console.log("FAIL=====")
+          console.error(error);
+      }
+      }
 
   useEffect(() => {
-            GetNotification();
-          }, [])
+     GetNotification();
+  }, [])
 
   return ( 
     <LinearGradient 
@@ -50,28 +59,23 @@ async function CreateNotification(data) {
   <Text style={{color:"white",fontWeight:"bold"}}>NOTIFICATIONS</Text>
   <Text style={{color:"white",fontSize:12,marginLeft:200}}>20 unread messages</Text>
 <View style={{width:SIZES.width-50,height:SIZES.height-250,borderRadius:20,backgroundColor:"#fcf6ff",alignItems:"flex-start",justifyContent:"flex-start",padding:30}}>
+<FlatList
+        // data={LiveEvents}
+        data={notify}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item, index }) => (
 <ScrollView>
 <View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
-<Text style={{color:"black"}}>THE contest you are Foloowing Is going to end soon</Text>
-<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
-</View>
-<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
-<Text style={{color:"#a7a2a7",}}>THE contest you are Foloowing Is going to end soon</Text>
-<Text style={{color:"#a7a2a7",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
-</View>
-<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
-<Text style={{color:"black",}}>THE contest you are Foloowing Is going to end soon</Text>
-<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
-</View>
-<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
-<Text style={{color:"#a7a2a7",}}>THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon THE contest you are Foloowing Is going to end soon</Text>
-<Text style={{color:"#a7a2a7",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
-</View>
-<View style={{borderBottomColor:"#e2dee2",borderBottomWidth:1,paddingBottom:40,paddingTop:20}}>
-<Text style={{color:"black"}}>THE contest you are Foloowing Is going to end soon</Text>
-<Text style={{color:"black",fontWeight:"bold",top:10, textDecorationLine: 'underline'}}>CHECK NOW</Text>
+<Text style={item.readStatus === "NR" ? [styles.unread]:[styles.read]}>{item.message}</Text>
+<TouchableOpacity 
+style={{fontWeight:"bold",top:10, textDecorationLine: 'underline'}} 
+onPress={() => getHandleRead(item)}
+><Text>CHECK NOW</Text></TouchableOpacity>
 </View>
 </ScrollView>
+        )}
+        keyExtractor={(item, index) => index}
+/>
 </View>
   </LinearGradient>
 
@@ -87,7 +91,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         backgroundColor:COLORS.secondary,
 },
-notificationContainer:{
- 
-}
+unread:{
+ color:"black"
+},
+read:{
+  color:"#a7a2a7"
+ }
 });

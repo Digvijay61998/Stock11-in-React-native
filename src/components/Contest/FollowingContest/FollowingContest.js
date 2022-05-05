@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button,AsyncStorage} from 'react-native'
 import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
 const FollowingContest = ({navigation}) => {
   const name ="follow Contest"
-    const [CompletedEvents, setCompletedEvents] = useState([]);
+    const [CompletedEvents, setCompletedEvents] = useState();
     const [page, setPage] = useState(0);
     const [loading, setLoading] = useState(false);
   
   const getContestdetails = async () => {
-  console.log("CompletedEvents=====",CompletedEvents)
+    const userId = await AsyncStorage.getItem('userId');
+console.log("userId",userId);
   try {
-      const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
-      const data = parsedResponse.content
-      if(parsedResponse.totalPages === page){
-      setLoading(true)
-      }
-      setCompletedEvents([...CompletedEvents,...data])
+      const parsedResponse = await routes.STOCK_11.APIS.GET_PIN_CONTEST(`${userId}`);
+      console.log("parsedResponse======>",parsedResponse);
+      const data = parsedResponse
+      // if(parsedResponse.totalPages === page){
+      // setLoading(true)
+      // }
+      setCompletedEvents(data)
       } catch (error) {
       console.log("FAIL=====")
       console.error(error);
   }
   }
-  
-    useEffect(() => {
+
+  useEffect(() => {
       getContestdetails();
         console.log("CURRENT PAGE", page);
     }, [page])
@@ -99,6 +101,8 @@ const styles = StyleSheet.create({
     scroller: {
         flex: 1,
         overflow: "hidden",
+        alignItems:"center",
+        justifyContent:"center",
         marginBottom:SIZES.height-610,
       },
  

@@ -1,10 +1,29 @@
-import React from 'react';
-import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
+import React,{useEffect, useState} from 'react';
+import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image,AsyncStorage} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
+import routes from '../../../utils/routes';
 import { COLORS, FONTS, icons} from '../../constants';
 
 
 const MyProfile = ({navigation}) =>{
+  const [profile ,setProfile]=useState()
+  // GET API CALLED =====
+  const getUserProfile = async () => {
+    const userKey = await AsyncStorage.getItem('userKey');
+     console.log("userId",userKey);
+  try {
+      const parsedResponse = await routes.STOCK_11.APIS.GET_USER_PROFILE(`${userKey}`);
+      console.log("getUserProfileeee======>",parsedResponse);
+      setProfile(parsedResponse)
+      } catch (error) {
+      console.log("FAIL=====")
+      console.error(error);
+  }
+  }
+
+  useEffect(() => {
+    getUserProfile();
+  }, [])
 
     return(
         <LinearGradient 
@@ -43,11 +62,11 @@ const MyProfile = ({navigation}) =>{
                       </View>
                       </View>
                       </View>
-                    <View style={{justifyContent:"space-around",alignItem:"center",flexDirection:"column",top:150,position:"relative"}}>
-                        <Text style={{color:"black",paddingBottom:15,fontFamily:"Roboto-Bold"}}>Name : Dan O Pan</Text>
+                      {profile ?<View style={{justifyContent:"space-around",alignItem:"center",flexDirection:"column",top:150,position:"relative"}}>
+                        <Text style={{color:"black",paddingBottom:15,fontFamily:"Roboto-Bold"}}>Name : {profile.userKey}</Text>
                         <Text style={{color:"black",paddingBottom:15,fontFamily:"Roboto-Bold",right:14}}>Email : dano@dino.com</Text>
-                        <Text style={{ color:"black",fontFamily:"Roboto-Bold"}}>Name : 2395988989</Text>
-                    </View>
+                        <Text style={{ color:"black",fontFamily:"Roboto-Bold"}}>Mobile : {profile.mobile}</Text>
+                    </View>:<></>}
             <View style={{display:"flex",flexDirection:"column",justifyContent:"space-between",alignItems:"center",top:80}}>
      <View style={{width: '100%', height:250 ,top:55, alignItems: "center", justifyContent:"center"}}>
        <TouchableOpacity style={[FONTS.button,{height:35,borderRadius:15,width:180}]} 

@@ -18,7 +18,7 @@ const getContestdetails = async () => {
 try {
     const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
     const data = parsedResponse.content
-    console.log("parsedResponse=====",parsedResponse.totalPages)
+    console.log("parsedResponse=====dsk",parsedResponse)
     if(parsedResponse.totalPages === page){
     setLoading(true)
     }
@@ -73,11 +73,11 @@ try {
           data={LiveContest}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            // <TouchableOpacity
-            //   onPress={() => navigation.navigate("LiveContestDetails")
-            //   // handleData(item)
-            // }
-            // >
+            <TouchableOpacity
+              onPress={() => navigation.navigate("LiveContestDetails")
+              // handleData(item)
+            }
+            >
                   <ImageBackground
                   resizeMode="cover"
                  source={url[index % url.length]}
@@ -90,7 +90,7 @@ try {
               {/* <NewsCard news={item} /> */}
 
               </ImageBackground>
-            // </TouchableOpacity>
+            </TouchableOpacity>
           )}
           ListFooterComponent={renderFooter}
           ListEmptyComponent={renderEmpty}

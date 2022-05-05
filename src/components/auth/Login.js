@@ -25,34 +25,48 @@ const Login = ({navigation}) => {
       setIsVerified(!isVerified);
   
   }
-  
   const handleSubmit = async (val) => {
-    const data ={ 
+    const input = val.mobile
+    console.log(input);
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const regNumber = /^[0]?[789]\d{9}$/;
+    if (input.match(regexEmail)) {
+      console.log("true~~~~~~~~>");
+      const data ={ 
+        email : input,
+      password : val.password
+         }
+          userLogin(data)
+      return true; 
+    } else if(input.match(regNumber) ) {
+      console.log("false~~~~~~~~>");
+      const data ={ 
       mobile : val.mobile,
       password : val.password
-
+       }
+          userLogin(data)
+      return true;
     }
-    // GetUserProfile(data)
+    else{
+      console.log("input value is not correct")
+    }
+  
   }
-//   async function GetUserProfile(data) {
-//     try {
-//         const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
-//         console.log("parsedResponse=====",parsedResponse)
-//         setUserData(parsedResponse)
-//         await AsyncStorage.setItem('checkSum', parsedResponse.twoFAuthForm.checkSum);
-//         if(parsedResponse){
-//           console.log("userData",parsedResponse);
-//           navigation.navigate('Tabs',{Data:parsedResponse});
-//         }
-//     } catch (error) {
-//         console.error(error);
-//     }
-//   }
+  async function userLogin(data) {
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
+        console.log("parsedResponse=====",parsedResponse)
+        if(parsedResponse){
+          // navigation.navigate('Tabs');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+  }
   
   //  VALIDATION SCHEMA
   const validationSchema = Yup.object({
      mobile: Yup.number().required("This field is Required")
-  
   });
   
   // const loginForm = useFormik({
@@ -104,14 +118,14 @@ const Login = ({navigation}) => {
                   <TextInput
                     style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center",fontSize:18}]}
                     name="mobile"
-                    keyboardType='numeric'
+                    keyboardType='email-address'
                     value={values.mobile}
                     onChangeText={handleChange('mobile')}
-                    placeholder="MOBILE NO OR EMAIL"
+                    placeholder="Enter Mobile Number OR Email"
                     placeholderTextColor="#4771a5"
                     // paddingLeft={10}
                     autoComplete="cc-number"
-                    maxLength={10}
+                    // maxLength={10}
                     // margin={10}
                     />
                     </View>
@@ -168,7 +182,7 @@ const Login = ({navigation}) => {
                     //  disabled={!(isValid && dirty)}
                      onPress={() =>{
                       handleSubmit(),
-                       navigation.navigate('Tabs');
+          navigation.navigate('Tabs');
 
                      }
                          

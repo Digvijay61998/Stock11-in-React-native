@@ -84,11 +84,6 @@ export const apiPut = async(url, values ,serviceName) => {
 export const apiDelete = async(url,values, serviceName) => {
 
   let apiUrl = verifyService(serviceName);
-  console.log("url",`${apiUrl}${url}`);
-  console.log("url",values);
-  console.log("url",serviceName);
-
-
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'DELETE',
@@ -96,8 +91,7 @@ export const apiDelete = async(url,values, serviceName) => {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: values,
-
+      body: JSON.stringify(values),
     })
       .then(response => {
         try {

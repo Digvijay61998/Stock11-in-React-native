@@ -3,7 +3,10 @@ import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
 const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
-  console.log("props",name);
+  console.log("props",winning[0]);
+  const winningPrice = winning.prizeDTOS || []
+  const winningStocks = winning.stockDTOS || []
+
   const [leadboardstack, setLeadboardstack]=useState("WINNINGS");
 
   const WinningStick =()=>{
@@ -63,12 +66,12 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
     </View>
    <ScrollView>
    <FlatList 
-            data = {liveContestranking}
+            data = {winningPrice}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
   <View style={styles.WinningList}>
-      <Text style={styles.textstyle}>{item.rank}</Text>
-      <Text style={styles.textstyle}>Rs {item.priceWin}/-</Text>
+      <Text style={styles.textstyle}>{index+1}</Text>
+      <Text style={styles.textstyle}>Rs {item.amount}/-</Text>
     </View>
     
       )}
@@ -93,11 +96,11 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
     { leadboardstack === "STOCKS" ? <>
    <ScrollView>
    <FlatList 
-            data = {liveContestranking}
+            data = {winningStocks}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
   <View style={{ width:SIZES.width-80 ,alignItems:"center",justifyContent:"center",marginTop:15}}>
-      <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:300,height:35,borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>HUL</Text>
+      <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:300,height:35,borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>{item.stocksName}</Text>
     </View>
     
       )}

@@ -25,9 +25,8 @@ import PromoCode from './src/components/settingFile/PromoCode';
 import ReferFriend from './src/components/settingFile/ReferFriend';
 import Wallet from './src/components/settingFile/Wallet';
 import ViewContest from './src/components/Contest/ViewContest';
-import CreateContestBasket from './src/components/Contest/CreateContestBasket';
-import LeadStockandFollowStock from './src/components/Contest/LSandFs';
-import TeamPreview from './src/components/Contest/TeamPreview';
+import CreateContestBasket from './src/components/MyBasket/CreateContestBasket';
+import TeamPreview from './src/components/MyBasket/TeamPreview';
 import PayUsing from './src/components/Contest/PayUsing';
 import SelectBasket from './src/components/Contest/SelectBasket';
 import CurrentBalance from './src/components/Contest/CurrentBalance';
@@ -103,7 +102,6 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
-            <Stack.Screen key={Date.now()} name="LeadStockandFollowStock" component={LeadStockandFollowStock}  options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="Perfomance" component={Perfomance}  options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="AddCard" component={AddCard}  options={{headerShown:false}}/>
            

@@ -5,13 +5,10 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import routes from '../../utils/routes';
 const IdolContest = ({data}) => {
     const [pin, setPin] = useState([]);
-    const [getPined , setGetpined] = useState([]); 
-  console.log("pin!!!!!!!~~~~~>",pin);
 
     const handlepined = async(data) => {
         const userKey = await AsyncStorage.getItem('userKey');
         const user_key=  parseInt(userKey)
-      console.log("item==========",typeof user_key);
       if (pin.includes(data.contestKey)) {
         const newPoint = pin.filter((itemId) =>
           itemId !== data.contestKey);
@@ -36,7 +33,6 @@ const IdolContest = ({data}) => {
 
     const GetPinContest = async () => {
         const userId = await AsyncStorage.getItem('userId');
-        console.log("calling GetPinContest api=====>");
         try {
             const parsedResponse = await routes.STOCK_11.APIS.GET_PIN_CONTEST(`${userId}`);
             for (let i = 0; i < parsedResponse.length; i++) {
@@ -49,7 +45,6 @@ const IdolContest = ({data}) => {
         }
 
     async function CreatePinContest(data) {
-        console.log("calling CreatePinContest api=====>",data);
         try {
             const parsedResponse = await routes.STOCK_11.APIS.CREATE_PIN_CONTEST(data);
             console.log("CreatePinContest=====",parsedResponse)
@@ -60,7 +55,7 @@ const IdolContest = ({data}) => {
       }
 
       async function DaleteContestdetails(data) {
-        console.log("calling DaleteContestdetails api=====>",data);
+        console.log("data",data); 
         try {
             const parsedResponse = await routes.STOCK_11.APIS.DELETE_PIN_CONTEST(data);
             console.log("DaleteContestdetails=====",parsedResponse)
@@ -85,7 +80,6 @@ const IdolContest = ({data}) => {
                 <Text style={{ color: "black" , fontSize:23,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
                 <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.{data.entryFee}/-</Text>
                 <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
-           
             </View>
         <View style={{justifyContent:"center",alignItems:"center",marginTop:-20}}>
         <TouchableOpacity 
@@ -193,7 +187,7 @@ TimeDate: {
 },
 IdolContainer: {
     position: "relative",
-    width: SIZES.width-50,
+    width: SIZES.width-60,
     height: 140,
 },
 textstyle: {

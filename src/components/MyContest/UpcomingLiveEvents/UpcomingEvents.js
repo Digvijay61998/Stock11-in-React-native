@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator,AsyncStorage} from 'react-native';
 import React, { useState, useEffect }  from 'react';
 import {COLORS, FONTS, icons, Header,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
@@ -11,9 +11,10 @@ const UpcomingEvents = ({navigation}) => {
   const [loading, setLoading] = useState(false);
 
 const getContestdetails = async () => {
+  const userId = await AsyncStorage.getItem('userId');
 console.log("upcomingContest=====",upcomingContest)
 try {
-    const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+    const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}&status=UP&userId=${userId}`);
     const data = parsedResponse.content
     if(parsedResponse.totalPages === page){
     setLoading(true)

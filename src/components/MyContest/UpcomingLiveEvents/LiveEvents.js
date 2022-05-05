@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator,AsyncStorage} from 'react-native';
 import React, { useState, useEffect }  from 'react';
 import {COLORS, FONTS, icons, Header,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
@@ -13,9 +13,10 @@ console.log("loading",loading);
 
 
 const getContestdetails = async () => {
+  const userId = await AsyncStorage.getItem('userId');
   console.log("LiveContest=====",LiveContest)
   try {
-      const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+      const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}&status=LIV&userId=${userId}`);
       const data = parsedResponse.content
       console.log("parsedResponse=====",parsedResponse.totalPages)
       if(parsedResponse.totalPages === page){

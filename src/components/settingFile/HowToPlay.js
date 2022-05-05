@@ -1,19 +1,36 @@
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList, Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container} from "../../constants"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 import FollowingContest from '../Contest/FollowingContest/FollowingContest';
+import routes from '../../../utils/routes';
 
 
 const HowToPlay = () => {
 
   const [visible, setVisible] = useState()
+  const [getplay, setGetPlay] = useState()
 
-  const Introduction =(e) =>{
-    const handleEvent = e.target._internalFiberInstanceHandleDEV.pendingProps.children
-    setVisible(handleEvent)
+  const handlePress =(e) =>{
+    console.log("e",e);
+    // const handleEvent = e.target._internalFiberInstanceHandleDEV.pendingProps.children
+    setVisible(e)
   }
 
+    //Get api called
+    const getHowPlay = async () => {
+      try {
+          const parsedResponse = await routes.STOCK_11.APIS.GET_HOW_TO_PLAY();
+          console.log("parsedResponse=====",parsedResponse["Select a Contest"].selectContestAbout)
+          setGetPlay(parsedResponse)
+          } catch (error) {
+          console.log("FAIL=====")
+          console.error(error);
+      }
+      } 
+      useEffect(() => {
+        getHowPlay()
+      }, [])
   return (
     <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -21,7 +38,6 @@ const HowToPlay = () => {
     end={{ x: 1, y: 1 }}
     style={styles.container}
   >
-
 <View style={{flexDirection:"row",justifyContent:"space-between",top:-80,alignItems:"center"}}>
       <View >
       <Image
@@ -53,7 +69,7 @@ const HowToPlay = () => {
     <View style={styles.playBox}>
       <View style={{paddingTop:25}}>
     <TouchableOpacity  
-          onPress={(e) =>Introduction(e)
+          onPress={(e) =>handlePress("Introduction")
             
           }
       >
@@ -63,47 +79,56 @@ const HowToPlay = () => {
       </TouchableOpacity>
 
 {visible === "Introduction" ? <View >
-  <Text>jhiuiouoiuiouoiuoiuoi</Text>
+  <Text>{getplay.Introduction.introAbout}</Text>
 </View>:<></>}
       <TouchableOpacity 
           onPress={() =>
-            Contest()
+            handlePress("SelectContest")
           }
       >
         <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Select a Contest</Text>
       </View>
       </TouchableOpacity>
-
+      {visible === "SelectContest" ? <View >
+  <Text>{getplay["Select a Contest"].selectContestAbout}</Text>
+</View>:<></>}
       <TouchableOpacity 
           onPress={() =>
-            Portfolio()
+            handlePress("CreatePortfolio")
           }
       >
         <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Create a Portfolio</Text>
       </View>
       </TouchableOpacity>
-
+      {visible === "CreatePortfolio" ? <View >
+  <Text>{getplay["Create Portfolio"].createPortfolioAbout}</Text>
+</View>:<></>}
       <TouchableOpacity 
           onPress={() =>
-            JoinContest()
+            handlePress("JoinContest")
           }
       >
         <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Join a Contest</Text>
       </View>
       </TouchableOpacity>
-
+      {visible === "JoinContest" ? <View >
+      <Text>{getplay["Join a Contest"].joinContestVideo}</Text>
+</View>:<></>}
       <TouchableOpacity 
           onPress={() =>
-           FollowingContest()
+            handlePress("Followcontest")
           }
       >
         <View style={{width:290, height:42 ,backgroundColor:COLORS.primary  ,justifyContent: 'center',border:'1px  #696969' ,borderRadius:10 ,marginBottom:15,elevation:10 }}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Follow a contest</Text>
       </View>
       </TouchableOpacity>
+      {visible === "Followcontest" ? <View >
+  <Text>{getplay.Introduction.introAbout}</Text>
+</View>:<></>}
       </View>
       
     </View>

@@ -59,11 +59,17 @@ const CarouselCardItem = ({item, index }) => {
 )
 }
 
-const LiveContestDetails = ({navigation}) => {
+const LiveContestDetails = ({navigation}) =>  {
+  const leaderBoarddata = dummyData || []
+  const navigations = navigation || []
+
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 console.log(index);
   const [LiveContest, setLiveContest] = useState([]);
+  const [winningPrice, setWinningPrice] = useState([]);
+
+  
   const [page, setPage] = useState(0);
   console.log("page~~~~~~~~>",page);
   const [loading, setLoading] = useState(false);
@@ -73,7 +79,7 @@ console.log(index);
     try {
         const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
         const data = parsedResponse.content
-        // console.log("parsedResponse=====",parsedResponse.totalPages)
+        // console.log("parsedResponse=card=====>>",parsedResponse.content)
         if(parsedResponse.totalPages === page){
         setLoading(true)
         }
@@ -86,6 +92,7 @@ console.log(index);
     
     useEffect(() => {
       getLiveContestdetails();
+      getLeaderBoardList();
         console.log("CURRENT PAGE", page);
     }, [page])
  
@@ -98,13 +105,25 @@ console.log(index);
       }
     }
 
+    const getLeaderBoardList = async () => {
+      const priceList = LiveContest[index].contestKey
+      console.log("priceList============>",LiveContest[index].contestKey);
+      try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`/${priceList}`);
+        console.log("parsedResponse=====>>>>>>>>",parsedResponse)
+        setWinningPrice(parsedResponse)
+      } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+      }
+    }
+
     useEffect(() => {
+      getLeaderBoardList();
         fetchMoreData()
     }, [index])
 
-  const winningdata = dummyData.WinningList
-    const leaderBoarddata = dummyData.LeadBoard
-const navigations = navigation
+
   return (
     <LinearGradient
   colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
@@ -152,9 +171,8 @@ const navigations = navigation
       />
 </View>
 <Text style={styles.textLive}>LIVE</Text>
-          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations}/>
+          <LeadBoard winning ={winningPrice} leaderBoard={leaderBoarddata} navigation={navigations}/>
           </LinearGradient>
-
   );
 };
 

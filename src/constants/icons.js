@@ -18,7 +18,11 @@ const emptyFile = require("../../assets/icons/emptyFile.png")
 const Notification = require("../../assets/icons/Notification.png")
 const unpin = require("../../assets/icons/unpin.png")
 const pin = require("../../assets/icons/pin.png")
-
+const addButtonn= require('../../assets/icons/add-button.png')
+const avatar = require('../../assets/icons/avatar.jpg')
+const image = require('../../assets/icons/image.jpg')
+const camera = require('../../assets/icons/camera.png')
+  
 export default {
     Stock11Logo,
     FrontPageAroow,
@@ -39,5 +43,10 @@ export default {
     emptyFile,
     Notification,
     unpin,
-    pin
+    pin,
+    addButtonn,
+    avatar,
+    image ,
+    camera,
+
 }

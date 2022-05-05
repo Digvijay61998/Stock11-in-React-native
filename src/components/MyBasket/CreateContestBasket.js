@@ -1,14 +1,44 @@
-import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList,ImageBackground} from 'react-native'
+import {  StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList,ImageBackground, AsyncStorage} from 'react-native'
 import { COLORS, FONTS, icons, Header,CardBox, dummyData,SIZES} from "../../constants"
 import React, { useState, useEffect }  from 'react';
 import LinearGradient from 'react-native-linear-gradient'
+import routes from '../../../utils/routes';
+import { TextInput } from 'react-native-gesture-handler';
 
-const CreateContestBasket = ({navigation}) => {
+const CreateContestBasket = (props) => {
+  const navigation = props.navigation.navigate || []
+  const basketKey = props.route.params.basketKey || []
 
   const [editTeam, setEditTeam] = useState(dummyData.BasketData || []);
   const [points, setPoints] = useState([])
   const [counter, setCounter] = useState([])
-  console.log("counter",counter);
+  const [basketList, setBasketList] = useState()
+  const [value, setvalue] = useState([])
+
+  console.log("counter",points);
+  // item.stockDTO.stocksId
+function handleEvent(item){
+  if (points.includes(item.stocksId)) {
+        const newPoint = points.filter((itemId) =>
+          itemId !== item.stocksId);
+        return setPoints(newPoint)
+      }
+      else if (points.length < 10) {
+        const ID = ([...points,item.stocksId]);
+        setPoints({
+          id:ID [
+          stockDTO="bull shit"
+          ]
+        })
+      //  const data = {
+      //   stocksKey:
+      //  }
+      }
+      else {
+        console.log("only 10 points can be selected");
+      }
+  console.log("item",item.stocksId);
+}
 
   const increment = (item,index) =>{
     // console.log("item{",item);
@@ -34,26 +64,82 @@ const CreateContestBasket = ({navigation}) => {
 
 
   // useEffect(() => {
-  //   setEditTeam(editTeams.map(i=>{
+  //   setvalue(editTeams.map(i=>{
   //     i["count"] = 0;
   //     return i;
   //   }))
   // },[]);
 
-  const selectpoint = (item, index) => {
-    if (points.includes(item.id)) {
-      const newPoint = points.filter((itemId) =>
-        itemId !== item.id);
-      return setPoints(newPoint)
+  // const selectpoint = (item, index) => {
+  //   if (points.includes(item.id)) {
+  //     const newPoint = points.filter((itemId) =>
+  //       itemId !== item.id);
+  //     return setPoints(newPoint)
+  //   }
+  //   else if (points.length < 10) {
+  //     setPoints([...points, item.id], index);
+  //   }
+  //   else {
+  //     console.log("only 10 points can be selected");
+  //   }
+  // }
+
+  // function handleSubmit (){
+  //   console.log("counter",points.length)
+  //   if(points.length === 10){
+  //     const data ={
+  //       basketName: "Niftyssssdcifty",
+  //       contestKey: 2,
+  //       stockList: [
+  //         {
+  //           "sequence": 2,
+  //           "stockKey": 0,
+  //           "weightage": 10
+  //         }
+  //       ],
+  //       userKey: 44
+  //     }
+  //     console.log("data",data)
+  //   }
+  //   // createBasketList()
+  // }
+  //Get api called
+  const getBasket = async () => {
+    const userKey = await AsyncStorage.getItem('userKey');
+console.log("userKey",userKey);
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_BASKETS(`/${basketKey}`);
+        const list = parsedResponse.stockList
+        console.log("parsedResponse=====12323434",JSON.stringify(parsedResponse.stockList))
+          setBasketList(list)
+        } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
     }
-    else if (points.length < 10) {
-      setPoints([...points, item.id], index);
-    }
-    else {
-      console.log("only 10 points can be selected");
+    } 
+    
+  // Post api Called
+  async function createBasketList(data) {
+    // console.log(data);
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.CREATE_BASKET(data);
+        console.log("parsedResponse=====",parsedResponse)
+        setUserData(parsedResponse)
+        if(parsedResponse){
+          await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
+         let userKey = String(parsedResponse.userDTO.userKey)
+         console.log("userKey~~~~~~~>",userKey);
+          await AsyncStorage.setItem('userKey' ,userKey);
+          navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+        }
+    } catch (error) {
+        console.error(error);
     }
   }
 
+  useEffect(() => {
+    getBasket()
+  }, [])
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -78,7 +164,7 @@ const CreateContestBasket = ({navigation}) => {
             >
     
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>BASKET NAME</Text>
+            <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}></Text>
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" ,height:80,top:15}}>
@@ -115,11 +201,11 @@ const CreateContestBasket = ({navigation}) => {
       </View>
       <ScrollView style={styles.scroller}>
         <FlatList
-          data={editTeam}
-          keyExtractor={(item) => item.id}
+          data={basketList}
+          // keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            <TouchableOpacity style={points.includes(item.id) ? [styles.EarnList, { backgroundColor:"#e7f0f2"}] : styles.EarnList}
-              onPress={() => selectpoint(item, index)} key={item.id}
+            <TouchableOpacity style={points.includes(item.stockDTO.stocksId) ? [styles.EarnList, { backgroundColor:"#e7f0f2"}] : styles.EarnList}
+              onPress={() => handleEvent(item.stockDTO, index)}
             >
               <View style={{ flexDirection: "row", alignItems: "center", justifyContent:"center" }}>
                {/* { points.includes(item.id) ? <Image
@@ -140,7 +226,7 @@ const CreateContestBasket = ({navigation}) => {
                     marginRight: 10
                   }}
                 />} */}
-                <Text style={[FONTS.textstyle,{fontSize:14}]}>{item.stocks}</Text>
+                <Text style={[FONTS.textstyle,{fontSize:14}]}>{item.stockDTO.stocksName}</Text>
               </View>
               <View style={{alignItems:"center",justifyContent:"space-around",display:"flex",flexDirection:'row'}}>
                 <View style={{paddingRight:3}}>
@@ -152,9 +238,14 @@ const CreateContestBasket = ({navigation}) => {
                 </TouchableOpacity>
                 </View>
                 <View>
-            <Text style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1,paddingLeft:10,paddingRight:10}]}>
-            {item.count ? item.count : 0}
-              </Text>
+            <TextInput style={[FONTS.textstyle,{fontSize:15,backgroundColor:"#fff" ,padding:1,paddingLeft:10,paddingRight:10}]}
+            name="weightage"
+            onChangeText={setvalue}
+            placeholder='0'
+            placeholderTextColor="black"
+            >
+              {/* {item.count ? item.count : 0} */}
+              </TextInput>
                 </View>
                 <View style={{paddingLeft:3}}>
                 <TouchableOpacity style={{ width:15,height:15,
@@ -173,9 +264,10 @@ const CreateContestBasket = ({navigation}) => {
       </ScrollView>
       <TouchableOpacity style={[FONTS.button , {width:SIZES.width-200 ,marginTop:60 ,bottom:25}]}
            onPress={() =>
-            navigation.navigate('Team Preview', {
-              paramKey: counter,
-            })
+            handleSubmit()
+            // navigation.navigate('Team Preview', {
+            //   paramKey: counter,
+            // })
           }
        >
         <Text style={[FONTS.textstyle ,{color:"white"}]}>Contiue</Text>
@@ -193,7 +285,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#1F1D2B",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    height:600,
+
   },
   scroller: {
     flex: 1,
@@ -216,7 +310,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor:"#fcf4ff",
     marginTop: -80,
-    borderRadius:20
+    borderRadius:20,
+    height:600,
   },
   EarnListTitle: {
     justifyContent: "center",

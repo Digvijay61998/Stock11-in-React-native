@@ -1,9 +1,28 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image, AsyncStorage} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES} from "../../constants"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'
+import routes from '../../../utils/routes';
 
 const Wallet = ({navigation}) => {
+  const[balance ,getBalance]=useState()
+  console.log("balance",balance);
+
+  const getWalletDetails = async () => {
+    const userKey = await AsyncStorage.getItem('userKey');
+    try {
+      const parsedResponse = await routes.STOCK_11.APIS.GET_WALLET_BALANCE(`${userKey}`);
+      console.log("parsedResponse=====>>>>>>>>",parsedResponse)
+      getBalance(parsedResponse.balanceAmount)
+    } catch (error) {
+      console.log("FAIL=====")
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    getWalletDetails();
+  }, [])
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
@@ -23,7 +42,7 @@ const Wallet = ({navigation}) => {
     <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>WALLET</Text>
        <View style={[CardBox,{elevation:10 ,width:SIZES.width-50,height:SIZES.height-350,backgroundColor: "#fef9ff",justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}]}>
       <Text style={FONTS.textstyle}>Available Balance</Text>
-      <Text style={[FONTS.textstyle,{fontSize:30 ,color:COLORS.ActiveButton}]}>10.00/-</Text>
+      <Text style={[FONTS.textstyle,{fontSize:30 ,color:COLORS.ActiveButton}]}>{balance}/-</Text>
       <View style={{width: '100%', height:300 ,top:80, alignItems: "center", justifyContent:"center" ,borderTopWidth:1 ,borderColor:"#ebe7ec"}}>
        <TouchableOpacity style={[FONTS.button,{width:150 , bottom:60}]}
            onPress={() =>

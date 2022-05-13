@@ -16,7 +16,7 @@ export default {
             GET_PIN_CONTEST: async (data)=> {return await apiGet(`/mapping/contest_user/getByUserId/${data}`,"STOCK_11")},  
             GET_USER_PROFILE: async (data)=> {return await apiGet(`/users/${data}`,"STOCK_11")},  
             GET_HOW_TO_PLAY: async (data)=> {return await apiGet(`/play`,"STOCK_11")},   
-            
+            GET_WALLET_BALANCE: async (data)=> {return await apiGet(`/wallet/${data}`,"STOCK_11")},   
             
             // POST API
             // LOGIN: async (data)=> await apiPost("/userauth/send-otp",data,"STOCK_11"),
@@ -30,7 +30,7 @@ export default {
             CREATE_HELP_DESK: async (data)=> await apiPost("/helpdesk",data,"STOCK_11"),
             CREATE_USER_PROFILE: async (data)=> await apiPost("/users",data,"STOCK_11"),
             CREATE_FORGOT_USER:async (data)=> await apiPost("/users/forgotpassword",data,"STOCK_11"),
-            UPLOAD_USER_PROFILE_IMAGE: async (data)=> await apiPostImage("/image/",data,"STOCK_11"),
+            CREATE_PROFILE_PHOTO: async (data)=> await apiPostImage("/users/save-profile-photo",data,"STOCK_11"),
             // PUT API
             UPDATE_USER_PROFILE: async (data)=> await apiPut("/profile",data,"STOCK_11"),
             UPDATE_CREATE_BASKET: async (data)=> await apiPut("/baskets",data,"STOCK_11"),

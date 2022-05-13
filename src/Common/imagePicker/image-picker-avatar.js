@@ -7,7 +7,7 @@ import {
   View,
   ImageBackground,
 } from 'react-native';
-import {icons} from "../../../constants"
+import {icons} from "../../constants"
 
 
 export function ImagePickerAvatar({ uri, onPress }) {

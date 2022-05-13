@@ -1,10 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState ,useCallback} from 'react';
 import { StyleSheet, View, TextInput, Text, Button, Alert, SafeAreaView, TouchableOpacity, Image, AsyncStorage } from 'react-native';
 import { COLORS, FONTS, icons, SIZES, container, images } from "../src/constants"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import LinearGradient from 'react-native-linear-gradient'
 import routes from '../utils/routes';
 import * as yup from 'yup';
+import { ImagePickerModal } from '../src/Common/imagePicker/image-picker-modal';
+import { ImagePickerAvatar } from '../src/Common/imagePicker/image-picker-avatar';
 
 function CompleteProfile(props) {
   const navigation = props.navigation
@@ -12,6 +14,28 @@ function CompleteProfile(props) {
   const userMobile =   props.route.params.userData.userDTO.mobile
   const [navigationData] = useState(props.route.params.data)
 
+  const [pickerResponse, setPickerResponse] = useState(null);
+  const [visible, setVisible] = useState(false);
+
+  const onImageLibraryPress = useCallback(() => {
+    const options = {
+      selectionLimit: 1,
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    ImagePicker.launchImageLibrary(options, setPickerResponse);
+  }, []);
+
+  const onCameraPress = React.useCallback(() => {
+    const options = {
+      saveToPhotos: true,
+      mediaType: 'photo',
+      includeBase64: false,
+    };
+    ImagePicker.launchCamera(options, setPickerResponse);
+  }, []);
+
+  const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
 
   const handleSubmit = async (val) => {
     const userId = await AsyncStorage.getItem('userId');
@@ -109,19 +133,13 @@ function CompleteProfile(props) {
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <View style={{ width: 100, height: 100, backgroundColor: COLORS.ActiveButton, borderRadius: 50, top: -130, zIndex: 1, alignItems: "center", justifyContent: "center" }}>
                   <View style={{ width: 150, height: 90, borderRadius: 50, justifyContent: "center", alignItems: "center" }}>
-                  <TouchableOpacity
-      >
-
-                    {/* <Image
-                      source={icons.Profile}
-                      resizeMode="contain"
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        // tintColor: focused ? COLORS.
-                        //     ActiveButton : COLORS.black
-                      }} /> */}
-      </TouchableOpacity>
+                  <ImagePickerAvatar uri={uri} onPress={() => setVisible(true)} />
+      <ImagePickerModal
+        isVisible={visible}
+        onClose={() => setVisible(false)}
+        onImageLibraryPress={onImageLibraryPress}
+        onCameraPress={onCameraPress}
+      />
 
                   </View>
                 </View>

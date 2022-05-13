@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image, ActivityIndicator} from 'react-native';
 import { COLORS, FONTS, icons, SIZES,container } from "../../constants"
 import { number } from 'yup/lib/locale';
 import routes from '../../../utils/routes';
@@ -12,6 +12,8 @@ const Login = ({navigation}) => {
     const [value, setValue] = useState("");
     const [isVerified, setIsVerified] = useState(false);
     const [userData , setUserData] = useState();
+    const [loading , setloading] = useState(false);
+
   // const Getdata ={
   //   userId : userData.twoFAuthForm.userId,
   //   userKey: userData.userDTO.userKey,
@@ -55,6 +57,7 @@ const Login = ({navigation}) => {
   }
   async function userLogin(data) {
     try {
+    setloading(true)
         const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
         console.log("parsedResponse=====",parsedResponse)
         if(parsedResponse){
@@ -62,10 +65,12 @@ const Login = ({navigation}) => {
         let userKey = String(parsedResponse.userDTO.userKey)
         await AsyncStorage.setItem('userKey' ,userKey);
           navigation.navigate('Tabs');
+    setloading(false)
         }
     } catch (error) {
       setUserData("invaild email/number")
         console.error(error);
+    setloading(false)
     }
   }
   
@@ -116,6 +121,7 @@ const Login = ({navigation}) => {
               {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
                 return(
                   <View style={styles.LoginBox}>
+                {loading == true ? <ActivityIndicator/> :null } 
                     <Text style={{bottom:30,color:"red"}}>{userData}</Text>
                   <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:1 ,color:COLORS.black ,top:-10}]}>WELCOME</Text>
                  <View 
@@ -185,13 +191,15 @@ const Login = ({navigation}) => {
                     ><View style={{paddingTop:5}}>
       <Text style={[FONTS.textstyle ,{color:"white"}]}>LOGIN</Text>
     </View>
-    
     </TouchableOpacity>
     </View>
+    
                 )
               }}
+
              
   </Formik>
+
   </LinearGradient >
   )
 }

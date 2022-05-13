@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, Text, Image, Pressable, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container} from "../../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest, dummyData, container} from "../../constants"
 
 
 export function ImagePickerModal({

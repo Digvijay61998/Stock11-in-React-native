@@ -33,7 +33,7 @@ const EditProfile = ({navigation}) =>{
   }, []);
 
   const uri = pickerResponse?.assets && pickerResponse.assets[0].uri;
-
+console.log("uri",uri);
 // submit data to POST API=====
 
   const handleSubmit = async (val) => {
@@ -50,6 +50,7 @@ const EditProfile = ({navigation}) =>{
     }
     console.log("data", data);
     createUserProfile(data);
+    createProfilePhoto(uri)
   }
 
 
@@ -83,6 +84,23 @@ const EditProfile = ({navigation}) =>{
       }
     } catch (error) {
       console.error("ERROR_FROM_API_CALL", error);
+    }
+  }
+
+  async function createProfilePhoto(uri) {
+    console.log("forgotUserProfile=======>",uri);
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.CREATE_PROFILE_PHOTO(uri);
+        console.log("parsedResponse=====",parsedResponse)
+        // if(parsedResponse){
+        //   await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
+        //  let userKey = String(parsedResponse.userDTO.userKey)
+        //  console.log("userKey~~~~~~~>",userKey);
+        //   await AsyncStorage.setItem('userKey' ,userKey);
+        //   navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+        // }
+    } catch (error) {
+        console.error(error);
     }
   }
     return(

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image, ActivityIndicator} from 'react-native';
 import { COLORS, FONTS, icons, SIZES ,container} from "../../constants"
 import { number } from 'yup/lib/locale';
 import routes from '../../../utils/routes';
@@ -11,7 +11,7 @@ function Register(props) {
   const navigation = props.navigation
   const [value, setValue] = useState("");
   const [isVerified, setIsVerified] = useState(false);
-  const [userData , setUserData] = useState();
+  const [loading , setloading] = useState(false);
 
 
   // const Getdata ={
@@ -64,6 +64,7 @@ const handleSubmit = async (val) => {
 async function createUserProfile(data) {
   console.log("createUserProfile=======>",data);
   try {
+    setloading(true)
       const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_REGISTER(data);
       console.log("parsedResponse=====",parsedResponse)
       if(parsedResponse){
@@ -72,8 +73,10 @@ async function createUserProfile(data) {
        console.log("userKey~~~~~~~>",userKey);
         await AsyncStorage.setItem('userKey' ,userKey);
         navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+        setloading(false)
       }
   } catch (error) {
+    setloading(false)
       console.error(error);
   }
 }
@@ -94,7 +97,7 @@ async function forgotUserProfile(data) {
       console.error(error);
   }
 }
-
+  
 //  VALIDATION SCHEMA
 const validationSchema = Yup.object({
    mobile: Yup.number().required("This field is Required")
@@ -185,6 +188,7 @@ return (
                   >
     <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>REQUEST OTP</Text>
   </TouchableOpacity>
+ {loading == true ? <ActivityIndicator/> :null } 
   </View>
               )
             }}

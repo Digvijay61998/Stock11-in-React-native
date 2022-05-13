@@ -21,6 +21,23 @@ const MyProfile = ({navigation}) =>{
   }
   }
 
+
+async function createProfilePhoto(data) {
+  console.log("forgotUserProfile=======>",data);
+  try {
+      const parsedResponse = await routes.STOCK_11.APIS.CREATE_PROFILE_PHOTO(data);
+      console.log("parsedResponse=====",parsedResponse)
+      // if(parsedResponse){
+      //   await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
+      //  let userKey = String(parsedResponse.userDTO.userKey)
+      //  console.log("userKey~~~~~~~>",userKey);
+      //   await AsyncStorage.setItem('userKey' ,userKey);
+      //   navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+      // }
+  } catch (error) {
+      console.error(error);
+  }
+}
   useEffect(() => {
     getUserProfile();
   }, [])

@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from "react";
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage,Image} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage,Image, ActivityIndicator} from 'react-native';
 import { COLORS, FONTS, icons, SIZES } from "../../constants"
 import {
     CodeField,
@@ -21,6 +21,8 @@ function OtpVerification(prop) {
     const [counter, setCounter] = useState(90);
     const [OtpMatched, setOtpMatched] = useState();
     const [value, setValue] = useState('');
+  const [loading , setloading] = useState(false);
+
         console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -47,6 +49,7 @@ function OtpVerification(prop) {
     async function verifyUserOtp(data) {
       // console.log("valdsf",data);
       try {
+        setloading(true)
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
           // console.log("parsedResponse=====",parsedResponse)
           console.log("token=====",parsedResponse)
@@ -55,7 +58,9 @@ function OtpVerification(prop) {
             setOtpMatched(parsedResponse.otpMatched)
           await AsyncStorage.setItem('userToken', parsedResponse.token);
             navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword,userData:UserData})
+           setloading(false)
           }else{
+           setloading(false)
             console.log("Otp not match");
           }
           } catch (error) {
@@ -170,6 +175,7 @@ return (
   <Text style={[FONTS.textstyle ,{color:"white"}]}>{counter} sec</Text>
 </TouchableOpacity>
 </View>
+{loading == true ? <ActivityIndicator/> :null } 
 </View>
     </LinearGradient>
         

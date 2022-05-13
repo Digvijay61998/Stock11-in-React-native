@@ -59,9 +59,10 @@ const CarouselCardItem = ({item, index }) => {
 )
 }
 
-const LiveContestDetails = ({navigation}) =>  {
-  const leaderBoarddata = dummyData || []
-  const navigations = navigation || []
+const LiveContestDetails = (props) =>  {
+  // const leaderBoarddata = dummyData || []
+  console.log("props=====>",props.contestKey);
+  const navigations = props.navigation || []
 
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
@@ -171,7 +172,7 @@ console.log(index);
       />
 </View>
 <Text style={styles.textLive}>LIVE</Text>
-          <LeadBoard winning ={winningPrice} leaderBoard={leaderBoarddata} navigation={navigations}/>
+          <LeadBoard winning ={winningPrice}  navigation={navigations}/>
           </LinearGradient>
   );
 };

@@ -29,14 +29,10 @@ export const apiPost = async (url, values,serviceName) => {
   console.log("values",values);
   let apiUrl = verifyService(serviceName);
   let TOKEN = await AsyncStorage.getItem('userToken')
-
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`},
       body: JSON.stringify(values),
     })
       .then(async (response) => {
@@ -55,17 +51,14 @@ export const apiPost = async (url, values,serviceName) => {
 };
 
 export const apiPut = async(url, values ,serviceName) => {
+  console.log("values",values);
   let apiUrl = verifyService(serviceName);
   let TOKEN = await AsyncStorage.getItem('userToken')
 
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'PUT',
-      headers: {
-        'Authorization': 'Bearer ' + values.token,
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`},
       body: JSON.stringify(values),
     })
       .then(response => {

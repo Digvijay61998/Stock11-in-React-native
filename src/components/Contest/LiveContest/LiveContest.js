@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
+import { COLORS, FONTS,icons, Header,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
@@ -12,11 +12,10 @@ const LiveContest = ({navigation}) => {
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
  
-  
-
 const getContestdetails = async () => {
 try {
     const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+    // &status=LIV
     const data = parsedResponse.content
     console.log("parsedResponse=====dsk",parsedResponse)
     if(parsedResponse.totalPages === page){
@@ -73,11 +72,6 @@ try {
           data={LiveContest}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
-            <TouchableOpacity
-              onPress={() => navigation.navigate("LiveContestDetails")
-              // handleData(item)
-            }
-            >
                   <ImageBackground
                   resizeMode="cover"
                  source={url[index % url.length]}
@@ -86,11 +80,11 @@ try {
               
               <IdolContest 
               data={item}
+              navigation={navigation}
               />
               {/* <NewsCard news={item} /> */}
 
               </ImageBackground>
-            </TouchableOpacity>
           )}
           ListFooterComponent={renderFooter}
           ListEmptyComponent={renderEmpty}

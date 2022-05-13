@@ -26,8 +26,9 @@ const Login = ({navigation}) => {
   
   }
   const handleSubmit = async (val) => {
+    console.log("called");
+    console.log("val",val);
     const input = val.mobile
-    console.log(input);
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const regNumber = /^[0]?[789]\d{9}$/;
     if (input.match(regexEmail)) {
@@ -57,17 +58,21 @@ const Login = ({navigation}) => {
         const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
         console.log("parsedResponse=====",parsedResponse)
         if(parsedResponse){
-          // navigation.navigate('Tabs');
+        await AsyncStorage.setItem('userId' ,parsedResponse.userDTO.userId);
+        let userKey = String(parsedResponse.userDTO.userKey)
+        await AsyncStorage.setItem('userKey' ,userKey);
+          navigation.navigate('Tabs');
         }
     } catch (error) {
+      setUserData("invaild email/number")
         console.error(error);
     }
   }
   
   //  VALIDATION SCHEMA
-  const validationSchema = Yup.object({
-     mobile: Yup.number().required("This field is Required")
-  });
+  // const validationSchema = Yup.object({
+  //    mobile: Yup.number().required("This field is Required")
+  // });
   
   // const loginForm = useFormik({
   //   initialValues: { mobile: "" },
@@ -105,12 +110,13 @@ const Login = ({navigation}) => {
             <Formik
               initialValues ={{ mobile: ""}}          
               
-              validationSchema = {validationSchema}
+              // validationSchema = {validationSchema}
               onSubmit={handleSubmit}
             >
               {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
                 return(
                   <View style={styles.LoginBox}>
+                    <Text style={{bottom:30,color:"red"}}>{userData}</Text>
                   <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:1 ,color:COLORS.black ,top:-10}]}>WELCOME</Text>
                  <View 
                     style={styles.input}center
@@ -141,10 +147,7 @@ const Login = ({navigation}) => {
                     secureTextEntry={true}
                     placeholder="*****"
                     placeholderTextColor="#4771a5"
-                    // paddingLeft={10}
                     autoComplete="cc-number"
-                    maxLength={10}
-                    // margin={10}
                     />
                     </View>
                     <View style={{alignItems:"center",justifyContent:"space-between",flexDirection:"row",width:"100%"}}>
@@ -176,28 +179,10 @@ const Login = ({navigation}) => {
                      title="Request OTP"
                      color="#f5871f00"
                      elevation="2"
-                     onChangeText={(val)=>setNumber(val)}
-    
                     //  onClick={loginWithMobile}
                     //  disabled={!(isValid && dirty)}
-                     onPress={() =>{
-                      handleSubmit(),
-          navigation.navigate('Tabs');
-
-                     }
-                         
-                       }
-                    >
-                    {/* <Button 
-                        title="Request OTP"
-                        color="#f5871f00"
-                        elevation="2"
-                        onChangeText={(val)=>setNumber(val)}
-                        onPress={() =>
-                            navigation.navigate('OtpVerification')
-                          }
-    
-    /> */}<View style={{paddingTop:5}}>
+                     onPress={handleSubmit}
+                    ><View style={{paddingTop:5}}>
       <Text style={[FONTS.textstyle ,{color:"white"}]}>LOGIN</Text>
     </View>
     

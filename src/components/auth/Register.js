@@ -37,14 +37,23 @@ const handleSubmit = async (val) => {
     const data ={ 
       email : input
        }
-    createUserProfile(data)
+       if(props.route.params === "forgotPassword"){
+         console.log("forgotUserProfile");
+        forgotUserProfile(data)
+       }else{
+        createUserProfile(data)
+       }
     return true; 
   } else if(input.match(regNumber) ) {
     console.log("false~~~~~~~~>");
     const data ={ 
     mobile : val.mobile
      }
-    createUserProfile(data)
+     if(props.route.params === "forgotPassword"){
+      forgotUserProfile(data)
+     }else{
+      createUserProfile(data)
+     }
     return true;
   }
   else{
@@ -53,11 +62,27 @@ const handleSubmit = async (val) => {
 
 }
 async function createUserProfile(data) {
-  console.log(data);
+  console.log("createUserProfile=======>",data);
   try {
-      const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
+      const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_REGISTER(data);
       console.log("parsedResponse=====",parsedResponse)
-      setUserData(parsedResponse)
+      if(parsedResponse){
+        await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
+       let userKey = String(parsedResponse.userDTO.userKey)
+       console.log("userKey~~~~~~~>",userKey);
+        await AsyncStorage.setItem('userKey' ,userKey);
+        navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+      }
+  } catch (error) {
+      console.error(error);
+  }
+}
+
+async function forgotUserProfile(data) {
+  console.log("forgotUserProfile=======>",data);
+  try {
+      const parsedResponse = await routes.STOCK_11.APIS.CREATE_FORGOT_USER(data);
+      console.log("parsedResponse=====",parsedResponse)
       if(parsedResponse){
         await AsyncStorage.setItem('userId' ,parsedResponse.twoFAuthForm.userId);
        let userKey = String(parsedResponse.userDTO.userKey)
@@ -150,7 +175,7 @@ return (
                    title="Request OTP"
                    color="#f5871f00"
                    elevation="2"
-                   onChangeText={(val)=>setNumber(val)}
+                  //  onChangeText={(val)=>setNumber(val)}
   
                   //  onClick={loginWithMobile}
                   //  disabled={!(isValid && dirty)}

@@ -14,7 +14,7 @@ console.log("loading",loading);
 
 const getContestdetails = async () => {
   const userId = await AsyncStorage.getItem('userId');
-  console.log("LiveContest=====",LiveContest)
+  console.log("LiveContest=====",userId)
   try {
       const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}&status=LIV&userId=${userId}`);
       const data = parsedResponse.content

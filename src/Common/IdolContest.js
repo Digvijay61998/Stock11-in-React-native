@@ -3,7 +3,10 @@ import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import routes from '../../utils/routes';
-const IdolContest = ({data}) => {
+const IdolContest = (props) => {
+    console.log("props",props.navigation);
+    const navigation = props.navigation
+    const data = props.data || []
     const [pin, setPin] = useState([]);
 
     const handlepined = async(data) => {
@@ -63,6 +66,15 @@ const IdolContest = ({data}) => {
             console.error(error);
         }
       }
+
+const handleNavigate =()=>{
+    if(props.page === "UpcomingContestDetails"){
+        console.log("called LiveContestDetails");
+        navigation.navigate("UpcomingContestDetails",data)
+    }else{
+        navigation.navigate("LiveContestDetails",data)
+    }
+}
 
       useEffect(() => {
                 GetPinContest();
@@ -143,7 +155,14 @@ const IdolContest = ({data}) => {
     </View>
     <View style={styles.TimeDate}>
     <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>{data.startDate}-{data.endDate}</Text>
- <Text style={[FONTS.textstyle,styles.view]}>VIEW</Text>
+    <TouchableOpacity
+              onPress={handleNavigate}
+              >
+                {props.page === "UpcomingContestDetails" ? 
+                 <Text style={[FONTS.textstyle,styles.view]}>JOIN</Text>:
+              <Text style={[FONTS.textstyle,styles.view]}>VIEW</Text>
+            }
+ </TouchableOpacity>
     </View>
 </View>
   );

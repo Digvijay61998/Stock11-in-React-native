@@ -15,11 +15,11 @@ import LinearGradient from 'react-native-linear-gradient'
 const CELL_COUNT = 6;
 
 function OtpVerification(prop) {
-  // console.log("prop",prop);
   const navigation = prop.navigation;
      const UserData = prop.route.params.Data;
     //  console.log("UserData",UserData);
-
+    const [counter, setCounter] = useState(90);
+    const [OtpMatched, setOtpMatched] = useState();
     const [value, setValue] = useState('');
         console.log("value",value);
     const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
@@ -50,9 +50,11 @@ function OtpVerification(prop) {
           const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
           // console.log("parsedResponse=====",parsedResponse)
           console.log("token=====",parsedResponse)
-          if(parsedResponse){
+          if(parsedResponse.otpMatched === true){
+            setCounter(counter == 0)
+            setOtpMatched(parsedResponse.otpMatched)
           await AsyncStorage.setItem('userToken', parsedResponse.token);
-            navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword})
+            navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword,userData:UserData})
           }else{
             console.log("Otp not match");
           }
@@ -61,35 +63,18 @@ function OtpVerification(prop) {
       }
     }
 
-    async function UpdateverifyUserOtp(data) {
-      // console.log("valdsf",data);
-      // try {
-      //     const parsedResponse = await routes.STOCK_11.APIS.VERIFY_USER_OTP(data);
-      //     console.log("parsedResponse=====",parsedResponse)
-      //     console.log("token=====",parsedResponse.token)
-      //     if(parsedResponse){
-      //     await AsyncStorage.setItem('userToken', parsedResponse.token);
-      //       navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword})
-      //     }else{
-      //       console.log("Otp not match");
-      //     }
-      //     } catch (error) {
-      //     console.error(error);
-      // }
-            navigation.navigate('Home')
-    }
-    const getuserID = async () => {
-      const userId = await AsyncStorage.getItem('userId');
-      const userToken = await AsyncStorage.getItem('userToken');
-      const userKey = await AsyncStorage.getItem('userKey');
+    useEffect(() => {
+      let timer;
+      if (counter > 0) {
+          timer = setTimeout(() => setCounter(counter - 1), 1000);
+      } 
+      else {
+        navigation.navigate('Register');
+        clearTimeout(timer)
+        };
+    
+    },[counter]);
 
-    console.log("userToken",userToken);
-    console.log("userId",userId);
-    console.log("userKey",userKey);
-    };
-useEffect (() => {
-  getuserID()
-})
 return (
 <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -182,7 +167,7 @@ return (
                       }
 
 /> */}
-  <Text style={[FONTS.textstyle ,{color:"white"}]}>39 sec</Text>
+  <Text style={[FONTS.textstyle ,{color:"white"}]}>{counter} sec</Text>
 </TouchableOpacity>
 </View>
 </View>

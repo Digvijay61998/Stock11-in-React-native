@@ -14,6 +14,7 @@ const getContestdetails = async () => {
 console.log("upcomingContest=====",upcomingContest)
 try {
     const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+    // &status=UP
     const data = parsedResponse.content
     if(parsedResponse.totalPages === page){
     setLoading(true)
@@ -63,19 +64,17 @@ try {
         data={upcomingContest}
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("UpcomingContestDetails")}
-          >
                 <ImageBackground
                 resizeMode="cover"
                source={url[index % url.length]}
                style={contestContainer}
                 >
-            <IdolContest data={item}/>
-            {/* <NewsCard news={item} /> */}
-
+            <IdolContest 
+            data={item}
+            page="UpcomingContestDetails"
+            navigation={navigation}
+             />
             </ImageBackground>
-          </TouchableOpacity>
         )}
         ListFooterComponent={renderFooter}
         ListEmptyComponent={renderEmpty}

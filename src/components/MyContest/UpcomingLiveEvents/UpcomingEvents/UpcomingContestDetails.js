@@ -4,32 +4,28 @@ import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData,SIZES} fr
 import {LeadBoard} from "../../../../Common"
 import LinearGradient from 'react-native-linear-gradient'
 import Carousel,{Pagination} from 'react-native-snap-carousel';
+import routes from '../../../../../utils/routes';
 
-const UpcomingContestDetails = ({ navigation }) => {
-  const [index, setIndex] = useState(0)
-  const isCarousel = useRef(null)
 
-  const winningdata = dummyData.WinningList
-  const leaderBoarddata = dummyData.LeadBoard
-const navigations = navigation
-
-const CarouselCardItem = ({ item, index }) => {
+const CarouselCardItem = ({item, index }) => {
+  // console.log("iiiteem",item);
   return (
+    
     <ImageBackground
     resizeMode="cover"
-    source={icons.card}
+    source={icons.card1}
     style={styles.contestContainer}
     >
 <View style={[styles.IdolContainer,{width:280}]}>
 <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-    <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+    <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>{item.contestName}</Text>
     <View></View>
 </View>
 <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
     <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.{item.poolSize}/-</Text>
         <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
-        <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+        <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{item.totalWinners} Winners</Text>
    
     </View>
 <View style={{justifyContent:"center",alignItems:"center"}}>
@@ -42,7 +38,7 @@ const CarouselCardItem = ({ item, index }) => {
        
 }}
     />
-    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{item.poolSize}</Text>
     <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
 </View>
    
@@ -57,12 +53,74 @@ const CarouselCardItem = ({ item, index }) => {
   </View>
 </View>
 <View style={styles.TimeDate}>
-<Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',fontSize:10}}>1st oct 3rd OCT,2022</Text>
+<Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',fontSize:10}}>{item.startDate-item.endDate}</Text>
 </View>
 </ImageBackground>
- 
 )
 }
+
+const UpcomingContestDetails = ({ navigation }) => {
+  const navigations = navigation || []
+
+  const [index, setIndex] = useState(0)
+  const isCarousel = useRef(null)
+console.log(index);
+  const [LiveContest, setLiveContest] = useState([]);
+  const [winningPrice, setWinningPrice] = useState([]);
+
+  
+  const [page, setPage] = useState(0);
+  console.log("page~~~~~~~~>",page);
+  const [loading, setLoading] = useState(false);
+
+
+  const getLiveContestdetails = async () => {
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+        const data = parsedResponse.content
+        // console.log("parsedResponse=card=====>>",parsedResponse.content)
+        if(parsedResponse.totalPages === page){
+        setLoading(true)
+        }
+        setLiveContest([...data])
+        } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+    }
+    }
+    
+    useEffect(() => {
+      getLiveContestdetails();
+      getLeaderBoardList();
+        console.log("CURRENT PAGE", page);
+    }, [page])
+ 
+    const fetchMoreData = () => {
+      if(index >=9){
+            setPage(page + 1)
+            setIndex(0)
+      }else if(index == 0){
+        setPage(page - 1)
+      }
+    }
+
+    const getLeaderBoardList = async () => {
+      const priceList = LiveContest[index].contestKey
+      console.log("priceList============>",LiveContest[index].contestKey);
+      try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`/${priceList}`);
+        console.log("parsedResponse=====>>>>>>>>",parsedResponse)
+        setWinningPrice(parsedResponse)
+      } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+      }
+    }
+
+    useEffect(() => {
+      getLeaderBoardList();
+        fetchMoreData()
+    }, [index])
 
   return (
     <LinearGradient
@@ -79,41 +137,44 @@ const CarouselCardItem = ({ item, index }) => {
              top:5
    }}
     />
-     <View style={{top:10,width:SIZES.width-120,alignItems:"center",justifyContent:"center"}}>
-     <Carousel
-        layout="tinder"
-        layoutCardOffset={6}
-        ref={isCarousel}
-        data={winningdata}
-        renderItem={CarouselCardItem}
-        sliderWidth={SIZES.width-50}
-        itemWidth={Math.round(SIZES.width * 0.7)}
-        onSnapToItem={(index) => setIndex(index)}
-        useScrollView={true}
-      />
-</View>
-<View style={{width:SIZES.width-360,height:20,top:-30}}>
-<Pagination
-        dotsLength={winningdata.length}
-        activeDotIndex={index}
-        carouselRef={isCarousel}
-        dotStyle={{
-          width: 15,
-          height: 15,
-          borderRadius: 50,
-          marginHorizontal: 0,
-          backgroundColor: '#fff'
-        }}
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
-        tappableDots={true}
-      />
-</View>
-  <Text style={styles.textLive}>UPCOMING</Text>
-            <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations}/>
+       <View style={{top:10,width:SIZES.width-120,alignItems:"center",justifyContent:"center"}}>
+       <Carousel
+          layout="tinder"
+          layoutCardOffset={6}
+          ref={isCarousel}
+          data={LiveContest}
+          renderItem={CarouselCardItem}
+          sliderWidth={SIZES.width-50}
+          itemWidth={Math.round(SIZES.width * 0.7)}
+          onSnapToItem={(index) => setIndex(index)
+      }
+          useScrollView={true}
+        />
+  </View>
+  <View style={{width:SIZES.width-360,height:20,top:-30}}>
+  <Pagination
+          dotsLength={LiveContest.length}
+          activeDotIndex={index}
+          carouselRef={isCarousel}
+          dotStyle={{
+            width: 15,
+            height: 15,
+            borderRadius: 50,
+            marginHorizontal: 0,
+            backgroundColor: '#fff'
+          }}
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={0.6}
+          tappableDots={true}
+        />
+  </View>
+  <Text style={styles.textLive}>LIVE</Text>
+            <LeadBoard winning ={winningPrice}  navigation={navigations}/>
             </LinearGradient>
-  );
-};
+            
+    );
+  };
+  
 
 export default UpcomingContestDetails;
 

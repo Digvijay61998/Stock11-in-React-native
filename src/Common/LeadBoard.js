@@ -2,7 +2,7 @@ import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,Flat
 import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
-const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
+const LeadBoard = ({winning,navigation,name}) => {
   console.log("props",winning[0]);
   const winningPrice = winning.prizeDTOS || []
   const winningStocks = winning.stockDTOS || []
@@ -18,24 +18,17 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
   const LeaderboardStick =()=>{
       setLeadboardstack("LEADERBOARD")
   }
-  const [liveContestranking, setLiveContestRanking]= useState([])
-  const [leaderBoardranking, setLeaderBoardRanking]= useState([])
+  // const [liveContestranking, setLiveContestRanking]= useState([])
+  // const [leaderBoardranking, setLeaderBoardRanking]= useState([])
 
-  useEffect(() => {
-    if(winning === undefined){
-      setLiveContestRanking("")
-    }else{
-      setLiveContestRanking(winning)
-    }
-  });
+  // useEffect(() => {
+  //   if(winning === undefined){
+  //     setLiveContestRanking("")
+  //   }else{
+  //     setLiveContestRanking(winning)
+  //   }
+  // });
 
-  useEffect(() => {
-    if(leaderBoard === undefined){
-      setLeaderBoardRanking("")
-    }else{
-      setLeaderBoardRanking(leaderBoard)
-    }
-  });
   return (
       <>  
     <View style={{ justifyContent: "space-around", flexDirection:"row",alignItems: "center" ,width:SIZES.width-40 ,position:"relative" ,top:10}}>
@@ -69,11 +62,18 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
             data = {winningPrice}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
+              <>
   <View style={styles.WinningList}>
       <Text style={styles.textstyle}>{index+1}</Text>
       <Text style={styles.textstyle}>Rs {item.amount}/-</Text>
     </View>
-    
+      {/* <TouchableOpacity
+      onPress={() => navigation.navigate("")}
+      style={{backgroundColor:"red",width:100,height:10}}
+ >
+   <Text>CREATE BASKET</Text>
+ </TouchableOpacity> */}
+ </>
       )}
       keyExtractor={(item, index) => index}
      />
@@ -112,7 +112,7 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
     { leadboardstack === "LEADERBOARD" ? <>
   <ScrollView>
   <FlatList 
-            data = {leaderBoardranking}
+            data = {""}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
   <View style={styles.LeaderboardList}>
@@ -128,6 +128,7 @@ const LeadBoard = ({winning,leaderBoard,navigation,name}) => {
     </ScrollView>
   </>:<></>}
     </View>
+    
     </>
 
   );

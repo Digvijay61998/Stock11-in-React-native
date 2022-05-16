@@ -2,10 +2,11 @@ import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,Flat
 import React, { useState ,useEffect} from 'react';
 import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
 
-const LeadBoard = ({winning,navigation,name}) => {
-  console.log("props",winning[0]);
-  const winningPrice = winning.prizeDTOS || []
-  const winningStocks = winning.stockDTOS || []
+const LeadBoard = (props) => {
+  console.log("props", props);
+  const navigation = props.navigation.navigate
+  const winningPrice = props.winning.prizeDTOS || []
+  const winningStocks = props.winning.stockDTOS || []
 
   const [leadboardstack, setLeadboardstack]=useState("WINNINGS");
 
@@ -78,19 +79,12 @@ const LeadBoard = ({winning,navigation,name}) => {
       keyExtractor={(item, index) => index}
      />
     </ScrollView>
-   {name === "follow Contest" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
+   {props.name === "contestDetails" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
    onPress={()=>{
-     navigation.navigate("Perfomance")
+     navigation.navigate('Wallet')
    }}
    >
-    <Text style={{color:"white",textAlign:"center",fontSize:13}}>JOIN</Text>
-    </TouchableOpacity>}
-    {name === "Completed" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
-   onPress={()=>{
-     navigation.navigate("Perfomance")
-   }}
-   >
-    <Text style={{color:"white",textAlign:"center",fontSize:13}}>MY BASKET PERFOMANCE</Text>
+    <Text style={{color:"white",textAlign:"center",fontSize:13}}>CREATE BASKET</Text>
     </TouchableOpacity>}
     </>:<></>}
     { leadboardstack === "STOCKS" ? <>

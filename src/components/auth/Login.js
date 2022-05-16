@@ -61,10 +61,17 @@ const Login = ({navigation}) => {
         const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
         console.log("parsedResponse=====",parsedResponse)
         if(parsedResponse){
-        await AsyncStorage.setItem('userId' ,parsedResponse.userDTO.userId);
-        let userKey = String(parsedResponse.userDTO.userKey)
-        await AsyncStorage.setItem('userKey' ,userKey);
+          const userId = parsedResponse.userDTO.userId
+          const userKey = String(parsedResponse.userDTO.userKey)
+          const userToken = parsedResponse.token
+        if(userId && userKey && userToken){
+          await AsyncStorage.setItem('userId' ,userId);
+          await AsyncStorage.setItem('userKey' ,userKey);
+          await AsyncStorage.setItem('userToken', userToken);
           navigation.navigate('Tabs');
+        }else{
+          console.log("Try Again");
+        }
     setloading(false)
         }
     } catch (error) {

@@ -59,20 +59,17 @@ const CarouselCardItem = ({item, index }) => {
 )
 }
 
-const UpcomingContestDetails = ({ navigation }) => {
-  const navigations = navigation || []
-
+const UpcomingContestDetails = (props) => {
+  console.log("props",props.route.name);
+  const navigations = props.navigation 
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 console.log(index);
   const [LiveContest, setLiveContest] = useState([]);
   const [winningPrice, setWinningPrice] = useState([]);
 
-  
   const [page, setPage] = useState(0);
   console.log("page~~~~~~~~>",page);
-  const [loading, setLoading] = useState(false);
-
 
   const getLiveContestdetails = async () => {
     try {
@@ -80,7 +77,6 @@ console.log(index);
         const data = parsedResponse.content
         // console.log("parsedResponse=card=====>>",parsedResponse.content)
         if(parsedResponse.totalPages === page){
-        setLoading(true)
         }
         setLiveContest([...data])
         } catch (error) {
@@ -169,7 +165,7 @@ console.log(index);
         />
   </View>
   <Text style={styles.textLive}>LIVE</Text>
-            <LeadBoard winning ={winningPrice}  navigation={navigations}/>
+            <LeadBoard winning ={winningPrice}  navigation={navigations} name ={"contestDetails"}/>
             </LinearGradient>
             
     );

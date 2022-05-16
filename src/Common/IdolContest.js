@@ -4,6 +4,7 @@ import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import routes from '../../utils/routes';
 const IdolContest = (props) => {
+    console.log("props",props.refresh);
     const navigation = props.navigation
     const data = props.data || []
     const [pin, setPin] = useState([]);
@@ -50,14 +51,12 @@ const IdolContest = (props) => {
         try {
             const parsedResponse = await routes.STOCK_11.APIS.CREATE_PIN_CONTEST(data);
             console.log("CreatePinContest=====",parsedResponse)
-
         } catch (error) {
             console.error(error);
         }
       }
 
       async function DaleteContestdetails(data) {
-        console.log("data",data); 
         try {
             const parsedResponse = await routes.STOCK_11.APIS.DELETE_PIN_CONTEST(data);
             console.log("DaleteContestdetails=====",parsedResponse)
@@ -68,7 +67,6 @@ const IdolContest = (props) => {
 
 const handleNavigate =()=>{
     if(props.page === "UpcomingContestDetails"){
-        console.log("called LiveContestDetails");
         navigation.navigate("UpcomingContestDetails",data)
     }else{
         navigation.navigate("LiveContestDetails",data)
@@ -77,7 +75,6 @@ const handleNavigate =()=>{
 
       useEffect(() => {
                 GetPinContest();
-                // getFormattedDate()
               }, [])
 
 //   get date format
@@ -94,7 +91,7 @@ console.log(String.valueOf(today))
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:21,fontWeight:"bold" }}>Pool Price.10,000/-</Text>
+                <Text style={{ color: "black" , fontSize:21,fontWeight:"bold" }}>Pool Price./-</Text>
                 <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.{data.entryFee}/-</Text>
                 <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
             </View>

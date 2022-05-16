@@ -6,6 +6,7 @@ import { AsyncStorage} from 'react-native';
   export const apiGet = async(url,serviceName,userToken) => {
   let apiUrl = verifyService(serviceName);
   let TOKEN = await AsyncStorage.getItem('userToken')
+  console.log("TOKEN====>",TOKEN);
   return new Promise((resolve, reject) => {
   fetch(`${apiUrl}${url}` , {
       method: 'GET',

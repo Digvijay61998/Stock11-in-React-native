@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button, AsyncStorage} from 'react-native'
 import { COLORS, FONTS,icons, Header,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
 
 const LiveContest = ({navigation}) => {
-  
- 
   const [LiveContest, setLiveContest] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);

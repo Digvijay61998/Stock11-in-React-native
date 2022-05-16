@@ -57,7 +57,11 @@ function OtpVerification(prop) {
             setCounter(counter == 0)
             setOtpMatched(parsedResponse.otpMatched)
           await AsyncStorage.setItem('userToken', parsedResponse.token);
-            navigation.navigate('CompleteProfile',{data:prop.route.params.ForgotPassword,userData:UserData})
+          if(prop.route.params.navigate === "LoginWithOTP"){
+            navigation.navigate('Tabs')
+          }else{
+            navigation.navigate('CompleteProfile',{data:prop.route.params.navigate,userData:UserData})
+          }
            setloading(false)
           }else{
            setloading(false)

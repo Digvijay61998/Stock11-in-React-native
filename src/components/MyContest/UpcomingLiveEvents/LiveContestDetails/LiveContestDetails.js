@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity ,FlatList,Image,ImageBackground} from 'react-native';
+import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity ,FlatList,Image,ImageBackground, ProgressBarAndroid} from 'react-native';
 import React, { useState,useEffect ,useRef } from 'react';
 import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData,SIZES} from "../../../../constants"
 import {LeadBoard} from "../../../../Common"
@@ -23,8 +23,8 @@ const CarouselCardItem = ({item, index }) => {
 </View>
 <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
     <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.{item.poolSize}/-</Text>
-        <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
+        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>Pool Price.{item.poolSize}/-</Text>
+        <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.{item.entryFee}/-</Text>
         <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{item.totalWinners} Winners</Text>
    
     </View>
@@ -38,14 +38,19 @@ const CarouselCardItem = ({item, index }) => {
        
 }}
     />
-    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{item.poolSize}</Text>
+    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{item.totalSpots}</Text>
     <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
 </View>
    
 </View>
   <View style={{alignItems:"center",right:44,top:4}}>
-  <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
-  </View>
+  <ProgressBarAndroid
+          styleAttr="Horizontal"
+          indeterminate={false}
+          style={{width:180}}
+          progress={(item.filledSpots / item.totalSpots) ? (item.filledSpots / item.totalSpots) :0}
+        //   progress={(data.filledSpots / data.totalSpots) * 10 ? (data.filledSpots / data.totalSpots) * 10 :0}
+        />
   <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
     <Text style={[FONTS.textstyle ,{fontSize:8 }]}></Text>
     <Text  style={[FONTS.textstyle ,{fontSize:10,color:"black"}]}>No more Spots!</Text>

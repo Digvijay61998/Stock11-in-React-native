@@ -4,7 +4,6 @@ import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import routes from '../../utils/routes';
 const IdolContest = (props) => {
-    console.log("props",props.navigation);
     const navigation = props.navigation
     const data = props.data || []
     const [pin, setPin] = useState([]);
@@ -78,7 +77,13 @@ const handleNavigate =()=>{
 
       useEffect(() => {
                 GetPinContest();
+                // getFormattedDate()
               }, [])
+
+//   get date format
+let today = data.endDate
+// let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
+console.log(String.valueOf(today))
 
   return (
     <View>
@@ -89,7 +94,7 @@ const handleNavigate =()=>{
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:23,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+                <Text style={{ color: "black" , fontSize:21,fontWeight:"bold" }}>Pool Price.10,000/-</Text>
                 <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.{data.entryFee}/-</Text>
                 <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
             </View>
@@ -132,7 +137,7 @@ const handleNavigate =()=>{
                
       }}
             />
-            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{data.poolSize}</Text>
+            <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{data.totalSpots}</Text>
             <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
         </View>
            

@@ -37,7 +37,7 @@ const handleSubmit = async (val) => {
     const data ={ 
       email : input
        }
-       if(props.route.params === "forgotPassword"){
+       if(props.route.params === "forgotPassword" || props.route.params === "LoginWithOTP" ){
          console.log("forgotUserProfile");
         forgotUserProfile(data)
        }else{
@@ -49,7 +49,7 @@ const handleSubmit = async (val) => {
     const data ={ 
     mobile : val.mobile
      }
-     if(props.route.params === "forgotPassword"){
+     if(props.route.params === "forgotPassword" || props.route.params === "LoginWithOTP" ){
       forgotUserProfile(data)
      }else{
       createUserProfile(data)
@@ -91,7 +91,7 @@ async function forgotUserProfile(data) {
        let userKey = String(parsedResponse.userDTO.userKey)
        console.log("userKey~~~~~~~>",userKey);
         await AsyncStorage.setItem('userKey' ,userKey);
-        navigation.navigate('OtpVerification',{Data:parsedResponse ,ForgotPassword:props.route.params});
+        navigation.navigate('OtpVerification',{Data:parsedResponse ,navigate:props.route.params});
       }
   } catch (error) {
       console.error(error);
@@ -136,7 +136,9 @@ return (
  }}
   />
   <View style={styles.loginBoxHeader}> 
-  {props.route.params === "forgotPassword" ? <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>FORGOT PASSWORD</Text>:<Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>REGISTER</Text>}
+  {props.route.params === "forgotPassword" && <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>FORGOT PASSWORD</Text>}
+  {props.route.params === "LoginWithOTP" && <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>LOGIN WITH OTP</Text>}
+  {props.route.params === "register" && <Text style={[FONTS.textstyle,{color:"#05214C" ,fontSize:15}]}>REGISTER</Text>}
   </View>
           <Formik
             initialValues ={{ mobile: ""}}          
@@ -147,9 +149,9 @@ return (
             {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
               return(
                 <View style={styles.LoginBox}>
-                {props.route.params === "forgotPassword" ? <></>:<Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.black ,padding:10,}]}>CREATE ACCOUNT</Text>}
+               {props.route.params === "register" && <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:2 ,color:COLORS.black ,padding:10,}]}>CREATE ACCOUNT</Text>}
                <View 
-                  style={styles.input}center
+                  style={styles.input}
                >
                 <TextInput
                   style={[FONTS.textstyle,{color:"#295597",width:"100%",textAlign:"center",}]}

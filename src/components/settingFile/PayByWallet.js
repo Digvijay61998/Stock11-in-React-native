@@ -25,9 +25,13 @@ const PayByWallet = ({navigation}) => {
   </View>
   </View>
       <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>ADD BALANCE</Text>
-         <View style={{elevation:10 ,width:SIZES.width-50,minHeight:SIZES.height-300,backgroundColor: COLORS.primary,justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}}>
-         
-         
+         <View style={{elevation:10 ,width:SIZES.width-50,minHeight:SIZES.height-300,backgroundColor: COLORS.lightPink,justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}}>
+         <Text>Available balance </Text>
+         <View style={styles.moneyBoxDIv}>
+         <Text style={styles.money}>500</Text>
+         <Text style={styles.money}>1000</Text>
+         <Text style={styles.money}>2000</Text> 
+         </View>
             </View>
       </LinearGradient>
     );
@@ -54,9 +58,20 @@ radiobutton:{
   backgroundColor:" black",
   borderRadius: "50%",
   borderColor:"black",
+},
+moneyBoxDIv:{
+justifyContent:"space-around",
+alignContent:"center",
+flexDirection:"row",
+width:"100%"
+
+},
+money:{
+backgroundColor:"white",
+width:100,
+textAlignVertical:"center",
+textAlign:"center"
 }
 
-    
-   
   });
   

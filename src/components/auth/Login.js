@@ -69,7 +69,7 @@ const Login = ({navigation}) => {
         }
     } catch (error) {
       setUserData("invaild email/number")
-        console.error(error);
+        console.error("error============>",error);
     setloading(false)
     }
   }
@@ -166,7 +166,7 @@ const Login = ({navigation}) => {
                       </TouchableOpacity> 
                       <TouchableOpacity
                           onPress={()=>{
-                            navigation.navigate('OtpVerification',"LoginWithOTP")
+                            navigation.navigate('Register',"LoginWithOTP")
                      }}
                       > 
                           <Text style={{color:"red",top:5,right:5}}>Login With OTP</Text>

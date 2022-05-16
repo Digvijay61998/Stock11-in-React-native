@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View,Image ,TouchableOpacity,Video} from 'react-native'
-import React,{useState,useRef} from 'react'
+import { StyleSheet, Text, View,Image ,TouchableOpacity,Video, AsyncStorage} from 'react-native'
+import React,{useState,useRef, useEffect} from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, icons, SIZES } from "../src/constants"
 import Carousel,{Pagination} from 'react-native-snap-carousel';
@@ -47,6 +47,24 @@ const FrontPage = ({navigation}) => {
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 
+const login =async()=>{
+  const userId = await AsyncStorage.getItem('userId');
+  const userKey = await AsyncStorage.getItem('userKey');
+  const userToken= await AsyncStorage.getItem('userToken');
+  console.log("userId",userId);
+  console.log("userKey",userKey);
+  console.log("userToken",userToken);
+  if(userToken && userKey && userId){
+    console.log("userId",userId);
+    console.log("userKey",userKey);
+    console.log("userToken",userToken);
+    navigation.navigate('Tabs');
+   }
+}
+
+useEffect(() => {
+  login();
+}, [])
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -114,7 +132,7 @@ const FrontPage = ({navigation}) => {
                    color="#f5871f00"
                    elevation="2"
                    onPress={() =>{
-                    navigation.navigate('Register');
+                    navigation.navigate('Register',"register");
                    }}>                  
   <View style={{paddingTop:5}}>
     <Text style={[FONTS.textstyle ,{color:"black"}]}>REGISTER</Text>

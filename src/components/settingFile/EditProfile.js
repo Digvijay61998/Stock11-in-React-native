@@ -6,8 +6,8 @@ import * as ImagePicker from 'react-native-image-picker';
 import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
-import { ImagePickerModal } from './imagePicker/image-picker-modal';
-import { ImagePickerAvatar } from './imagePicker/image-picker-avatar';
+import { ImagePickerModal } from '../../Common/imagePicker/image-picker-modal';
+import { ImagePickerAvatar } from '../../Common/imagePicker/image-picker-avatar';
 import routes from '../../../utils/routes';
 
 const EditProfile = ({navigation}) =>{

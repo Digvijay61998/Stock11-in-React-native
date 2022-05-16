@@ -1,10 +1,17 @@
-import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image} from 'react-native';
+import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image, AsyncStorage} from 'react-native';
 import React from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, images} from "../src/constants"
 import LinearGradient from 'react-native-linear-gradient'
 
 
 const Setting = ({ navigation}) => {
+
+ const  clearAsyncStorage = async() => {
+    AsyncStorage.clear();
+    if(AsyncStorage.clear()){
+      navigation.navigate('FrontPage')
+    }
+}
   return (
     <LinearGradient 
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}
@@ -95,9 +102,7 @@ const Setting = ({ navigation}) => {
       </View>
       </TouchableOpacity>
       <TouchableOpacity style={{paddingBottom:9}}
-          onPress={() =>
-            navigation.navigate('FrontPage')
-          }
+          onPress={clearAsyncStorage}
       >
       <View style={{width:270, height:42 ,backgroundColor:COLORS.primary ,justifyContent: 'center' ,borderRadius:10 ,marginBottom:15,elevation:13}}>
       <Text style={{color:"black",width:"80%",paddingLeft:10}}>Logout</Text>

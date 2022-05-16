@@ -11,11 +11,6 @@ import { Provider } from 'react-redux';
 const ContestStack = createMaterialTopTabNavigator();
 
 const Contest = ({navigation ,data}) => {
-
-    const price =dummyData.ContestPricePool
-  console.log("price", price);
-
-
     return (
         <View style={Header}>
              <View style={{
@@ -131,26 +126,6 @@ const Contest = ({navigation ,data}) => {
         />  
       </ContestStack.Navigator> 
       </View>
-
-           {/* <ScrollView style={styles.scroller}>
-          //      <FlatList 
-          //       data = {price}
-          //       keyExtractor={(item) => item.id}
-          //       renderItem={({item ,index})=>(
-          //           <TouchableOpacity
-          //           onPress={() =>
-          //             navigation.navigate('ViewContest')
-          //           }
-          //         >
-          //         <View style={[styles.contestContainer,{ backgroundColor: colors[index % colors.length] }]}>
-          //           <IdolContest data={item} />
-          //           </View>
-          //         </TouchableOpacity>
-          //       )}
-          //       keyExtractor={(item, index) => index}
-          //      />
-
-          //     </ScrollView>  */}
          </View>
          
     )

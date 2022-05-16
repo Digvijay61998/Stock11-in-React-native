@@ -1,4 +1,4 @@
-import {apiDelete, apiGet, apiPost, apiPostImage, apiPut} from './API';
+import {apiDelete, apiGet, apiPost, apiPostImage, apiPut,apiPostLogin} from './API';
 
 export default {
     
@@ -23,13 +23,13 @@ export default {
             // VERIFY: async (data)=> await apiPost("/userauth/verify",data,"STOCK_11"),
             CREATE_NOTIFICATION: async (data)=> await apiPost("/notifications/",data,"STOCK_11"),
             CREATE_PIN_CONTEST:async (data)=> await apiPost("/mapping/contest_user",data,"STOCK_11"),
-            CREATE_USER_REGISTER: async (data)=> await apiPost("/users/signup",data,"STOCK_11"),
-            CREATE_USER_LOGIN: async (data)=> await apiPost("/users/signin",data,"STOCK_11"),
-            VERIFY_USER_OTP: async (data)=> await apiPost("/authentication/2fa/verify",data,"STOCK_11"),
+            CREATE_USER_REGISTER: async (data)=> await apiPostLogin("/users/signup",data,"STOCK_11"),
+            CREATE_USER_LOGIN: async (data)=> await apiPostLogin("/users/signin",data,"STOCK_11"),
+            VERIFY_USER_OTP: async (data)=> await apiPostLogin("/authentication/2fa/verify",data,"STOCK_11"),
             CREATE_BASKET: async (data)=> await apiPost("/baskets",data,"STOCK_11"),
             CREATE_HELP_DESK: async (data)=> await apiPost("/helpdesk",data,"STOCK_11"),
             CREATE_USER_PROFILE: async (data)=> await apiPost("/users",data,"STOCK_11"),
-            CREATE_FORGOT_USER:async (data)=> await apiPost("/users/forgotpassword",data,"STOCK_11"),
+            CREATE_FORGOT_USER:async (data)=> await apiPostLogin("/users/forgotpassword",data,"STOCK_11"),
             CREATE_PROFILE_PHOTO: async (data)=> await apiPostImage("/users/save-profile-photo",data,"STOCK_11"),
             // PUT API
             UPDATE_USER_PROFILE: async (data)=> await apiPut("/profile",data,"STOCK_11"),

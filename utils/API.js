@@ -28,7 +28,30 @@ import { AsyncStorage} from 'react-native';
 export const apiPost = async (url, values,serviceName) => {
   let apiUrl = verifyService(serviceName);
   let TOKEN = await AsyncStorage.getItem('userToken')
-  console.log("TOKEN",TOKEN);
+  console.log("TOKEN",serviceName);
+  return new Promise((resolve, reject) => {
+    fetch(`${apiUrl}${url}`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', "Authorization" : `Bearer ${TOKEN}`},
+      body: JSON.stringify(values),
+    })
+      .then(async (response) => {
+        try {
+          const parsedResponse = await response.json();
+          // console.log("parsedResponse",parsedResponse)
+           resolve(parsedResponse);
+        } catch (err) {
+          reject(err);
+        }
+      })
+      .catch(err => {
+        reject(err);
+      });
+  });
+};
+export const apiPostLogin = async (url, values,serviceName) => {
+  let apiUrl = verifyService(serviceName);
+  console.log("called login");
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'POST',
@@ -58,7 +81,7 @@ export const apiPut = async(url, values ,serviceName) => {
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'PUT',
-      headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(values),
     })
       .then(response => {

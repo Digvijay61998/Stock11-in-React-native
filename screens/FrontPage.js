@@ -47,24 +47,24 @@ const FrontPage = ({navigation}) => {
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
 
-const login =async()=>{
-  const userId = await AsyncStorage.getItem('userId');
-  const userKey = await AsyncStorage.getItem('userKey');
-  const userToken= await AsyncStorage.getItem('userToken');
-  console.log("userId",userId);
-  console.log("userKey",userKey);
-  console.log("userToken",userToken);
-  if(userToken && userKey && userId){
-    console.log("userId",userId);
-    console.log("userKey",userKey);
-    console.log("userToken",userToken);
-    navigation.navigate('Tabs');
-   }
-}
+// const login =async()=>{
+//   const userId = await AsyncStorage.getItem('userId');
+//   const userKey = await AsyncStorage.getItem('userKey');
+//   const userToken= await AsyncStorage.getItem('userToken');
+//   console.log("userId",userId);
+//   console.log("userKey",userKey);
+//   console.log("userToken",userToken);
+//   if(userToken && userKey && userId){
+//     console.log("userId",userId);
+//     console.log("userKey",userKey);
+//     console.log("userToken",userToken);
+//     navigation.navigate('Tabs');
+//    }
+// }
 
-useEffect(() => {
-  login();
-}, [])
+// useEffect(() => {
+//   login();
+// }, [])
   return (
     <LinearGradient
     colors={['#93d5ce', '#11a99d','#5700AD','#6256ac' ]}

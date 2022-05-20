@@ -3,8 +3,8 @@ import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import routes from '../../utils/routes';
+import moment from 'moment';
 const IdolContest = (props) => {
-    console.log("props",props.refresh);
     const navigation = props.navigation
     const data = props.data || []
     const [pin, setPin] = useState([]);
@@ -78,9 +78,12 @@ const handleNavigate =()=>{
               }, [])
 
 //   get date format
-let today = data.endDate
+let today = moment(data.endDate).format('Do MMMM YYYY');
+let startDate = moment(data.startDate).format('Do MMMM');
+console.log("today in IdolCOntest", today)
+
 // let date=today.getDate() + "-"+ parseInt(today.getMonth()+1) +"-"+today.getFullYear();
-console.log(String.valueOf(today))
+// console.log(String.valueOf(today))
 
   return (
     <View>
@@ -156,7 +159,9 @@ console.log(String.valueOf(today))
           </View>
     </View>
     <View style={styles.TimeDate}>
-    <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>{data.startDate}-{data.endDate}</Text>
+    <Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',width:200,overflow:"hidden",height:20}}>
+        {startDate}-{today}
+    </Text>
     <TouchableOpacity
               onPress={handleNavigate}
               >

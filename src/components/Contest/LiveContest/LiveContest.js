@@ -17,26 +17,15 @@ const LiveContest = ({navigation}) => {
     state => state.stockManag,
   );
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
-  console.log('@@@ Store View Response=====', stockList,isFetching);
+  const [totalPages] = useState(stockList?.data?.totalPages);
+  const [liveContest, setLiveContest] = useState();
 
 
-  let stockViewList = stockList?.data?.content;
-  stockViewList !== undefined && stockViewList;
-  console.log('@@@ Store View Response=====', LiveContest);
-
-
- 
 const getContestdetails = async () => {
 try {
-    const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
-    // &status=LIV
-    const data = parsedResponse.content
-    console.log("parsedResponse=====dsk",parsedResponse)
-    if(parsedResponse.totalPages === page){
-    setLoading(true)
-    }
-    setLiveContest()
+  let stockViewList = stockList?.data?.content;
+  stockViewList !== undefined && stockViewList;
+  setLiveContest(stockViewList)
     } catch (error) {
     console.log("FAIL=====")
     console.error(error);
@@ -46,17 +35,20 @@ try {
   useEffect(() => {
    dispatch(stockManagement(page));
   }, [page])
+  useEffect(() => {
+    getContestdetails()
+   },[])
 
   const fetchMoreData = () => {
-    if(isFetching === false){
+    if(totalPages >= page){
           setPage(page + 1)
     }
   }
 
   const renderFooter = () => (
       <View style={{alignItems:"center"}}>
-          {loading === false ? <ActivityIndicator />:null}
-          {loading  === true ? <Text>No more Contest at the moment</Text>:null}
+          {isFetching == true ? <ActivityIndicator />:null}
+          {isFetching == false ? <Text>No more Contest at the moment</Text>:null}
       </View>
   )
 
@@ -83,7 +75,7 @@ try {
       <View style={styles.scroller}>
         <FlatList
           // data={LiveEvents}
-          data={stockViewList}
+          data={liveContest}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
                   <ImageBackground

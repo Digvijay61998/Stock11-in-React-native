@@ -9,7 +9,7 @@ return ({
 
 export const stockManagementSuccess = data => ({
     type: ActionTypes.STOCK_MANAGEMENT_SUCCESS,
-    data,
+    data:{},
 })
 
 export const stockManagementError = (error, id) => ({

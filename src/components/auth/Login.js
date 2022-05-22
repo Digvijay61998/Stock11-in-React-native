@@ -19,7 +19,6 @@ const Login = ({navigation}) => {
     const [userData , setUserData] = useState();
 
   const handleSubmit = async (val) => {
-    const status = await loginData.userDTO.status
     console.log("val",val);
     const input = val.mobile
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -34,7 +33,7 @@ const Login = ({navigation}) => {
               },
             })
           );
-          if(status){
+          if(await loginData.userDTO.status){
             console.log("loginData.userDTO.status======>",loginData.userDTO.status);
              await navigation.navigate('Tabs');
           }
@@ -49,7 +48,7 @@ const Login = ({navigation}) => {
           },
         })
       );
-      if(status){
+      if(await loginData.userDTO.status){
         console.log("loginData.userDTO.status======>",loginData.userDTO.status);
           navigation.navigate('Tabs');
       }

@@ -1,6 +1,7 @@
-import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image, AsyncStorage} from 'react-native';
+import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Button,Image} from 'react-native';
 import React from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, images} from "../src/constants"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import LinearGradient from 'react-native-linear-gradient'
 
 

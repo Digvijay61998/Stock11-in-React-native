@@ -1,5 +1,6 @@
 import React, { useState, useEffect,useRef } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button,AsyncStorage} from 'react-native'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
 import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';

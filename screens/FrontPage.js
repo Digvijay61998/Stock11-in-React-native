@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View,Image ,TouchableOpacity,Video, AsyncStorage} from 'react-native'
+import { StyleSheet, Text, View,Image ,TouchableOpacity,Video} from 'react-native'
 import React,{useState,useRef, useEffect} from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, icons, SIZES } from "../src/constants"
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Carousel,{Pagination} from 'react-native-snap-carousel';
 // import Video from 'react-native-video';
 

@@ -1,53 +1,58 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image, ActivityIndicator} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity,ImageBackground,Image, ActivityIndicator} from 'react-native';
 import { COLORS, FONTS, icons, SIZES,container } from "../../constants"
-import { number } from 'yup/lib/locale';
+import {
+  loginAccount,
+} from "../../redux/Login/Actions";
+import { useDispatch, useSelector } from "react-redux";
 import routes from '../../../utils/routes';
 import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import LinearGradient from 'react-native-linear-gradient'
+import {Loader} from "../../Common"
+import { select } from 'redux-saga/effects';
 
 const Login = ({navigation}) => {
-
-    const [value, setValue] = useState("");
-    const [isVerified, setIsVerified] = useState(false);
+  const dispatch = useDispatch();
+  const { loginData, isFetching, error } = useSelector((state) => state.auth);
+  console.log("loginData=========>",error);
     const [userData , setUserData] = useState();
-    const [loading , setloading] = useState(false);
 
-  // const Getdata ={
-  //   userId : userData.twoFAuthForm.userId,
-  //   userKey: userData.userDTO.userKey,
-  //   checkSum: userData.twoFAuthForm.checkSum,
-  //   invalidAttempts: userData.twoFAuthForm.invalidAttempts,
-  //   mobile: userData.userDTO.mobile,
-  //   status: userData.userDTO.status,
-  // }
-    
-    function loginWithMobile() {
-      setIsVerified(!isVerified);
-  
-  }
   const handleSubmit = async (val) => {
-    console.log("called");
+    const status = await loginData.userDTO.status
     console.log("val",val);
     const input = val.mobile
     let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     const regNumber = /^[0]?[789]\d{9}$/;
     if (input.match(regexEmail)) {
       console.log("true~~~~~~~~>");
-      const data ={ 
-        email : input,
-      password : val.password
-         }
-          userLogin(data)
+          dispatch(
+            loginAccount({
+              data: {
+                email : input,
+                password : val.password
+              },
+            })
+          );
+          if(status){
+            console.log("loginData.userDTO.status======>",loginData.userDTO.status);
+             await navigation.navigate('Tabs');
+          }
       return true; 
     } else if(input.match(regNumber) ) {
       console.log("false~~~~~~~~>");
-      const data ={ 
-      mobile : val.mobile,
-      password : val.password
-       }
-          userLogin(data)
+      dispatch(
+        loginAccount({
+          data: {
+            mobile : val.mobile,
+            password : val.password
+          },
+        })
+      );
+      if(status){
+        console.log("loginData.userDTO.status======>",loginData.userDTO.status);
+          navigation.navigate('Tabs');
+      }
       return true;
     }
     else{
@@ -55,49 +60,6 @@ const Login = ({navigation}) => {
     }
   
   }
-  async function userLogin(data) {
-    try {
-    setloading(true)
-        const parsedResponse = await routes.STOCK_11.APIS.CREATE_USER_LOGIN(data);
-        console.log("parsedResponse=====",parsedResponse)
-        if(parsedResponse){
-          const userId = parsedResponse.userDTO.userId
-          const userKey = String(parsedResponse.userDTO.userKey)
-          const userToken = parsedResponse.token
-        if(userId && userKey && userToken){
-          await AsyncStorage.setItem('userId' ,userId);
-          await AsyncStorage.setItem('userKey' ,userKey);
-          await AsyncStorage.setItem('userToken', userToken);
-          navigation.navigate('Tabs');
-        }else{
-          console.log("Try Again");
-        }
-    setloading(false)
-        }
-    } catch (error) {
-      setUserData("invaild email/number")
-        console.error("error============>",error);
-    setloading(false)
-    }
-  }
-  
-  //  VALIDATION SCHEMA
-  // const validationSchema = Yup.object({
-  //    mobile: Yup.number().required("This field is Required")
-  // });
-  
-  // const loginForm = useFormik({
-  //   initialValues: { mobile: "" },
-  //   validationSchema: Yup.object({
-  //     // mobile: Yup.string()
-  //     //     .required("This field is Required")
-  //     //     .matches(
-  //     //       /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
-  //     //       "Phone number is not valid"
-  //     //     )
-  //     mobile: Yup.number().required("This field is Required")
-  //   }),
-  // });
   
   return (
     <LinearGradient
@@ -128,7 +90,7 @@ const Login = ({navigation}) => {
               {({values, handleChange, onKeyPress,errors, setFieldTouched, touched, isValid, handleSubmit})=>{
                 return(
                   <View style={styles.LoginBox}>
-                {loading == true ? <ActivityIndicator/> :null } 
+                      <Loader loading={isFetching} />
                     <Text style={{bottom:30,color:"red"}}>{userData}</Text>
                   <Text style={[FONTS.textstyle,{fontSize:15, letterSpacing:1 ,color:COLORS.black ,top:-10}]}>WELCOME</Text>
                  <View 

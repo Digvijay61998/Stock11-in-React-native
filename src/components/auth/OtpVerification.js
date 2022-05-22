@@ -1,5 +1,6 @@
 import React, { useState ,useEffect} from "react";
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage,Image, ActivityIndicator} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,Image, ActivityIndicator} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { COLORS, FONTS, icons, SIZES } from "../../constants"
 import {
     CodeField,

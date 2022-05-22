@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View ,Image,ProgressBarAndroid,AsyncStorage} from 'react-native';
+import { StyleSheet, Text, View ,Image,ProgressBarAndroid} from 'react-native';
 import React ,{useState,useEffect} from 'react';
 import { COLORS, FONTS, icons ,Header ,CardBox,SIZES} from "../constants/index"
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import routes from '../../utils/routes';
+
+
 const IdolContest = (props) => {
-    console.log("props",props.refresh);
     const navigation = props.navigation
     const data = props.data || []
     const [pin, setPin] = useState([]);
@@ -91,7 +93,7 @@ console.log(String.valueOf(today))
         </View>
         <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
             <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-                <Text style={{ color: "black" , fontSize:21,fontWeight:"bold" }}>Pool Price./-</Text>
+                <Text style={{ color: "black" , fontSize:21,fontWeight:"bold" }}>Pool Price.{data.poolSize}/-</Text>
                 <Text style={{ color: "black" , fontSize:17,fontWeight:"bold"}}>ENTRY FEE: Rs.{data.entryFee}/-</Text>
                 <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{data.totalWinners} Winners</Text>
             </View>

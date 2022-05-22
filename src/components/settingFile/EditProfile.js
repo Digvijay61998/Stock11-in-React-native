@@ -1,5 +1,6 @@
 import React, { useState ,useCallback,useEffect} from 'react';
-import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image,AsyncStorage} from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import LinearGradient from 'react-native-linear-gradient'
 import { COLORS, FONTS, icons} from '../../constants';
 import * as ImagePicker from 'react-native-image-picker';

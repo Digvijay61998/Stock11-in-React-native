@@ -1,5 +1,6 @@
 import React, { useContext, useState ,useCallback} from 'react';
-import { StyleSheet, View, TextInput, Text, Button, Alert, SafeAreaView, TouchableOpacity, Image, AsyncStorage } from 'react-native';
+import { StyleSheet, View, TextInput, Text, Button, Alert, SafeAreaView, TouchableOpacity, Image} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { COLORS, FONTS, icons, SIZES, container, images } from "../src/constants"
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import LinearGradient from 'react-native-linear-gradient'

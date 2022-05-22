@@ -1,29 +1,34 @@
 import routes from "./routes"
-import { AsyncStorage} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 // console.log("dsfasd",TOKEN);
 
-  export const apiGet = async(url,serviceName,userToken) => {
-  let apiUrl = verifyService(serviceName);
-  let TOKEN = await AsyncStorage.getItem('userToken')
-  console.log("TOKEN====>",TOKEN);
-  return new Promise((resolve, reject) => {
-  fetch(`${apiUrl}${url}` , {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`}
-    })
-      .then(response => {
-        try {
-          resolve(response.json());
-        } catch (err) {
-          console.log("err",err);
-          reject(err);
-        }
-      })
-      .catch(err => {
-        reject(err);
-      });
-  });
+  export const apiGet = async(url,serviceName) => {
+    let apiUrl = verifyService(serviceName);
+    let TOKEN = await AsyncStorage.getItem('userToken')
+    console.log("TOKEN====>",TOKEN);
+    console.log("url--------",`${apiUrl}${url}`);
+    if(TOKEN != null){
+      return new Promise((resolve, reject) => {
+        fetch(`${apiUrl}${url}` , {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json' , "Authorization" : `Bearer ${TOKEN}`}
+          })
+            .then(response => {
+              try {
+                resolve(response.json());
+              } catch (err) {
+                console.log("err",err);
+                reject(err);
+              }
+            })
+            .catch(err => {
+              reject(err);
+            });
+        });
+    }
+ 
 };
 
 export const apiPost = async (url, values,serviceName) => {
@@ -52,7 +57,7 @@ export const apiPost = async (url, values,serviceName) => {
 };
 export const apiPostLogin = async (url, values,serviceName) => {
   let apiUrl = verifyService(serviceName);
-  console.log("called login");
+  console.log("called login",values);
   return new Promise((resolve, reject) => {
     fetch(`${apiUrl}${url}`, {
       method: 'POST',

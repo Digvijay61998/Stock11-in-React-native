@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image, AsyncStorage} from 'react-native'
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image} from 'react-native'
 import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES} from "../../constants"
 import React, { useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'

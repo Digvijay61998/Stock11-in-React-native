@@ -1,4 +1,5 @@
-import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator,AsyncStorage} from 'react-native';
+import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect }  from 'react';
 import {COLORS, FONTS, icons, Header,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"

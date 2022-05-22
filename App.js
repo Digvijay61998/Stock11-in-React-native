@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
+import {Provider} from "react-redux"
 import {Setting } from "./screens";
+import createStore from './src/redux/index';
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer,getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import SplashScreen from "react-native-splash-screen"
@@ -46,6 +48,7 @@ import PayByWallet from './src/components/settingFile/PayByWallet';
 import SelectPayment from './src/components/settingFile/SelectPayment';
 import Perfomance from './src/components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
 
+const store = createStore();
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -68,7 +71,7 @@ const App = () => {
 // }
   return (
     <NavigationContainer>
-  
+      <Provider store={store}>
         <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -177,6 +180,7 @@ const App = () => {
             />
      */}
       </Stack.Navigator> 
+     </Provider>
   </NavigationContainer>
   )
 }

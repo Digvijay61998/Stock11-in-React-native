@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,AsyncStorage ,ImageBackground,Image, ActivityIndicator} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, View, TextInput, Text, Button, TouchableOpacity ,ImageBackground,Image, ActivityIndicator} from 'react-native';
 import { COLORS, FONTS, icons, SIZES ,container} from "../../constants"
 import { number } from 'yup/lib/locale';
 import routes from '../../../utils/routes';

@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
-import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image,AsyncStorage} from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StyleSheet, View, TextInput, Text, Button, Alert ,SafeAreaView ,TouchableOpacity,Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient'
 import routes from '../../../utils/routes';
 import { COLORS, FONTS, icons} from '../../constants';

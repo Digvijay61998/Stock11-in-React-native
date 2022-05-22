@@ -1,14 +1,31 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button, AsyncStorage} from 'react-native'
+import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button} from 'react-native'
 import { COLORS, FONTS,icons, Header,SIZES,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  stockManagement,
+  deleteProduct,
+  getStoreView,
+} from '../../../redux/StockManagment/Actions';
 
 const LiveContest = ({navigation}) => {
-  const [LiveContest, setLiveContest] = useState([]);
+
+  const dispatch = useDispatch();
+  const {stockList, isFetching, error} = useSelector(
+    state => state.stockManag,
+  );
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
+  console.log('@@@ Store View Response=====', stockList,isFetching);
+
+
+  let stockViewList = stockList?.data?.content;
+  stockViewList !== undefined && stockViewList;
+  console.log('@@@ Store View Response=====', LiveContest);
+
+
  
 const getContestdetails = async () => {
 try {
@@ -19,7 +36,7 @@ try {
     if(parsedResponse.totalPages === page){
     setLoading(true)
     }
-    setLiveContest([...LiveContest,...data])
+    setLiveContest()
     } catch (error) {
     console.log("FAIL=====")
     console.error(error);
@@ -27,12 +44,11 @@ try {
 }
 
   useEffect(() => {
-    getContestdetails();
-      console.log("CURRENT PAGE", page);
+   dispatch(stockManagement(page));
   }, [page])
 
   const fetchMoreData = () => {
-    if(loading === false){
+    if(isFetching === false){
           setPage(page + 1)
     }
   }
@@ -67,7 +83,7 @@ try {
       <View style={styles.scroller}>
         <FlatList
           // data={LiveEvents}
-          data={LiveContest}
+          data={stockViewList}
           keyExtractor={(item) => item.id}
           renderItem={({ item, index }) => (
                   <ImageBackground

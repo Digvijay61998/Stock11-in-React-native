@@ -1,13 +1,12 @@
 import React, { useState, useEffect,useRef } from 'react'
 import { StyleSheet, Text, View, ScrollView, SafeAreaView,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button,AsyncStorage} from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox,dummyData ,SIZES,contestContainer} from "../../../constants"
+import {icons, Header,contestContainer,verticalScale} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
 const FollowingContest = ({navigation}) => {
     const [CompletedEvents, setCompletedEvents] = useState();
     const [page, setPage] = useState(0);
-    // const [loading, setLoading] = useState(false);
   
   const getContestdetails = async () => {
     const userId = await AsyncStorage.getItem('userId');
@@ -52,17 +51,9 @@ console.log("userId",userId);
                 >
             <IdolContest data={item}
             />
-            {/* <NewsCard news={item} /> */}
-
             </ImageBackground>
           </TouchableOpacity>
         )}
-        // ListFooterComponent={renderFooter}
-        // ListEmptyComponent={renderEmpty}
-        // onEndReachedThreshold={0.5}
-        // onEndReached = {({distanceFromEnd})=>{ 
-        //     fetchMoreData()
-        // }}
         keyExtractor={(item, index) => index}
       />
     </View>
@@ -78,7 +69,7 @@ const styles = StyleSheet.create({
         overflow: "hidden",
         alignItems:"center",
         justifyContent:"center",
-        marginBottom:SIZES.height-610,
+        marginBottom:verticalScale(180),
       },
  
 })

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, SafeAreaView, TouchableOpacity, Image, FlatList, ImageBackground, AsyncStorage } from 'react-native'
-import { COLORS, FONTS, icons, Header, CardBox, dummyData, SIZES } from "../../constants"
+import { COLORS, FONTS, icons, Header, CardBox, dummyData, SIZES,Scale,verticalScale} from "../../constants"
 import React, { useState, useEffect } from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 import routes from '../../../utils/routes';
@@ -69,51 +69,7 @@ const handleSubmit =async()=>{
            createBasketList(data)
 }
   
-      // if(points.length === 10){
-      //   const data ={
-      //     basketName: "Niftyssssdcifty",
-      //     contestKey: 2,
-      //     stockList: [
-      //       {
-      //         "sequence": 2,
-      //         "stockKey": 0,
-      //         "weightage": 10
-      //       }
-      //     ],
-      //     userKey: 44
-      //   }
-      //   console.log("data",data)
-      // }
-    
-
-  // const increment = (item,index) =>{
-  //   // console.log("item{",item);
-  //   // console.log("ind",index)
-  //   const stock = editTeam[index]
-  //   console.log("stock",stock);
-  //   // if(stock.count){
-  //   stock.count = stock.count? stock.count + 1 : 1;
-  //   editTeam[index]=stock;
-  // setEditTeam([...editTeam]);
-  //   // }
-  // setCounter(editTeam)
-
-  //   }
-
-
-  // const decrement = (item,index) =>{
-  //   const stock = editTeam[index]
-  //   stock.count = stock.count? stock.count - 1 : 1;
-  //   editTeam[index]=stock;
-  // setEditTeam([...editTeam]);
-  // }
-
-
   useEffect(() => {
-    // setEditTeam(editTeam.map(i => {
-    //   i["count"] = 0;
-    //   return i;
-    // }))
     setEditTeam((team)=>{
       team = editTeam.map(i => {
         i["count"] = 0;
@@ -122,39 +78,6 @@ const handleSubmit =async()=>{
     })
   }, []);
 
-  // const selectpoint = (item, index) => {
-  //   if (points.includes(item.id)) {
-  //     const newPoint = points.filter((itemId) =>
-  //       itemId !== item.id);
-  //     return setPoints(newPoint)
-  //   }
-  //   else if (points.length < 10) {
-  //     setPoints([...points, item.id], index);
-  //   }
-  //   else {
-  //     console.log("only 10 points can be selected");
-  //   }
-  // }
-
-  // function handleSubmit (){
-  //   console.log("counter",points.length)
-  //   if(points.length === 10){
-  //     const data ={
-  //       basketName: "Niftyssssdcifty",
-  //       contestKey: 2,
-  //       stockList: [
-  //         {
-  //           "sequence": 2,
-  //           "stockKey": 0,
-  //           "weightage": 10
-  //         }
-  //       ],
-  //       userKey: 44
-  //     }
-  //     console.log("data",data)
-  //   }
-  //   // createBasketList()
-  // }
   //Get api called
   const getBasket = async () => {
     const userKey = await AsyncStorage.getItem('userKey');
@@ -179,14 +102,6 @@ const handleSubmit =async()=>{
     try {
       const parsedResponse = await routes.STOCK_11.APIS.UPDATE_CREATE_BASKET(body);
       console.log("parsedResponse=====", parsedResponse)
-      // setUserData(parsedResponse)
-      // if (parsedResponse) {
-      //   await AsyncStorage.setItem('userId', parsedResponse.twoFAuthForm.userId);
-      //   let userKey = String(parsedResponse.userDTO.userKey)
-      //   console.log("userKey~~~~~~~>", userKey);
-      //   await AsyncStorage.setItem('userKey', userKey);
-      //   navigation.navigate('OtpVerification', { Data: parsedResponse, ForgotPassword: props.route.params });
-      // }
     } catch (error) {
       console.log("FAIL=====",error)
       console.error(error);
@@ -350,14 +265,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#1F1D2B",
     alignItems: "center",
     justifyContent: "center",
-    height: 600,
+    height: Scale(600),
 
   },
   scroller: {
     flex: 1,
     overflow: "hidden",
-    marginTop: 50,
-    paddingLeft: 15,
+    marginTop: verticalScale(50),
+    paddingLeft: Scale(15),
     paddingRight: 15
   },
   CardBasket: {

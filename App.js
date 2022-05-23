@@ -44,7 +44,6 @@ import Login from './src/components/auth/Login';
 import FrontPage from './screens/FrontPage';
 import PayByWallet from './src/components/settingFile/PayByWallet';
 import SelectPayment from './src/components/settingFile/SelectPayment';
-import Perfomance from './src/components/MyContest/UpcomingLiveEvents/Completed/Perfomance';
 
 const Stack = createStackNavigator();
 
@@ -68,7 +67,6 @@ const App = () => {
 // }
   return (
     <NavigationContainer>
-  
         <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -102,7 +100,6 @@ const App = () => {
             <Stack.Screen key={Date.now()} name="LiveContestDetails" component={LiveContestDetails}  options={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CompletedContestDetails" component={CompletedContestDetails}  ooptions={{headerShown:false}} />
             <Stack.Screen key={Date.now()} name="CreateContestBasket" component={CreateContestBasket} options={{headerShown: false}} />
-            <Stack.Screen key={Date.now()} name="Perfomance" component={Perfomance}  options={{headerShown:false}}/>
             <Stack.Screen key={Date.now()} name="AddCard" component={AddCard}  options={{headerShown:false}}/>
            
 

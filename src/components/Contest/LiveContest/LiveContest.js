@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, Text, View, ScrollView, SafeAreaView,Image,TouchableOpacity, FlatList ,ImageBackground,ActivityIndicator, Button, AsyncStorage} from 'react-native'
-import { COLORS, FONTS,icons, Header,SIZES,contestContainer} from "../../../constants"
+import { StyleSheet, Text, View,SafeAreaView,FlatList ,ImageBackground,ActivityIndicator} from 'react-native'
+import {icons,Header,contestContainer,Scale,verticalScale} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes';
 
@@ -49,16 +49,10 @@ try {
          <ImageBackground
   resizeMode="cover"
   source={icons.emptyFile}
-  style={{width:500,height:600,marginLeft:-50}}
+  style={{width:Scale(500),height:Scale(600),marginLeft:Scale(-50)}}
   />
       </View>
   )
-
-  // const handleData =(item)=>{
-  //   console.log("item",item);
-
-  // }
-
     // color image for background of image
     let url = [icons.card, icons.card1, icons.card3];
     
@@ -75,13 +69,10 @@ try {
                  source={url[index % url.length]}
                  style={contestContainer}
                   >
-              
               <IdolContest 
               data={item}
               navigation={navigation}
               />
-              {/* <NewsCard news={item} /> */}
-
               </ImageBackground>
           )}
           ListFooterComponent={renderFooter}
@@ -102,9 +93,8 @@ export default LiveContest
 const styles = StyleSheet.create({
     scroller: {
         flex: 1,
-        width:SIZES.width-50,
-        // overflow: "hidden",
-        marginBottom:SIZES.height-610,
+        width:Scale(327),
+        marginBottom:verticalScale(180),
       },
     
 })

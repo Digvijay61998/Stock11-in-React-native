@@ -1,13 +1,10 @@
-import React , { useState ,useEffect} from 'react'
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,dummyData,SIZES} from "../../constants"
-import {IdolContest} from "../../Common"
+import React from 'react'
+import { StyleSheet, Text, View} from 'react-native'
+import { COLORS,Header,Scale,verticalScale} from "../../constants"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import LiveContest from './LiveContest/LiveContest'
 import UpcomingContest from './upcomingContest/UpcomingContest'
 import FollowingContest from './FollowingContest/FollowingContest'
-import { store } from '../../../store';
-import { Provider } from 'react-redux';
 const ContestStack = createMaterialTopTabNavigator();
 
 const Contest = ({navigation ,data}) => {
@@ -52,9 +49,9 @@ const Contest = ({navigation ,data}) => {
                     style={{
                       borderRadius:50,
                         height: 40,
-                        width:SIZES.width-280,
-                        right:45,
-                        bottom:10,
+                        width:Scale(105),
+                        right:Scale(40),
+                        bottom:verticalScale(10),
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -80,9 +77,9 @@ const Contest = ({navigation ,data}) => {
                         // flex: 1,
                         borderRadius:50,
                         height: 40,
-                        width:SIZES.width-280,
-                        right:45,
-                        bottom:10,
+                        width:Scale(105),
+                        right:Scale(40),
+                        bottom:verticalScale(10),
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -108,9 +105,9 @@ const Contest = ({navigation ,data}) => {
                     style={{
                         borderRadius:50,
                         height: 40,
-                        width:SIZES.width-280,
-                        right:45,
-                        bottom:10,
+                        width:Scale(105),
+                        right:Scale(40),
+                        bottom:verticalScale(10),
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -134,40 +131,9 @@ const Contest = ({navigation ,data}) => {
 export default Contest
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor:COLORS.secondary,
-    },
-    Mycontestmenu:{
-      position: "relative",
-      justifyContent:"space-around",
-      flexDirection: "row",
-      width: 380,
-      height: 60,
-      backgroundColor: COLORS.HeaderBackground,
-  },
- 
-    shadow: {
-        shadowColor: "#252837",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.30,
-        shadowRadius: 4.65,
-
-        elevation: 8,
-    },
     MycontestText:{ 
       fontFamily:'Poppins',
       fontSize:16,
       fontWeight: 'bold',
-    },
-
-    scroller: {
-        flex: 1,
-      overflow:"hidden",
     },
 })

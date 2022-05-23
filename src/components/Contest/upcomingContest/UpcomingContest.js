@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View ,ScrollView, TouchableOpacity ,FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox,dummyData,SIZES,contestContainer} from "../../../constants"
+import { StyleSheet,Text,View,FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native'
+import {icons ,Header,SIZES,contestContainer,Scale} from "../../../constants"
 import React,{useState,useEffect} from 'react'
 import {IdolContest}from "../../../Common/index"
 import routes from '../../../../utils/routes';
@@ -49,7 +49,7 @@ try {
          <ImageBackground
   resizeMode="cover"
   source={icons.emptyFile}
-  style={{width:500,height:600,marginLeft:-50}}
+  style={{width:Scale(500),height:Scale(600),marginLeft:Scale(-50)}}
   />
       </View>
   )
@@ -95,6 +95,6 @@ const styles = StyleSheet.create({
     scroller: {
         flex: 1,
         overflow: "hidden",
-        marginBottom:SIZES.height-610,
+        marginBottom:Scale(180),
     },
 })

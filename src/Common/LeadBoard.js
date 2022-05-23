@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity,FlatList} from 'react-native';
 import React, { useState ,useEffect} from 'react';
-import { COLORS, FONTS, icons, Header, CardBox,SIZES} from "../constants/index"
+import { COLORS, FONTS, icons, Header, CardBox,SIZES,Scale,verticalScale} from "../constants/index"
 
 const LeadBoard = (props) => {
   console.log("props", props);
@@ -79,7 +79,7 @@ const LeadBoard = (props) => {
       keyExtractor={(item, index) => index}
      />
     </ScrollView>
-   {props.name === "contestDetails" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:SIZES.width-200 ,padding:5,marginBottom:20}}
+   {props.name === "contestDetails" && <TouchableOpacity style={{backgroundColor:COLORS.secondary,borderRadius:20 ,width:Scale(180) ,padding:Scale(5),marginBottom:verticalScale(20)}}
    onPress={()=>{
      navigation.navigate('Wallet')
    }}
@@ -93,8 +93,8 @@ const LeadBoard = (props) => {
             data = {winningStocks}
             keyExtractor={(item) => item.id}
             renderItem={({item ,index})=>(
-  <View style={{ width:SIZES.width-80 ,alignItems:"center",justifyContent:"center",marginTop:15}}>
-      <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:300,height:35,borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>{item.stocksName}</Text>
+  <View style={{ width:Scale(300) ,alignItems:"center",justifyContent:"center",marginTop:verticalScale(15)}}>
+      <Text style={{fontSize:16 ,backgroundColor:"#e7f0f2",width:Scale(300),height:Scale(35),borderRadius:50,textAlign:"center",textAlignVertical:"center"}}>{item.stocksName}</Text>
     </View>
     
       )}
@@ -131,40 +131,17 @@ const LeadBoard = (props) => {
 export default LeadBoard;
 
 const styles = StyleSheet.create({
-    TimeDate: {
-        width: 350,
-        height: 30,
-        backgroundColor: "#252837",
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 5
-      },
-      IdolContainer: {
-        position: "relative",
-        width: 350,
-        height: 140,
-      },
       textstyle: {
         color: "black",
         fontSize: 16,
       },
-      BoxContainer: {
-        backgroundColor:"#fcf3ff",
-        flex: 1,
-        borderRadius: 10,
-        margin:15,
-        width: "90%",
-        overflow: "hidden",
-        justifyContent:"center",
-        alignItems:"center",
-      },
       WinningsContainer: {
         backgroundColor:"#fcf3ff",
         flex: 1,
-        top:-10,
+        top:Scale(-10),
         borderRadius: 20,
-        marginBottom:15,
-        width:SIZES.width-40,
+        marginBottom:Scale(15),
+        width:Scale(340),
         overflow: "hidden",
         justifyContent:"center",
         alignItems:"center",
@@ -173,12 +150,12 @@ const styles = StyleSheet.create({
         justifyContent:"space-between",
         flexDirection: "row",
         backgroundColor:"#bfdedc",
-        width:300,
-        marginTop:25,
-        marginBottom:20,
+        width:Scale(300),
+        marginTop:verticalScale(25),
+        marginBottom:verticalScale(20),
         borderRadius:50,
-        paddingTop:10,
-        paddingBottom:10,
+        paddingTop:verticalScale(10),
+        paddingBottom:verticalScale(10),
         paddingLeft:20,
         paddingRight:20,
         color:"white",
@@ -186,10 +163,10 @@ const styles = StyleSheet.create({
       },
       WinningList: {
         justifyContent: "space-between",
-        paddingBottom:10,
+        paddingBottom:verticalScale(10),
         flexDirection: "row",
-        width:270,
-        padding: 15,
+        width:Scale(270),
+        padding: Scale(15),
         borderColor: "#e2e2e2",
         borderBottomWidth: 1,
 
@@ -198,26 +175,21 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems:"center",
         flexDirection: "row",
-        top:20,
-        marginTop:15,
-        width:300,
-        paddingLeft:20,
-        paddingRight:20,
-        height:35,
+        top:verticalScale(20),
+        marginTop:verticalScale(15),
+        width:Scale(300),
+        paddingLeft:Scale(20),
+        paddingRight:Scale(20),
+        height:Scale(35),
         borderRadius:20,
         backgroundColor:"#e7f0f2"
-        // padding: 10,
-        // marginLeft: 10,
-        // marginRight: 10,
-        // borderBottomWidth: 1,
-        // borderBottomColor: "#525460",
       },
       headerTextstyle:{
         color:"#FFFF",
         fontWeight:"bold",
         fontSize:14,
-        width:140,
-        right:10,
+        width:Scale(140),
+        right:Scale(10),
       },
       headerTextStockInactive:{
         color:"#FFFF",
@@ -228,22 +200,17 @@ const styles = StyleSheet.create({
         fontSize:14, 
         fontWeight:"bold",
         color:COLORS.secondary,
-        width:140,
-        right:10,
-        top:-10,
+        width:Scale(140),
+        right:Scale(10),
+        top:verticalScale(-10),
       },
       headerTextStockACtive:{
         fontSize:14, 
         fontWeight:"bold",
         color:COLORS.secondary,
-        width:140,
-        right:-44,
-        top:-10,
-      },
-      headerTextstyleInactive:{
-        color:"#FFFF",
-        fontWeight:"bold",
-        fontSize:16
+        width:Scale(140),
+        right:Scale(-44),
+        top:verticalScale(-10),
       },
       headerBackgroundActive:{
         backgroundColor:COLORS.lightPink,
@@ -252,19 +219,19 @@ const styles = StyleSheet.create({
          paddingLeft:50,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
-         width:120,
-         height:70,
+         width:Scale(120),
+         height:Scale(70),
          alignItems:"center" , 
          justifyContent:"center"
       },
       headerBackgroundInactive:{
         backgroundColor: "#2e7588",
         flex:1 ,
-        width:50,
-        paddingLeft:50,
+        width:Scale(50),
+        paddingLeft:Scale(50),
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
-        height:50,
+        height:Scale(50),
         alignItems:"center" , 
         justifyContent:"center"
       },
@@ -273,16 +240,16 @@ const styles = StyleSheet.create({
         flex:1 ,
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
-        height:70,
-        width:20,
+        height:Scale(70),
+        width:Scale(20),
         alignItems:"center" , 
         justifyContent:"center"
       },
       StockheaderInactive:{
         backgroundColor: "#2e7588",
         flex:1 ,
-        width:50,
-        height:50,
+        width:Scale(50),
+        height:Scale(50),
         borderTopLeftRadius:15,
         borderTopRightRadius:15,
         alignItems:"center" , 

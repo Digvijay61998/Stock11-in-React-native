@@ -1,28 +1,30 @@
-import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity ,FlatList,Image,ImageBackground} from 'react-native';
-import React, { useState,useEffect ,useRef} from 'react';
-import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData,SIZES} from "../../../../constants"
+import { StyleSheet, Text, View , SafeAreaView, ScrollView,TouchableOpacity ,FlatList,Image,ImageBackground, ProgressBarAndroid} from 'react-native';
+import React, { useState,useEffect ,useRef } from 'react';
+import { COLORS, FONTS, icons, Header, CardBox, IdolContest ,dummyData,SIZES,Scale,verticalScale} from "../../../../constants"
 import {LeadBoard} from "../../../../Common"
 import LinearGradient from 'react-native-linear-gradient'
 import Carousel,{Pagination} from 'react-native-snap-carousel';
+import routes from '../../../../../utils/routes';
 
-
-const CarouselCardItem = ({ item, index }) => {
+const CarouselCardItem = ({item, index }) => {
+  // console.log("iiiteem",item);
   return (
+    
     <ImageBackground
     resizeMode="cover"
-    source={icons.card3}
+    source={icons.card1}
     style={styles.contestContainer}
     >
-<View style={[styles.IdolContainer,{width:SIZES.width-110}]}>
+<View style={[styles.IdolContainer,{width:Scale(270)}]}>
 <View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%"}}>
-    <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>NIFTY FIFTY</Text>
+    <Text style={{fontSize:14 ,color:"#032F81" ,fontWeight:"bold" ,fontFamily:"lato"}}>{item.contestName}</Text>
     <View></View>
 </View>
-<View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:-10}}>
+<View style={{ justifyContent: "space-between", flexDirection: "row", padding: "2%" ,marginTop:verticalScale(-10)}}>
     <View style={{ justifyContent: "space-between", flexDirection: "column" }}>
-        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.10,000/-</Text>
+        <Text style={{ color: "black" , fontSize:17,fontWeight:"bold" }}>WIN Rs.{item.poolSize}/-</Text>
         <Text style={{ color: "black" , fontSize:12}}>ENTRY FEE: Rs.1000/-</Text>
-        <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>3 Winners</Text>
+        <Text style={{ color: "#45444" , fontSize:14,fontWeight:"bold"}}>{item.totalWinners} Winners</Text>
    
     </View>
 <View style={{justifyContent:"center",alignItems:"center"}}>
@@ -35,12 +37,12 @@ const CarouselCardItem = ({ item, index }) => {
        
 }}
     />
-    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>12344</Text>
+    <Text style={{ color:COLORS.secondary, padding:6 ,borderRadius:10 , fontWeight: 'bold',}}>{item.poolSize}</Text>
     <Text style={{ color:COLORS.secondary,borderRadius:10 , fontWeight: 'bold',fontSize:11}}>Bulls</Text>
 </View>
    
 </View>
-  <View style={{alignItems:"center",right:44,top:4}}>
+  <View style={{alignItems:"center",right:Scale(44),top:Scale(4)}}>
   <View style={{width: 180, height: 5, backgroundColor:"#4caea7", borderRadius: 10 }}>
   </View>
   <View style={{ justifyContent: "space-between", flexDirection: "row", width:230}}>
@@ -50,71 +52,124 @@ const CarouselCardItem = ({ item, index }) => {
   </View>
 </View>
 <View style={styles.TimeDate}>
-<Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',fontSize:10}}>1st oct 3rd OCT,2022</Text>
+<Text style={{ color: "black" ,borderRadius: 10,fontFamily: 'lato',fontSize:10}}>{item.startDate-item.endDate}</Text>
 </View>
 </ImageBackground>
- 
 )
 }
 
 const CompletedContestDetails = (props) => {
-  const navigation = props.navigation
-  const name = props.route.params.Param
+  console.log("props",props);
+  const navigation = props.navigation.navigate
   const [index, setIndex] = useState(0)
   const isCarousel = useRef(null)
+console.log(index);
+  const [LiveContest, setLiveContest] = useState([]);
+  const [winningPrice, setWinningPrice] = useState([]);
 
-  const winningdata = dummyData.WinningList
-  const leaderBoarddata = dummyData.LeadBoard
-const navigations = navigation
+  
+  const [page, setPage] = useState(0);
+  console.log("page~~~~~~~~>",page);
+  const [loading, setLoading] = useState(false);
+
+
+  const getLiveContestdetails = async () => {
+    try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`?page=${page}`);
+        const data = parsedResponse.content
+        // console.log("parsedResponse=card=====>>",parsedResponse.content)
+        if(parsedResponse.totalPages === page){
+        setLoading(true)
+        }
+        setLiveContest([...data])
+        } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+    }
+    }
+    
+    useEffect(() => {
+      getLiveContestdetails();
+      getLeaderBoardList();
+        console.log("CURRENT PAGE", page);
+    }, [page])
+ 
+    const fetchMoreData = () => {
+      if(index >=9){
+            setPage(page + 1)
+            setIndex(0)
+      }else if(index == 0){
+        setPage(page - 1)
+      }
+    }
+
+    const getLeaderBoardList = async () => {
+      const priceList = LiveContest[index].contestKey
+      console.log("priceList============>",LiveContest[index].contestKey);
+      try {
+        const parsedResponse = await routes.STOCK_11.APIS.GET_CONTEST_CARDS(`/${priceList}`);
+        console.log("parsedResponse=====>>>>>>>>",parsedResponse)
+        setWinningPrice(parsedResponse)
+      } catch (error) {
+        console.log("FAIL=====")
+        console.error(error);
+      }
+    }
+
+    useEffect(() => {
+      getLeaderBoardList();
+        fetchMoreData()
+    }, [index])
 
   return (
     <LinearGradient
-  colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
-  start={{ x: 0, y: 0 }}
-  end={{ x: 1, y: 1 }}
-  style={styles.container}>
-         <Image 
-       source={icons.Stock11Logo}
-       resizeMode="contain"
-       style={{
-           width: 70,
-           height: 70,
-           top:5
- }}
-  />
-<View style={{top:10,width:SIZES.width-120,alignItems:"center",justifyContent:"center"}}>
-     <Carousel
-        layout="tinder"
-        layoutCardOffset={6}
-        ref={isCarousel}
-        data={winningdata}
-        renderItem={CarouselCardItem}
-        sliderWidth={SIZES.width-50}
-        itemWidth={Math.round(SIZES.width * 0.7)}
-        onSnapToItem={(index) => setIndex(index)}
-        useScrollView={true}
-      />
-</View>
-<View style={{width:SIZES.width-360,height:20,top:-30}}>
-<Pagination
-        dotsLength={winningdata.length}
-        activeDotIndex={index}
-        carouselRef={isCarousel}
-        dotStyle={{
-          width: 15,
-          height: 15,
-          borderRadius: 50,
-          marginHorizontal: 0,
-          backgroundColor: '#fff'
-        }}
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
-        tappableDots={true}
-      />
-</View>
-<Text style={styles.textLive}>FOLLOWING</Text>
-          <LeadBoard winning ={winningdata} leaderBoard={leaderBoarddata} navigation={navigations} name={name}/>
-          </LinearGradient>
+    colors={['#93d5ce', '#11a99d','#5700AD','#7e72c5' ]}
+    start={{ x: 0, y: 0 }}
+    end={{ x: 1, y: 1 }}
+    style={styles.container}>
+           <Image 
+         source={icons.Stock11Logo}
+         resizeMode="contain"
+         style={{
+             width: 70,
+             height: 70,
+             top:5
+   }}
+    />
+       <View style={{top:verticalScale(10),width:Scale(375),alignItems:"center",justifyContent:"center"}}>
+       <Carousel
+          layout="tinder"
+          layoutCardOffset={6}
+          ref={isCarousel}
+          data={LiveContest}
+          renderItem={CarouselCardItem}
+          sliderWidth={Scale(300)}
+          itemWidth={Math.round(SIZES.width * 0.7)}
+          onSnapToItem={(index) => setIndex(index)
+      }
+          useScrollView={true}
+        />
+  </View>
+  <View style={{width:SIZES.width-360,height:20,top:-30}}>
+  <Pagination
+          dotsLength={LiveContest.length}
+          activeDotIndex={index}
+          carouselRef={isCarousel}
+          dotStyle={{
+            width: 15,
+            height: 15,
+            borderRadius: 50,
+            marginHorizontal: 0,
+            backgroundColor: '#fff'
+          }}
+          inactiveDotOpacity={0.4}
+          inactiveDotScale={0.6}
+          tappableDots={true}
+        />
+  </View>
+  <Text style={styles.textLive}>LIVE</Text>
+            <LeadBoard winning ={winningPrice}  navigation={navigation}/>
+            </LinearGradient>
   );
 };
 
@@ -127,31 +182,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor:COLORS.secondary,
     },
-    scroller: {
-      flex: 1,
-      overflow: "hidden",
-    },
     contestContainer:{
-      height: 151,
-      width:SIZES.width-100,
+      height: Scale(151),
+      width: Scale(290),
       // backgroundColor: "#1F1D2B",
-      marginBottom:35,
+      marginBottom:verticalScale(35),
+      right:Scale(10),
       borderRadius: 10,
       padding: 5,
       elevation:3,
     },
-    TimeDate: {
-      width: 350,
-      height: 30,
-      backgroundColor: "#252837",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 5
-    },
     IdolContainer: {
       position: "relative",
-      width: 350,
-      height: 140,
+      width: Scale(350),
+      height: Scale(140),
     },
     textstyle: {
       fontFamily: 'Poppins',
@@ -159,120 +203,15 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: 'bold',
     },
-    WinningsContainer: {
-      backgroundColor: COLORS.primary,
-      flex: 1,
-      borderRadius: 10,
-      marginLeft: 15,
-      marginRight: 15,
-      width: "90%",
-      overflow: "hidden",
-    },
-    WinningTitleList: {
-      justifyContent: "space-between",
-      flexDirection: "row",
-      padding: 10,
-      borderBottomWidth: 2,
-      borderBottomColor: "#575966",
-      marginLeft: 5,
-      marginRight: 5
-    },
-    WinningList: {
-      justifyContent: "space-between",
-      flexDirection: "row",
-      padding: 10,
-      marginLeft: 10,
-      marginRight: 10,
-    },
-    LeaderboardList: {
-      justifyContent: "space-between",
-      flexDirection: "row",
-      padding: 10,
-      marginLeft: 10,
-      marginRight: 10,
-      borderBottomWidth: 1,
-      borderBottomColor: "#525460",},
-      container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: "#1F1D2B",
-    },
-    shadow: {
-        shadowColor: "#252837",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.30,
-        shadowRadius: 4.65,
-    
-        elevation: 8,
-    },
-    
-    scroller: {
-        flex: 1,
-      overflow:"hidden",
-    },
-    
     TimeDate: {
-        width: 325,
-        height: 20,
-        marginTop:-18,
+        width: Scale(325),
+        height: Scale(20),
+        marginTop:Scale(-18),
         paddingLeft:8,
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"space-between",
         borderRadius: 5
-    },
-    IdolContainer: {
-        position: "relative",
-        width: 340,
-        height: 140,
-    },
-    textstyle: {
-        fontFamily: 'lato',
-        color: "black",
-        fontSize:16,
-        fontWeight: 'bold',
-    },
-    
-    // My Home menue
-    Mycontestmenu:{
-        position: "relative",
-        justifyContent:"space-around",
-        flexDirection: "row",
-        width: 380,
-        height: 60,
-        backgroundColor: "#252837",
-    },
-    ActiveMycontest:{
-        flex: 1,
-       width: 120,
-       borderTopRightRadius: 15,
-       borderTopLeftRadius: 15,
-        backgroundColor: COLORS.ActiveButton, 
-        margin:2,
-    },
-    MycontestText:{ 
-    top:18 ,
-    left:24,
-    color:"black",
-    fontFamily: 'lato',
-    fontSize:15,
-    fontWeight: 'bold',
-    },
-    view:{
-        backgroundColor:COLORS.secondary,
-        color:COLORS.white,
-        fontFamily:"bold",
-        fontSize:12,
-        width:70,
-        height:30,
-        marginBottom:35,
-        paddingTop:6,
-        textAlign:"center",
-        borderRadius:40
     },
     textLive:{
       color:"white",
@@ -280,8 +219,8 @@ const styles = StyleSheet.create({
       borderColor:"white",
       borderWidth:2,
       borderRadius:5,
-      paddingTop:2,
-      paddingLeft:12,
-      paddingRight:10
+      paddingTop:verticalScale(2),
+      paddingLeft:Scale(12),
+      paddingRight:Scale(10)
   }
 });

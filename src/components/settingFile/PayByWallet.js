@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LinearGradient from 'react-native-linear-gradient'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES} from "../../constants"
+import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES,Scale,verticalScale} from "../../constants"
 import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image, AsyncStorage} from 'react-native'
 
 const PayByWallet = ({navigation}) => {
@@ -19,13 +19,12 @@ const PayByWallet = ({navigation}) => {
        style={{
            width: 70,
            height: 70,
-          
  }}
   />
   </View>
   </View>
       <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>ADD BALANCE</Text>
-         <View style={{elevation:10 ,width:SIZES.width-50,minHeight:SIZES.height-300,backgroundColor: COLORS.lightPink,justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}}>
+         <View style={{elevation:10 ,width:Scale(340),height:Scale(450),backgroundColor: COLORS.lightPink,justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}}>
          <Text>Available balance </Text>
          <View style={styles.moneyBoxDIv}>
          <Text style={styles.money}>500</Text>
@@ -33,6 +32,7 @@ const PayByWallet = ({navigation}) => {
          <Text style={styles.money}>2000</Text> 
          </View>
             </View>
+<View></View>
       </LinearGradient>
     );
   };
@@ -68,9 +68,13 @@ width:"100%"
 },
 money:{
 backgroundColor:"white",
-width:100,
+width:Scale(80),
+height:Scale(30),
+borderRadius:4,
+borderColor:"black",
 textAlignVertical:"center",
-textAlign:"center"
+textAlign:"center",
+borderWidth:1
 }
 
   });

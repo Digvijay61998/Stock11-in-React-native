@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View ,ScrollView,TouchableOpacity,FlatList,Image, AsyncStorage} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData,container, SIZES} from "../../constants"
+import { StyleSheet, Text, View,TouchableOpacity,Image, AsyncStorage} from 'react-native'
+import { COLORS, FONTS, icons,CardBox,Scale,verticalScale} from "../../constants"
 import React, { useEffect, useState } from 'react';
 import LinearGradient from 'react-native-linear-gradient'
 import routes from '../../../utils/routes';
 
 const Wallet = ({navigation}) => {
   const[balance ,getBalance]=useState()
-  console.log("balance",balance);
 
   const getWalletDetails = async () => {
     const userKey = await AsyncStorage.getItem('userKey');
@@ -36,22 +35,22 @@ const Wallet = ({navigation}) => {
      style={{
          width: 70,
          height:70,
-         top:SIZES.width-460
+         top:Scale(-40)
         
 }}/>
-    <Text style={{fontWeight:"bold",color:"white",marginBottom:30}}>WALLET</Text>
-       <View style={[CardBox,{elevation:10 ,width:SIZES.width-50,height:SIZES.height-350,backgroundColor: "#fef9ff",justifyContent:"center",alignItems: "center",padding:25,paddingTop:100,borderRadius:20}]}>
+    <Text style={{fontWeight:"bold",color:"white",marginBottom:verticalScale(30)}}>WALLET</Text>
+       <View style={[CardBox,{elevation:10 ,width:Scale(320),height:Scale(400),backgroundColor: "#fef9ff",justifyContent:"center",alignItems: "center",padding:Scale(25),paddingTop:verticalScale(100),borderRadius:20}]}>
       <Text style={FONTS.textstyle}>Available Balance</Text>
-      <Text style={[FONTS.textstyle,{fontSize:30 ,color:COLORS.ActiveButton}]}>{balance}/-</Text>
-      <View style={{width: '100%', height:300 ,top:80, alignItems: "center", justifyContent:"center" ,borderTopWidth:1 ,borderColor:"#ebe7ec"}}>
-       <TouchableOpacity style={[FONTS.button,{width:150 , bottom:60}]}
+      <Text style={[FONTS.textstyle,{fontSize:30,top:verticalScale(20),color:COLORS.ActiveButton}]}>{balance}/-</Text>
+      <View style={{width:Scale(300), height:Scale(300) ,top:verticalScale(80), alignItems: "center", justifyContent:"center" ,borderTopWidth:1 ,borderColor:"#ebe7ec"}}>
+       <TouchableOpacity style={[FONTS.button,{width:Scale(150) , bottom:verticalScale(60)}]}
            onPress={() =>
             navigation.navigate('PayByWallet')
           }
        >
         <Text style={[FONTS.textstyle ,{color:"white",fontSize:14}]}>ADD BALANCE</Text>
        </TouchableOpacity>
-       <TouchableOpacity style={[FONTS.button,{backgroundColor:"#4caea7",bottom:30}]}
+       <TouchableOpacity style={[FONTS.button,{backgroundColor:"#4caea7",bottom:Scale(30)}]}
            onPress={() =>
             navigation.navigate('WithDraw')
           }
@@ -74,10 +73,4 @@ const styles = StyleSheet.create({
     alignItems:"center",
     justifyContent:"center",
 },
-  input:{
-    width: '90%',
-    backgroundColor: COLORS.secondary,
-    borderRadius:30,
-    marginBottom:15,
-  },
 });

@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View ,ScrollView} from 'react-native'
-import { COLORS, FONTS, icons ,Header ,CardBox} from "../../constants"
-import {IdolContest} from "../../Common/index"
+import { StyleSheet, Text, View } from 'react-native'
+import { COLORS,Header,Scale,verticalScale} from "../../constants"
 import {LiveEvents, UpcomingEvents, CompletedEvents} from "./UpcomingLiveEvents"
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 const MyContestStack = createMaterialTopTabNavigator();
@@ -22,8 +21,8 @@ const MyContest = ({ navigation}) => {
                 position: "relative",
                 // botton: 100,
                 backgroundColor: COLORS.primary,
-                padding:10,
-                height: 70,
+                padding:Scale(10),
+                height: Scale(70),
                 elevation:0
             },
             showIcon: true, showLabel: false, indicatorStyle: {
@@ -48,10 +47,10 @@ const MyContest = ({ navigation}) => {
                 <View
                     style={{
                       borderRadius:50,
-                      height: 40,
-                      width:110,
-                      right:45,
-                      bottom:10,
+                      height: Scale(40),
+                      width:Scale(110),
+                      right:Scale(45),
+                      bottom:verticalScale(10),
                       alignItems: 'center',
                       justifyContent: 'center',
                       backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -77,10 +76,10 @@ const MyContest = ({ navigation}) => {
                     style={{
                         // flex: 1,
                         borderRadius:50,
-                        height: 40,
-                        width:110,
-                        right:45,
-                        bottom:10,
+                        height: Scale(40),
+                        width:Scale(110),
+                        right:Scale(45),
+                        bottom:verticalScale(10),
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -104,10 +103,10 @@ const MyContest = ({ navigation}) => {
                 <View
                     style={{
                         borderRadius:50,
-                        height: 40,
-                        width:110,
-                        right:45,
-                        bottom:10,
+                        height: Scale(40),
+                        width:Scale(110),
+                        right:Scale(45),
+                        bottom:verticalScale(10),
                         alignItems: 'center',
                         justifyContent: 'center',
                         backgroundColor: focused ? "#4caea7" : "#c4c4c4"
@@ -134,35 +133,6 @@ const MyContest = ({ navigation}) => {
 export default MyContest
 
 const styles = StyleSheet.create({
-    scroller: {
-        flex: 1,
-      overflow:"hidden",
-    },
-  // My Home menue
-  Mycontestmenu:{
-      position: "relative",
-      justifyContent:"space-around",
-      flexDirection: "row",
-      width: 380,
-      height: 60,
-      backgroundColor: COLORS.HeaderBackground,
-  },
-  ActiveMycontest:{
-      flex: 1,
-     width: 120,
-     borderTopRightRadius: 15,
-     borderTopLeftRadius: 15,
-      backgroundColor: COLORS.HeaderBackground, 
-      margin:2,
-  },
-  InactiveMycontest:{
-      flex: 1,
-     width: 120,
-     borderTopRightRadius: 15,
-     borderTopLeftRadius: 15,
-      backgroundColor: COLORS.HeaderBackground, 
-      margin:2,
-  },
   MycontestText:{ 
   fontFamily:'Poppins',
   fontSize:15,

@@ -4,7 +4,7 @@ import { StyleSheet,View, Text, TouchableOpacity, ScrollView,Image} from 'react-
 
 import Contest from "../src/components/Contest/Contest.js"
 import MyContest from "../src/components/MyContest/MyContest"
-import { COLORS, FONTS, icons ,Header ,CardBox ,IdolContest ,dummyData, SIZES} from "../src/constants"
+import { COLORS, icons ,Header,Scale,verticalScale} from "../src/constants"
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Confirmation from '../src/components/Contest/Confirmation.js';
 import LinearGradient from 'react-native-linear-gradient'
@@ -37,7 +37,7 @@ const navigations = navigation
         end={{ x: 1, y: 1 }}
         style={styles.container}
         > 
-        <View style={{width:SIZES.width ,flexDirection:"row",justifyContent:"space-around",alignItems:"center"}}>
+        <View style={{width:Scale(375), flexDirection:"row",justifyContent:"space-around",alignItems:"center"}}>
        <View></View>
         <Image 
        source={icons.Stock11Logo}
@@ -62,7 +62,7 @@ const navigations = navigation
   />
   </TouchableOpacity>
   </View>
-            <View style={[Header,{top:50}]}>
+            <View style={[Header,{top:verticalScale(50)}]}>
                 <View style={{
                       justifyContent:"center",
                       alignItems:"center",
@@ -106,83 +106,33 @@ const styles = StyleSheet.create({
         
 
     },
-    shadow: {
-        shadowColor: COLORS.HeaderBackground,
-        shadowOffset: {
-            width: 0,
-            height: 4,
+        header:{
+            width:Scale(330),
+            height:Scale(70),
+            justifyContent:"space-between",
+            alignItems:"center",
+            flexDirection:"row",
         },
-        shadowOpacity: 0.30,
-        shadowRadius: 4.65,
-
-        elevation: 8,
-    },
- 
-    scroller: {
-        flex: 1,
-      
-    },
-    IdolConte: {
-        height: 180,
-        width: 360,
-        backgroundColor: COLORS.HeaderBackground,
-        margin: "4%",
-        borderRadius: 10,
-        padding: 5,
-        
-    },
-    TimeDate: {
-        width: 350,
-        height: 30,
-        backgroundColor: COLORS.HeaderBackground,
-        alignItems: "center",
-        justifyContent: "center",
-        borderRadius: 5
-    },
-    IdolContainer: {
-        position: "relative",
-        width: 350,
-        height: 140,
-    },
-    textstyle: {
-        fontFamily: 'Poppins',
-        color: "white",
-        fontSize:16,
-        fontWeight: 'bold',
-    },
-    MycontestText:{ 
-        bottom:10,
-    fontFamily: 'Poppins',
-    fontSize:15,
-    fontWeight: 'bold',
-},
-header:{
-    width:330,
-    height:70,
-    justifyContent:"space-between",
-    alignItems:"center",
-    flexDirection:"row",
-},
-headerMenu:{
-    width:165,
-    backgroundColor:COLORS.lightPink,
-    borderTopLeftRadius:20,
-    borderTopRightRadius:20,
-    height:50,
-    marginTop:30,
-    alignItems:"center",
-    justifyContent:"center",
-},
-headerMenuInActive:{
-    width:165,
-    backgroundColor:"#317e93",
-    borderTopLeftRadius:20,
-    borderTopRightRadius:20,
-    height:40,
-    marginTop:40,
-    alignItems:"center",
-    justifyContent:"center",
-}
-})
+        headerMenu:{
+            width:Scale(165),
+            backgroundColor:COLORS.lightPink,
+            borderTopLeftRadius:20,
+            borderTopRightRadius:20,
+            height:Scale(50),
+            marginTop:verticalScale(30),
+            alignItems:"center",
+            justifyContent:"center",
+        },
+        headerMenuInActive:{
+            width:Scale(165),
+            backgroundColor:"#317e93",
+            borderTopLeftRadius:20,
+            borderTopRightRadius:20,
+            height:Scale(40),
+            marginTop:verticalScale(40),
+            alignItems:"center",
+            justifyContent:"center",
+        }
+        })
 
 export default Home;

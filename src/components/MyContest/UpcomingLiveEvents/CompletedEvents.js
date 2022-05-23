@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View,TouchableOpacity, FlatList ,ImageBackground,SafeAreaView,ActivityIndicator} from 'react-native';
 import React, { useState, useEffect }  from 'react';
-import {COLORS, FONTS, icons, Header,contestContainer} from "../../../constants"
+import {icons, Header,contestContainer} from "../../../constants"
 import {IdolContest} from "../../../Common/index"
 import routes from '../../../../utils/routes'
 
@@ -98,14 +98,5 @@ const styles = StyleSheet.create({
   scroller: {
     flex: 1,
     overflow: "hidden",
-  },
-  contestContainer:{
-    height: 180,
-    width: 340,
-    // backgroundColor: "#1F1D2B",
-    marginBottom:35,
-    borderRadius: 10,
-    padding: 5,
-    elevation:3,
   },
 });

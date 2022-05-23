@@ -1,7 +1,6 @@
 import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 
-
 export const COLORS = {
     primary: "#FFFF",     // background Color
     secondary: "#0C2F81",   // Dark purple
@@ -35,11 +34,10 @@ export const  Header ={
     justifyContent: "center",
     alignItems: "center",
     overflow: 'hidden',
-    width:width-20,
+    width:375,
     height: height-150,
     borderTopRightRadius:20,
     borderTopLeftRadius: 20,
-    paddingTop:0,
 };
 
 export const container ={
